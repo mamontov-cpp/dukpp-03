@@ -1,0 +1,59 @@
+cmake_minimum_required(VERSION 2.8.12)
+project(dukpp-03)
+
+file(GLOB_RECURSE SRCS src/*.cpp src/*.cc)
+file(GLOB_RECURSE HDRS include/*.h)
+
+set(DUKPP_LIBRARY_NAME "dukpp-03")
+
+set(DUKPP_CXX_DEBUG_FLAGS "-Wno-reorder -Wno-unused -Wno-sign-compare -w")
+set(DUKPP_CXX_RELEASE_FLAGS "-O2 -Wno-reorder -Wno-unused -Wno-sign-compare -w")
+
+if (NOT CMAKE_BUILD_TYPE)
+	message(STATUS "No build type selected, default to Release")
+	set(CMAKE_BUILD_TYPE "Release")
+	set(DUKPP_LIBRARY_NAME "${DUKPP_LIBRARY_NAME}")
+endif()
+
+macro(SET_GCC_FLAGS)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${DUKPP_CXX_DEBUG_FLAGS}")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${DUKPP_CXX_RELEASE_FLAGS}")
+	if (NOT CMAKE_BUILD_TYPE)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${DUKPP_CXX_RELEASE_FLAGS}")
+	endif()
+endmacro(SET_GCC_FLAGS)
+
+include_directories(include)
+
+IF (WIN32)
+  add_definitions(-DWIN32)
+  IF (MINGW)
+	add_definitions(-DMINGW)	
+	SET_GCC_FLAGS()
+  ENDIF()
+  IF (MSVC)
+	add_definitions(-DCRT_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_DEPRECATE -D_SCL_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_DEPRECATE)
+  ENDIF()
+ELSE()
+  add_definitions(-DUNIX -DLINUX -DGCC)
+  SET_GCC_FLAGS()
+ENDIF()
+
+
+
+add_library(${DUKPP_LIBRARY_NAME}  ${SRCS} ${HDRS})
+
+set_target_properties(${DUKPP_LIBRARY_NAME}
+    PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "lib"
+	ARCHIVE_OUTPUT_DIRECTORY_DEBUG "lib"
+	ARCHIVE_OUTPUT_DIRECTORY_RELEASE "lib"	
+    LIBRARY_OUTPUT_DIRECTORY "lib"
+	LIBRARY_OUTPUT_DIRECTORY_DEBUG "lib"
+	LIBRARY_OUTPUT_DIRECTORY_RELEASE "lib"	
+    RUNTIME_OUTPUT_DIRECTORY "bin"
+	RUNTIME_OUTPUT_DIRECTORY_DEBUG "bin"
+	RUNTIME_OUTPUT_DIRECTORY_RELEASE "bin"
+	DEBUG_POSTFIX "-debug"
+	RELEASE_POSTFIX "-release"
+)
