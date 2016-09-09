@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(dukpp-03)
 
+find_package(Boost REQUIRED)
+
 file(GLOB_RECURSE SRCS src/*.cpp src/*.cc)
 file(GLOB_RECURSE HDRS include/*.h)
 
@@ -24,6 +26,7 @@ macro(SET_GCC_FLAGS)
 endmacro(SET_GCC_FLAGS)
 
 include_directories(include)
+include_directories(${Boost_INCLUDE_DIRS})
 
 IF (WIN32)
   add_definitions(-DWIN32)
