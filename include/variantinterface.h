@@ -4,6 +4,7 @@
  */
 #pragma once
 #include "maybe.h"
+#include <string>
 
 namespace dukpp03
 {
@@ -11,7 +12,7 @@ namespace dukpp03
 /*! A generic abstract interface for interacting with variants.
 	Variants must be specified by underlying implementation
  */	
-template<typename _VariantType>	
+template<typename _VariantType, template<typename, typename> typename _HashMapType>	
 struct VariantInterface
 {
 public:
@@ -22,7 +23,7 @@ public:
 	template<
 		typename _UnderlyingValue
 	>
-	void makeFrom(_UnderlyingValue val, _VariantType& v);
+	static _VariantType* makeFrom(_UnderlyingValue val);
 	/*! Fetches underlying value from variant type
 		\param[in] v a variant, containing data
 		\return an underlying value
@@ -30,7 +31,7 @@ public:
 	template<
 		typename _UnderlyingValue
 	>	
-	dukpp03::Maybe<_UnderlyingValue> get(_VariantType& v);		
+	static dukpp03::Maybe<_UnderlyingValue> get(_VariantType* v);			
 };
 	
 }

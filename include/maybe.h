@@ -4,6 +4,7 @@
      Describes a value, that can be absent.
  */
 #pragma once
+#include <cstdlib>
 
 namespace dukpp03
 {
