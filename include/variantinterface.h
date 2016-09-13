@@ -12,7 +12,7 @@ namespace dukpp03
 /*! A generic abstract interface for interacting with variants.
 	Variants must be specified by underlying implementation
  */	
-template<typename _VariantType, template<typename, typename> typename _HashMapType>	
+template<typename _VariantType>	
 struct VariantInterface
 {
 public:
