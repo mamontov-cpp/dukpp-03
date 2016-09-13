@@ -16,6 +16,9 @@ template<typename _VariantType, template<typename, typename> typename _HashMapTy
 struct VariantInterface
 {
 public:
+	/*! A variant type, which will be used
+	 */ 
+	typedef _VariantType Variant;
 	/*! Makes variant from value
 		\param[in] val value
 		\param[in] v variant
