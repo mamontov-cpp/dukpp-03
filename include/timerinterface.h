@@ -26,7 +26,7 @@ struct TimerInterface
 		\param[in] t timer
 		\return elapsed time in milliseconds
 	 */
-	int elapsed(Timer& t);
+	double elapsed(Timer& t);
 };	
 
 }

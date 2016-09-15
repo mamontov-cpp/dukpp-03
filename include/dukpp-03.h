@@ -7,6 +7,6 @@
 #include "duk_custom.h"
 #include "../duktape/src/duktape.h"
 #include "errorcodes.h"
-
+#include "abstractcontext.h"
 
 
