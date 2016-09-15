@@ -2,9 +2,11 @@
 
     A basic file, which should be included to work with DukPP-03
  */
+#pragma once
 
-#ifndef DUKPP03_SADDY
-    #include <boost/unordered/unordered_map.hpp>
-#else
-    #include "../../boost-dist/boost/unordered/unordered_map.hpp"
-#endif
+#include "duk_custom.h"
+#include "../duktape/src/duktape.h"
+#include "errorcodes.h"
+
+
+
