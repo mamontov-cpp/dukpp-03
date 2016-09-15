@@ -4,7 +4,8 @@
     Defines error codes wrapper for Duktape
  */
 #pragma once
-#include "dukpp-03.h"
+#include "duk_custom.h"
+#include "../duktape/src/duktape.h"
 
 namespace dukpp03
 {

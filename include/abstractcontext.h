@@ -3,11 +3,13 @@
     Defines an abstract context, which could be used for evaluation
  */
 #pragma once
-#include "dukpp-03.h"
+#include "errorcodes.h"
 #include <string>
 
 namespace dukpp03
 {
+
+class Callable;
 
 /*! A wapper for basic context for data
  */
@@ -38,6 +40,11 @@ public:
         \param[in] code error codes
      */
     void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::SAD_DUK_E5_ERROR);
+    /*! Registers callable as property of global object
+        \param[in] callable_name name of property of global object
+        \param[in] callable a callable object
+     */
+    void registerCallable(const std::string& callable_name, dukpp03::Callable* callable);
     /*! Cleans non-persistent pool of objects, resetting it
      */
     virtual void clean() = 0;
@@ -63,7 +70,7 @@ public:
     /*! A simple wrapper aroun duk_get_top for getting count of values on stack
         \return count of values on stack
      */
-    int getTop() const;	
+    int getTop() const; 
 protected:
     /*! Inits context for evaluating
      */
@@ -74,6 +81,10 @@ protected:
     /*! Returns time, elapsed from evaluation
      */ 
     virtual double elapsedFromEvaluation() = 0;
+    /*! Adds callable to needed set
+        \param[in] c callable
+     */
+    virtual void addCallableToSet(dukpp03::Callable* c) = 0;
     /*! Inner context
      */
     duk_context* m_context;

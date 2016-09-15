@@ -24,6 +24,7 @@ struct MapInterface
 	struct Map
 	{
 		typedef _HashMapType<std::string, _Value> Container;
+		typedef _HashMapType<_Value*, _Value*> PointerSet;
 	};
 	
 	/*! Copies map from one place to other
@@ -41,6 +42,14 @@ struct MapInterface
 		typename _Value
 	>	 
 	static void destroy(_HashMapType<std::string, _Value>& source);
+	
+	/*! Frees map, removing sources
+		\param[in, out] a source map
+	 */
+	template<
+		typename _Value
+	>	 
+	static void destroy(_HashMapType<_Value*, _Value*>& source);
 	/*! Inserts element to map, replacing existing, if need to
 		\param[in, out] dest a  map
 		\param[in] k key
@@ -50,6 +59,16 @@ struct MapInterface
 		typename _Value
 	>	 
 	static void insert(_HashMapType<std::string, _Value>& dest, const std::string& k, _Value v);
+	
+	/*! Inserts element to map, replacing existing, if need to
+		\param[in, out] dest a  map
+		\param[in] k key
+		\param[in] v value
+	 */
+	template<
+		typename _Value
+	>	 
+	static void insert(_HashMapType<_Value*, _Value*>& dest, const _Value* k, _Value* v);
 	/*! Returns element by key (NULL if does not exists)
 		\param[in] m a map
      	\param[in] k key
@@ -58,7 +77,14 @@ struct MapInterface
 	template<
 		typename _Value
 	>	 
-	static _Value get(_HashMapType<std::string, _Value>& map, const std::string& k);	
+	static _Value get(_HashMapType<std::string, _Value>& map, const std::string& k);
+	/*! Clears map
+		\param[in, out] dest a  map
+	 */
+	template<
+		typename _Value
+	>	 
+	static void clear(_HashMapType<_Value*, _Value*>& dest);
 };
-	
+
 }

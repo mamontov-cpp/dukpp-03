@@ -1,6 +1,11 @@
 #include "../include/abstractcontext.h"
+#include "../include/callable.h"
 #include <cassert>
 #include <stdexcept>
+
+/*! A property, where located pointer to callable in wrapper
+ */
+#define DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY "\1_____native_signature\1"
 
 dukpp03::AbstractContext::AbstractContext() : m_maximal_execution_time(30000), m_running(false)
 {
@@ -96,6 +101,34 @@ int dukpp03::AbstractContext::getTop() const
     return duk_get_top(m_context);
 }
 
+static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
+    duk_push_current_function(ctx);
+    duk_get_prop_string(ctx, -1, DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY);
+    void* callableptr = duk_to_pointer(ctx, -1);
+    duk_pop(ctx);
+    duk_pop(ctx);
+
+    assert(callableptr);
+    dukpp03::AbstractContext* c =  dukpp03::AbstractContext::getContext(ctx);
+    dukpp03::Callable* callable = reinterpret_cast<dukpp03::Callable*>(callableptr);
+    return callable->call(c);
+}
+
+void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::Callable* callable)
+{
+   assert(callable);
+   addCallableToSet(callable);
+   
+   duk_push_global_object(m_context);
+   duk_push_c_function(m_context, dukpp03_context_invoke_wrapper, DUK_VARARGS);
+   
+   duk_push_string(m_context, DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY);   
+   duk_push_pointer(m_context, callable);
+   duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+  
+   duk_put_prop_string(m_context, -2 /*idx:global*/, callable_name.c_str());
+   duk_pop(m_context);
+}
 
 // ================================= PROTECTED METHODS =================================
 
