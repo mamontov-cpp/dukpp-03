@@ -1,4 +1,4 @@
-/*! \file duktape/errorcodes.h
+/*! \file errorcodes.h
     
 
     Defines error codes wrapper for Duktape
