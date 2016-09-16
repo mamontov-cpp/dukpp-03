@@ -49,6 +49,9 @@ public:
     /*! A callback set for context
      */
     typedef typename _MapInterface::template Map<dukpp03::Callable>::PointerSet CallbackSet;
+    /*! A type for selecting utilities from context
+     */
+    typedef _VariantInterface VariantUtils;
     /*! Creates new context
      */
     Context()
