@@ -12,7 +12,7 @@ namespace dukpp03
 	Hash maps must be specified by underlying implementation
  */	
 template<
-	template<typename, typename> typename _HashMapType
+	template<typename, typename> class _HashMapType
 >
 struct MapInterface
 {
