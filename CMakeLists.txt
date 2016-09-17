@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(dukpp-03)
 
-find_package(Boost REQUIRED)
-
 file(GLOB_RECURSE SRCS src/*.cpp src/*.cc)
 file(GLOB_RECURSE HDRS include/*.h)
 
