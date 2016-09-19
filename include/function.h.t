@@ -1,4 +1,4 @@
-/*! \file duktapefunction.h
+/*! \file function.h
      
     Defines a simple defines for creating bindings for any kind of function
  */
@@ -182,7 +182,7 @@ protected:
 template<
     typename _Context
 >
-struct BindFunctionTo 
+struct make_fun 
 {
 {{#variants}}
 /*! Makes callable from function which returns nothing and receives {{argscount}} arguments
@@ -195,7 +195,7 @@ template<
 {{/args}}
 >
 {{/has_args}}
-static inline dukpp03::Callable* _using(void (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable* from(void (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new VoidFunction{{argscount}}<_Context{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -212,7 +212,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable* from(_ReturnType (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new RetFunction{{argscount}}<_Context, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }

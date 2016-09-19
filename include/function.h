@@ -1,4 +1,4 @@
-/*! \file duktapefunction.h
+/*! \file function.h
      
     Defines a simple defines for creating bindings for any kind of function
  */
@@ -4567,15 +4567,15 @@ protected:
 };
 
 template<
-typename _Context
+    typename _Context
 >
-struct BindFunctionTo 
+struct make_fun 
 {
 /*! Makes callable from function which returns nothing and receives 0 arguments
     \param[in] f function
     \return callable version
  */
-static inline dukpp03::Callable* _using(void (*f)())
+static inline dukpp03::Callable* from(void (*f)())
 {
     return new VoidFunction0<_Context>(f);
 }
@@ -4587,7 +4587,7 @@ static inline dukpp03::Callable* _using(void (*f)())
 template<
     typename _Arg0
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0))
+static inline dukpp03::Callable* from(void (*f)(_Arg0))
 {
     return new VoidFunction1<_Context, _Arg0>(f);
 }
@@ -4600,7 +4600,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1))
 {
     return new VoidFunction2<_Context, _Arg0, _Arg1>(f);
 }
@@ -4614,7 +4614,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2))
 {
     return new VoidFunction3<_Context, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -4629,7 +4629,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new VoidFunction4<_Context, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -4645,7 +4645,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new VoidFunction5<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -4662,7 +4662,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new VoidFunction6<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -4680,7 +4680,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new VoidFunction7<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -4699,7 +4699,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new VoidFunction8<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -4719,7 +4719,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new VoidFunction9<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -4740,7 +4740,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new VoidFunction10<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -4762,7 +4762,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new VoidFunction11<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -4785,7 +4785,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new VoidFunction12<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -4809,7 +4809,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new VoidFunction13<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -4834,7 +4834,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new VoidFunction14<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -4860,7 +4860,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new VoidFunction15<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -4887,7 +4887,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable* from(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new VoidFunction16<_Context, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -4900,7 +4900,7 @@ static inline dukpp03::Callable* _using(void (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _A
 template<
     typename _ReturnType
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)())
+static inline dukpp03::Callable* from(_ReturnType (*f)())
 {
     return new RetFunction0<_Context, _ReturnType>(f);
 }
@@ -4913,7 +4913,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0))
 {
     return new RetFunction1<_Context, _ReturnType, _Arg0>(f);
 }
@@ -4927,7 +4927,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1))
 {
     return new RetFunction2<_Context, _ReturnType, _Arg0, _Arg1>(f);
 }
@@ -4942,7 +4942,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2))
 {
     return new RetFunction3<_Context, _ReturnType, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -4958,7 +4958,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new RetFunction4<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -4975,7 +4975,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new RetFunction5<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -4993,7 +4993,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new RetFunction6<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -5012,7 +5012,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new RetFunction7<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -5032,7 +5032,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new RetFunction8<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -5053,7 +5053,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new RetFunction9<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -5075,7 +5075,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new RetFunction10<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -5098,7 +5098,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new RetFunction11<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -5122,7 +5122,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new RetFunction12<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -5147,7 +5147,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new RetFunction13<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -5173,7 +5173,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new RetFunction14<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -5200,7 +5200,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new RetFunction15<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -5228,7 +5228,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* _using(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable* from(_ReturnType (*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new RetFunction16<_Context, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
