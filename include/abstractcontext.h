@@ -39,7 +39,7 @@ public:
         \param[in] error_string string data for error
         \param[in] code error codes
      */
-    void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::SAD_DUK_E5_ERROR);
+    void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::D03_DUK_E5_ERROR);
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object
         \param[in] callable a callable object
@@ -71,6 +71,19 @@ public:
         \return count of values on stack
      */
     int getTop() const; 
+    /*! Throws error, that function has invalid amount of arguments
+        \param[in] expected how many arguments did function expect
+        \param[in] got how many arguments it got
+     */ 
+    virtual void throwInvalidArgumentCountError(int expected, int got);
+    /*! Throws error, that invalid type has passed into function
+        \param[in] type expected type
+        \param[in] an argument number
+     */
+    virtual void throwInvalidTypeError(int argnumber, const std::string& type);
+    /*! Throws error, that caught exception, when calling function
+     */
+    virtual void throwCaughtException();
 protected:
     /*! Inits context for evaluating
      */
