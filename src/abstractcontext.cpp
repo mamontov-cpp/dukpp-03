@@ -2,6 +2,7 @@
 #include "../include/callable.h"
 #include <cassert>
 #include <stdexcept>
+#include <sstream>
 
 /*! A property, where located pointer to callable in wrapper
  */
@@ -99,6 +100,26 @@ void dukpp03::AbstractContext::throwError(const std::string& error_string, dukpp
 int dukpp03::AbstractContext::getTop() const
 {
     return duk_get_top(m_context);
+}
+
+void dukpp03::AbstractContext::throwInvalidArgumentCountError(int expected, int got)
+{
+    std::ostringstream ss;
+    ss << "Function expects" << expected << " arguments, but "  <<  got << " given";
+    this->throwError(ss.str());
+}
+
+void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::string& type)
+{
+    std::ostringstream ss;
+    ss << "Invalid type passed for argument " << argnumber << "Argument" <<  argnumber << "must have type" << type;
+    this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
+}
+
+
+void dukpp03::AbstractContext::throwCaughtException()
+{
+    this->throwError("Caught exception while calling function");
 }
 
 static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
