@@ -32,5 +32,5 @@ end
 
 render("function.h.t", "function.h", variants)
 render("method.h.t", "method.h", variants)
-#render("duktapeptrmethod.h.t", "duktapeptrmethod.h", variants)
+render("ptrmethod.h.t", "ptrmethod.h", variants)
 #render("duktapeconstructor.h.t", "duktapeconstructor.h", variants)
