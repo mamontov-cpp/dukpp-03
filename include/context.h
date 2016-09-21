@@ -183,6 +183,17 @@ public:
         }
         return result;
     }
+    /*! Returns value from variant
+        \param[in] v variant
+        \return maybe value
+     */
+    template<
+        typename T
+    >
+    inline static dukpp03::Maybe<T> valueFromVariant(Variant* v)
+    {
+        return _VariantInterface::template get<T>(v);
+    }
 protected:
     /*! Starts evaluating object, needed for data
      */

@@ -35,7 +35,7 @@ static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
         typename _Context::Variant * v = ctx->getValueFromPool(string);
         if (v)
         {
-            result = typename _Context::VariantUtils::template get<_Value>(v);
+            result = _Context::template valueFromVariant<_Value>(v);
         }
     }
     return result;
@@ -74,7 +74,7 @@ static dukpp03::Maybe<bool> perform(_Context* ctx, duk_idx_t pos)
             typename _Context::Variant * v = ctx->getValueFromPool(str);
             if (v)
             {
-                result = typename _Context::VariantUtils::template get<bool>(v);
+                result = _Context::template valueFromVariant<bool>(v);
             }
         }
     }
@@ -184,7 +184,7 @@ static dukpp03::Maybe<std::string> perform(
         typename _Context::Variant* v = ctx->getValueFromPool(result.value());
         if (v)
         {
-            dukpp03::Maybe<std::string> result1 = typename _Context::VariantUtils::template get<std::string>(v);            
+            dukpp03::Maybe<std::string> result1 = _Context::template valueFromVariant<std::string>(v);            
             if (result1.exists())
             {
                 result.setValue(result1.value().c_str());
