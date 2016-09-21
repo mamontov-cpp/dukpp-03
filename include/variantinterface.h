@@ -41,7 +41,8 @@ public:
     template<
         typename _UnderlyingValue
     >
-    class TypeName {
+    class TypeName 
+    {
         /*! Returns name of type 
             \return name of type
          */

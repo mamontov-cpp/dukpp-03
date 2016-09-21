@@ -26,6 +26,7 @@ set(SRCS "main.cpp")
 add_executable(${DUKPP03_EXECUTABLE_NAME} ${SRCS} ${HDRS})
 
 target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${DUKPP03_LINKABLE_NAME})
+target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${Boost_LIBRARIES})
 
 set_target_properties(${DUKPP03_EXECUTABLE_NAME}
     PROPERTIES

@@ -2,6 +2,7 @@
 #pragma warning(disable: 4273)
 #pragma warning(disable: 4351)
 #include <cstdio>
+#include "utils.h"
 #define _INC_STDIO
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
