@@ -13,6 +13,7 @@
 #include "pool.h"
 #include "errorcodes.h"
 #include "callable.h"
+#include "decay.h"
 
 //#include "pushvalue.h"
 //#include "getvalue.h"
@@ -193,6 +194,17 @@ public:
     inline static dukpp03::Maybe<T> valueFromVariant(Variant* v)
     {
         return _VariantInterface::template get<T>(v);
+    }
+    
+    /*! Returns typename for type
+        \return type
+     */
+    template<
+        typename T
+    >
+    inline static std::string typeName()
+    {
+        return _VariantInterface::template TypeName< typename dukpp03::Decay<T>::Type >::type();
     }
 protected:
     /*! Starts evaluating object, needed for data

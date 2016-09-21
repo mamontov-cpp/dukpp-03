@@ -68,14 +68,14 @@ public:
 {{/args}}       
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
         {{#args}}       
         if (_a{{number}}.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg{{number}}>::Type >::type();
+            std::string name = _Context::template typeName< _Arg{{number}} >();
             c->throwInvalidTypeError({{numberp2}}, name);
             return 0;
         }
@@ -156,7 +156,7 @@ public:
         dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -167,7 +167,7 @@ public:
         {{#args}}       
         if (_a{{number}}.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg{{number}}>::Type >::type();
+            std::string name = _Context::template typeName< _Arg{{number}} >();
             c->throwInvalidTypeError({{numberp2}}, name);
             return 0;
         }
@@ -250,7 +250,7 @@ public:
         dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -260,7 +260,7 @@ public:
         {{#args}}       
         if (_a{{number}}.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg{{number}}>::Type >::type();
+            std::string name = _Context::template typeName< _Arg{{number}} >();
             c->throwInvalidTypeError({{numberp2}}, name);
             return 0;
         }
@@ -341,7 +341,7 @@ public:
         dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -352,7 +352,7 @@ public:
         {{#args}}       
         if (_a{{number}}.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg{{number}}>::Type >::type();
+            std::string name = _Context::template typeName< _Arg{{number}} > ();
             c->throwInvalidTypeError({{numberp2}}, name);
             return 0;
         }
@@ -397,7 +397,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new VoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -415,7 +415,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new RetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -431,7 +431,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
     return new ConstVoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -449,7 +449,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
     return new ConstRetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }

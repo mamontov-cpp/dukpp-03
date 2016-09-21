@@ -63,7 +63,7 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -141,14 +141,14 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
@@ -228,21 +228,21 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
@@ -324,28 +324,28 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
@@ -429,35 +429,35 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
@@ -543,42 +543,42 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
@@ -666,49 +666,49 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
@@ -798,56 +798,56 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
@@ -939,63 +939,63 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
@@ -1089,70 +1089,70 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
@@ -1248,77 +1248,77 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
@@ -1416,84 +1416,84 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
@@ -1593,91 +1593,91 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name =_Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
@@ -1779,98 +1779,98 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name =_Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name =_Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
@@ -1974,105 +1974,105 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name =_Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name =_Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name =_Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
@@ -2178,112 +2178,112 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name =_Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name =_Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name =_Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name =_Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
@@ -2391,119 +2391,119 @@ public:
        
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name =_Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name =_Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name =_Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name =_Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name =_Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name =_Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name =_Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name =_Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name =_Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name =_Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name =_Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name =_Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name =_Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name =_Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name =_Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
        
         if (_a15.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg15>::Type >::type();
+            std::string name =_Context::template typeName< _Arg15 >();
             c->throwInvalidTypeError(17, name);
             return 0;
         }
@@ -2579,7 +2579,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -2657,7 +2657,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -2667,7 +2667,7 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
@@ -2746,7 +2746,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -2757,14 +2757,14 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
@@ -2844,7 +2844,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -2856,21 +2856,21 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
@@ -2951,7 +2951,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -2964,28 +2964,28 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
@@ -3067,7 +3067,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3081,35 +3081,35 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
@@ -3192,7 +3192,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3207,42 +3207,42 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
@@ -3326,7 +3326,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3342,49 +3342,49 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
@@ -3469,7 +3469,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3486,56 +3486,56 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
@@ -3621,7 +3621,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3639,63 +3639,63 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
@@ -3782,7 +3782,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3801,70 +3801,70 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
@@ -3952,7 +3952,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -3972,77 +3972,77 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
@@ -4131,7 +4131,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -4152,84 +4152,84 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
@@ -4319,7 +4319,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -4341,91 +4341,91 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
@@ -4516,7 +4516,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -4539,98 +4539,98 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
@@ -4722,7 +4722,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -4746,105 +4746,105 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
@@ -4937,7 +4937,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -4962,112 +4962,112 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
        
         if (_a15.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg15>::Type >::type();
+            std::string name = _Context::template typeName< _Arg15 >();
             c->throwInvalidTypeError(17, name);
             return 0;
         }
@@ -5145,7 +5145,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5223,7 +5223,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5232,7 +5232,7 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
@@ -5310,7 +5310,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5320,14 +5320,14 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
@@ -5406,7 +5406,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5417,21 +5417,21 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
@@ -5511,7 +5511,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5523,28 +5523,28 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
@@ -5625,7 +5625,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5638,35 +5638,35 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
@@ -5748,7 +5748,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5762,42 +5762,42 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
@@ -5880,7 +5880,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -5895,49 +5895,49 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
@@ -6021,7 +6021,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6037,56 +6037,56 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
@@ -6171,7 +6171,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6188,63 +6188,63 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
@@ -6330,7 +6330,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6348,70 +6348,70 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
@@ -6498,7 +6498,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6517,77 +6517,77 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
@@ -6675,7 +6675,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6695,84 +6695,84 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
@@ -6861,7 +6861,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -6882,91 +6882,91 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
@@ -7056,7 +7056,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7078,98 +7078,98 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
@@ -7260,7 +7260,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7283,105 +7283,105 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
@@ -7473,7 +7473,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);   
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7497,112 +7497,112 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
        
         if (_a15.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg15>::Type >::type();
+            std::string name = _Context::template typeName< _Arg15 >();
             c->throwInvalidTypeError(17, name);
             return 0;
         }
@@ -7678,7 +7678,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7756,7 +7756,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7766,7 +7766,7 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
@@ -7845,7 +7845,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7856,14 +7856,14 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
@@ -7943,7 +7943,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -7955,21 +7955,21 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
@@ -8050,7 +8050,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8063,28 +8063,28 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
@@ -8166,7 +8166,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8180,35 +8180,35 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
@@ -8291,7 +8291,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8306,42 +8306,42 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
@@ -8425,7 +8425,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8441,49 +8441,49 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
@@ -8568,7 +8568,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8585,56 +8585,56 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
@@ -8720,7 +8720,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8738,63 +8738,63 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
@@ -8881,7 +8881,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -8900,70 +8900,70 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
@@ -9051,7 +9051,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -9071,77 +9071,77 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
@@ -9230,7 +9230,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -9251,84 +9251,84 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
@@ -9418,7 +9418,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -9440,91 +9440,91 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
@@ -9615,7 +9615,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -9638,98 +9638,98 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
@@ -9821,7 +9821,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -9845,105 +9845,105 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
@@ -10036,7 +10036,7 @@ public:
         dukpp03::Maybe<_ClassName> _cls = dukpp03::GetValue< _ClassName, _Context >::perform(c, 0);  
         if (_cls.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_ClassName>::Type >::type();
+            std::string name = _Context::template typeName< _ClassName >();
             c->throwInvalidTypeError(1, name);
             return 0;
         }
@@ -10061,112 +10061,112 @@ public:
                
         if (_a0.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg0>::Type >::type();
+            std::string name = _Context::template typeName< _Arg0 >();
             c->throwInvalidTypeError(2, name);
             return 0;
         }
        
         if (_a1.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg1>::Type >::type();
+            std::string name = _Context::template typeName< _Arg1 >();
             c->throwInvalidTypeError(3, name);
             return 0;
         }
        
         if (_a2.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg2>::Type >::type();
+            std::string name = _Context::template typeName< _Arg2 >();
             c->throwInvalidTypeError(4, name);
             return 0;
         }
        
         if (_a3.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg3>::Type >::type();
+            std::string name = _Context::template typeName< _Arg3 >();
             c->throwInvalidTypeError(5, name);
             return 0;
         }
        
         if (_a4.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg4>::Type >::type();
+            std::string name = _Context::template typeName< _Arg4 >();
             c->throwInvalidTypeError(6, name);
             return 0;
         }
        
         if (_a5.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg5>::Type >::type();
+            std::string name = _Context::template typeName< _Arg5 >();
             c->throwInvalidTypeError(7, name);
             return 0;
         }
        
         if (_a6.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg6>::Type >::type();
+            std::string name = _Context::template typeName< _Arg6 >();
             c->throwInvalidTypeError(8, name);
             return 0;
         }
        
         if (_a7.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg7>::Type >::type();
+            std::string name = _Context::template typeName< _Arg7 >();
             c->throwInvalidTypeError(9, name);
             return 0;
         }
        
         if (_a8.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg8>::Type >::type();
+            std::string name = _Context::template typeName< _Arg8 >();
             c->throwInvalidTypeError(10, name);
             return 0;
         }
        
         if (_a9.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg9>::Type >::type();
+            std::string name = _Context::template typeName< _Arg9 >();
             c->throwInvalidTypeError(11, name);
             return 0;
         }
        
         if (_a10.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg10>::Type >::type();
+            std::string name = _Context::template typeName< _Arg10 >();
             c->throwInvalidTypeError(12, name);
             return 0;
         }
        
         if (_a11.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg11>::Type >::type();
+            std::string name = _Context::template typeName< _Arg11 >();
             c->throwInvalidTypeError(13, name);
             return 0;
         }
        
         if (_a12.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg12>::Type >::type();
+            std::string name = _Context::template typeName< _Arg12 >();
             c->throwInvalidTypeError(14, name);
             return 0;
         }
        
         if (_a13.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg13>::Type >::type();
+            std::string name = _Context::template typeName< _Arg13 >();
             c->throwInvalidTypeError(15, name);
             return 0;
         }
        
         if (_a14.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg14>::Type >::type();
+            std::string name = _Context::template typeName< _Arg14 >();
             c->throwInvalidTypeError(16, name);
             return 0;
         }
        
         if (_a15.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg15>::Type >::type();
+            std::string name = _Context::template typeName< _Arg15 >();
             c->throwInvalidTypeError(17, name);
             return 0;
         }
@@ -10206,7 +10206,7 @@ struct make_method
 template<
     typename _ClassName
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)())
+static inline dukpp03::Callable* from(void (_ClassName::*f)())
 {
     return new VoidMethod0<_Context, _ClassName>(f);
 }
@@ -10219,7 +10219,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0))
 {
     return new VoidMethod1<_Context, _ClassName, _Arg0>(f);
 }
@@ -10233,7 +10233,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1))
 {
     return new VoidMethod2<_Context, _ClassName, _Arg0, _Arg1>(f);
 }
@@ -10248,7 +10248,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
 {
     return new VoidMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10264,7 +10264,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new VoidMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10281,7 +10281,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new VoidMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10299,7 +10299,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new VoidMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -10318,7 +10318,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new VoidMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -10338,7 +10338,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new VoidMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -10359,7 +10359,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new VoidMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -10381,7 +10381,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new VoidMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -10404,7 +10404,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new VoidMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -10428,7 +10428,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new VoidMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -10453,7 +10453,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new VoidMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -10479,7 +10479,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new VoidMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -10506,7 +10506,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new VoidMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -10534,7 +10534,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new VoidMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -10548,7 +10548,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)())
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)())
 {
     return new RetMethod0<_Context, _ClassName, _ReturnType>(f);
 }
@@ -10562,7 +10562,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0))
 {
     return new RetMethod1<_Context, _ClassName, _ReturnType, _Arg0>(f);
 }
@@ -10577,7 +10577,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1))
 {
     return new RetMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(f);
 }
@@ -10593,7 +10593,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
 {
     return new RetMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10610,7 +10610,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new RetMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10628,7 +10628,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new RetMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10647,7 +10647,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new RetMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -10667,7 +10667,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new RetMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -10688,7 +10688,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new RetMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -10710,7 +10710,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new RetMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -10733,7 +10733,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new RetMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -10757,7 +10757,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new RetMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -10782,7 +10782,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new RetMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -10808,7 +10808,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new RetMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -10835,7 +10835,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new RetMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -10863,7 +10863,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new RetMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -10892,7 +10892,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new RetMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -10904,7 +10904,7 @@ inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2,
 template<
     typename _ClassName
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)() const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)() const)
 {
     return new ConstVoidMethod0<_Context, _ClassName>(f);
 }
@@ -10917,7 +10917,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0) const)
 {
     return new ConstVoidMethod1<_Context, _ClassName, _Arg0>(f);
 }
@@ -10931,7 +10931,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1) const)
 {
     return new ConstVoidMethod2<_Context, _ClassName, _Arg0, _Arg1>(f);
 }
@@ -10946,7 +10946,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
 {
     return new ConstVoidMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10962,7 +10962,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
 {
     return new ConstVoidMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10979,7 +10979,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
 {
     return new ConstVoidMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10997,7 +10997,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
 {
     return new ConstVoidMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -11016,7 +11016,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
 {
     return new ConstVoidMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -11036,7 +11036,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
 {
     return new ConstVoidMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -11057,7 +11057,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
 {
     return new ConstVoidMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -11079,7 +11079,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
 {
     return new ConstVoidMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -11102,7 +11102,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
 {
     return new ConstVoidMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -11126,7 +11126,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
 {
     return new ConstVoidMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -11151,7 +11151,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
 {
     return new ConstVoidMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -11177,7 +11177,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
 {
     return new ConstVoidMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -11204,7 +11204,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
 {
     return new ConstVoidMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -11232,7 +11232,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
+static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
 {
     return new ConstVoidMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -11246,7 +11246,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)() const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)() const)
 {
     return new ConstRetMethod0<_Context, _ClassName, _ReturnType>(f);
 }
@@ -11260,7 +11260,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0) const)
 {
     return new ConstRetMethod1<_Context, _ClassName, _ReturnType, _Arg0>(f);
 }
@@ -11275,7 +11275,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1) const)
 {
     return new ConstRetMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(f);
 }
@@ -11291,7 +11291,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
 {
     return new ConstRetMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -11308,7 +11308,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
 {
     return new ConstRetMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -11326,7 +11326,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
 {
     return new ConstRetMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -11345,7 +11345,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
 {
     return new ConstRetMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -11365,7 +11365,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
 {
     return new ConstRetMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -11386,7 +11386,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
 {
     return new ConstRetMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -11408,7 +11408,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
 {
     return new ConstRetMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -11431,7 +11431,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
 {
     return new ConstRetMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -11455,7 +11455,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
 {
     return new ConstRetMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -11480,7 +11480,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
 {
     return new ConstRetMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -11506,7 +11506,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
 {
     return new ConstRetMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -11533,7 +11533,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
 {
     return new ConstRetMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -11561,7 +11561,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
 {
     return new ConstRetMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -11590,7 +11590,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
+static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
 {
     return new ConstRetMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }

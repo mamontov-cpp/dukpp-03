@@ -61,7 +61,7 @@ public:
 {{/args}}{{#args}}      
         if (_a{{number}}.exists() == false) 
         {
-            std::string name = typename _Context::VariantUtils::template TypeName< typename dukpp03::Decay<_Arg{{number}}>::Type >::type();
+            std::string name = _Context::template typeName< _Arg{{number}} >();
             c->throwInvalidTypeError({{numberp1}}, name);
             return 0;
         }

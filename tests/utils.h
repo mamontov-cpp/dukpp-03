@@ -61,6 +61,7 @@ public:
     >
     class TypeName 
     {
+    public:
         /*! Returns name of type 
             \return name of type
          */
