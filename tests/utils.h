@@ -83,10 +83,10 @@ public:
     {
         /*! An inner iterator
          */
-        typename boost::unordered_map<_Key, _Value>::iterator it;
+        typename boost::unordered_map<_Key, _Value>::const_iterator it;
         /*! A parent map
          */ 
-        boost::unordered_map<_Key, _Value>* parent;
+        boost::unordered_map<_Key, _Value> const* parent;
         /*! Returns key
             \return key of map
          */
@@ -124,7 +124,7 @@ public:
     
     /*! Returns beginning iterator for container
      */ 
-    iterator begin()
+    iterator begin() const
     {
         iterator it;
         it.it = m_map.begin();

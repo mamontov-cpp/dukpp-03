@@ -39,7 +39,7 @@ struct MapInterface
     };
     /*! Returns beginning iterator for container
      */ 
-    iterator begin();
+    iterator begin() const;
     /*! Inserts new element into map, erasing old value, if needed
         \param[in] k key value
         \param[in] v value

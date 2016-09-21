@@ -44,15 +44,11 @@ public:
      */
     Pool(const dukpp03::Pool<_VariantInterface, _MapInterface>& p)
     {
-        for(typename _MapInterface<std::string, typename  _VariantInterface::Variant*>::iterator it = m_pool.begin(); it.end() == false; it.next())
-        {
-            delete it.value();
-        }
-        m_pool.clear();
         for(typename _MapInterface<std::string, typename _VariantInterface::Variant*>::iterator it = p.m_pool.begin(); it.end() == false; it.next())
         {
-            m_pool.insert(it.key(), new typename _VariantInterface::Variant(it.value()));
+            m_pool.insert(it.key(), new typename _VariantInterface::Variant(*(it.value())));
         }
+        m_maxid = p.m_maxid;
     }
     /*! Copies state from other pool
         \param[in] p pool
@@ -67,8 +63,9 @@ public:
         m_pool.clear();
         for(typename _MapInterface<std::string, typename  _VariantInterface::Variant*>::iterator it = p.m_pool.begin(); it.end() == false; it.next())
         {
-            m_pool.insert(it.key(), new typename _VariantInterface::Variant(it.value()));
+            m_pool.insert(it.key(), new typename _VariantInterface::Variant(*(it.value())));
         }
+        m_maxid = p.m_maxid;
         return *this;
     }
     /*! Inserts new variant to a pool
