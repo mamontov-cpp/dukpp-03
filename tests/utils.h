@@ -5,6 +5,7 @@
 #pragma once
 #include <boost/any.hpp>
 #include <boost/unordered_map.hpp>
+#include <boost/timer/timer.hpp>
 #include <typeinfo>
 #include <maybe.h>
 #include <decay.h>
@@ -170,6 +171,29 @@ public:
     /*! Inner map
      */
     boost::unordered_map<_Key, _Value> m_map;
+};
+
+struct TimerInterface
+{
+    typedef boost::timer::cpu_timer Timer;
+
+    /*! Restarts timer
+        \param[in, out] t timer to be restarted
+     */ 
+    inline static void restart(boost::timer::cpu_timer& t)
+    {
+        t.start();
+    }
+    /*! Returns elapsed time for interface in ms
+        \param[in] t timer
+        \return elapsed time in milliseconds
+     */
+    inline static double elapsed(boost::timer::cpu_timer& t)
+    {
+        boost::timer::cpu_times const elapsed_times(t.elapsed());
+        boost::timer::nanosecond_type const elapsed(elapsed_times.system + elapsed_times.user);
+        return elapsed / 1000000L;
+    }
 };
 
 

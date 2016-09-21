@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(dukpp03-tests)
 
 file(GLOB_RECURSE HDRS ../include/*.h)
-find_package(Boost REQUIRED)
+find_package(Boost REQUIRED timer)
 
 set(DUKPP03_EXECUTABLE_NAME "dukpp-03-tests")
 set(DUKPP03_LINKABLE_NAME "dukpp-03")
@@ -19,14 +19,13 @@ endif()
 include_directories(../include)
 include_directories(${Boost_INCLUDE_DIRS})
 
-link_directories("../lib")
+link_directories("../lib" ${Boost_LIBRARY_DIRS})
 
 set(SRCS "main.cpp")
 
 add_executable(${DUKPP03_EXECUTABLE_NAME} ${SRCS} ${HDRS})
 
-target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${DUKPP03_LINKABLE_NAME})
-target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${Boost_LIBRARIES})
+target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${DUKPP03_LINKABLE_NAME} ${Boost_LIBRARIES})
 
 set_target_properties(${DUKPP03_EXECUTABLE_NAME}
     PROPERTIES

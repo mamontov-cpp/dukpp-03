@@ -8,5 +8,7 @@
 #include "../duktape/src/duktape.h"
 #include "errorcodes.h"
 #include "context.h"
-
-
+#include "function.h"
+#include "method.h"
+#include "ptrmethod.h"
+#include "constructor.h"
