@@ -30,7 +30,7 @@ namespace dukpp03
 /*! A wrapper around basic duktape context with replaceable map, timer and variant implementations
  */
 template<
-    typename _MapInterface,
+    template<typename, typename> class _MapInterface,
     typename _VariantInterface,
     typename _TimerInterface
 >
@@ -39,7 +39,7 @@ class Context: public dukpp03::AbstractContext
 public:
     /*! A local pool definition
      */
-    typedef  dukpp03::Pool<_MapInterface, _VariantInterface> Pool;
+    typedef  dukpp03::Pool<_VariantInterface, _MapInterface> Pool;
     /*! Lift variant name here
      */
     typedef typename _VariantInterface::Variant Variant;
@@ -48,7 +48,7 @@ public:
     typedef typename _TimerInterface::Timer Timer;
     /*! A callback set for context
      */
-    typedef typename _MapInterface::template Map<dukpp03::Callable>::PointerSet CallbackSet;
+    typedef _MapInterface<dukpp03::Callable*, dukpp03::Callable*> CallbackSet;
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
@@ -62,7 +62,11 @@ public:
      */
     virtual ~Context()
     {
-        _MapInterface::destroy(m_functions);
+        for(typename CallbackSet::iterator it = m_functions.begin(); it.end() == false; it.next())
+        {
+            delete it.value();
+        }
+        m_functions.clear();
     }
     /*! Cleans non-persistent pool of objects, resetting it
      */
@@ -76,8 +80,11 @@ public:
     {
         m_pool.free();
         m_persistent_pool.free();
-        _MapInterface::destroy(m_functions);
-        _MapInterface::clear(m_functions);
+        for(typename CallbackSet::iterator it = m_functions.begin(); it.end() == false; it.next())
+        {
+            delete it.value();
+        }
+        m_functions.clear();
 
         duk_destroy_heap(m_context);
         m_context = duk_create_heap(NULL,NULL, NULL, this, NULL);
@@ -194,7 +201,10 @@ protected:
      */
     virtual void addCallableToSet(dukpp03::Callable* c)
     {
-        _MapInterface::insert(m_functions, c, c);
+        if (m_functions.contains(c) == false)
+        {
+            m_functions.insert(c, c);
+        }
     }
     /*! A basic pool for objects in context
      */
@@ -211,6 +221,3 @@ protected:
 };
 
 }
-
-//#include "pushvalue_src.h"
-//#include "getvalue_src.h"
