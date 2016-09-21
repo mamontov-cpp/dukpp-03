@@ -54,7 +54,9 @@
 
 #if !defined(DUK_CONFIG_H_INCLUDED)
 #define DUK_CONFIG_H_INCLUDED
-
+#ifndef DUK_OPT_HAVE_CUSTOM_H 
+    #define DUK_OPT_HAVE_CUSTOM_H 1
+#endif
 /*
  *  Intermediate helper defines
  */
@@ -3080,7 +3082,9 @@ typedef FILE duk_file;
 #endif
 
 #if defined(DUK_OPT_INTERRUPT_COUNTER)
+#ifndef DUK_USE_INTERRUPT_COUNTER
 #define DUK_USE_INTERRUPT_COUNTER
+#endif
 #elif defined(DUK_OPT_NO_INTERRUPT_COUNTER)
 #undef DUK_USE_INTERRUPT_COUNTER
 #else

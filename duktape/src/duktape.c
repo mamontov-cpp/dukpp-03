@@ -66694,7 +66694,6 @@ DUK_LOCAL duk_small_uint_t duk__handle_return(duk_hthread *thr,
  *  count which is simply computed as a sum of 'init' values.  This must
  *  work accurately even when single stepping.
  */
-
 #if defined(DUK_USE_INTERRUPT_COUNTER)
 
 #define DUK__INT_NOACTION    0    /* no specific action, resume normal execution */
@@ -66938,7 +66937,6 @@ DUK_LOCAL duk_small_uint_t duk__executor_interrupt(duk_hthread *thr) {
 	/*
 	 *  Execution timeout check
 	 */
-
 	if (DUK_USE_EXEC_TIMEOUT_CHECK(thr->heap->heap_udata)) {
 		/* Keep throwing an error whenever we get here.  The unusual values
 		 * are set this way because no instruction is ever executed, we just

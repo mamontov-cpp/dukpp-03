@@ -9,6 +9,7 @@
 #include <typeinfo>
 #include <maybe.h>
 #include <decay.h>
+#include <iostream>
 
 namespace dukpp03
 {
@@ -192,7 +193,8 @@ struct TimerInterface
     {
         boost::timer::cpu_times const elapsed_times(t.elapsed());
         boost::timer::nanosecond_type const elapsed(elapsed_times.system + elapsed_times.user);
-        return elapsed / 1000000L;
+		double result = elapsed / 1000000L;
+        return result;
     }
 };
 

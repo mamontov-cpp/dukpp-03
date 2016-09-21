@@ -3,6 +3,7 @@
 #include <cassert>
 #include <stdexcept>
 #include <sstream>
+#include <iostream>
 
 /*! A property, where located pointer to callable in wrapper
  */
