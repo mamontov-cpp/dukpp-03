@@ -7,6 +7,7 @@
 #pragma once
 #include "context.h"
 #include "maybe.h"
+#include <string>
 
 namespace dukpp03
 {
@@ -15,15 +16,15 @@ namespace dukpp03
  */
 template<
     typename _Value,
-	typename _Context
+    typename _Context
 >
 class GetValue
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
 static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
 {
@@ -44,15 +45,15 @@ static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
 
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<bool, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
 static dukpp03::Maybe<bool> perform(_Context* ctx, duk_idx_t pos)
 {
@@ -70,11 +71,11 @@ static dukpp03::Maybe<bool> perform(_Context* ctx, duk_idx_t pos)
         if (duk_is_string(ctx->context(), pos))
         {
             const char* str = duk_to_string(ctx->context(), pos);
-			typename _Context::Variant * v = ctx->getValueFromPool(str);
-			if (v)
-			{
-				result = typename _Context::VariantUtils::template get<bool>(v);
-			}
+            typename _Context::Variant * v = ctx->getValueFromPool(str);
+            if (v)
+            {
+                result = typename _Context::VariantUtils::template get<bool>(v);
+            }
         }
     }
     return result;
@@ -83,15 +84,15 @@ static dukpp03::Maybe<bool> perform(_Context* ctx, duk_idx_t pos)
 };
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<char, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
 static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
 {
@@ -123,17 +124,17 @@ static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
 
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<unsigned char, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
-static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
+static dukpp03::Maybe<unsigned char> perform(_Context* ctx, duk_idx_t pos)
 {
     dukpp03::Maybe<unsigned char> result;
     dukpp03::Maybe<std::string> tmp = dukpp03::GetValue<std::string, _Context>::perform(ctx, pos);
@@ -161,17 +162,17 @@ static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
 };
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<std::string, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
-dukpp03::Maybe<std::string> perform(
+static dukpp03::Maybe<std::string> perform(
     _Context* ctx, 
     duk_idx_t pos
 )
@@ -198,25 +199,25 @@ dukpp03::Maybe<std::string> perform(
 
 #define DEFINE_GET_VALUE_AS_CAST_FROM_INT( TYPE )   \
 template<                                           \
-	typename _Context                               \
+    typename _Context                               \
 >                                                   \
 class GetValue< TYPE , _Context>                    \
 {                                                   \
 public:                                             \
-dukpp03::Maybe< TYPE > perform(                     \
+static dukpp03::Maybe< TYPE > perform(              \
     _Context* ctx,                                  \
     duk_idx_t pos                                   \
 )                                                   \
 {                                                   \
     dukpp03::Maybe< TYPE > result;                                                                    \
-    if (duk_is_number(ctx->context(), pos))															  \
-    {																								  \
-        result.setValue(static_cast< TYPE >(duk_to_int(ctx->context(), pos)));						  \
+    if (duk_is_number(ctx->context(), pos))                                                           \
+    {                                                                                                 \
+        result.setValue(static_cast< TYPE >(duk_to_int(ctx->context(), pos)));                        \
     }                                                                                                 \
     if (!result.exists())                                                                             \
     {                                                                                                 \
         result = ctx->template getValueFromPoolByStringFromStack< TYPE >(pos);                        \
-    }																								  \
+    }                                                                                                 \
     return result;                                                                                    \
 }                                                                                                     \
 };                                                                                                    
@@ -234,17 +235,17 @@ DEFINE_GET_VALUE_AS_CAST_FROM_INT(unsigned long long)
 #undef DEFINE_GET_VALUE_AS_CAST_FROM_INT
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<float, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
-dukpp03::Maybe<float> perform(
+static dukpp03::Maybe<float> perform(
     _Context* ctx, 
     duk_idx_t pos
 )
@@ -264,17 +265,17 @@ dukpp03::Maybe<float> perform(
 };
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<double, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
-dukpp03::Maybe<double> perform(
+static dukpp03::Maybe<double> perform(
     _Context* ctx, 
     duk_idx_t pos
 )
@@ -296,17 +297,17 @@ dukpp03::Maybe<double> perform(
 
 
 template<    
-	typename _Context
+    typename _Context
 >
 class GetValue<long double, _Context>
 {
 public:
 /*! Performs getting value from stack 
-	\param[in] ctx context
-	\param[in] pos index for stack
-	\return a value if it exists, otherwise empty maybe
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
  */
-dukpp03::Maybe<long double> perform(
+static dukpp03::Maybe<long double> perform(
     _Context* ctx, 
     duk_idx_t pos
 )

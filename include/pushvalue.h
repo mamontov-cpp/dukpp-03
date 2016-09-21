@@ -14,7 +14,7 @@ namespace dukpp03
  */
 template<
     typename _Value,
-	typename _Context
+    typename _Context
 >
 class PushValue
 {
@@ -25,18 +25,18 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const _Value& v, bool persistent)
-	{
-		if (persistent)
-		{
-			return ctx->pushPersistentVariant(_Context::VariantUtils::template makeFrom(v));
-		}
-		ctx->pushVariant(_Context::VariantUtils::template makeFrom(v));
-	}
+    {
+        if (persistent)
+        {
+            ctx->pushPersistentVariant(_Context::VariantUtils::template makeFrom(v));
+        }
+        ctx->pushVariant(_Context::VariantUtils::template makeFrom(v));
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<bool, _Context>
 {
@@ -47,14 +47,14 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const bool& v, bool persistent)
-	{
-		duk_push_boolean(ctx->context(), v);
-	}
+    {
+        duk_push_boolean(ctx->context(), v);
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<char, _Context>
 {
@@ -65,15 +65,15 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char& v, bool persistent)
-	{
-		char buffer[2] = {v, 0};
-		duk_push_string(ctx->context(), buffer);
-	}
+    {
+        char buffer[2] = {v, 0};
+        duk_push_string(ctx->context(), buffer);
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<unsigned char, _Context>
 {
@@ -84,15 +84,15 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const unsigned char& v, bool persistent)
-	{
-		char buffer[2] = {v, 0};
-		duk_push_string(ctx->context(), buffer);
-	}
+    {
+        char buffer[2] = {v, 0};
+        duk_push_string(ctx->context(), buffer);
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<int, _Context>
 {
@@ -103,13 +103,13 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const int& v, bool persistent)
-	{
-		duk_push_int(ctx->context(), v);
-	}
+    {
+        duk_push_int(ctx->context(), v);
+    }
 };
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<float, _Context>
 {
@@ -120,18 +120,18 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const float& v, bool persistent)
-	{
-		if (v != v)
-		{
-			duk_push_nan(ctx->context());
-		}
-		duk_push_number(ctx->context(),static_cast<double>(v));
-	}
+    {
+        if (v != v)
+        {
+            duk_push_nan(ctx->context());
+        }
+        duk_push_number(ctx->context(),static_cast<double>(v));
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<double, _Context>
 {
@@ -142,18 +142,18 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const double& v, bool persistent)
-	{
-		if (v != v)
-		{
-			duk_push_nan(ctx->context());
-		}
-		duk_push_number(ctx->context(),static_cast<double>(v));
-	}
+    {
+        if (v != v)
+        {
+            duk_push_nan(ctx->context());
+        }
+        duk_push_number(ctx->context(),static_cast<double>(v));
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<const char*, _Context>
 {
@@ -164,14 +164,14 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char*& v, bool persistent)
-	{
-		duk_push_string(ctx->context(), v);
-	}
+    {
+        duk_push_string(ctx->context(), v);
+    }
 };
 
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<char*, _Context>
 {
@@ -182,13 +182,13 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char*& v, bool persistent)
-	{
-		duk_push_string(ctx->context(), v);
-	}
+    {
+        duk_push_string(ctx->context(), v);
+    }
 };
 
 template<
-	typename _Context
+    typename _Context
 >
 class PushValue<std::string, _Context>
 {
@@ -199,9 +199,9 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const std::string& v, bool persistent)
-	{
-		duk_push_string(ctx->context(), v.c_str());
-	}
+    {
+        duk_push_string(ctx->context(), v.c_str());
+    }
 };
 
 }

@@ -178,7 +178,7 @@ public:
             Variant* v = this->getValueFromPool(duk_to_string(m_context, pos));
             if (v)
             {
-                result = _VariantInterface::get(true);
+                result = _VariantInterface::template get<T>(v);
             }
         }
         return result;
