@@ -108,6 +108,93 @@ public:
     }
 };
 
+
+template<
+    typename _Context
+>
+class PushValue<unsigned int, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const unsigned int& v, bool persistent)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
+
+template<
+    typename _Context
+>
+class PushValue<long, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const long& v, bool persistent)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
+template<
+    typename _Context
+>
+class PushValue<unsigned long, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const unsigned long& v, bool persistent)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
+template<
+    typename _Context
+>
+class PushValue<long long, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const long long& v, bool persistent)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
+template<
+    typename _Context
+>
+class PushValue<unsigned long long, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const unsigned long long& v, bool persistent)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
 template<
     typename _Context
 >
@@ -151,6 +238,26 @@ public:
     }
 };
 
+template<
+    typename _Context
+>
+class PushValue<long double, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+        \param[in] persistent whether value should be in persistent stack 
+     */
+    static void perform(_Context* ctx, const long double& v, bool persistent)
+    {
+        if (v != v)
+        {
+            duk_push_nan(ctx->context());
+        }
+        duk_push_number(ctx->context(),static_cast<double>(v));
+    }
+};
 
 template<
     typename _Context

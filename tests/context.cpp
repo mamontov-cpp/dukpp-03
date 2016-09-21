@@ -5,6 +5,7 @@
 #include "context.h"
 #include "callable.h"
 #include "point.h"
+#include <iostream>
 #define _INC_STDIO
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
