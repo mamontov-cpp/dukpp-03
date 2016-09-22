@@ -160,7 +160,7 @@ public:
         }
         catch(...)
         {
-            c->throwError("Caught exception while calling function");
+            c->throwCaughtException();
             return 0;
         }
         return 1;
