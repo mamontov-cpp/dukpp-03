@@ -132,11 +132,10 @@ static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
 
     assert(callableptr);
     dukpp03::AbstractContext* c =  dukpp03::AbstractContext::getContext(ctx);
-    dukpp03::Callable* callable = reinterpret_cast<dukpp03::Callable*>(callableptr);
-    return callable->call(c);
+    return c->call(callableptr);
 }
 
-void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::Callable* callable)
+void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable)
 {
    assert(callable);
    addCallableToSet(callable);

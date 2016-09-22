@@ -9,7 +9,7 @@
 namespace dukpp03
 {
 
-class Callable;
+class AbstractCallable;
 
 /*! A wapper for basic context for data
  */
@@ -40,17 +40,17 @@ public:
         \param[in] code error codes
      */
     void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::D03_DUK_E5_ERROR);
-    /*! Registers callable as property of global object
-        \param[in] callable_name name of property of global object
-        \param[in] callable a callable object
-     */
-    void registerCallable(const std::string& callable_name, dukpp03::Callable* callable);
     /*! Cleans non-persistent pool of objects, resetting it
      */
     virtual void clean() = 0;
     /*! Resets context fully, erasing all data
      */
     virtual void reset() = 0;
+    /*! Tries to perform call on specified value, passed by Duktape
+        \param[in] value a value
+        \return result of call
+     */
+    virtual int call(void* value) = 0;
     /*! Returns new context
         \return context data
      */
@@ -85,6 +85,11 @@ public:
      */
     virtual void throwCaughtException();
 protected:
+    /*! Registers callable as property of global object
+        \param[in] callable_name name of property of global object
+        \param[in] callable a callable object
+     */
+    void registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable);
     /*! Inits context for evaluating
      */
     virtual void initContextBeforeAccessing();
@@ -97,7 +102,7 @@ protected:
     /*! Adds callable to needed set
         \param[in] c callable
      */
-    virtual void addCallableToSet(dukpp03::Callable* c) = 0;
+    virtual void addCallableToSet(dukpp03::AbstractCallable* c) = 0;
     /*! Inner context
      */
     duk_context* m_context;

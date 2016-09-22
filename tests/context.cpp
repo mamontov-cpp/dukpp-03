@@ -12,7 +12,7 @@
 
 /*! A default callable
  */
-class MockCallable: public dukpp03::Callable
+class MockCallable: public dukpp03::Callable<dukpp03::context::Context>
 {
 public:
     MockCallable()
@@ -36,9 +36,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(dukpp03::context::Context* c)
     {
-        dukpp03::context::Context* c = static_cast<dukpp03::context::Context*>(ctx);
         dukpp03::PushValue<int, dukpp03::context::Context>::perform(c, 1, false);
         return 1;
     }

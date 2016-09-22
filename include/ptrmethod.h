@@ -20,7 +20,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class VoidPtrMethod0 : public dukpp03::Callable
+class VoidPtrMethod0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -35,7 +35,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod0<_Context, _ClassName>(m_callee);
     }
@@ -50,9 +50,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 1)
         {
             c->throwInvalidArgumentCountError(1, c->getTop());
@@ -97,7 +96,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class VoidPtrMethod1 : public dukpp03::Callable
+class VoidPtrMethod1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -112,7 +111,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod1<_Context, _ClassName, _Arg0>(m_callee);
     }
@@ -127,9 +126,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 2)
         {
             c->throwInvalidArgumentCountError(2, c->getTop());
@@ -183,7 +181,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class VoidPtrMethod2 : public dukpp03::Callable
+class VoidPtrMethod2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -198,7 +196,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod2<_Context, _ClassName, _Arg0, _Arg1>(m_callee);
     }
@@ -213,9 +211,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 3)
         {
             c->throwInvalidArgumentCountError(3, c->getTop());
@@ -278,7 +275,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class VoidPtrMethod3 : public dukpp03::Callable
+class VoidPtrMethod3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -293,7 +290,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(m_callee);
     }
@@ -308,9 +305,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 4)
         {
             c->throwInvalidArgumentCountError(4, c->getTop());
@@ -382,7 +378,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class VoidPtrMethod4 : public dukpp03::Callable
+class VoidPtrMethod4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -397,7 +393,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
@@ -412,9 +408,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 5)
         {
             c->throwInvalidArgumentCountError(5, c->getTop());
@@ -495,7 +490,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class VoidPtrMethod5 : public dukpp03::Callable
+class VoidPtrMethod5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -510,7 +505,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
@@ -525,9 +520,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 6)
         {
             c->throwInvalidArgumentCountError(6, c->getTop());
@@ -617,7 +611,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class VoidPtrMethod6 : public dukpp03::Callable
+class VoidPtrMethod6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -632,7 +626,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
@@ -647,9 +641,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 7)
         {
             c->throwInvalidArgumentCountError(7, c->getTop());
@@ -748,7 +741,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class VoidPtrMethod7 : public dukpp03::Callable
+class VoidPtrMethod7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -763,7 +756,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
@@ -778,9 +771,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 8)
         {
             c->throwInvalidArgumentCountError(8, c->getTop());
@@ -888,7 +880,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class VoidPtrMethod8 : public dukpp03::Callable
+class VoidPtrMethod8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -903,7 +895,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
@@ -918,9 +910,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 9)
         {
             c->throwInvalidArgumentCountError(9, c->getTop());
@@ -1037,7 +1028,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class VoidPtrMethod9 : public dukpp03::Callable
+class VoidPtrMethod9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1052,7 +1043,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
@@ -1067,9 +1058,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 10)
         {
             c->throwInvalidArgumentCountError(10, c->getTop());
@@ -1195,7 +1185,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class VoidPtrMethod10 : public dukpp03::Callable
+class VoidPtrMethod10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1210,7 +1200,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
@@ -1225,9 +1215,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 11)
         {
             c->throwInvalidArgumentCountError(11, c->getTop());
@@ -1362,7 +1351,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class VoidPtrMethod11 : public dukpp03::Callable
+class VoidPtrMethod11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1377,7 +1366,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
@@ -1392,9 +1381,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 12)
         {
             c->throwInvalidArgumentCountError(12, c->getTop());
@@ -1538,7 +1526,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class VoidPtrMethod12 : public dukpp03::Callable
+class VoidPtrMethod12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1553,7 +1541,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
@@ -1568,9 +1556,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 13)
         {
             c->throwInvalidArgumentCountError(13, c->getTop());
@@ -1723,7 +1710,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class VoidPtrMethod13 : public dukpp03::Callable
+class VoidPtrMethod13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1738,7 +1725,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
@@ -1753,9 +1740,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 14)
         {
             c->throwInvalidArgumentCountError(14, c->getTop());
@@ -1917,7 +1903,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class VoidPtrMethod14 : public dukpp03::Callable
+class VoidPtrMethod14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1932,7 +1918,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
@@ -1947,9 +1933,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 15)
         {
             c->throwInvalidArgumentCountError(15, c->getTop());
@@ -2120,7 +2105,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class VoidPtrMethod15 : public dukpp03::Callable
+class VoidPtrMethod15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2135,7 +2120,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
@@ -2150,9 +2135,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 16)
         {
             c->throwInvalidArgumentCountError(16, c->getTop());
@@ -2332,7 +2316,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class VoidPtrMethod16 : public dukpp03::Callable
+class VoidPtrMethod16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2347,7 +2331,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
@@ -2362,9 +2346,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 17)
         {
             c->throwInvalidArgumentCountError(17, c->getTop());
@@ -2537,7 +2520,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-class RetPtrMethod0 : public dukpp03::Callable
+class RetPtrMethod0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2552,7 +2535,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod0<_Context, _ClassName, _ReturnType>(m_callee);
     }
@@ -2567,9 +2550,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 1)
         {
             c->throwInvalidArgumentCountError(1, c->getTop());
@@ -2615,7 +2597,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-class RetPtrMethod1 : public dukpp03::Callable
+class RetPtrMethod1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2630,7 +2612,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod1<_Context, _ClassName, _ReturnType, _Arg0>(m_callee);
     }
@@ -2645,9 +2627,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 2)
         {
             c->throwInvalidArgumentCountError(2, c->getTop());
@@ -2704,7 +2685,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class RetPtrMethod2 : public dukpp03::Callable
+class RetPtrMethod2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2719,7 +2700,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(m_callee);
     }
@@ -2734,9 +2715,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 3)
         {
             c->throwInvalidArgumentCountError(3, c->getTop());
@@ -2802,7 +2782,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class RetPtrMethod3 : public dukpp03::Callable
+class RetPtrMethod3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2817,7 +2797,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(m_callee);
     }
@@ -2832,9 +2812,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 4)
         {
             c->throwInvalidArgumentCountError(4, c->getTop());
@@ -2909,7 +2888,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class RetPtrMethod4 : public dukpp03::Callable
+class RetPtrMethod4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2924,7 +2903,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
@@ -2939,9 +2918,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 5)
         {
             c->throwInvalidArgumentCountError(5, c->getTop());
@@ -3025,7 +3003,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class RetPtrMethod5 : public dukpp03::Callable
+class RetPtrMethod5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3040,7 +3018,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
@@ -3055,9 +3033,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 6)
         {
             c->throwInvalidArgumentCountError(6, c->getTop());
@@ -3150,7 +3127,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class RetPtrMethod6 : public dukpp03::Callable
+class RetPtrMethod6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3165,7 +3142,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
@@ -3180,9 +3157,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 7)
         {
             c->throwInvalidArgumentCountError(7, c->getTop());
@@ -3284,7 +3260,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class RetPtrMethod7 : public dukpp03::Callable
+class RetPtrMethod7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3299,7 +3275,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
@@ -3314,9 +3290,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 8)
         {
             c->throwInvalidArgumentCountError(8, c->getTop());
@@ -3427,7 +3402,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class RetPtrMethod8 : public dukpp03::Callable
+class RetPtrMethod8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3442,7 +3417,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
@@ -3457,9 +3432,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 9)
         {
             c->throwInvalidArgumentCountError(9, c->getTop());
@@ -3579,7 +3553,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class RetPtrMethod9 : public dukpp03::Callable
+class RetPtrMethod9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3594,7 +3568,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
@@ -3609,9 +3583,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 10)
         {
             c->throwInvalidArgumentCountError(10, c->getTop());
@@ -3740,7 +3713,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class RetPtrMethod10 : public dukpp03::Callable
+class RetPtrMethod10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3755,7 +3728,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
@@ -3770,9 +3743,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 11)
         {
             c->throwInvalidArgumentCountError(11, c->getTop());
@@ -3910,7 +3882,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class RetPtrMethod11 : public dukpp03::Callable
+class RetPtrMethod11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3925,7 +3897,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
@@ -3940,9 +3912,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 12)
         {
             c->throwInvalidArgumentCountError(12, c->getTop());
@@ -4089,7 +4060,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class RetPtrMethod12 : public dukpp03::Callable
+class RetPtrMethod12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4104,7 +4075,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
@@ -4119,9 +4090,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 13)
         {
             c->throwInvalidArgumentCountError(13, c->getTop());
@@ -4277,7 +4247,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class RetPtrMethod13 : public dukpp03::Callable
+class RetPtrMethod13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4292,7 +4262,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
@@ -4307,9 +4277,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 14)
         {
             c->throwInvalidArgumentCountError(14, c->getTop());
@@ -4474,7 +4443,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class RetPtrMethod14 : public dukpp03::Callable
+class RetPtrMethod14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4489,7 +4458,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
@@ -4504,9 +4473,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 15)
         {
             c->throwInvalidArgumentCountError(15, c->getTop());
@@ -4680,7 +4648,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class RetPtrMethod15 : public dukpp03::Callable
+class RetPtrMethod15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4695,7 +4663,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
@@ -4710,9 +4678,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 16)
         {
             c->throwInvalidArgumentCountError(16, c->getTop());
@@ -4895,7 +4862,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class RetPtrMethod16 : public dukpp03::Callable
+class RetPtrMethod16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4910,7 +4877,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
@@ -4925,9 +4892,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 17)
         {
             c->throwInvalidArgumentCountError(17, c->getTop());
@@ -5102,7 +5068,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class ConstVoidPtrMethod0 : public dukpp03::Callable
+class ConstVoidPtrMethod0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5118,7 +5084,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod0<_Context, _ClassName>(m_callee);
     }
@@ -5133,9 +5099,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 1)
         {
             c->throwInvalidArgumentCountError(1, c->getTop());
@@ -5180,7 +5145,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class ConstVoidPtrMethod1 : public dukpp03::Callable
+class ConstVoidPtrMethod1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5196,7 +5161,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod1<_Context, _ClassName, _Arg0>(m_callee);
     }
@@ -5211,9 +5176,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 2)
         {
             c->throwInvalidArgumentCountError(2, c->getTop());
@@ -5267,7 +5231,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class ConstVoidPtrMethod2 : public dukpp03::Callable
+class ConstVoidPtrMethod2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5283,7 +5247,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod2<_Context, _ClassName, _Arg0, _Arg1>(m_callee);
     }
@@ -5298,9 +5262,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 3)
         {
             c->throwInvalidArgumentCountError(3, c->getTop());
@@ -5363,7 +5326,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class ConstVoidPtrMethod3 : public dukpp03::Callable
+class ConstVoidPtrMethod3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5379,7 +5342,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(m_callee);
     }
@@ -5394,9 +5357,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 4)
         {
             c->throwInvalidArgumentCountError(4, c->getTop());
@@ -5468,7 +5430,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class ConstVoidPtrMethod4 : public dukpp03::Callable
+class ConstVoidPtrMethod4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5484,7 +5446,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
@@ -5499,9 +5461,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 5)
         {
             c->throwInvalidArgumentCountError(5, c->getTop());
@@ -5582,7 +5543,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class ConstVoidPtrMethod5 : public dukpp03::Callable
+class ConstVoidPtrMethod5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5598,7 +5559,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
@@ -5613,9 +5574,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 6)
         {
             c->throwInvalidArgumentCountError(6, c->getTop());
@@ -5705,7 +5665,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class ConstVoidPtrMethod6 : public dukpp03::Callable
+class ConstVoidPtrMethod6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5721,7 +5681,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
@@ -5736,9 +5696,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 7)
         {
             c->throwInvalidArgumentCountError(7, c->getTop());
@@ -5837,7 +5796,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class ConstVoidPtrMethod7 : public dukpp03::Callable
+class ConstVoidPtrMethod7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5853,7 +5812,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
@@ -5868,9 +5827,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 8)
         {
             c->throwInvalidArgumentCountError(8, c->getTop());
@@ -5978,7 +5936,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class ConstVoidPtrMethod8 : public dukpp03::Callable
+class ConstVoidPtrMethod8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -5994,7 +5952,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
@@ -6009,9 +5967,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 9)
         {
             c->throwInvalidArgumentCountError(9, c->getTop());
@@ -6128,7 +6085,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class ConstVoidPtrMethod9 : public dukpp03::Callable
+class ConstVoidPtrMethod9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -6144,7 +6101,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
@@ -6159,9 +6116,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 10)
         {
             c->throwInvalidArgumentCountError(10, c->getTop());
@@ -6287,7 +6243,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class ConstVoidPtrMethod10 : public dukpp03::Callable
+class ConstVoidPtrMethod10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -6303,7 +6259,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
@@ -6318,9 +6274,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 11)
         {
             c->throwInvalidArgumentCountError(11, c->getTop());
@@ -6455,7 +6410,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class ConstVoidPtrMethod11 : public dukpp03::Callable
+class ConstVoidPtrMethod11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -6471,7 +6426,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
@@ -6486,9 +6441,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 12)
         {
             c->throwInvalidArgumentCountError(12, c->getTop());
@@ -6632,7 +6586,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class ConstVoidPtrMethod12 : public dukpp03::Callable
+class ConstVoidPtrMethod12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -6648,7 +6602,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
@@ -6663,9 +6617,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 13)
         {
             c->throwInvalidArgumentCountError(13, c->getTop());
@@ -6818,7 +6771,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class ConstVoidPtrMethod13 : public dukpp03::Callable
+class ConstVoidPtrMethod13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -6834,7 +6787,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
@@ -6849,9 +6802,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 14)
         {
             c->throwInvalidArgumentCountError(14, c->getTop());
@@ -7013,7 +6965,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class ConstVoidPtrMethod14 : public dukpp03::Callable
+class ConstVoidPtrMethod14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7029,7 +6981,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
@@ -7044,9 +6996,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 15)
         {
             c->throwInvalidArgumentCountError(15, c->getTop());
@@ -7217,7 +7168,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class ConstVoidPtrMethod15 : public dukpp03::Callable
+class ConstVoidPtrMethod15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7233,7 +7184,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
@@ -7248,9 +7199,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 16)
         {
             c->throwInvalidArgumentCountError(16, c->getTop());
@@ -7430,7 +7380,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class ConstVoidPtrMethod16 : public dukpp03::Callable
+class ConstVoidPtrMethod16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7446,7 +7396,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
@@ -7461,9 +7411,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 17)
         {
             c->throwInvalidArgumentCountError(17, c->getTop());
@@ -7636,7 +7585,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-class ConstRetPtrMethod0 : public dukpp03::Callable
+class ConstRetPtrMethod0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7651,7 +7600,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod0<_Context, _ClassName, _ReturnType>(m_callee);
     }
@@ -7666,9 +7615,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 1)
         {
             c->throwInvalidArgumentCountError(1, c->getTop());
@@ -7714,7 +7662,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-class ConstRetPtrMethod1 : public dukpp03::Callable
+class ConstRetPtrMethod1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7729,7 +7677,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod1<_Context, _ClassName, _ReturnType, _Arg0>(m_callee);
     }
@@ -7744,9 +7692,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 2)
         {
             c->throwInvalidArgumentCountError(2, c->getTop());
@@ -7803,7 +7750,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class ConstRetPtrMethod2 : public dukpp03::Callable
+class ConstRetPtrMethod2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7818,7 +7765,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(m_callee);
     }
@@ -7833,9 +7780,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 3)
         {
             c->throwInvalidArgumentCountError(3, c->getTop());
@@ -7901,7 +7847,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class ConstRetPtrMethod3 : public dukpp03::Callable
+class ConstRetPtrMethod3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -7916,7 +7862,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(m_callee);
     }
@@ -7931,9 +7877,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 4)
         {
             c->throwInvalidArgumentCountError(4, c->getTop());
@@ -8008,7 +7953,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class ConstRetPtrMethod4 : public dukpp03::Callable
+class ConstRetPtrMethod4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8023,7 +7968,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
@@ -8038,9 +7983,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 5)
         {
             c->throwInvalidArgumentCountError(5, c->getTop());
@@ -8124,7 +8068,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class ConstRetPtrMethod5 : public dukpp03::Callable
+class ConstRetPtrMethod5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8139,7 +8083,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
@@ -8154,9 +8098,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 6)
         {
             c->throwInvalidArgumentCountError(6, c->getTop());
@@ -8249,7 +8192,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class ConstRetPtrMethod6 : public dukpp03::Callable
+class ConstRetPtrMethod6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8264,7 +8207,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
@@ -8279,9 +8222,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 7)
         {
             c->throwInvalidArgumentCountError(7, c->getTop());
@@ -8383,7 +8325,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class ConstRetPtrMethod7 : public dukpp03::Callable
+class ConstRetPtrMethod7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8398,7 +8340,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
@@ -8413,9 +8355,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 8)
         {
             c->throwInvalidArgumentCountError(8, c->getTop());
@@ -8526,7 +8467,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class ConstRetPtrMethod8 : public dukpp03::Callable
+class ConstRetPtrMethod8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8541,7 +8482,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
@@ -8556,9 +8497,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 9)
         {
             c->throwInvalidArgumentCountError(9, c->getTop());
@@ -8678,7 +8618,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class ConstRetPtrMethod9 : public dukpp03::Callable
+class ConstRetPtrMethod9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8693,7 +8633,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
@@ -8708,9 +8648,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 10)
         {
             c->throwInvalidArgumentCountError(10, c->getTop());
@@ -8839,7 +8778,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class ConstRetPtrMethod10 : public dukpp03::Callable
+class ConstRetPtrMethod10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -8854,7 +8793,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
@@ -8869,9 +8808,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 11)
         {
             c->throwInvalidArgumentCountError(11, c->getTop());
@@ -9009,7 +8947,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class ConstRetPtrMethod11 : public dukpp03::Callable
+class ConstRetPtrMethod11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -9024,7 +8962,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
@@ -9039,9 +8977,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 12)
         {
             c->throwInvalidArgumentCountError(12, c->getTop());
@@ -9188,7 +9125,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class ConstRetPtrMethod12 : public dukpp03::Callable
+class ConstRetPtrMethod12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -9203,7 +9140,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
@@ -9218,9 +9155,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 13)
         {
             c->throwInvalidArgumentCountError(13, c->getTop());
@@ -9376,7 +9312,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class ConstRetPtrMethod13 : public dukpp03::Callable
+class ConstRetPtrMethod13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -9391,7 +9327,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
@@ -9406,9 +9342,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 14)
         {
             c->throwInvalidArgumentCountError(14, c->getTop());
@@ -9573,7 +9508,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class ConstRetPtrMethod14 : public dukpp03::Callable
+class ConstRetPtrMethod14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -9588,7 +9523,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
@@ -9603,9 +9538,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 15)
         {
             c->throwInvalidArgumentCountError(15, c->getTop());
@@ -9779,7 +9713,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class ConstRetPtrMethod15 : public dukpp03::Callable
+class ConstRetPtrMethod15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -9794,7 +9728,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
@@ -9809,9 +9743,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 16)
         {
             c->throwInvalidArgumentCountError(16, c->getTop());
@@ -9994,7 +9927,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class ConstRetPtrMethod16 : public dukpp03::Callable
+class ConstRetPtrMethod16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -10009,7 +9942,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
@@ -10024,9 +9957,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 17)
         {
             c->throwInvalidArgumentCountError(17, c->getTop());
@@ -10206,7 +10138,7 @@ struct make_ptr_method
 template<
     typename _ClassName
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)())
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)())
 {
     return new VoidPtrMethod0<_Context, _ClassName>(f);
 }
@@ -10219,7 +10151,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0))
 {
     return new VoidPtrMethod1<_Context, _ClassName, _Arg0>(f);
 }
@@ -10233,7 +10165,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1))
 {
     return new VoidPtrMethod2<_Context, _ClassName, _Arg0, _Arg1>(f);
 }
@@ -10248,7 +10180,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
 {
     return new VoidPtrMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10264,7 +10196,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new VoidPtrMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10281,7 +10213,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new VoidPtrMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10299,7 +10231,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new VoidPtrMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -10318,7 +10250,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new VoidPtrMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -10338,7 +10270,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new VoidPtrMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -10359,7 +10291,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new VoidPtrMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -10381,7 +10313,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new VoidPtrMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -10404,7 +10336,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new VoidPtrMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -10428,7 +10360,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new VoidPtrMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -10453,7 +10385,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new VoidPtrMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -10479,7 +10411,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new VoidPtrMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -10506,7 +10438,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new VoidPtrMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -10534,7 +10466,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new VoidPtrMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -10548,7 +10480,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)())
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)())
 {
     return new RetPtrMethod0<_Context, _ClassName, _ReturnType>(f);
 }
@@ -10562,7 +10494,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0))
 {
     return new RetPtrMethod1<_Context, _ClassName, _ReturnType, _Arg0>(f);
 }
@@ -10577,7 +10509,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1))
 {
     return new RetPtrMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(f);
 }
@@ -10593,7 +10525,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2))
 {
     return new RetPtrMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10610,7 +10542,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3))
 {
     return new RetPtrMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10628,7 +10560,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4))
 {
     return new RetPtrMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10647,7 +10579,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5))
 {
     return new RetPtrMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -10667,7 +10599,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6))
 {
     return new RetPtrMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -10688,7 +10620,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7))
 {
     return new RetPtrMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -10710,7 +10642,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8))
 {
     return new RetPtrMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -10733,7 +10665,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9))
 {
     return new RetPtrMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -10757,7 +10689,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10))
 {
     return new RetPtrMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -10782,7 +10714,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11))
 {
     return new RetPtrMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -10808,7 +10740,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12))
 {
     return new RetPtrMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -10835,7 +10767,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13))
 {
     return new RetPtrMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -10863,7 +10795,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14))
 {
     return new RetPtrMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -10892,7 +10824,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15))
 {
     return new RetPtrMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -10904,7 +10836,7 @@ static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1,
 template<
     typename _ClassName
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)() const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)() const)
 {
     return new ConstVoidPtrMethod0<_Context, _ClassName>(f);
 }
@@ -10917,7 +10849,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0) const)
 {
     return new ConstVoidPtrMethod1<_Context, _ClassName, _Arg0>(f);
 }
@@ -10931,7 +10863,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1) const)
 {
     return new ConstVoidPtrMethod2<_Context, _ClassName, _Arg0, _Arg1>(f);
 }
@@ -10946,7 +10878,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
 {
     return new ConstVoidPtrMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -10962,7 +10894,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
 {
     return new ConstVoidPtrMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -10979,7 +10911,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
 {
     return new ConstVoidPtrMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -10997,7 +10929,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
 {
     return new ConstVoidPtrMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -11016,7 +10948,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
 {
     return new ConstVoidPtrMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -11036,7 +10968,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
 {
     return new ConstVoidPtrMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -11057,7 +10989,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
 {
     return new ConstVoidPtrMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -11079,7 +11011,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
 {
     return new ConstVoidPtrMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -11102,7 +11034,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
 {
     return new ConstVoidPtrMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -11126,7 +11058,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
 {
     return new ConstVoidPtrMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -11151,7 +11083,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
 {
     return new ConstVoidPtrMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -11177,7 +11109,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
 {
     return new ConstVoidPtrMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -11204,7 +11136,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
 {
     return new ConstVoidPtrMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -11232,7 +11164,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
 {
     return new ConstVoidPtrMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }
@@ -11246,7 +11178,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)() const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)() const)
 {
     return new ConstRetPtrMethod0<_Context, _ClassName, _ReturnType>(f);
 }
@@ -11260,7 +11192,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0) const)
 {
     return new ConstRetPtrMethod1<_Context, _ClassName, _ReturnType, _Arg0>(f);
 }
@@ -11275,7 +11207,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1) const)
 {
     return new ConstRetPtrMethod2<_Context, _ClassName, _ReturnType, _Arg0, _Arg1>(f);
 }
@@ -11291,7 +11223,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2) const)
 {
     return new ConstRetPtrMethod3<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(f);
 }
@@ -11308,7 +11240,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3) const)
 {
     return new ConstRetPtrMethod4<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(f);
 }
@@ -11326,7 +11258,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4) const)
 {
     return new ConstRetPtrMethod5<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(f);
 }
@@ -11345,7 +11277,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5) const)
 {
     return new ConstRetPtrMethod6<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(f);
 }
@@ -11365,7 +11297,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6) const)
 {
     return new ConstRetPtrMethod7<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(f);
 }
@@ -11386,7 +11318,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7) const)
 {
     return new ConstRetPtrMethod8<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(f);
 }
@@ -11408,7 +11340,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8) const)
 {
     return new ConstRetPtrMethod9<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(f);
 }
@@ -11431,7 +11363,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9) const)
 {
     return new ConstRetPtrMethod10<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(f);
 }
@@ -11455,7 +11387,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10) const)
 {
     return new ConstRetPtrMethod11<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(f);
 }
@@ -11480,7 +11412,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11) const)
 {
     return new ConstRetPtrMethod12<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(f);
 }
@@ -11506,7 +11438,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12) const)
 {
     return new ConstRetPtrMethod13<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(f);
 }
@@ -11533,7 +11465,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13) const)
 {
     return new ConstRetPtrMethod14<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(f);
 }
@@ -11561,7 +11493,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14) const)
 {
     return new ConstRetPtrMethod15<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(f);
 }
@@ -11590,7 +11522,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)(_Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15) const)
 {
     return new ConstRetPtrMethod16<_Context, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(f);
 }

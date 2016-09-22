@@ -21,7 +21,7 @@ template<
 {{/has_args}}
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}{{/args}}
 >
-class VoidFunction{{argscount}} : public dukpp03::Callable
+class VoidFunction{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -37,7 +37,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable* clone()
+    virtual  dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidFunction{{argscount}}<_Context{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}>(m_callee);
     }
@@ -52,9 +52,8 @@ public:
         \param[in] ctx context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscount}})
         {
             c->throwInvalidArgumentCountError({{argscount}}, c->getTop());
@@ -105,7 +104,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class RetFunction{{argscount}} : public dukpp03::Callable
+class RetFunction{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -120,7 +119,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetFunction{{argscount}}<_Context, _ReturnType{{#has_args}},{{/has_args}}{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}>(m_callee);
     }
@@ -135,9 +134,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscount}})
         {
             c->throwInvalidArgumentCountError({{argscount}}, c->getTop());
@@ -195,7 +193,7 @@ template<
 {{/args}}
 >
 {{/has_args}}
-static inline dukpp03::Callable* from(void (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable<_Context>* from(void (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new VoidFunction{{argscount}}<_Context{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -212,7 +210,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* from(_ReturnType (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new RetFunction{{argscount}}<_Context, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }

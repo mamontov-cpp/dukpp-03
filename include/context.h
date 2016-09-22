@@ -47,9 +47,12 @@ public:
     /*! A timer for timer interface
      */
     typedef typename _TimerInterface::Timer Timer;
+    /*! Own callable type for context
+     */
+    typedef dukpp03::Callable<dukpp03::Context<_MapInterface, _VariantInterface, _TimerInterface> > LocalCallable;
     /*! A callback set for context
      */
-    typedef _MapInterface<dukpp03::Callable*, dukpp03::Callable*> CallbackSet;
+    typedef _MapInterface<dukpp03::AbstractCallable*, dukpp03::AbstractCallable*> CallbackSet;
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
@@ -184,6 +187,21 @@ public:
         }
         return result;
     }
+    /*! Calls function, using self as context
+        \param[in] callable a callable value
+     */
+    virtual int call(void* callable)
+    {
+        return reinterpret_cast<LocalCallable*>(callable)->call(this);
+    }
+    /*! Registers callable as property of global object
+        \param[in] callable_name name of property of global object
+        \param[in] callable a callable object
+     */
+    void registerCallable(const std::string& callable_name, LocalCallable* callable)
+    {
+        this->dukpp03::AbstractContext::registerCallable(callable_name, callable);
+    }
     /*! Returns value from variant
         \param[in] v variant
         \return maybe value
@@ -222,7 +240,7 @@ protected:
     /*! Adds callable to needed set
         \param[in] c callable
      */
-    virtual void addCallableToSet(dukpp03::Callable* c)
+    virtual void addCallableToSet(dukpp03::AbstractCallable* c)
     {
         if (m_functions.contains(c) == false)
         {

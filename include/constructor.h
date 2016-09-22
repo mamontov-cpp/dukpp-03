@@ -19,7 +19,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class Constructor0 : public dukpp03::Callable
+class Constructor0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -30,7 +30,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor0<_Context, _ClassName>();
     }
@@ -45,9 +45,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 0)
         {
             c->throwInvalidArgumentCountError(0, c->getTop());
@@ -80,7 +79,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class Constructor1 : public dukpp03::Callable
+class Constructor1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -91,7 +90,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor1<_Context, _ClassName, _Arg0>();
     }
@@ -106,9 +105,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 1)
         {
             c->throwInvalidArgumentCountError(1, c->getTop());
@@ -150,7 +148,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class Constructor2 : public dukpp03::Callable
+class Constructor2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -161,7 +159,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor2<_Context, _ClassName, _Arg0, _Arg1>();
     }
@@ -176,9 +174,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 2)
         {
             c->throwInvalidArgumentCountError(2, c->getTop());
@@ -229,7 +226,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class Constructor3 : public dukpp03::Callable
+class Constructor3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -240,7 +237,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>();
     }
@@ -255,9 +252,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 3)
         {
             c->throwInvalidArgumentCountError(3, c->getTop());
@@ -317,7 +313,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class Constructor4 : public dukpp03::Callable
+class Constructor4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -328,7 +324,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>();
     }
@@ -343,9 +339,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 4)
         {
             c->throwInvalidArgumentCountError(4, c->getTop());
@@ -414,7 +409,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class Constructor5 : public dukpp03::Callable
+class Constructor5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -425,7 +420,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>();
     }
@@ -440,9 +435,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 5)
         {
             c->throwInvalidArgumentCountError(5, c->getTop());
@@ -520,7 +514,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class Constructor6 : public dukpp03::Callable
+class Constructor6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -531,7 +525,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>();
     }
@@ -546,9 +540,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 6)
         {
             c->throwInvalidArgumentCountError(6, c->getTop());
@@ -635,7 +628,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class Constructor7 : public dukpp03::Callable
+class Constructor7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -646,7 +639,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>();
     }
@@ -661,9 +654,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 7)
         {
             c->throwInvalidArgumentCountError(7, c->getTop());
@@ -759,7 +751,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class Constructor8 : public dukpp03::Callable
+class Constructor8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -770,7 +762,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>();
     }
@@ -785,9 +777,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 8)
         {
             c->throwInvalidArgumentCountError(8, c->getTop());
@@ -892,7 +883,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class Constructor9 : public dukpp03::Callable
+class Constructor9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -903,7 +894,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>();
     }
@@ -918,9 +909,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 9)
         {
             c->throwInvalidArgumentCountError(9, c->getTop());
@@ -1034,7 +1024,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class Constructor10 : public dukpp03::Callable
+class Constructor10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1045,7 +1035,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>();
     }
@@ -1060,9 +1050,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 10)
         {
             c->throwInvalidArgumentCountError(10, c->getTop());
@@ -1185,7 +1174,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class Constructor11 : public dukpp03::Callable
+class Constructor11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1196,7 +1185,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>();
     }
@@ -1211,9 +1200,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 11)
         {
             c->throwInvalidArgumentCountError(11, c->getTop());
@@ -1345,7 +1333,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class Constructor12 : public dukpp03::Callable
+class Constructor12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1356,7 +1344,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>();
     }
@@ -1371,9 +1359,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 12)
         {
             c->throwInvalidArgumentCountError(12, c->getTop());
@@ -1514,7 +1501,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class Constructor13 : public dukpp03::Callable
+class Constructor13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1525,7 +1512,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>();
     }
@@ -1540,9 +1527,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 13)
         {
             c->throwInvalidArgumentCountError(13, c->getTop());
@@ -1692,7 +1678,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class Constructor14 : public dukpp03::Callable
+class Constructor14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1703,7 +1689,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>();
     }
@@ -1718,9 +1704,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 14)
         {
             c->throwInvalidArgumentCountError(14, c->getTop());
@@ -1879,7 +1864,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class Constructor15 : public dukpp03::Callable
+class Constructor15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1890,7 +1875,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>();
     }
@@ -1905,9 +1890,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 15)
         {
             c->throwInvalidArgumentCountError(15, c->getTop());
@@ -2075,7 +2059,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class Constructor16 : public dukpp03::Callable
+class Constructor16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -2086,7 +2070,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>();
     }
@@ -2101,9 +2085,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != 16)
         {
             c->throwInvalidArgumentCountError(16, c->getTop());
@@ -2272,7 +2255,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor0<_Context, _ClassName>();
+    dukpp03::Callable<_Context>* c = new Constructor0<_Context, _ClassName>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2286,7 +2269,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor1<_Context, _ClassName, _Arg0>();
+    dukpp03::Callable<_Context>* c = new Constructor1<_Context, _ClassName, _Arg0>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2301,7 +2284,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor2<_Context, _ClassName, _Arg0, _Arg1>();
+    dukpp03::Callable<_Context>* c = new Constructor2<_Context, _ClassName, _Arg0, _Arg1>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2317,7 +2300,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>();
+    dukpp03::Callable<_Context>* c = new Constructor3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2334,7 +2317,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>();
+    dukpp03::Callable<_Context>* c = new Constructor4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2352,7 +2335,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>();
+    dukpp03::Callable<_Context>* c = new Constructor5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2371,7 +2354,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>();
+    dukpp03::Callable<_Context>* c = new Constructor6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2391,7 +2374,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>();
+    dukpp03::Callable<_Context>* c = new Constructor7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2412,7 +2395,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>();
+    dukpp03::Callable<_Context>* c = new Constructor8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2434,7 +2417,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>();
+    dukpp03::Callable<_Context>* c = new Constructor9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2457,7 +2440,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>();
+    dukpp03::Callable<_Context>* c = new Constructor10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2481,7 +2464,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>();
+    dukpp03::Callable<_Context>* c = new Constructor11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2506,7 +2489,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>();
+    dukpp03::Callable<_Context>* c = new Constructor12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2532,7 +2515,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>();
+    dukpp03::Callable<_Context>* c = new Constructor13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2559,7 +2542,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>();
+    dukpp03::Callable<_Context>* c = new Constructor14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2587,7 +2570,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>();
+    dukpp03::Callable<_Context>* c = new Constructor15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>();
     ctx->registerCallable(prop, c);
 }
 
@@ -2616,7 +2599,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>();
+    dukpp03::Callable<_Context>* c = new Constructor16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>();
     ctx->registerCallable(prop, c);
 }
 

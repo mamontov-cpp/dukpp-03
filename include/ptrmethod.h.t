@@ -23,7 +23,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class VoidPtrMethod{{argscount}} : public dukpp03::Callable
+class VoidPtrMethod{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -38,7 +38,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
@@ -53,9 +53,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscountp1}})
         {
             c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
@@ -114,7 +113,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class RetPtrMethod{{argscount}} : public dukpp03::Callable
+class RetPtrMethod{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -129,7 +128,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::RetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
@@ -144,9 +143,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscountp1}})
         {
             c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
@@ -207,7 +205,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstVoidPtrMethod{{argscount}} : public dukpp03::Callable
+class ConstVoidPtrMethod{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -223,7 +221,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ConstVoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
@@ -238,9 +236,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscountp1}})
         {
             c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
@@ -299,7 +296,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstRetPtrMethod{{argscount}} : public dukpp03::Callable
+class ConstRetPtrMethod{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -314,7 +311,7 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()  
+    virtual dukpp03::Callable<_Context>* clone()  
     {
         return new dukpp03::ConstRetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
@@ -329,9 +326,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscountp1}})
         {
             c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
@@ -397,7 +393,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new VoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -415,7 +411,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
     return new RetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -431,7 +427,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
+static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
     return new ConstVoidPtrMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
@@ -449,7 +445,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-static inline dukpp03::Callable* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
+static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
     return new ConstRetPtrMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }

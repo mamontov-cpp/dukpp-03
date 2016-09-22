@@ -22,7 +22,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class Constructor{{argscount}} : public dukpp03::Callable
+class Constructor{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -33,7 +33,7 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable* clone()
+    virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::Constructor{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>();
     }
@@ -48,9 +48,8 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::AbstractContext* ctx)
+    virtual int call(_Context* c)
     {
-        _Context* c = reinterpret_cast<_Context*>(ctx);
         if (c->getTop() != {{argscount}})
         {
             c->throwInvalidArgumentCountError({{argscount}}, c->getTop());
@@ -105,7 +104,7 @@ template<
 >
 static inline void in_context(_Context* ctx, const std::string& prop)
 {
-    dukpp03::Callable* c = new Constructor{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>();
+    dukpp03::Callable<_Context>* c = new Constructor{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>();
     ctx->registerCallable(prop, c);
 }
 
