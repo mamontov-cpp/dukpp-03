@@ -23,7 +23,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class VoidMethod{{argscount}} : public dukpp03::Callable<_Context>
+class VoidMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -84,7 +84,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class RetMethod{{argscount}} : public dukpp03::Callable<_Context>
+class RetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -146,7 +146,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstVoidMethod{{argscount}} : public dukpp03::Callable<_Context>
+class ConstVoidMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -208,7 +208,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstRetMethod{{argscount}} : public dukpp03::Callable<_Context>
+class ConstRetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped

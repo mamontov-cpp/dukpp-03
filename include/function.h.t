@@ -21,7 +21,7 @@ template<
 {{/has_args}}
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}{{/args}}
 >
-class VoidFunction{{argscount}} : public dukpp03::Callable<_Context>
+class VoidFunction{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -82,7 +82,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class RetFunction{{argscount}} : public dukpp03::Callable<_Context>
+class RetFunction{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped

@@ -84,6 +84,12 @@ public:
     /*! Throws error, that caught exception, when calling function
      */
     virtual void throwCaughtException();
+    /*! Throws, error, that function should be called only as constructor
+     */
+    virtual void throwFunctionCallShouldBeACalledOnlyAsConstructor();
+    /*! Throws, error, that function should not be called as constructor
+     */
+    virtual void throwFunctionCallShouldNotBeCalledAsConstructor();
 protected:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object

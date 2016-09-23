@@ -41,6 +41,20 @@ public:
     {
         return std::make_pair(0, false);
     }
+    /* Returns whther it could be called as constructor
+       \return true if can
+     */
+    virtual bool canBeCalledAsConstructor()
+    {
+        return true;
+    }
+    /* Returns whther it could be called as function
+       \return true if can
+     */
+    virtual bool canBeCalledAsFunction()
+    {
+        return true;
+    }
     /*! Performs call on object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -52,6 +66,23 @@ public:
         {
             c->throwInvalidArgumentCountError(required_args, c->getTop());
             return 0;
+        }
+        
+        if (duk_is_constructor_call(c->context()))
+        {
+            if (this->canBeCalledAsConstructor() == false)
+            {
+                c->throwFunctionCallShouldNotBeCalledAsConstructor();
+                return 0;
+            }
+        }
+        else
+        {
+            if (this->canBeCalledAsFunction() == false)
+            {
+                c->throwFunctionCallShouldBeACalledOnlyAsConstructor();
+                return 0;               
+            }
         }
         
         try
@@ -101,6 +132,40 @@ public:
         }
     
     };
+};
+
+/*! Defines a callable, that can be called only as function
+ */
+template<
+    typename _Context
+>
+class FunctionCallable: public Callable<_Context>
+{
+public: 
+    /* Returns whther it could be called as constructor
+       \return true if can
+     */
+    virtual bool canBeCalledAsConstructor()
+    {
+        return false;
+    }
+};
+
+/*! Defines a callable, that can be called only as constructor
+ */
+template<
+    typename _Context
+>
+class ConstructorCallable: public Callable<_Context>
+{
+public: 
+    /* Returns whther it could be called as constructor
+       \return true if can
+     */
+    virtual bool canBeCalledAsFunction()
+    {
+        return false;
+    }
 };
 
 }

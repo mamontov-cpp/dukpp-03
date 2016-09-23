@@ -117,6 +117,15 @@ void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::s
     this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
 }
 
+void dukpp03::AbstractContext::throwFunctionCallShouldBeACalledOnlyAsConstructor()
+{
+    this->throwError("Function should be called only as constructor");
+}
+
+void dukpp03::AbstractContext::throwFunctionCallShouldNotBeCalledAsConstructor()
+{
+    this->throwError("Function should not be called as constructor");
+}
 
 void dukpp03::AbstractContext::throwCaughtException()
 {

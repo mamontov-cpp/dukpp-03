@@ -20,7 +20,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class VoidPtrMethod0 : public dukpp03::Callable<_Context>
+class VoidPtrMethod0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -74,7 +74,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class VoidPtrMethod1 : public dukpp03::Callable<_Context>
+class VoidPtrMethod1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -130,7 +130,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class VoidPtrMethod2 : public dukpp03::Callable<_Context>
+class VoidPtrMethod2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -188,7 +188,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class VoidPtrMethod3 : public dukpp03::Callable<_Context>
+class VoidPtrMethod3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -248,7 +248,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class VoidPtrMethod4 : public dukpp03::Callable<_Context>
+class VoidPtrMethod4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -310,7 +310,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class VoidPtrMethod5 : public dukpp03::Callable<_Context>
+class VoidPtrMethod5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -374,7 +374,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class VoidPtrMethod6 : public dukpp03::Callable<_Context>
+class VoidPtrMethod6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -440,7 +440,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class VoidPtrMethod7 : public dukpp03::Callable<_Context>
+class VoidPtrMethod7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -508,7 +508,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class VoidPtrMethod8 : public dukpp03::Callable<_Context>
+class VoidPtrMethod8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -578,7 +578,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class VoidPtrMethod9 : public dukpp03::Callable<_Context>
+class VoidPtrMethod9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -650,7 +650,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class VoidPtrMethod10 : public dukpp03::Callable<_Context>
+class VoidPtrMethod10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -724,7 +724,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class VoidPtrMethod11 : public dukpp03::Callable<_Context>
+class VoidPtrMethod11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -800,7 +800,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class VoidPtrMethod12 : public dukpp03::Callable<_Context>
+class VoidPtrMethod12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -878,7 +878,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class VoidPtrMethod13 : public dukpp03::Callable<_Context>
+class VoidPtrMethod13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -958,7 +958,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class VoidPtrMethod14 : public dukpp03::Callable<_Context>
+class VoidPtrMethod14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1040,7 +1040,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class VoidPtrMethod15 : public dukpp03::Callable<_Context>
+class VoidPtrMethod15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1124,7 +1124,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class VoidPtrMethod16 : public dukpp03::Callable<_Context>
+class VoidPtrMethod16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1194,7 +1194,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-class RetPtrMethod0 : public dukpp03::Callable<_Context>
+class RetPtrMethod0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1250,7 +1250,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-class RetPtrMethod1 : public dukpp03::Callable<_Context>
+class RetPtrMethod1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1308,7 +1308,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class RetPtrMethod2 : public dukpp03::Callable<_Context>
+class RetPtrMethod2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1368,7 +1368,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class RetPtrMethod3 : public dukpp03::Callable<_Context>
+class RetPtrMethod3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1430,7 +1430,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class RetPtrMethod4 : public dukpp03::Callable<_Context>
+class RetPtrMethod4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1494,7 +1494,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class RetPtrMethod5 : public dukpp03::Callable<_Context>
+class RetPtrMethod5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1560,7 +1560,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class RetPtrMethod6 : public dukpp03::Callable<_Context>
+class RetPtrMethod6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1628,7 +1628,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class RetPtrMethod7 : public dukpp03::Callable<_Context>
+class RetPtrMethod7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1698,7 +1698,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class RetPtrMethod8 : public dukpp03::Callable<_Context>
+class RetPtrMethod8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1770,7 +1770,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class RetPtrMethod9 : public dukpp03::Callable<_Context>
+class RetPtrMethod9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1844,7 +1844,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class RetPtrMethod10 : public dukpp03::Callable<_Context>
+class RetPtrMethod10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1920,7 +1920,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class RetPtrMethod11 : public dukpp03::Callable<_Context>
+class RetPtrMethod11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1998,7 +1998,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class RetPtrMethod12 : public dukpp03::Callable<_Context>
+class RetPtrMethod12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2078,7 +2078,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class RetPtrMethod13 : public dukpp03::Callable<_Context>
+class RetPtrMethod13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2160,7 +2160,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class RetPtrMethod14 : public dukpp03::Callable<_Context>
+class RetPtrMethod14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2244,7 +2244,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class RetPtrMethod15 : public dukpp03::Callable<_Context>
+class RetPtrMethod15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2330,7 +2330,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class RetPtrMethod16 : public dukpp03::Callable<_Context>
+class RetPtrMethod16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2401,7 +2401,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class ConstVoidPtrMethod0 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2456,7 +2456,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class ConstVoidPtrMethod1 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2513,7 +2513,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class ConstVoidPtrMethod2 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2572,7 +2572,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class ConstVoidPtrMethod3 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2633,7 +2633,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class ConstVoidPtrMethod4 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2696,7 +2696,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class ConstVoidPtrMethod5 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2761,7 +2761,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class ConstVoidPtrMethod6 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2828,7 +2828,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class ConstVoidPtrMethod7 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2897,7 +2897,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class ConstVoidPtrMethod8 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2968,7 +2968,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class ConstVoidPtrMethod9 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3041,7 +3041,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class ConstVoidPtrMethod10 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3116,7 +3116,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class ConstVoidPtrMethod11 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3193,7 +3193,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class ConstVoidPtrMethod12 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3272,7 +3272,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class ConstVoidPtrMethod13 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3353,7 +3353,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class ConstVoidPtrMethod14 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3436,7 +3436,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class ConstVoidPtrMethod15 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3521,7 +3521,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class ConstVoidPtrMethod16 : public dukpp03::Callable<_Context>
+class ConstVoidPtrMethod16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3592,7 +3592,7 @@ template<
     typename _ClassName,
     typename _ReturnType
 >
-class ConstRetPtrMethod0 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3648,7 +3648,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-class ConstRetPtrMethod1 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3706,7 +3706,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class ConstRetPtrMethod2 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3766,7 +3766,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class ConstRetPtrMethod3 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3828,7 +3828,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class ConstRetPtrMethod4 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3892,7 +3892,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class ConstRetPtrMethod5 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -3958,7 +3958,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class ConstRetPtrMethod6 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4026,7 +4026,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class ConstRetPtrMethod7 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4096,7 +4096,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class ConstRetPtrMethod8 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4168,7 +4168,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class ConstRetPtrMethod9 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4242,7 +4242,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class ConstRetPtrMethod10 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4318,7 +4318,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class ConstRetPtrMethod11 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4396,7 +4396,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class ConstRetPtrMethod12 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4476,7 +4476,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class ConstRetPtrMethod13 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4558,7 +4558,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class ConstRetPtrMethod14 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4642,7 +4642,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class ConstRetPtrMethod15 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -4728,7 +4728,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class ConstRetPtrMethod16 : public dukpp03::Callable<_Context>
+class ConstRetPtrMethod16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped

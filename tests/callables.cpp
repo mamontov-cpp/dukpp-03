@@ -83,6 +83,9 @@ public:
         eval_result = ctx.eval(" f03(21) ", true, &error);
         ASSERT_TRUE( !eval_result );
 
+        eval_result = ctx.eval(" new f03(21, 31, 31) ", true, &error);
+        ASSERT_TRUE( !eval_result );
+
         eval_result = ctx.eval(" f03(undefined, undefined, undefined) ", true, &error);
         ASSERT_TRUE( !eval_result );
     }
@@ -122,6 +125,9 @@ public:
 
         
         eval_result = ctx.eval(" f03(21) ", false, &error);
+        ASSERT_TRUE( !eval_result );
+
+        eval_result = ctx.eval("new f03(21, 31, 41) ", false, &error);
         ASSERT_TRUE( !eval_result );
 
         eval_result = ctx.eval(" f03(undefined, undefined, undefined) ", false, &error);

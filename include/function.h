@@ -18,7 +18,7 @@ namespace dukpp03
 template<
     typename _Context
 >
-class VoidFunction0 : public dukpp03::Callable<_Context>
+class VoidFunction0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -72,7 +72,7 @@ template<
     typename _Context,
     typename _Arg0
 >
-class VoidFunction1 : public dukpp03::Callable<_Context>
+class VoidFunction1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -127,7 +127,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1
 >
-class VoidFunction2 : public dukpp03::Callable<_Context>
+class VoidFunction2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -183,7 +183,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2
 >
-class VoidFunction3 : public dukpp03::Callable<_Context>
+class VoidFunction3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -240,7 +240,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3
 >
-class VoidFunction4 : public dukpp03::Callable<_Context>
+class VoidFunction4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -298,7 +298,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4
 >
-class VoidFunction5 : public dukpp03::Callable<_Context>
+class VoidFunction5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -357,7 +357,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5
 >
-class VoidFunction6 : public dukpp03::Callable<_Context>
+class VoidFunction6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -417,7 +417,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6
 >
-class VoidFunction7 : public dukpp03::Callable<_Context>
+class VoidFunction7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -478,7 +478,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7
 >
-class VoidFunction8 : public dukpp03::Callable<_Context>
+class VoidFunction8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -540,7 +540,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8
 >
-class VoidFunction9 : public dukpp03::Callable<_Context>
+class VoidFunction9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -603,7 +603,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9
 >
-class VoidFunction10 : public dukpp03::Callable<_Context>
+class VoidFunction10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -667,7 +667,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10
 >
-class VoidFunction11 : public dukpp03::Callable<_Context>
+class VoidFunction11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -732,7 +732,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10,    typename _Arg11
 >
-class VoidFunction12 : public dukpp03::Callable<_Context>
+class VoidFunction12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -798,7 +798,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10,    typename _Arg11,    typename _Arg12
 >
-class VoidFunction13 : public dukpp03::Callable<_Context>
+class VoidFunction13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -865,7 +865,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10,    typename _Arg11,    typename _Arg12,    typename _Arg13
 >
-class VoidFunction14 : public dukpp03::Callable<_Context>
+class VoidFunction14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -933,7 +933,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10,    typename _Arg11,    typename _Arg12,    typename _Arg13,    typename _Arg14
 >
-class VoidFunction15 : public dukpp03::Callable<_Context>
+class VoidFunction15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1002,7 +1002,7 @@ template<
     typename _Context,
     typename _Arg0,    typename _Arg1,    typename _Arg2,    typename _Arg3,    typename _Arg4,    typename _Arg5,    typename _Arg6,    typename _Arg7,    typename _Arg8,    typename _Arg9,    typename _Arg10,    typename _Arg11,    typename _Arg12,    typename _Arg13,    typename _Arg14,    typename _Arg15
 >
-class VoidFunction16 : public dukpp03::Callable<_Context>
+class VoidFunction16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1072,7 +1072,7 @@ template<
     typename _Context,
     typename _ReturnType
 >
-class RetFunction0 : public dukpp03::Callable<_Context>
+class RetFunction0 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1127,7 +1127,7 @@ template<
     typename _ReturnType,
     typename _Arg0
 >
-class RetFunction1 : public dukpp03::Callable<_Context>
+class RetFunction1 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1184,7 +1184,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class RetFunction2 : public dukpp03::Callable<_Context>
+class RetFunction2 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1243,7 +1243,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class RetFunction3 : public dukpp03::Callable<_Context>
+class RetFunction3 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1304,7 +1304,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class RetFunction4 : public dukpp03::Callable<_Context>
+class RetFunction4 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1367,7 +1367,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class RetFunction5 : public dukpp03::Callable<_Context>
+class RetFunction5 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1432,7 +1432,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class RetFunction6 : public dukpp03::Callable<_Context>
+class RetFunction6 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1499,7 +1499,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class RetFunction7 : public dukpp03::Callable<_Context>
+class RetFunction7 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1568,7 +1568,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class RetFunction8 : public dukpp03::Callable<_Context>
+class RetFunction8 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1639,7 +1639,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class RetFunction9 : public dukpp03::Callable<_Context>
+class RetFunction9 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1712,7 +1712,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class RetFunction10 : public dukpp03::Callable<_Context>
+class RetFunction10 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1787,7 +1787,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class RetFunction11 : public dukpp03::Callable<_Context>
+class RetFunction11 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1864,7 +1864,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class RetFunction12 : public dukpp03::Callable<_Context>
+class RetFunction12 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -1943,7 +1943,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class RetFunction13 : public dukpp03::Callable<_Context>
+class RetFunction13 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2024,7 +2024,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class RetFunction14 : public dukpp03::Callable<_Context>
+class RetFunction14 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2107,7 +2107,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class RetFunction15 : public dukpp03::Callable<_Context>
+class RetFunction15 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -2192,7 +2192,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class RetFunction16 : public dukpp03::Callable<_Context>
+class RetFunction16 : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
