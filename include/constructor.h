@@ -41,6 +41,7 @@ public:
     {
         return 0;
     }
+    DUKPP03_CBC_0
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -88,6 +89,7 @@ public:
     {
         return 1;
     }
+    DUKPP03_CBC_1(0,_Arg0)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -137,6 +139,7 @@ public:
     {
         return 2;
     }
+    DUKPP03_CBC_2(0,_Arg0,_Arg1)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -188,6 +191,7 @@ public:
     {
         return 3;
     }
+    DUKPP03_CBC_3(0,_Arg0,_Arg1,_Arg2)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -241,6 +245,7 @@ public:
     {
         return 4;
     }
+    DUKPP03_CBC_4(0,_Arg0,_Arg1,_Arg2,_Arg3)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -296,6 +301,7 @@ public:
     {
         return 5;
     }
+    DUKPP03_CBC_5(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -353,6 +359,7 @@ public:
     {
         return 6;
     }
+    DUKPP03_CBC_6(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -412,6 +419,7 @@ public:
     {
         return 7;
     }
+    DUKPP03_CBC_7(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -473,6 +481,7 @@ public:
     {
         return 8;
     }
+    DUKPP03_CBC_8(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -536,6 +545,7 @@ public:
     {
         return 9;
     }
+    DUKPP03_CBC_9(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -601,6 +611,7 @@ public:
     {
         return 10;
     }
+    DUKPP03_CBC_10(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -668,6 +679,7 @@ public:
     {
         return 11;
     }
+    DUKPP03_CBC_11(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -737,6 +749,7 @@ public:
     {
         return 12;
     }
+    DUKPP03_CBC_12(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -808,6 +821,7 @@ public:
     {
         return 13;
     }
+    DUKPP03_CBC_13(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -881,6 +895,7 @@ public:
     {
         return 14;
     }
+    DUKPP03_CBC_14(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -956,6 +971,7 @@ public:
     {
         return 15;
     }
+    DUKPP03_CBC_15(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -1033,6 +1049,7 @@ public:
     {
         return 16;
     }
+    DUKPP03_CBC_16(0,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14,_Arg15)
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions

@@ -115,7 +115,7 @@ public:
     struct CheckArgument
     {
         /*! Checks argument on stack, filling a if needed
-            \param[in] c conext
+            \param[in] c context
             \param[in] a an argument
             \param[in] stackValue a value index on stack
             \param[in] argnumber number of argument
@@ -131,6 +131,16 @@ public:
             }
         }
     
+        /*! Check stack to find value for specified type
+            \param[in] c context
+            \param[in] stackValue a value index on stack
+            \return 1 if exists, otherwise 0
+         */
+        static int checkStack(_Context* c, int stackValue)
+        {
+            dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type > a = dukpp03::GetValue< typename dukpp03::Decay<_Arg>::Type, _Context >::perform(c, stackValue);
+            return (a.exists()) ? 1 : 0;
+        }
     };
 };
 
@@ -170,7 +180,45 @@ public:
 
 }
 
+/*! A macro for type substitution
+ */
 #define DUKPP03_TYPE(TYPE) TYPE
 /*! A macro for getting maybe value from stack
  */
 #define DUKPP03_MAYBE_FROM_STACK(TYPE, NAME, STACKV, NUMBER)  dukpp03::Maybe< typename dukpp03::Decay< DUKPP03_TYPE(TYPE) >::Type > _a##NAME; Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::onStack(c, _a##NAME, STACKV, NUMBER)
+/*! A macro for checking arguments on stack
+ */
+#define DUKPP03_CS(TYPE, STACKV) Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::checkStack(c, STACKV);
+/*! A macro for beginning checking  whether function can be called
+ */
+#define DUKPP03_CBC_BEGIN virtual std::pair<int, bool> canBeCalled(_Context* c) {  int required_args = this->requiredArguments(); if (c->getTop() != required_args) { return std::make_pair(-1, false); }
+/*! A macro for ending checking  whether function  can be called
+ */
+#define DUKPP03_CBC_END }
+/*! An extended beginning for determining whether function can be called
+ */ 
+#define DUKPP03_CBC_BEGIN_EX DUKPP03_CBC_BEGIN int a = 0;
+/*! An extended ending for determining whether function can be called
+ */
+#define DUKPP03_CBC_END_EX return std::make_pair(a, a == required_args); DUKPP03_CBC_END
+/*! A can be called for zero args
+ */ 
+#define DUKPP03_CBC_0 DUKPP03_CBC_BEGIN return std::make_pair(0, true); DUKPP03_CBC_END
+#define DUKPP03_CBC_1(BEGIN, A0)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_2(BEGIN, A0, A1)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_3(BEGIN, A0, A1, A2)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_4(BEGIN, A0, A1, A2, A3)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_5(BEGIN, A0, A1, A2, A3, A4)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_6(BEGIN, A0, A1, A2, A3, A4, A5)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_7(BEGIN, A0, A1, A2, A3, A4, A5, A6)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A6, BEGIN + 6); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_8(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_9(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_10(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_11(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_12(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_13(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); a += DUKPP03_CS(A12, BEGIN + 12); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_14(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); a += DUKPP03_CS(A12, BEGIN + 12); a += DUKPP03_CS(A13, BEGIN + 13); DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_15(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); a += DUKPP03_CS(A12, BEGIN + 12); a += DUKPP03_CS(A13, BEGIN + 13); a += DUKPP03_CS(A14, BEGIN + 14);  DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_16(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); a += DUKPP03_CS(A12, BEGIN + 12); a += DUKPP03_CS(A13, BEGIN + 13); a += DUKPP03_CS(A14, BEGIN + 14); DUKPP03_CS(A15, BEGIN + 15);  DUKPP03_CBC_END_EX
+#define DUKPP03_CBC_17(BEGIN, A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16)  DUKPP03_CBC_BEGIN_EX a += DUKPP03_CS(A0, BEGIN); a += DUKPP03_CS(A1, BEGIN + 1); a += DUKPP03_CS(A2, BEGIN + 2); a += DUKPP03_CS(A3, BEGIN + 3); a += DUKPP03_CS(A4, BEGIN + 4); a += DUKPP03_CS(A5, BEGIN + 5); a += DUKPP03_CS(A7, BEGIN + 7);  a += DUKPP03_CS(A8, BEGIN + 8); a += DUKPP03_CS(A9, BEGIN + 9); a += DUKPP03_CS(A10, BEGIN + 10); a += DUKPP03_CS(A11, BEGIN + 11); a += DUKPP03_CS(A12, BEGIN + 12); a += DUKPP03_CS(A13, BEGIN + 13); a += DUKPP03_CS(A14, BEGIN + 14); DUKPP03_CS(A15, BEGIN + 15);  DUKPP03_CS(A16, BEGIN + 16);  DUKPP03_CBC_END_EX
+

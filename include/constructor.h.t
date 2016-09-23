@@ -44,6 +44,7 @@ public:
     {
         return {{argscount}};
     }
+    DUKPP03_CBC_{{argscount}}{{#has_args}}(0,{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}){{/has_args}}
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions

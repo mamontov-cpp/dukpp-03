@@ -41,7 +41,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
-    }
+    }	
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -49,6 +49,8 @@ public:
     {
         return {{argscountp1}};
     }
+
+    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -109,7 +111,9 @@ public:
     virtual int requiredArguments()  
     {
         return {{argscountp1}};
-    }   
+    }
+
+    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -173,6 +177,8 @@ public:
     {
         return {{argscountp1}};
     }
+
+    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -233,12 +239,14 @@ public:
     virtual int requiredArguments()  
     {
         return {{argscountp1}};
-    }   
+    }
+
+    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
         DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
 {{#args}}
