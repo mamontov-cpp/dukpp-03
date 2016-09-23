@@ -48,34 +48,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != {{argscount}})
-        {
-            c->throwInvalidArgumentCountError({{argscount}}, c->getTop());
-            return 0;
-        }
 {{#args}}
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg{{number}}>::Type > _a{{number}} = dukpp03::GetValue< typename dukpp03::Decay<_Arg{{number}}>::Type, _Context >::perform(c, {{number}});
-{{/args}}{{#args}}      
-        if (_a{{number}}.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg{{number}} >();
-            c->throwInvalidTypeError({{numberp1}}, name);
-            return 0;
-        }
-        {{/args}}
-        
-        try
-        {
-            _ClassName  t{{#has_args}}({{#args}}_a{{number}}.mutableValue(){{#not_last}}, {{/not_last}}{{/args}}){{/has_args}};
-            dukpp03::PushValue<_ClassName, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
+{{/args}}        
+        _ClassName  t{{#has_args}}({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}}){{/has_args}};
+        dukpp03::PushValue<_ClassName, _Context>::perform(c, t, false);
         return 1;
     }
     /*! Can be inherited

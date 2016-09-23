@@ -50,32 +50,10 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 1)
-        {
-            c->throwInvalidArgumentCountError(1, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-                
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)();
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        ((_ac._())->*m_callee)();
         return 0;
     }
     /*! Can be inherited
@@ -126,40 +104,11 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 2)
-        {
-            c->throwInvalidArgumentCountError(2, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        ((_ac._())->*m_callee)(_a0._());
         return 0;
     }
     /*! Can be inherited
@@ -211,48 +160,12 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 3)
-        {
-            c->throwInvalidArgumentCountError(3, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        ((_ac._())->*m_callee)(_a0._(), _a1._());
         return 0;
     }
     /*! Can be inherited
@@ -305,56 +218,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 4)
-        {
-            c->throwInvalidArgumentCountError(4, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._());
         return 0;
     }
     /*! Can be inherited
@@ -408,64 +278,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 5)
-        {
-            c->throwInvalidArgumentCountError(5, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
         return 0;
     }
     /*! Can be inherited
@@ -520,72 +340,15 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 6)
-        {
-            c->throwInvalidArgumentCountError(6, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
         return 0;
     }
     /*! Can be inherited
@@ -641,80 +404,16 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 7)
-        {
-            c->throwInvalidArgumentCountError(7, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
         return 0;
     }
     /*! Can be inherited
@@ -771,88 +470,17 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 8)
-        {
-            c->throwInvalidArgumentCountError(8, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
         return 0;
     }
     /*! Can be inherited
@@ -910,96 +538,18 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 9)
-        {
-            c->throwInvalidArgumentCountError(9, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
         return 0;
     }
     /*! Can be inherited
@@ -1058,104 +608,19 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 10)
-        {
-            c->throwInvalidArgumentCountError(10, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
         return 0;
     }
     /*! Can be inherited
@@ -1215,112 +680,20 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 11)
-        {
-            c->throwInvalidArgumentCountError(11, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
         return 0;
     }
     /*! Can be inherited
@@ -1381,120 +754,21 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 12)
-        {
-            c->throwInvalidArgumentCountError(12, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
         return 0;
     }
     /*! Can be inherited
@@ -1556,128 +830,22 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 13)
-        {
-            c->throwInvalidArgumentCountError(13, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
         return 0;
     }
     /*! Can be inherited
@@ -1740,136 +908,23 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 14)
-        {
-            c->throwInvalidArgumentCountError(14, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
         return 0;
     }
     /*! Can be inherited
@@ -1933,144 +988,24 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 15)
-        {
-            c->throwInvalidArgumentCountError(15, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
         return 0;
     }
     /*! Can be inherited
@@ -2135,152 +1070,25 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 16)
-        {
-            c->throwInvalidArgumentCountError(16, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
         return 0;
     }
     /*! Can be inherited
@@ -2346,160 +1154,26 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 17)
-        {
-            c->throwInvalidArgumentCountError(17, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg15>::Type > _a15 = dukpp03::GetValue< typename dukpp03::Decay<_Arg15>::Type, _Context >::perform(c, 16);
-       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-       
-        if (_a15.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg15 >();
-            c->throwInvalidTypeError(17, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue(), _a15.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
         return 0;
     }
     /*! Can be inherited
@@ -2550,32 +1224,11 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 1)
-        {
-            c->throwInvalidArgumentCountError(1, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)();
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        _ReturnType t = ((_ac._())->*m_callee)();
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -2627,42 +1280,12 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 2)
-        {
-            c->throwInvalidArgumentCountError(2, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -2715,50 +1338,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 3)
-        {
-            c->throwInvalidArgumentCountError(3, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -2812,58 +1398,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 4)
-        {
-            c->throwInvalidArgumentCountError(4, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -2918,66 +1460,15 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 5)
-        {
-            c->throwInvalidArgumentCountError(5, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3033,74 +1524,16 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 6)
-        {
-            c->throwInvalidArgumentCountError(6, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3157,82 +1590,17 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 7)
-        {
-            c->throwInvalidArgumentCountError(7, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3290,90 +1658,18 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 8)
-        {
-            c->throwInvalidArgumentCountError(8, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3432,98 +1728,19 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 9)
-        {
-            c->throwInvalidArgumentCountError(9, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3583,106 +1800,20 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 10)
-        {
-            c->throwInvalidArgumentCountError(10, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3743,114 +1874,21 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 11)
-        {
-            c->throwInvalidArgumentCountError(11, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -3912,122 +1950,22 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 12)
-        {
-            c->throwInvalidArgumentCountError(12, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -4090,130 +2028,23 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 13)
-        {
-            c->throwInvalidArgumentCountError(13, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -4277,138 +2108,24 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 14)
-        {
-            c->throwInvalidArgumentCountError(14, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -4473,146 +2190,25 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 15)
-        {
-            c->throwInvalidArgumentCountError(15, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -4678,154 +2274,26 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 16)
-        {
-            c->throwInvalidArgumentCountError(16, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -4892,162 +2360,27 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 17)
-        {
-            c->throwInvalidArgumentCountError(17, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg15>::Type > _a15 = dukpp03::GetValue< typename dukpp03::Decay<_Arg15>::Type, _Context >::perform(c, 16);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-       
-        if (_a15.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg15 >();
-            c->throwInvalidTypeError(17, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue(), _a15.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -5099,32 +2432,10 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 1)
-        {
-            c->throwInvalidArgumentCountError(1, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
- 
-                
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)();
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        ((_ac._())->*m_callee)();
         return 0;
     }
     /*! Can be inherited
@@ -5176,40 +2487,11 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 2)
-        {
-            c->throwInvalidArgumentCountError(2, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        ((_ac._())->*m_callee)(_a0._());
         return 0;
     }
     /*! Can be inherited
@@ -5262,48 +2544,12 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 3)
-        {
-            c->throwInvalidArgumentCountError(3, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        ((_ac._())->*m_callee)(_a0._(), _a1._());
         return 0;
     }
     /*! Can be inherited
@@ -5357,56 +2603,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 4)
-        {
-            c->throwInvalidArgumentCountError(4, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._());
         return 0;
     }
     /*! Can be inherited
@@ -5461,64 +2664,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 5)
-        {
-            c->throwInvalidArgumentCountError(5, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
         return 0;
     }
     /*! Can be inherited
@@ -5574,72 +2727,15 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 6)
-        {
-            c->throwInvalidArgumentCountError(6, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
         return 0;
     }
     /*! Can be inherited
@@ -5696,80 +2792,16 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 7)
-        {
-            c->throwInvalidArgumentCountError(7, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
         return 0;
     }
     /*! Can be inherited
@@ -5827,88 +2859,17 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 8)
-        {
-            c->throwInvalidArgumentCountError(8, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
         return 0;
     }
     /*! Can be inherited
@@ -5967,96 +2928,18 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 9)
-        {
-            c->throwInvalidArgumentCountError(9, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
         return 0;
     }
     /*! Can be inherited
@@ -6116,104 +2999,19 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 10)
-        {
-            c->throwInvalidArgumentCountError(10, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
         return 0;
     }
     /*! Can be inherited
@@ -6274,112 +3072,20 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 11)
-        {
-            c->throwInvalidArgumentCountError(11, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
         return 0;
     }
     /*! Can be inherited
@@ -6441,120 +3147,21 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 12)
-        {
-            c->throwInvalidArgumentCountError(12, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
         return 0;
     }
     /*! Can be inherited
@@ -6617,128 +3224,22 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 13)
-        {
-            c->throwInvalidArgumentCountError(13, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
         return 0;
     }
     /*! Can be inherited
@@ -6802,136 +3303,23 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 14)
-        {
-            c->throwInvalidArgumentCountError(14, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
         return 0;
     }
     /*! Can be inherited
@@ -6996,144 +3384,24 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 15)
-        {
-            c->throwInvalidArgumentCountError(15, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
         return 0;
     }
     /*! Can be inherited
@@ -7199,152 +3467,25 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 16)
-        {
-            c->throwInvalidArgumentCountError(16, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
         return 0;
     }
     /*! Can be inherited
@@ -7411,160 +3552,26 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 17)
-        {
-            c->throwInvalidArgumentCountError(17, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 15);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg15>::Type > _a15 = dukpp03::GetValue< typename dukpp03::Decay<_Arg15>::Type, _Context >::perform(c, 16);
- 
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 >();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 >();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 >();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 >();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 >();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 >();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 >();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 >();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 >();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 >();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 >();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 >();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 >();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 >();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 >();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-       
-        if (_a15.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg15 >();
-            c->throwInvalidTypeError(17, name);
-            return 0;
-        }
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue(), _a15.mutableValue());
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
+        ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
         return 0;
     }
     /*! Can be inherited
@@ -7615,32 +3622,11 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 1)
-        {
-            c->throwInvalidArgumentCountError(1, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)();
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        _ReturnType t = ((_ac._())->*m_callee)();
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -7692,42 +3678,12 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 2)
-        {
-            c->throwInvalidArgumentCountError(2, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -7780,50 +3736,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 3)
-        {
-            c->throwInvalidArgumentCountError(3, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -7877,58 +3796,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 4)
-        {
-            c->throwInvalidArgumentCountError(4, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -7983,66 +3858,15 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 5)
-        {
-            c->throwInvalidArgumentCountError(5, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8098,74 +3922,16 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 6)
-        {
-            c->throwInvalidArgumentCountError(6, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8222,82 +3988,17 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 7)
-        {
-            c->throwInvalidArgumentCountError(7, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8355,90 +4056,18 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 8)
-        {
-            c->throwInvalidArgumentCountError(8, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8497,98 +4126,19 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 9)
-        {
-            c->throwInvalidArgumentCountError(9, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8648,106 +4198,20 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 10)
-        {
-            c->throwInvalidArgumentCountError(10, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8808,114 +4272,21 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 11)
-        {
-            c->throwInvalidArgumentCountError(11, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -8977,122 +4348,22 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 12)
-        {
-            c->throwInvalidArgumentCountError(12, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -9155,130 +4426,23 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 13)
-        {
-            c->throwInvalidArgumentCountError(13, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 11);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 > ();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -9342,138 +4506,24 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 14)
-        {
-            c->throwInvalidArgumentCountError(14, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 12);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 > ();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 > ();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -9538,146 +4588,25 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 15)
-        {
-            c->throwInvalidArgumentCountError(15, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 13);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 > ();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 > ();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 > ();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -9743,154 +4672,26 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 16)
-        {
-            c->throwInvalidArgumentCountError(16, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 14);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 > ();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 > ();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 > ();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 > ();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited
@@ -9957,162 +4758,27 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != 17)
-        {
-            c->throwInvalidArgumentCountError(17, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg0>::Type > _a0 = dukpp03::GetValue< typename dukpp03::Decay<_Arg0>::Type, _Context >::perform(c, 0);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg1>::Type > _a1 = dukpp03::GetValue< typename dukpp03::Decay<_Arg1>::Type, _Context >::perform(c, 1);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg2>::Type > _a2 = dukpp03::GetValue< typename dukpp03::Decay<_Arg2>::Type, _Context >::perform(c, 2);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg3>::Type > _a3 = dukpp03::GetValue< typename dukpp03::Decay<_Arg3>::Type, _Context >::perform(c, 3);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg4>::Type > _a4 = dukpp03::GetValue< typename dukpp03::Decay<_Arg4>::Type, _Context >::perform(c, 4);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg5>::Type > _a5 = dukpp03::GetValue< typename dukpp03::Decay<_Arg5>::Type, _Context >::perform(c, 5);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg6>::Type > _a6 = dukpp03::GetValue< typename dukpp03::Decay<_Arg6>::Type, _Context >::perform(c, 6);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg7>::Type > _a7 = dukpp03::GetValue< typename dukpp03::Decay<_Arg7>::Type, _Context >::perform(c, 7);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg8>::Type > _a8 = dukpp03::GetValue< typename dukpp03::Decay<_Arg8>::Type, _Context >::perform(c, 8);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg9>::Type > _a9 = dukpp03::GetValue< typename dukpp03::Decay<_Arg9>::Type, _Context >::perform(c, 9);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg10>::Type > _a10 = dukpp03::GetValue< typename dukpp03::Decay<_Arg10>::Type, _Context >::perform(c, 10);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg11>::Type > _a11 = dukpp03::GetValue< typename dukpp03::Decay<_Arg11>::Type, _Context >::perform(c, 11);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg12>::Type > _a12 = dukpp03::GetValue< typename dukpp03::Decay<_Arg12>::Type, _Context >::perform(c, 12);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg13>::Type > _a13 = dukpp03::GetValue< typename dukpp03::Decay<_Arg13>::Type, _Context >::perform(c, 13);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg14>::Type > _a14 = dukpp03::GetValue< typename dukpp03::Decay<_Arg14>::Type, _Context >::perform(c, 14);
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg15>::Type > _a15 = dukpp03::GetValue< typename dukpp03::Decay<_Arg15>::Type, _Context >::perform(c, 15);
-        
-               
-        if (_a0.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg0 > ();
-            c->throwInvalidTypeError(2, name);
-            return 0;
-        }
-       
-        if (_a1.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg1 > ();
-            c->throwInvalidTypeError(3, name);
-            return 0;
-        }
-       
-        if (_a2.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg2 > ();
-            c->throwInvalidTypeError(4, name);
-            return 0;
-        }
-       
-        if (_a3.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg3 > ();
-            c->throwInvalidTypeError(5, name);
-            return 0;
-        }
-       
-        if (_a4.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg4 > ();
-            c->throwInvalidTypeError(6, name);
-            return 0;
-        }
-       
-        if (_a5.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg5 > ();
-            c->throwInvalidTypeError(7, name);
-            return 0;
-        }
-       
-        if (_a6.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg6 > ();
-            c->throwInvalidTypeError(8, name);
-            return 0;
-        }
-       
-        if (_a7.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg7 > ();
-            c->throwInvalidTypeError(9, name);
-            return 0;
-        }
-       
-        if (_a8.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg8 > ();
-            c->throwInvalidTypeError(10, name);
-            return 0;
-        }
-       
-        if (_a9.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg9 > ();
-            c->throwInvalidTypeError(11, name);
-            return 0;
-        }
-       
-        if (_a10.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg10 > ();
-            c->throwInvalidTypeError(12, name);
-            return 0;
-        }
-       
-        if (_a11.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg11 > ();
-            c->throwInvalidTypeError(13, name);
-            return 0;
-        }
-       
-        if (_a12.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg12 > ();
-            c->throwInvalidTypeError(14, name);
-            return 0;
-        }
-       
-        if (_a13.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg13 > ();
-            c->throwInvalidTypeError(15, name);
-            return 0;
-        }
-       
-        if (_a14.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg14 > ();
-            c->throwInvalidTypeError(16, name);
-            return 0;
-        }
-       
-        if (_a15.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg15 > ();
-            c->throwInvalidTypeError(17, name);
-            return 0;
-        }
-
-       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)(_a0.mutableValue(), _a1.mutableValue(), _a2.mutableValue(), _a3.mutableValue(), _a4.mutableValue(), _a5.mutableValue(), _a6.mutableValue(), _a7.mutableValue(), _a8.mutableValue(), _a9.mutableValue(), _a10.mutableValue(), _a11.mutableValue(), _a12.mutableValue(), _a13.mutableValue(), _a14.mutableValue(), _a15.mutableValue());
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+        DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
+        DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
+        DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
+        DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
+        DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
+        DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
+        DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
+        DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
+        DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
+        DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
+        DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
+        DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
+        DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
+        DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
+        DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
+        DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
+        _ReturnType t = ((_ac._())->*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited

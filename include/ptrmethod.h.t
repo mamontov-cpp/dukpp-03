@@ -53,42 +53,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != {{argscountp1}})
-        {
-            c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context>::perform(c, 0);      
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
 {{#args}}
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg{{number}}>::Type > _a{{number}} = dukpp03::GetValue< typename dukpp03::Decay<_Arg{{number}}>::Type, _Context >::perform(c, {{numberp1}});
-{{/args}}       
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-        {{#args}}       
-        if (_a{{number}}.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg{{number}} >();
-            c->throwInvalidTypeError({{numberp2}}, name);
-            return 0;
-        }
-        {{/args}}
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)({{#args}}_a{{number}}.mutableValue(){{#not_last}}, {{/not_last}}{{/args}});
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+{{/args}}
+        ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         return 0;
     }
     /*! Can be inherited
@@ -143,44 +114,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != {{argscountp1}})
-        {
-            c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-{{#has_args}}{{#args}}        dukpp03::Maybe< typename dukpp03::Decay<_Arg{{number}}>::Type > _a{{number}} = dukpp03::GetValue< typename dukpp03::Decay<_Arg{{number}}>::Type, _Context >::perform(c, {{numberp1}});
-        {{/args}}
-        
-        {{#args}}       
-        if (_a{{number}}.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg{{number}} >();
-            c->throwInvalidTypeError({{numberp2}}, name);
-            return 0;
-        }
-        {{/args}}
-
-{{/has_args}}       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)({{#args}}_a{{number}}.mutableValue(){{#not_last}}, {{/not_last}}{{/args}});
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+{{#args}}
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+{{/args}}
+        _ReturnType t = ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);        
         return 1;
     }
     /*! Can be inherited
@@ -236,42 +177,13 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != {{argscountp1}})
-        {
-            c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);   
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
 {{#args}}
-        dukpp03::Maybe< typename dukpp03::Decay<_Arg{{number}}>::Type > _a{{number}} = dukpp03::GetValue< typename dukpp03::Decay<_Arg{{number}}>::Type, _Context >::perform(c, {{numberp1}});
-{{/args}} 
-        {{#args}}       
-        if (_a{{number}}.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg{{number}} >();
-            c->throwInvalidTypeError({{numberp2}}, name);
-            return 0;
-        }
-        {{/args}}
-        
-        try
-        {
-            ((_cls.mutableValue())->*m_callee)({{#args}}_a{{number}}.mutableValue(){{#not_last}}, {{/not_last}}{{/args}});
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+{{/args}}
+        ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         return 0;
     }
     /*! Can be inherited
@@ -326,44 +238,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int _call(_Context* c)
     {
-        if (c->getTop() != {{argscountp1}})
-        {
-            c->throwInvalidArgumentCountError({{argscountp1}}, c->getTop());
-            return 0;
-        }
-
-        dukpp03::Maybe<_ClassName*> _cls = dukpp03::GetValue< _ClassName*, _Context >::perform(c, 0);  
-        if (_cls.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _ClassName >();
-            c->throwInvalidTypeError(1, name);
-            return 0;
-        }
-
-{{#has_args}}{{#args}}        dukpp03::Maybe< typename dukpp03::Decay<_Arg{{number}}>::Type > _a{{number}} = dukpp03::GetValue< typename dukpp03::Decay<_Arg{{number}}>::Type, _Context >::perform(c, {{number}});
-        {{/args}}
-        
-        {{#args}}       
-        if (_a{{number}}.exists() == false) 
-        {
-            std::string name = _Context::template typeName< _Arg{{number}} > ();
-            c->throwInvalidTypeError({{numberp2}}, name);
-            return 0;
-        }
-        {{/args}}
-
-{{/has_args}}       try
-        {
-            _ReturnType t = ((_cls.mutableValue())->*m_callee)({{#args}}_a{{number}}.mutableValue(){{#not_last}}, {{/not_last}}{{/args}});
-            dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
-        }
-        catch(...)
-        {
-            c->throwCaughtException();
-            return 0;
-        }
+        DUKPP03_MAYBE_FROM_STACK(_ClassName*, c, 0, 1);
+{{#args}}
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+{{/args}}
+        _ReturnType t = ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);   
         return 1;
     }
     /*! Can be inherited

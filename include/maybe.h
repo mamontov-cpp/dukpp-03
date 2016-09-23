@@ -53,6 +53,9 @@ class Maybe
           \return inner value
        */
       T& mutableValue() { if (m_reference) return *m_reference; return m_data; }
+      /*! A synonym for getting a mutable value
+       */
+      T& _() { return this->mutableValue(); }
 };
 
 }

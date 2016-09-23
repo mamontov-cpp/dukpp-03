@@ -6,11 +6,20 @@
  */
 #pragma once
 #include "abstractcallable.h"
+#include "decay.h"
+#include "maybe.h"
 #include <utility>
+#include <stdexcept>
     
 namespace dukpp03
 {
-    
+
+
+template<
+    typename _Value,
+    typename _Context
+>
+class GetValue;
 
 /*! A context-dependent callable
  */
@@ -38,8 +47,65 @@ public:
      */
     virtual int call(_Context* c)
     {
+        int required_args = this->requiredArguments();
+        if (c->getTop() != required_args)
+        {
+            c->throwInvalidArgumentCountError(required_args, c->getTop());
+            return 0;
+        }
         
+        try
+        {
+            return this->_call(c);
+        }
+        catch(dukpp03::ArgumentException e)
+        {
+            return 0;
+        }
+        catch(...)
+        {
+            c->throwCaughtException();
+            return 0;
+        }
+        return 0;
     }
+    /*! Performs actual function call
+     */
+    virtual int _call(_Context* c)
+    {
+        return 0;
+    }
+    
+    /*! Checks specified argument by type for callable
+     */
+    template<
+        typename _Arg
+    >
+    struct CheckArgument
+    {
+        /*! Checks argument on stack, filling a if needed
+            \param[in] c conext
+            \param[in] a an argument
+            \param[in] stackValue a value index on stack
+            \param[in] argnumber number of argument
+         */ 
+        static void onStack(_Context* c, dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type >& a, int stackValue, int argnumber)
+        {
+            a = dukpp03::GetValue< typename dukpp03::Decay<_Arg>::Type, _Context >::perform(c, stackValue);
+            if (a.exists() == false)
+            {
+                std::string name = _Context::template typeName< _Arg >();
+                c->throwInvalidTypeError(argnumber, name);
+                throw dukpp03::ArgumentException();
+            }
+        }
+    
+    };
 };
 
 }
+
+#define DUKPP03_TYPE(TYPE) TYPE
+/*! A macro for getting maybe value from stack
+ */
+#define DUKPP03_MAYBE_FROM_STACK(TYPE, NAME, STACKV, NUMBER)  dukpp03::Maybe< typename dukpp03::Decay< DUKPP03_TYPE(TYPE) >::Type > _a##NAME; Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::onStack(c, _a##NAME, STACKV, NUMBER)
