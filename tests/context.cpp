@@ -95,6 +95,65 @@ public:
 
 };
 
+
+/*! A  callable from this (seoond)
+ */
+class ThisMockCallableWithArg: public dukpp03::FunctionCallable<dukpp03::context::Context>
+{
+public:
+    ThisMockCallableWithArg()
+    {
+        
+    }
+
+    Callable* clone()
+    {
+        return new ThisMockCallableWithArg();
+    }
+
+    /*! Returns count of required arguments
+        \return count of required arguments
+     */
+    virtual int requiredArguments()
+    {
+        return 1;
+    }
+    /*! Performs call of object, using specified context
+        \param[in] c context
+        \return count of values on stack, placed by functions
+     */
+    virtual int call(dukpp03::context::Context* c)
+    {
+        duk_context* ctx = c->context();
+        duk_push_this(ctx);
+        duk_get_prop_string(ctx, -1, "prop");
+        std::cout << c->getTop() << "\n";
+        dukpp03::Maybe<int> fromthis = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 2);
+        duk_pop_2(ctx);
+        dukpp03::Maybe<int> firstarg = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 0);
+        int result = 0;
+        if (fromthis.exists() && firstarg.exists())
+        {
+            result += fromthis.value() * 10 + firstarg.value();
+            std::cout << "values exists: [" << fromthis.value() << "," << firstarg.value() << "]\n";
+        }
+        else
+        {
+            if (fromthis.exists() == false) 
+            {
+                std::cout << "unable to get value from this\n";
+            }
+            if (firstarg.exists() == false) 
+            {
+                std::cout << "unable to get value from first argument\n";
+            }           
+        }
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(c, result, false);
+        return 1;
+    }
+
+};
+
 struct ContextTest : tpunit::TestFixture
 {
 public:
@@ -109,7 +168,8 @@ public:
        TEST(ContextTest::testThrow),
        TEST(ContextTest::testRegisterGlobal),
        TEST(ContextTest::testRegisterCallable),
-       TEST(ContextTest::testRegisterThisCallable)
+       TEST(ContextTest::testRegisterThisCallable),
+       TEST(ContextTest::testRegisterThisCallableWithArg)
     ) {}
 
     /*! Tests getting and setting reference data
@@ -374,6 +434,22 @@ public:
         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( result.value() == 4 );        
+    }
+    
+    void testRegisterThisCallableWithArg() 
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("f", new ThisMockCallableWithArg());
+        bool eval_result = ctx.eval("var o  = {\"prop\" : 3}; o.f = f;  o.f(1)", false, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == 31 );        
     }
     
 } _context_test;
