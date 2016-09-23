@@ -45,6 +45,56 @@ public:
 };
 
 
+/*! A  callable from this
+ */
+class ThisMockCallable: public dukpp03::FunctionCallable<dukpp03::context::Context>
+{
+public:
+    ThisMockCallable()
+    {
+        
+    }
+
+    Callable* clone()
+    {
+        return new ThisMockCallable();
+    }
+
+    /*! Returns count of required arguments
+        \return count of required arguments
+     */
+    virtual int requiredArguments()
+    {
+        return 0;
+    }
+    /*! Performs call of object, using specified context
+        \param[in] c context
+        \return count of values on stack, placed by functions
+     */
+    virtual int call(dukpp03::context::Context* c)
+    {
+        duk_context* ctx = c->context();
+        duk_push_this(ctx);
+        duk_get_prop_string(ctx, -1, "prop");
+        std::cout << c->getTop() << "\n";
+        dukpp03::Maybe<int> ma = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 1);
+        duk_pop_2(ctx); 
+        int result = 1;
+        if (ma.exists())
+        {
+            result += ma.value();
+            std::cout << "value exists: " << ma.value() << "\n";
+        }
+        else
+        {
+            std::cout << "unable to get value\n";
+        }
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(c, result, false);
+        return 1;
+    }
+
+};
+
 struct ContextTest : tpunit::TestFixture
 {
 public:
@@ -58,7 +108,8 @@ public:
        TEST(ContextTest::testReset),
        TEST(ContextTest::testThrow),
        TEST(ContextTest::testRegisterGlobal),
-       TEST(ContextTest::testRegisterCallable)
+       TEST(ContextTest::testRegisterCallable),
+       TEST(ContextTest::testRegisterThisCallable)
     ) {}
 
     /*! Tests getting and setting reference data
@@ -216,7 +267,7 @@ public:
         ASSERT_TRUE( error.size() == 0 );
         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
-        ASSERT_TRUE( result.value() == 2);		
+        ASSERT_TRUE( result.value() == 2);      
     }
     /*! Test for non-compilable code
      */
@@ -307,6 +358,22 @@ public:
         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( result.value() == 2 );
+    }
+    
+    void testRegisterThisCallable() 
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("f", new ThisMockCallable());
+        bool eval_result = ctx.eval("var o  = {\"prop\" : 3}; o.f = f;  o.f()", false, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == 4 );        
     }
     
 } _context_test;
