@@ -122,6 +122,7 @@ public:
          */ 
         static void onStack(_Context* c, dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type >& a, int stackValue, int argnumber)
         {
+            dukpp03::IsNotPODReference<_Arg>::typeMustBe();
             a = dukpp03::GetValue< typename dukpp03::Decay<_Arg>::Type, _Context >::perform(c, stackValue);
             if (a.exists() == false)
             {
@@ -138,6 +139,7 @@ public:
          */
         static int checkStack(_Context* c, int stackValue)
         {
+            dukpp03::IsNotPODReference<_Arg>::typeMustBe();
             dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type > a = dukpp03::GetValue< typename dukpp03::Decay<_Arg>::Type, _Context >::perform(c, stackValue);
             return (a.exists()) ? 1 : 0;
         }
@@ -180,9 +182,6 @@ public:
 
 }
 
-/*! A macro for type substitution
- */
-#define DUKPP03_TYPE(TYPE) TYPE
 /*! A macro for getting maybe value from stack
  */
 #define DUKPP03_MAYBE_FROM_STACK(TYPE, NAME, STACKV, NUMBER)  dukpp03::Maybe< typename dukpp03::Decay< DUKPP03_TYPE(TYPE) >::Type > _a##NAME; Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::onStack(c, _a##NAME, STACKV, NUMBER)

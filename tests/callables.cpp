@@ -41,7 +41,7 @@ int return_number_3(int a, int b, int c)
     return a - b - c;
 }
 
-int return_number_3_decay(const int& a, int& b, int c)
+int return_number_3_decay(const int& a, int /*& - can't use it here, will be buggy */ b, int c)
 {
     return a - b - c;
 }

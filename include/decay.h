@@ -4,6 +4,7 @@
     Simple decay replacement for old compilers
  */
 #pragma once
+#include "isnotpodreference.h"
 
 namespace dukpp03
 {

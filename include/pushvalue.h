@@ -85,7 +85,7 @@ public:
      */
     static void perform(_Context* ctx, const unsigned char& v, bool persistent)
     {
-        char buffer[2] = {v, 0};
+        char buffer[2] = {*reinterpret_cast<const char*>(&v), 0};
         duk_push_string(ctx->context(), buffer);
     }
 };
