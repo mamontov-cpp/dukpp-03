@@ -8,6 +8,7 @@
 #include "context.h"
 #include "maybe.h"
 #include <string>
+#include <iostream>
 
 namespace dukpp03
 {
@@ -36,6 +37,14 @@ static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
         if (v)
         {
             result = _Context::template valueFromVariant<_Value>(v);
+            if (result.exists() == false)
+            {
+                dukpp03::Maybe<_Value*> presult = _Context::template valueFromVariant<_Value*>(v);
+                if (presult.exists())
+                {
+                    result =  dukpp03::Maybe<_Value>(presult.value());
+                }
+            }
         }
     }
     return result;

@@ -27,7 +27,11 @@ public:
         typename _UnderlyingValue
     >
     static _VariantType* makeFrom(_UnderlyingValue val);
-    /*! Fetches underlying value from variant type
+    /*! Fetches underlying value from variant type. Note,
+        that if we are stored T* in variant and requesting value of
+        type T this function MUST return empty maybe, because in other cases 
+        it will force system to misbehave. For example, this problem can arise,
+        if using boost::any as variant wrapping type
         \param[in] v a variant, containing data
         \return an underlying value
      */

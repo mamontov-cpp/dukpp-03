@@ -4,6 +4,7 @@
  */
 #pragma once
 #include <math.h>
+#include <iostream>
 
 
 /*! A simple point for testing
@@ -54,7 +55,7 @@ struct Point
      */ 
     int x() const
     {
-        return m_x;
+         return m_x;
     }
     
     /*! Returns y coordinate

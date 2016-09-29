@@ -44,6 +44,11 @@ public:
     {
         try
         {
+            // Make it strict! No pointer casts are permitted
+            if (typeid(_UnderlyingValue) != v->type())
+            {
+                return dukpp03::Maybe<_UnderlyingValue>();
+            }
             _UnderlyingValue* val = boost::any_cast<_UnderlyingValue>(v);
             return dukpp03::Maybe<_UnderlyingValue>(val);
         }

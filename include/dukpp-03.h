@@ -10,5 +10,4 @@
 #include "context.h"
 #include "function.h"
 #include "method.h"
-#include "ptrmethod.h"
 #include "constructor.h"

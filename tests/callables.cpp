@@ -17,12 +17,12 @@ void print_something()
 
 void print_number_1(int a)
 {
-    printf("print_number_1: %d\n", a);	
+    printf("print_number_1: %d\n", a);  
 }
 
 void print_number_3(int a, int b, int c)
 {
-    printf("print_number_3: %d %d %d\n", a, b, c );	
+    printf("print_number_3: %d %d %d\n", a, b, c ); 
 }
 
 int return_something()
@@ -49,7 +49,6 @@ int return_number_3_decay(const int& a, int /*& - can't use it here, will be bug
 typedef dukpp03::make_fun<dukpp03::context::Context> mkf;
 typedef dukpp03::register_constructor<dukpp03::context::Context> register_constructor;
 typedef dukpp03::make_method<dukpp03::context::Context> mkm;
-typedef dukpp03::make_ptr_method<dukpp03::context::Context> mpm;
 
 struct CallablesTest : tpunit::TestFixture
 {
@@ -65,7 +64,7 @@ public:
      */
     void testRegisterVoidFunctions()
     {
-        std::string error; 	
+        std::string error;  
 
         dukpp03::context::Context ctx;
         ctx.registerCallable("f00", mkf::from(print_something));
@@ -92,7 +91,7 @@ public:
 
     void testRegisterReturnFunctions()
     {
-        std::string error; 	
+        std::string error;  
 
         dukpp03::context::Context ctx;
         ctx.registerCallable("f00", mkf::from(return_something));
@@ -136,7 +135,7 @@ public:
 
     void testMethods()
     {
-        std::string error; 	
+        std::string error;  
         
         dukpp03::context::Context ctx;
         register_constructor::in_context<Point, double, double>(&ctx, "pnt");
@@ -155,23 +154,27 @@ public:
 
     void testPtrMethods()
     {
-        std::string error; 	
+        std::string error;  
 
         Point p(5, 7);
-        
+        std::cout << "Point adress is " << &p << "\n";
         dukpp03::context::Context ctx;
         ctx.registerGlobal("pnt", &p);
 
-        ctx.registerCallable("x", mpm::from(&Point::x));
-        ctx.registerCallable("y", mpm::from(&Point::y));
+        ctx.registerCallable("x", mkm::from(&Point::x));
+        ctx.registerCallable("y", mkm::from(&Point::y));
 
-        ctx.registerCallable("setX", mpm::from(&Point::setX));
-         ctx.registerCallable("setY", mpm::from(&Point::setY));
+        ctx.registerCallable("setX", mkm::from(&Point::setX));
+         ctx.registerCallable("setY", mkm::from(&Point::setY));
 
         bool eval_result = ctx.eval(" setX(pnt, 55); x(pnt) ", false);
         ASSERT_TRUE( eval_result );
         dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
+        if (!is_fuzzy_equal(result.value(), 55)) 
+        {
+            std::cout << "Point x value is " << result.value() << "\n";
+        }
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 55) );
     }
     
