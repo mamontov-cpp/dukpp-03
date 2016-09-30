@@ -18,6 +18,9 @@
 //#include "pushvalue.h"
 //#include "getvalue.h"
 
+/*! A property name for an object, which must have this property set to a string variant
+ */
+#define DUKPP03_VARIANT_PROPERTY_SIGNATURE "\1dukpp03::Variant\1"
 /*! A signature, which points, that current string is linked to variant pool
  */
 #define DUKPP03_VARIANT_SIGNATURE "\1dukpp03::Variant\1"
