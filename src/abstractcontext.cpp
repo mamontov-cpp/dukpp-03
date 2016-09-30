@@ -144,20 +144,27 @@ static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
     return c->call(callableptr);
 }
 
-void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable)
+void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable)
 {
    assert(callable);
    addCallableToSet(callable);
    
-   duk_push_global_object(m_context);
    duk_push_c_function(m_context, dukpp03_context_invoke_wrapper, DUK_VARARGS);
    
    duk_push_string(m_context, DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY);   
    duk_push_pointer(m_context, callable);
    duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
   
+}
+
+void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable)
+{
+   duk_push_global_object(m_context);
+   
+   this->pushCallable(callable);
+
    duk_put_prop_string(m_context, -2 /*idx:global*/, callable_name.c_str());
-   duk_pop(m_context);
+   duk_pop(m_context);  
 }
 
 // ================================= PROTECTED METHODS =================================

@@ -202,6 +202,13 @@ public:
     {
         this->dukpp03::AbstractContext::registerCallable(callable_name, callable);
     }
+    /*! Pushes callable to property of global object
+        \param[in] callable a callable object
+     */
+    void pushCallable(LocalCallable* callable)
+    {
+        this->dukpp03::AbstractContext::pushCallable(callable);
+    }
     /*! Returns value from variant
         \param[in] v variant
         \return maybe value
