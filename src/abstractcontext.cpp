@@ -106,14 +106,14 @@ int dukpp03::AbstractContext::getTop() const
 void dukpp03::AbstractContext::throwInvalidArgumentCountError(int expected, int got)
 {
     std::ostringstream ss;
-    ss << "Function expects" << expected << " arguments, but "  <<  got << " given";
+    ss << "Function expects " << expected << " arguments, but "  <<  got << " given";
     this->throwError(ss.str());
 }
 
 void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::string& type)
 {
     std::ostringstream ss;
-    ss << "Invalid type passed for argument " << argnumber << "Argument" <<  argnumber << "must have type" << type;
+    ss << "Invalid type passed for argument #" << argnumber << ". Argument #" <<  argnumber << " must have type " << type;
     this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
 }
 

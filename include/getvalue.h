@@ -33,7 +33,7 @@ static void perform(_Context* ctx, duk_idx_t pos, dukpp03::Maybe<_Value>& result
 {
     if (duk_is_object(ctx->context(), pos))
     {
-        duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
+       duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
         if (duk_is_string(ctx->context(), -1))
         {
             const char* string = duk_to_string(ctx->context(), -1);
@@ -77,6 +77,15 @@ static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
 {
     dukpp03::Maybe<_Value> result;
     dukpp03::internal::TryGetValueFromObject<_Value, _Context>::perform(ctx, pos, result);
+    if (result.exists() == false)
+    {
+        dukpp03::Maybe<_Value*> result2;
+        dukpp03::internal::TryGetValueFromObject<_Value*, _Context>::perform(ctx, pos, result2);
+        if (result2.exists())
+        {
+            result.setReference(result2.value());
+        }
+    }
     return result;
 }
 

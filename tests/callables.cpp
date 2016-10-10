@@ -165,9 +165,10 @@ public:
         ctx.registerCallable("y", mkm::from(&Point::y));
 
         ctx.registerCallable("setX", mkm::from(&Point::setX));
-         ctx.registerCallable("setY", mkm::from(&Point::setY));
+        ctx.registerCallable("setY", mkm::from(&Point::setY));
 
-        bool eval_result = ctx.eval(" setX(pnt, 55); x(pnt) ", false);
+        bool eval_result = ctx.eval(" setX(pnt, 55); x(pnt) ", false, &error);
+        std::cout << error << "\n";
         ASSERT_TRUE( eval_result );
         dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );

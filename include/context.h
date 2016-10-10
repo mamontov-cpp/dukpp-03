@@ -153,15 +153,16 @@ public:
         \param[in] property_name name of new property of global object
         \param[in] value a value to be registered
      */
-    void registerGlobalVariable(const std::string& property_name, Variant* value)
+    template<
+        typename _Value
+    >
+    void registerGlobalVariable(const std::string& property_name, Variant* v)
     {
-        if (value)
+        if (v)
         {
-            std::string identifier = DUKPP03_PERSISTENT_VARIANT_SIGNATURE;
-            identifier.append(m_persistent_pool.insert(value));
             duk_push_global_object(m_context);
             duk_push_string(m_context, property_name.c_str());
-            duk_push_string(m_context, identifier.c_str());
+            this->pushVariant<_Value>(v, true);
             duk_put_prop(m_context, -3);
             duk_pop(m_context);
         }
@@ -175,7 +176,7 @@ public:
     >
     void registerGlobal(const std::string& property_name, const T& value)
     {
-        registerGlobalVariable(property_name, _VariantInterface::makeFrom(value));
+        registerGlobalVariable<T>(property_name, _VariantInterface::makeFrom(value));
     }    
     /*! Calls function, using self as context
         \param[in] callable a callable value
