@@ -25,12 +25,8 @@ public:
         \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const _Value& v, bool persistent)
-    {
-        if (persistent)
-        {
-            ctx->pushPersistentVariant(_Context::VariantUtils::template makeFrom(v));
-        }
-        ctx->pushVariant(_Context::VariantUtils::template makeFrom(v));
+    {        
+        ctx->template pushVariant<_Value>(_Context::VariantUtils::template makeFrom(v), persistent);
     }
 };
 

@@ -3,8 +3,6 @@
     Defines a generic interface for wrapping value
  */
 #pragma once
-#include "maybe.h"
-#include <string>
 
 namespace dukpp03
 {
@@ -34,7 +32,7 @@ struct Perform
 template<typename _Value>
 inline static void perform(void* context)
 {
-    dukpp03::WrapValue::Perform::perform(context);
+    dukpp03::WrapValue::Perform<_Value>::perform(context);
 }
 
 };

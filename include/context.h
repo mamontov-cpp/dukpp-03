@@ -10,7 +10,7 @@
 #include "mapinterface.h"
 #include "variantinterface.h"
 #include "timerinterface.h"
-#include "wrapperinterface.h"
+#include "wrapvalue.h"
 #include "pool.h"
 #include "errorcodes.h"
 #include "callable.h"
@@ -104,28 +104,26 @@ public:
     }
     /*! Pushes variant to a persistent pool
         \param[in] v variant
+        \param[in] persistent whether it should be persistent
         \return string signature
      */
     template< typename _Value >
-    std::string pushPersistentVariant(Variant* v)
+    std::string pushVariant(Variant* v, bool persistent = false)
     {
-        std::string result = DUKPP03_PERSISTENT_VARIANT_SIGNATURE;
-        result.append(m_persistent_pool.insert(v));
+        duk_idx_t obj = duk_push_object(m_context);
+        std::string result = (persistent) ? DUKPP03_PERSISTENT_VARIANT_SIGNATURE : DUKPP03_VARIANT_SIGNATURE;
+        if (persistent)
+        {
+            result.append(m_persistent_pool.insert(v));
+        }
+        else
+        {
+            result.append(m_pool.insert(v));
+        }
+        duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_string(m_context, result.c_str());
-        WrapValue::perform<_Value>(this);       
-        return result;
-    }
-    /*! Pushes variant to a pool
-        \param[in] v variant
-        \return string signature
-     */
-    template< typename _Value >
-    std::string pushVariant(Variant* v)
-    {
-        std::string result = DUKPP03_VARIANT_SIGNATURE;
-        result.append(m_pool.insert(v));
-        duk_push_string(m_context, result.c_str());
-        WrapValue::perform<_Value>(this);
+        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        WrapValue::template perform<_Value>(this);       
         return result;
     }
     /*! Gets value from pool by key
