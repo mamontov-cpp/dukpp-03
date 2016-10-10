@@ -46,10 +46,6 @@ int return_number_3_decay(const int& a, int /*& - can't use it here, will be bug
     return a - b - c;
 }
 
-typedef dukpp03::make_fun<dukpp03::context::Context> mkf;
-typedef dukpp03::register_constructor<dukpp03::context::Context> register_constructor;
-typedef dukpp03::make_method<dukpp03::context::Context> mkm;
-
 struct CallablesTest : tpunit::TestFixture
 {
 public:

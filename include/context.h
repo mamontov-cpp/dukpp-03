@@ -16,9 +16,6 @@
 #include "callable.h"
 #include "decay.h"
 
-//#include "pushvalue.h"
-//#include "getvalue.h"
-
 /*! A property name for an object, which must have this property set to a string variant
  */
 #define DUKPP03_VARIANT_PROPERTY_SIGNATURE "\1dukpp03::Variant\1"
