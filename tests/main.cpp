@@ -9,14 +9,20 @@
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
-//#define TEST_INTERACTIVE
+#define TEST_INTERACTIVE
 int main(int argc, char** argv)
 {
 #ifdef TEST_INTERACTIVE
     dukpp03::context::Context t;
     register_constructor::in_context<Point, double, double>(&t, "Point2");
-    register_constructor::in_context<Point>(&t, "Point");
+    register_constructor::in_context<Point>(&t, "Point1");
     
+    dukpp03::MultiMethod<dukpp03::context::Context>* ctr = new dukpp03::MultiMethod<dukpp03::context::Context>();
+    ctr->add(new dukpp03::Constructor0<dukpp03::context::Context, Point>());
+    ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, double, double>());
+    ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, std::string, std::string>());
+    
+    t.registerCallable("Point", ctr);
     t.registerCallable("x", mkm::from(&Point::x));
     t.registerCallable("y", mkm::from(&Point::y));
 

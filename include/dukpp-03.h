@@ -11,3 +11,4 @@
 #include "function.h"
 #include "method.h"
 #include "constructor.h"
+#include "multimethod.h"
