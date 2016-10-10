@@ -10,6 +10,7 @@
 #include "mapinterface.h"
 #include "variantinterface.h"
 #include "timerinterface.h"
+#include "wrapperinterface.h"
 #include "pool.h"
 #include "errorcodes.h"
 #include "callable.h"
@@ -36,7 +37,8 @@ namespace dukpp03
 template<
     template<typename, typename> class _MapInterface,
     typename _VariantInterface,
-    typename _TimerInterface
+    typename _TimerInterface,
+    typename _WrapValue = dukpp03::WrapValue
 >
 class Context: public dukpp03::AbstractContext
 {
@@ -59,6 +61,9 @@ public:
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
+    /*! An utilities for wrapping value into context
+     */
+    typedef  _WrapValue WrapValue;
     /*! Creates new context
      */
     Context()
@@ -101,22 +106,26 @@ public:
         \param[in] v variant
         \return string signature
      */
+    template< typename _Value >
     std::string pushPersistentVariant(Variant* v)
     {
         std::string result = DUKPP03_PERSISTENT_VARIANT_SIGNATURE;
         result.append(m_persistent_pool.insert(v));
         duk_push_string(m_context, result.c_str());
+        WrapValue::perform<_Value>(this);       
         return result;
     }
     /*! Pushes variant to a pool
         \param[in] v variant
         \return string signature
      */
+    template< typename _Value >
     std::string pushVariant(Variant* v)
     {
         std::string result = DUKPP03_VARIANT_SIGNATURE;
         result.append(m_pool.insert(v));
         duk_push_string(m_context, result.c_str());
+        WrapValue::perform<_Value>(this);
         return result;
     }
     /*! Gets value from pool by key
