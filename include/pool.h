@@ -76,6 +76,7 @@ public:
     {
         std::string result = m_maxid.bytes();
         m_pool.insert(result, v);
+        m_maxid.next();
         return result;
     }
     /*! Fetches variant by it's key. NULL returned if not found

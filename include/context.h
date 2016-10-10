@@ -10,13 +10,11 @@
 #include "mapinterface.h"
 #include "variantinterface.h"
 #include "timerinterface.h"
+#include "wrapvalue.h"
 #include "pool.h"
 #include "errorcodes.h"
 #include "callable.h"
 #include "decay.h"
-
-//#include "pushvalue.h"
-//#include "getvalue.h"
 
 /*! A property name for an object, which must have this property set to a string variant
  */
@@ -36,7 +34,8 @@ namespace dukpp03
 template<
     template<typename, typename> class _MapInterface,
     typename _VariantInterface,
-    typename _TimerInterface
+    typename _TimerInterface,
+    typename _WrapValue = dukpp03::WrapValue
 >
 class Context: public dukpp03::AbstractContext
 {
@@ -59,6 +58,9 @@ public:
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
+    /*! An utilities for wrapping value into context
+     */
+    typedef  _WrapValue WrapValue;
     /*! Creates new context
      */
     Context()
@@ -99,24 +101,26 @@ public:
     }
     /*! Pushes variant to a persistent pool
         \param[in] v variant
+        \param[in] persistent whether it should be persistent
         \return string signature
      */
-    std::string pushPersistentVariant(Variant* v)
+    template< typename _Value >
+    std::string pushVariant(Variant* v, bool persistent = false)
     {
-        std::string result = DUKPP03_PERSISTENT_VARIANT_SIGNATURE;
-        result.append(m_persistent_pool.insert(v));
+        duk_idx_t obj = duk_push_object(m_context);
+        std::string result = (persistent) ? DUKPP03_PERSISTENT_VARIANT_SIGNATURE : DUKPP03_VARIANT_SIGNATURE;
+        if (persistent)
+        {
+            result.append(m_persistent_pool.insert(v));
+        }
+        else
+        {
+            result.append(m_pool.insert(v));
+        }
+        duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_string(m_context, result.c_str());
-        return result;
-    }
-    /*! Pushes variant to a pool
-        \param[in] v variant
-        \return string signature
-     */
-    std::string pushVariant(Variant* v)
-    {
-        std::string result = DUKPP03_VARIANT_SIGNATURE;
-        result.append(m_pool.insert(v));
-        duk_push_string(m_context, result.c_str());
+        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        WrapValue::template perform<_Value>(this);       
         return result;
     }
     /*! Gets value from pool by key
@@ -146,15 +150,16 @@ public:
         \param[in] property_name name of new property of global object
         \param[in] value a value to be registered
      */
-    void registerGlobalVariable(const std::string& property_name, Variant* value)
+    template<
+        typename _Value
+    >
+    void registerGlobalVariable(const std::string& property_name, Variant* v)
     {
-        if (value)
+        if (v)
         {
-            std::string identifier = DUKPP03_PERSISTENT_VARIANT_SIGNATURE;
-            identifier.append(m_persistent_pool.insert(value));
             duk_push_global_object(m_context);
             duk_push_string(m_context, property_name.c_str());
-            duk_push_string(m_context, identifier.c_str());
+            this->pushVariant<_Value>(v, true);
             duk_put_prop(m_context, -3);
             duk_pop(m_context);
         }
@@ -168,28 +173,8 @@ public:
     >
     void registerGlobal(const std::string& property_name, const T& value)
     {
-        registerGlobalVariable(property_name, _VariantInterface::makeFrom(value));
-    }
-    /*! Returns value from pool by string, linked on stack
-        \param[in] pos position on stack
-        \return value
-     */
-    template<
-        typename T
-    >
-    dukpp03::Maybe<T> getValueFromPoolByStringFromStack(duk_idx_t pos)
-    {
-        dukpp03::Maybe<T> result;
-        if (duk_is_string(m_context, pos))
-        {
-            Variant* v = this->getValueFromPool(duk_to_string(m_context, pos));
-            if (v)
-            {
-                result = _VariantInterface::template get<T>(v);
-            }
-        }
-        return result;
-    }
+        registerGlobalVariable<T>(property_name, _VariantInterface::makeFrom(value));
+    }    
     /*! Calls function, using self as context
         \param[in] callable a callable value
      */

@@ -20,51 +20,32 @@ struct Point
     
     /*! Constructs new point
      */
-    inline Point() : m_x(0), m_y(0)
-    {
-        
-    }
-
+    Point();
     /*! Constructs new point
         \param[in] x first coordinate
         \param[in] y second coordinate
      */
-    inline Point(int x, int y) : m_x(x), m_y(y)
-    {
-        
-    }
+    Point(int x, int y);
 
     /*! Sets x coordinate
         \param[in] x x coordinate
      */
-    inline void setX(int x)
-    {
-        this->m_x = x;
-    }
+    void setX(int x);
     
     /*! Sets y coordinate
         \param[in] y y coordinate
      */
-    void setY(int y)
-    {
-        this->m_y = y;
-    }
+    void setY(int y);
     
     /*! Returns x coordinate
         \return x coordinate
      */ 
-    int x() const
-    {
-         return m_x;
-    }
-    
+    int x() const;
+
     /*! Returns y coordinate
         \return y coordinate
      */
-    int y() const
-    {
-        return m_y;
-    }
+    int y() const;
 };
 
 /*! Tests if two double values are equal with precision of 0.001

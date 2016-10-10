@@ -13,6 +13,52 @@
 namespace dukpp03
 {
 
+namespace internal
+{
+
+template<
+    typename _Value,
+    typename _Context
+>
+class TryGetValueFromObject
+{
+public:
+/*! Performs getting value from stack 
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \param[out] result an output value. Won't be changed if result exists, will be set to result otherwise
+    \return a value if it exists, otherwise empty maybe
+ */
+static void perform(_Context* ctx, duk_idx_t pos, dukpp03::Maybe<_Value>& result)
+{
+    if (duk_is_object(ctx->context(), pos))
+    {
+       duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
+        if (duk_is_string(ctx->context(), -1))
+        {
+            const char* string = duk_to_string(ctx->context(), -1);
+            typename _Context::Variant * v = ctx->getValueFromPool(string);
+            if (v)
+            {
+                result = _Context::template valueFromVariant<_Value>(v);
+                if (result.exists() == false)
+                {
+                    dukpp03::Maybe<_Value*> presult = _Context::template valueFromVariant<_Value*>(v);
+                    if (presult.exists())
+                    {
+                        result =  dukpp03::Maybe<_Value>(presult.value());
+                    }
+                }
+            }
+        }
+        duk_pop(ctx->context());
+    }
+}
+
+};
+
+}
+
 /*! Performs getting value from a stack for every type of value
  */
 template<
@@ -30,21 +76,14 @@ public:
 static dukpp03::Maybe<_Value> perform(_Context* ctx, duk_idx_t pos)
 {
     dukpp03::Maybe<_Value> result;
-    if (duk_is_string(ctx->context(), pos))
+    dukpp03::internal::TryGetValueFromObject<_Value, _Context>::perform(ctx, pos, result);
+    if (result.exists() == false)
     {
-        const char* string = duk_to_string(ctx->context(), pos);
-        typename _Context::Variant * v = ctx->getValueFromPool(string);
-        if (v)
+        dukpp03::Maybe<_Value*> result2;
+        dukpp03::internal::TryGetValueFromObject<_Value*, _Context>::perform(ctx, pos, result2);
+        if (result2.exists())
         {
-            result = _Context::template valueFromVariant<_Value>(v);
-            if (result.exists() == false)
-            {
-                dukpp03::Maybe<_Value*> presult = _Context::template valueFromVariant<_Value*>(v);
-                if (presult.exists())
-                {
-                    result =  dukpp03::Maybe<_Value>(presult.value());
-                }
-            }
+            result.setReference(result2.value());
         }
     }
     return result;
@@ -77,15 +116,7 @@ static dukpp03::Maybe<bool> perform(_Context* ctx, duk_idx_t pos)
     } 
     else
     {
-        if (duk_is_string(ctx->context(), pos))
-        {
-            const char* str = duk_to_string(ctx->context(), pos);
-            typename _Context::Variant * v = ctx->getValueFromPool(str);
-            if (v)
-            {
-                result = _Context::template valueFromVariant<bool>(v);
-            }
-        }
+        dukpp03::internal::TryGetValueFromObject<bool, _Context>::perform(ctx, pos, result);
     }
     return result;
 }
@@ -119,11 +150,7 @@ static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
         if (tmp2.exists())
         {
             result.setValue(static_cast<char>(tmp2.value()));
-        } 
-        else
-        {
-            result = ctx->template getValueFromPoolByStringFromStack<char>(pos);
-        }
+        }        
     }
     return result;
 }
@@ -159,10 +186,6 @@ static dukpp03::Maybe<unsigned char> perform(_Context* ctx, duk_idx_t pos)
         if (tmp2.exists())
         {
             result.setValue(static_cast<unsigned char>(tmp2.value()));
-        } 
-        else
-        {
-            result = ctx->template getValueFromPoolByStringFromStack<unsigned char>(pos);
         }
     }
     return result;
@@ -190,15 +213,6 @@ static dukpp03::Maybe<std::string> perform(
     if (duk_is_string(ctx->context(), pos))
     {
         result.setValue(duk_to_string(ctx->context(), pos));
-        typename _Context::Variant* v = ctx->getValueFromPool(result.value());
-        if (v)
-        {
-            dukpp03::Maybe<std::string> result1 = _Context::template valueFromVariant<std::string>(v);            
-            if (result1.exists())
-            {
-                result.setValue(result1.value().c_str());
-            }
-        }
     }
     return result;
 }
@@ -225,7 +239,7 @@ static dukpp03::Maybe< TYPE > perform(              \
     }                                                                                                 \
     if (!result.exists())                                                                             \
     {                                                                                                 \
-        result = ctx->template getValueFromPoolByStringFromStack< TYPE >(pos);                        \
+        dukpp03::internal::TryGetValueFromObject< TYPE , _Context>::perform(ctx, pos, result);        \
     }                                                                                                 \
     return result;                                                                                    \
 }                                                                                                     \
@@ -266,7 +280,7 @@ static dukpp03::Maybe<float> perform(
     }
     if (!result.exists())
     {
-        result = ctx->template getValueFromPoolByStringFromStack<float>(pos);
+        dukpp03::internal::TryGetValueFromObject<float, _Context>::perform(ctx, pos, result);
     }
     return result;
 }
@@ -296,7 +310,7 @@ static dukpp03::Maybe<double> perform(
     }
     if (!result.exists())
     {
-        result = ctx->template getValueFromPoolByStringFromStack<double>(pos);
+        dukpp03::internal::TryGetValueFromObject<double, _Context>::perform(ctx, pos, result);
     }
     return result;
 }
@@ -328,7 +342,7 @@ static dukpp03::Maybe<long double> perform(
     }
     if (!result.exists())
     {
-        result = ctx->template getValueFromPoolByStringFromStack<long double>(pos);
+        dukpp03::internal::TryGetValueFromObject<long double, _Context>::perform(ctx, pos, result);
     }
     return result;
 }
