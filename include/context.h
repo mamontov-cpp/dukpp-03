@@ -169,27 +169,7 @@ public:
     void registerGlobal(const std::string& property_name, const T& value)
     {
         registerGlobalVariable(property_name, _VariantInterface::makeFrom(value));
-    }
-    /*! Returns value from pool by string, linked on stack
-        \param[in] pos position on stack
-        \return value
-     */
-    template<
-        typename T
-    >
-    dukpp03::Maybe<T> getValueFromPoolByStringFromStack(duk_idx_t pos)
-    {
-        dukpp03::Maybe<T> result;
-        if (duk_is_string(m_context, pos))
-        {
-            Variant* v = this->getValueFromPool(duk_to_string(m_context, pos));
-            if (v)
-            {
-                result = _VariantInterface::template get<T>(v);
-            }
-        }
-        return result;
-    }
+    }    
     /*! Calls function, using self as context
         \param[in] callable a callable value
      */
