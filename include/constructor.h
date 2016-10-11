@@ -19,7 +19,7 @@ template<
     typename _Context,
     typename _ClassName
 >
-class Constructor0 : public dukpp03::FunctionCallable<_Context>
+class Constructor0 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -67,7 +67,7 @@ template<
     typename _ClassName,
     typename _Arg0
 >
-class Constructor1 : public dukpp03::FunctionCallable<_Context>
+class Constructor1 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -117,7 +117,7 @@ template<
     typename _Arg0,
     typename _Arg1
 >
-class Constructor2 : public dukpp03::FunctionCallable<_Context>
+class Constructor2 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -169,7 +169,7 @@ template<
     typename _Arg1,
     typename _Arg2
 >
-class Constructor3 : public dukpp03::FunctionCallable<_Context>
+class Constructor3 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -223,7 +223,7 @@ template<
     typename _Arg2,
     typename _Arg3
 >
-class Constructor4 : public dukpp03::FunctionCallable<_Context>
+class Constructor4 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -279,7 +279,7 @@ template<
     typename _Arg3,
     typename _Arg4
 >
-class Constructor5 : public dukpp03::FunctionCallable<_Context>
+class Constructor5 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -337,7 +337,7 @@ template<
     typename _Arg4,
     typename _Arg5
 >
-class Constructor6 : public dukpp03::FunctionCallable<_Context>
+class Constructor6 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -397,7 +397,7 @@ template<
     typename _Arg5,
     typename _Arg6
 >
-class Constructor7 : public dukpp03::FunctionCallable<_Context>
+class Constructor7 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -459,7 +459,7 @@ template<
     typename _Arg6,
     typename _Arg7
 >
-class Constructor8 : public dukpp03::FunctionCallable<_Context>
+class Constructor8 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -523,7 +523,7 @@ template<
     typename _Arg7,
     typename _Arg8
 >
-class Constructor9 : public dukpp03::FunctionCallable<_Context>
+class Constructor9 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -589,7 +589,7 @@ template<
     typename _Arg8,
     typename _Arg9
 >
-class Constructor10 : public dukpp03::FunctionCallable<_Context>
+class Constructor10 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -657,7 +657,7 @@ template<
     typename _Arg9,
     typename _Arg10
 >
-class Constructor11 : public dukpp03::FunctionCallable<_Context>
+class Constructor11 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -727,7 +727,7 @@ template<
     typename _Arg10,
     typename _Arg11
 >
-class Constructor12 : public dukpp03::FunctionCallable<_Context>
+class Constructor12 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -799,7 +799,7 @@ template<
     typename _Arg11,
     typename _Arg12
 >
-class Constructor13 : public dukpp03::FunctionCallable<_Context>
+class Constructor13 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -873,7 +873,7 @@ template<
     typename _Arg12,
     typename _Arg13
 >
-class Constructor14 : public dukpp03::FunctionCallable<_Context>
+class Constructor14 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -949,7 +949,7 @@ template<
     typename _Arg13,
     typename _Arg14
 >
-class Constructor15 : public dukpp03::FunctionCallable<_Context>
+class Constructor15 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
@@ -1027,7 +1027,7 @@ template<
     typename _Arg14,
     typename _Arg15
 >
-class Constructor16 : public dukpp03::FunctionCallable<_Context>
+class Constructor16 : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object

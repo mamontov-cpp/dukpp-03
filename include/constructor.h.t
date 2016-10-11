@@ -22,7 +22,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class Constructor{{argscount}} : public dukpp03::FunctionCallable<_Context>
+class Constructor{{argscount}} : public dukpp03::Callable<_Context>
 {
 public:
     /*! Constructs new object
