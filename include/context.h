@@ -11,7 +11,6 @@
 #include "variantinterface.h"
 #include "timerinterface.h"
 #include "wrapvalue.h"
-#include "pool.h"
 #include "errorcodes.h"
 #include "callable.h"
 #include "decay.h"
