@@ -78,6 +78,11 @@ public:
         \param[in] an argument number
      */
     virtual void throwInvalidTypeError(int argnumber, const std::string& type);
+    /*! Throws error, that invalid type has passed into function as this
+        \param[in] type expected type
+        \param[in] an argument number
+     */
+    virtual void throwInvalidTypeForThisError(const std::string& type);
     /*! Throws error, that caught exception, when calling function
      */
     virtual void throwCaughtException();

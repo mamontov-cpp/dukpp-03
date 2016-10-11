@@ -114,6 +114,27 @@ public:
     >
     struct CheckArgument
     {
+
+        /*! Checks argument, passed as this, filling a if needed
+            \param[in] c context
+            \param[in] a an argument
+            \param[in] stackValue a value index on stack
+            \param[in] argnumber number of argument
+         */ 
+        static void passedAsThis(_Context* c, dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type >& a)
+        {
+            dukpp03::IsNotPODReference<_Arg>::typeMustBe();
+            duk_push_this(c->context());
+            a = dukpp03::GetValue< typename dukpp03::Decay<_Arg>::Type, _Context >::perform(c, -1);
+            duk_pop(c->context());
+            if (a.exists() == false)
+            {
+                std::string name = _Context::template typeName< _Arg >();
+                c->throwInvalidTypeForThisError(name);
+                throw dukpp03::ArgumentException();
+            }
+        }
+
         /*! Checks argument on stack, filling a if needed
             \param[in] c context
             \param[in] a an argument
@@ -182,6 +203,9 @@ public:
 
 }
 
+/*! A macro for getting maybe value from this stack
+ */
+#define DUKPP03_MAYBE_FROM_THIS(TYPE)  dukpp03::Maybe< typename dukpp03::Decay< DUKPP03_TYPE(TYPE) >::Type > _ac; Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::passedAsThis(c, _ac)
 /*! A macro for getting maybe value from stack
  */
 #define DUKPP03_MAYBE_FROM_STACK(TYPE, NAME, STACKV, NUMBER)  dukpp03::Maybe< typename dukpp03::Decay< DUKPP03_TYPE(TYPE) >::Type > _a##NAME; Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::onStack(c, _a##NAME, STACKV, NUMBER)

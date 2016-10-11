@@ -113,6 +113,15 @@ void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::s
     this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
 }
 
+
+void dukpp03::AbstractContext::throwInvalidTypeForThisError(const std::string& type)
+{
+    std::ostringstream ss;
+    ss << "Invalid type passed as this. Current object must have type " << type;
+    this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
+}
+
+
 void dukpp03::AbstractContext::throwFunctionCallShouldBeACalledOnlyAsConstructor()
 {
     this->throwError("Function should be called only as constructor");
