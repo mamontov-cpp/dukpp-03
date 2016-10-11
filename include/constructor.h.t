@@ -55,7 +55,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}        
         _ClassName  t{{#has_args}}({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}}){{/has_args}};
-        dukpp03::PushValue<_ClassName, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ClassName, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited

@@ -34,10 +34,10 @@ static void perform(_Context* ctx, duk_idx_t pos, dukpp03::Maybe<_Value>& result
     if (duk_is_object(ctx->context(), pos))
     {
        duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
-        if (duk_is_string(ctx->context(), -1))
+        if (duk_is_pointer(ctx->context(), -1))
         {
-            const char* string = duk_to_string(ctx->context(), -1);
-            typename _Context::Variant * v = ctx->getValueFromPool(string);
+            void* ptr = duk_to_pointer(ctx->context(), -1);
+            typename _Context::Variant * v = reinterpret_cast<typename _Context::Variant *>(ptr);
             if (v)
             {
                 result = _Context::template valueFromVariant<_Value>(v);

@@ -1264,7 +1264,7 @@ public:
     {
         DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
         _ReturnType t = ((_ac._()).*m_callee)();
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1323,7 +1323,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1384,7 +1384,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1447,7 +1447,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
         DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1512,7 +1512,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
         DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1579,7 +1579,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
         DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1648,7 +1648,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
         DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1719,7 +1719,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
         DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1792,7 +1792,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
         DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1867,7 +1867,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
         DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -1944,7 +1944,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
         DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2023,7 +2023,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
         DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2104,7 +2104,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
         DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2187,7 +2187,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
         DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2272,7 +2272,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
         DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2359,7 +2359,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
         DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -2448,7 +2448,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
         DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -3748,7 +3748,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
                
         _ReturnType t = ((_ac._()).*m_callee)();
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -3808,7 +3808,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 1, 2);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -3870,7 +3870,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 2, 3);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -3934,7 +3934,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg2, 2, 3, 4);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4000,7 +4000,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg3, 3, 4, 5);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4068,7 +4068,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg4, 4, 5, 6);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4138,7 +4138,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg5, 5, 6, 7);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4210,7 +4210,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg6, 6, 7, 8);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4284,7 +4284,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg7, 7, 8, 9);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4360,7 +4360,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg8, 8, 9, 10);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4438,7 +4438,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg9, 9, 10, 11);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4518,7 +4518,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg10, 10, 11, 12);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4600,7 +4600,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg11, 11, 12, 13);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4684,7 +4684,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg12, 12, 13, 14);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4770,7 +4770,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg13, 13, 14, 15);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4858,7 +4858,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg14, 14, 15, 16);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited
@@ -4948,7 +4948,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg15, 15, 16, 17);
                
         _ReturnType t = ((_ac._()).*m_callee)(_a0._(), _a1._(), _a2._(), _a3._(), _a4._(), _a5._(), _a6._(), _a7._(), _a8._(), _a9._(), _a10._(), _a11._(), _a12._(), _a13._(), _a14._(), _a15._());
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited

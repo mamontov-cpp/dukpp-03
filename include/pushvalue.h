@@ -24,9 +24,9 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const _Value& v, bool persistent)
+    static void perform(_Context* ctx, const _Value& v)
     {        
-        ctx->template pushVariant<_Value>(_Context::VariantUtils::template makeFrom(v), persistent);
+        ctx->template pushVariant<_Value>(_Context::VariantUtils::template makeFrom(v));
     }
 };
 
@@ -42,7 +42,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const bool& v, bool persistent)
+    static void perform(_Context* ctx, const bool& v)
     {
         duk_push_boolean(ctx->context(), v);
     }
@@ -60,7 +60,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const char& v, bool persistent)
+    static void perform(_Context* ctx, const char& v)
     {
         char buffer[2] = {v, 0};
         duk_push_string(ctx->context(), buffer);
@@ -79,7 +79,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const unsigned char& v, bool persistent)
+    static void perform(_Context* ctx, const unsigned char& v)
     {
         char buffer[2] = {*reinterpret_cast<const char*>(&v), 0};
         duk_push_string(ctx->context(), buffer);
@@ -98,7 +98,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const int& v, bool persistent)
+    static void perform(_Context* ctx, const int& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -116,7 +116,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const unsigned int& v, bool persistent)
+    static void perform(_Context* ctx, const unsigned int& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -134,7 +134,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const long& v, bool persistent)
+    static void perform(_Context* ctx, const long& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -151,7 +151,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const unsigned long& v, bool persistent)
+    static void perform(_Context* ctx, const unsigned long& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -168,7 +168,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const long long& v, bool persistent)
+    static void perform(_Context* ctx, const long long& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -185,7 +185,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const unsigned long long& v, bool persistent)
+    static void perform(_Context* ctx, const unsigned long long& v)
     {
         duk_push_int(ctx->context(), v);
     }
@@ -202,7 +202,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const float& v, bool persistent)
+    static void perform(_Context* ctx, const float& v)
     {
         if (v != v)
         {
@@ -224,7 +224,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const double& v, bool persistent)
+    static void perform(_Context* ctx, const double& v)
     {
         if (v != v)
         {
@@ -245,7 +245,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const long double& v, bool persistent)
+    static void perform(_Context* ctx, const long double& v)
     {
         if (v != v)
         {
@@ -266,7 +266,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const char*& v, bool persistent)
+    static void perform(_Context* ctx, const char*& v)
     {
         duk_push_string(ctx->context(), v);
     }
@@ -284,7 +284,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const char*& v, bool persistent)
+    static void perform(_Context* ctx, const char*& v)
     {
         duk_push_string(ctx->context(), v);
     }
@@ -301,7 +301,7 @@ public:
         \param[in] v value
         \param[in] persistent whether value should be in persistent stack 
      */
-    static void perform(_Context* ctx, const std::string& v, bool persistent)
+    static void perform(_Context* ctx, const std::string& v)
     {
         duk_push_string(ctx->context(), v.c_str());
     }

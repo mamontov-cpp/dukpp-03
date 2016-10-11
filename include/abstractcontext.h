@@ -40,9 +40,6 @@ public:
         \param[in] code error codes
      */
     void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::D03_DUK_E5_ERROR);
-    /*! Cleans non-persistent pool of objects, resetting it
-     */
-    virtual void clean() = 0;
     /*! Resets context fully, erasing all data
      */
     virtual void reset() = 0;

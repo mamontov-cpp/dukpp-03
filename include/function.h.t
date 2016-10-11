@@ -123,7 +123,7 @@ public:
 {{/args}}
 
         _ReturnType t = m_callee({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
-        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t, false);
+        dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
     /*! Can be inherited

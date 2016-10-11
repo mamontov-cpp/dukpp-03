@@ -54,10 +54,6 @@ bool dukpp03::AbstractContext::eval(const std::string& string, bool clean_heap, 
             duk_pop(m_context);
         }
     }
-    if (clean_heap)
-    {
-        this->clean();
-    }
     m_running = false;
     return result;
 }
