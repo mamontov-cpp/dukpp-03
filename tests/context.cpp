@@ -154,6 +154,41 @@ public:
 
 };
 
+/*! A  callable from this (seoond)
+ */
+class PointConstructor: public dukpp03::ConstructorCallable<dukpp03::context::Context>
+{
+public:
+    PointConstructor()
+    {
+        
+    }
+
+    Callable* clone()
+    {
+        return new PointConstructor();
+    }
+
+    /*! Returns count of required arguments
+        \return count of required arguments
+     */
+    virtual int requiredArguments()
+    {
+        return 0;
+    }
+    /*! Performs call of object, using specified context
+        \param[in] c context
+        \return count of values on stack, placed by functions
+     */
+    virtual int call(dukpp03::context::Context* c)
+    {        
+        dukpp03::PushValue<Point, dukpp03::context::Context>::perform(c, Point());
+        duk_push_string(c->context(), "Point");
+        duk_put_prop_string(c->context(), -2, "name");
+        return 1;
+    }
+};
+
 struct ContextTest : tpunit::TestFixture
 {
 public:
@@ -168,7 +203,8 @@ public:
        TEST(ContextTest::testRegisterGlobal),
        TEST(ContextTest::testRegisterCallable),
        TEST(ContextTest::testRegisterThisCallable),
-       TEST(ContextTest::testRegisterThisCallableWithArg)
+       TEST(ContextTest::testRegisterThisCallableWithArg),
+       TEST(ContextTest::testPointConstructor)
     ) {}
 
     /*! Tests getting and setting reference data
@@ -433,6 +469,19 @@ public:
         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( result.value() == 31 );        
+    }
+    
+    void testPointConstructor()
+    {    
+        std::string error;
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("Point", new PointConstructor());
+        bool eval_result = ctx.eval("var a = new Point(); print(a.name)", false, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );  
     }
     
 } _context_test;

@@ -9,7 +9,7 @@
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
-#define TEST_INTERACTIVE
+//#define TEST_INTERACTIVE
 int main(int argc, char** argv)
 {
 #ifdef TEST_INTERACTIVE
