@@ -21,8 +21,22 @@ int main(int argc, char** argv)
     ctr->add(new dukpp03::Constructor0<dukpp03::context::Context, Point>());
     ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, double, double>());
     ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, std::string, std::string>());
+
+
+    dukpp03::MultiMethod<dukpp03::context::Context>* x = new dukpp03::MultiMethod<dukpp03::context::Context>();
+    x->add(bnd::from(&Point::x));
+    x->add(bnd::from(&Point::setX));
+    x->add(bnd::from(&Point::setXS));
+
+    dukpp03::MultiMethod<dukpp03::context::Context>* y = new dukpp03::MultiMethod<dukpp03::context::Context>();
+    y->add(bnd::from(&Point::y));
+    y->add(bnd::from(&Point::setY));
+    y->add(bnd::from(&Point::setYS));
     
     t.registerCallable("Point", ctr);
+    t.registerCallable("mx", x);
+    t.registerCallable("my", y);
+
     t.registerCallable("x", mkm::from(&Point::x));
     t.registerCallable("y", mkm::from(&Point::y));
 

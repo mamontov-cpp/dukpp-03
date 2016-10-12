@@ -53,7 +53,8 @@ public:
        TEST(CallablesTest::testRegisterVoidFunctions),
        TEST(CallablesTest::testRegisterReturnFunctions),
        TEST(CallablesTest::testMethods),
-       TEST(CallablesTest::testPtrMethods)
+       TEST(CallablesTest::testPtrMethods),
+       TEST(CallablesTest::testThisMethods)
     ) {}
 
      /*! Tests registering functions
@@ -173,6 +174,25 @@ public:
             std::cout << "Point x value is " << result.value() << "\n";
         }
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 55) );
+    }
+    
+    void testThisMethods()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        register_constructor::in_context<Point, double, double>(&ctx, "pnt");
+        ctx.registerCallable("x", bnd::from(&Point::x));
+        ctx.registerCallable("y", bnd::from(&Point::y));
+
+        ctx.registerCallable("setX", bnd::from(&Point::setX));
+        ctx.registerCallable("setY", bnd::from(&Point::setY));
+
+        bool eval_result = ctx.eval(" var f = pnt(3, 4); f.x = x; f.setX = setX;  f.setX(12);  f.x() ", false);
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 12) );
     }
     
 } _callables_test;

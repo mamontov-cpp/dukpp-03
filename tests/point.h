@@ -22,11 +22,11 @@ struct Point
      */
     Point();
     /*! Reads point coordinate from string
-		\param[in] s1 first string
-		\param[in] s2 second string
-	 */
-	Point(const std::string& s1, const std::string& s2);
-	/*! Constructs new point
+        \param[in] s1 first string
+        \param[in] s2 second string
+     */
+    Point(const std::string& s1, const std::string& s2);
+    /*! Constructs new point
         \param[in] x first coordinate
         \param[in] y second coordinate
      */
@@ -36,11 +36,19 @@ struct Point
         \param[in] x x coordinate
      */
     void setX(int x);
+    /*! Sets x coordiate from string
+        \param[in] s string
+     */
+    void setXS(const std::string& s);
     
     /*! Sets y coordinate
         \param[in] y y coordinate
      */
     void setY(int y);
+    /*! Sets y coordiate from string
+        \param[in] s string
+     */
+    void setYS(const std::string& s);
     
     /*! Returns x coordinate
         \return x coordinate

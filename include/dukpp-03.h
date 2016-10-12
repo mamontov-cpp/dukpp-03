@@ -10,5 +10,6 @@
 #include "context.h"
 #include "function.h"
 #include "method.h"
+#include "thismethod.h"
 #include "constructor.h"
 #include "multimethod.h"

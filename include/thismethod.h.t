@@ -41,23 +41,23 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::ThisVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
-    }	
+    }
     /*! Returns count of required arguments
         \return count of required arguments
      */
     virtual int requiredArguments()
     {
-        return {{argscountp1}};
+        return {{argscount}};
     }
 
-    DUKPP03_CBCT_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_THIS
+        DUKPP03_MAYBE_FROM_THIS(_ClassName);
 {{#args}}
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}
@@ -86,7 +86,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class RetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
+class ThisRetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -95,7 +95,7 @@ public:
     /*! Constructs new function wrapper
         \param[in] f function
      */
-    RetMethod{{argscount}}(Method f): m_callee(f)   
+    ThisRetMethod{{argscount}}(Method f): m_callee(f)   
     {
     }
     /*! Returns copy of callable object
@@ -103,26 +103,26 @@ public:
      */
     virtual dukpp03::Callable<_Context>* clone()  
     {
-        return new dukpp03::RetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
+        return new dukpp03::ThisRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments()
     {
-        return {{argscountp1}};
+        return {{argscount}};
     }
 
-    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName);
 {{#args}}
-        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}
         _ReturnType t = ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
@@ -130,7 +130,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~RetMethod{{argscount}}()
+    virtual ~ThisRetMethod{{argscount}}()
     {
     }
 protected:
@@ -150,7 +150,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstVoidMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
+class ThisConstVoidMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -159,7 +159,7 @@ public:
     /*! Constructs new function wrapper
         \param[in] f function
      */
-    ConstVoidMethod{{argscount}}(Method f): m_callee(f)   
+    ThisConstVoidMethod{{argscount}}(Method f): m_callee(f)   
     {
     
     }
@@ -168,33 +168,33 @@ public:
      */
     virtual dukpp03::Callable<_Context>* clone()
     {
-        return new dukpp03::ConstVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
+        return new dukpp03::ThisConstVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
     virtual int requiredArguments()
     {
-        return {{argscountp1}};
+        return {{argscount}};
     }
 
-    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName);
 {{#args}}
-        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
-{{/args}}               
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
+{{/args}}              
         ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         return 0;
     }
     /*! Can be inherited
      */
-    virtual ~ConstVoidMethod{{argscount}}()
+    virtual ~ThisConstVoidMethod{{argscount}}()
     {
     }   
 protected:
@@ -214,7 +214,7 @@ template<
 {{#args}}{{#not_last}}    typename _Arg{{number}},{{/not_last}}{{#last}}    typename _Arg{{number}}{{/last}}
 {{/args}}
 >
-class ConstRetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
+class ThisConstRetMethod{{argscount}} : public dukpp03::FunctionCallable<_Context>
 {
 public:
     /*! A function type, which is being wrapped
@@ -223,7 +223,7 @@ public:
     /*! Constructs new function wrapper
         \param[in] f function
      */
-    ConstRetMethod{{argscount}}(Method f): m_callee(f)   
+    ThisConstRetMethod{{argscount}}(Method f): m_callee(f)   
     {
     }
     /*! Returns copy of callable object
@@ -231,26 +231,26 @@ public:
      */
     virtual dukpp03::Callable<_Context>* clone()  
     {
-        return new dukpp03::ConstRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
+        return new dukpp03::ThisConstRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments()
     {
-        return {{argscountp1}};
+        return {{argscount}};
     }
 
-    DUKPP03_CBC_{{argscountp1}}(0,_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_STACK(_ClassName, c, 0, 1);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName);
 {{#args}}
-        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{numberp1}}, {{numberp2}});
+        DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}               
         _ReturnType t = ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
@@ -258,7 +258,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ConstRetMethod{{argscount}}()
+    virtual ~ThisConstRetMethod{{argscount}}()
     {
     }
 protected:
@@ -271,7 +271,7 @@ protected:
 template<
     typename _Context
 >
-struct make_method
+struct bind_method
 {
 {{#variants}}
 /*! Makes callable from method which returns nothing and receives {{argscount}} arguments
@@ -285,7 +285,7 @@ template<
 >
 static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
-    return new VoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
+    return new ThisVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
 
 {{/variants}}
@@ -303,7 +303,7 @@ template<
 >
 static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}))
 {
-    return new RetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
+    return new ThisRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
 
 {{/variants}}
@@ -319,7 +319,7 @@ template<
 >
 static inline dukpp03::Callable<_Context>* from(void (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
-    return new ConstVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
+    return new ThisConstVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
 
 {{/variants}}
@@ -337,7 +337,7 @@ template<
 >
 static inline dukpp03::Callable<_Context>* from(_ReturnType (_ClassName::*f)({{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}) const)
 {
-    return new ConstRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
+    return new ThisConstRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}{{#not_last}}_Arg{{number}}, {{/not_last}}{{#last}}_Arg{{number}}{{/last}}{{/args}}>(f);
 }
 
 {{/variants}}

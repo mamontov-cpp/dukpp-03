@@ -149,10 +149,13 @@ static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
     return c->call(callableptr);
 }
 
-void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable)
+void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable, bool own)
 {
    assert(callable);
-   addCallableToSet(callable);
+   if (own)
+   {
+      addCallableToSet(callable);
+   }
    
    duk_push_c_function(m_context, dukpp03_context_invoke_wrapper, DUK_VARARGS);
    

@@ -26,9 +26,21 @@ void Point::setX(int x)
     this->m_x = x;
 }
 
+void Point::setXS(const std::string& s)
+{
+    std::istringstream str1(s);
+    str1 >> m_x;
+}
+
 void Point::setY(int y)
 {
     this->m_y = y;
+}
+
+void Point::setYS(const std::string& s)
+{
+    std::istringstream str1(s);
+    str1 >> m_y;
 }
 
 int Point::x() const

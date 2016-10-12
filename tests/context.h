@@ -21,3 +21,5 @@ typedef dukpp03::Context<dukpp03::utils::MapInterface, dukpp03::utils::VariantIn
 typedef dukpp03::make_fun<dukpp03::context::Context> mkf;
 typedef dukpp03::register_constructor<dukpp03::context::Context> register_constructor;
 typedef dukpp03::make_method<dukpp03::context::Context> mkm;
+typedef dukpp03::bind_method<dukpp03::context::Context> bnd;
+

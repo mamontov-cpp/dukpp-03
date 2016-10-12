@@ -99,10 +99,10 @@ protected:
      */
     void registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable);
     /*! Pushes callable to stack
-        \param[in] callable_name name of property of global object
         \param[in] callable a callable object
+        \param[in] own whether context will own callable
      */
-    void pushCallable(dukpp03::AbstractCallable* callable);
+    void pushCallable(dukpp03::AbstractCallable* callable, bool own = true);
     /*! Inits context for evaluating
      */
     virtual void initContextBeforeAccessing();

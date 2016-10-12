@@ -173,10 +173,62 @@ public:
     }
     /*! Pushes callable to property of global object
         \param[in] callable a callable object
+        \param[in] own whether we would own this callable
      */
-    void pushCallable(LocalCallable* callable)
+    void pushCallable(LocalCallable* callable, bool own = true)
     {
-        this->dukpp03::AbstractContext::pushCallable(callable);
+        this->dukpp03::AbstractContext::pushCallable(callable, own);
+    }
+    /*! Sets immutable property for value on stack top
+        \param[in] propname a property name
+        \param[in] v a value for property
+     */
+    template<
+        typename _Value
+    >
+    void registerImmutableProperty(const std::string& propname, const _Value& v)
+    {
+        duk_push_string(m_context, propname.c_str());
+        this->template pushVariant<_Value>(VariantUtils::template makeFrom(v));
+        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+    }
+    /*! Sets mutable property for value on stack top
+        \param[in] propname a property name
+        \param[in] v a value for property 
+     */
+    template<
+        typename _Value
+    >
+    void registerMutableProperty(const std::string& propname, const _Value& v)
+    {
+        duk_push_string(m_context, propname.c_str());
+        this->template pushVariant<_Value>(VariantUtils::template makeFrom(v));
+        duk_put_prop(m_context, -3);
+    }
+    /*! Sets immutable callable property for value on stack top.
+        \param[in] propname a property name
+        \param[in] v a callable object
+        \param[in] own whether we would own callable
+     */
+    void registerImmutableCallable(const std::string& propname, LocalCallable* callable, bool own)
+    {
+        duk_push_string(m_context, propname.c_str());
+        this->pushCallable(callable, own);
+        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+    }
+    /*! Sets mutable callable property  for value on stack top. 
+        \param[in] propname a property name
+        \param[in] v a callable object 
+        \param[in] own whether we would own callable
+      */
+    template<
+        typename _Value
+    >
+    void registerMutableProperty(const std::string& propname, LocalCallable* callable, bool own)
+    {
+        duk_push_string(m_context, propname.c_str());
+        this->pushCallable(callable, own);
+        duk_put_prop(m_context, -3);
     }
     /*! Returns value from variant
         \param[in] v variant
