@@ -46,6 +46,13 @@ int return_number_3_decay(const int& a, int /*& - can't use it here, will be bug
     return a - b - c;
 }
 
+compiledfunc func;
+
+void set_func(const compiledfunc& f)
+{
+    func = f;
+}
+
 struct CallablesTest : tpunit::TestFixture
 {
 public:
@@ -56,7 +63,10 @@ public:
        TEST(CallablesTest::testPtrMethods),
        TEST(CallablesTest::testThisMethods),
        TEST(CallablesTest::testLocalProperty),
-       TEST(CallablesTest::testRegisterAttribute)   
+       TEST(CallablesTest::testRegisterAttribute), 
+       TEST(CallablesTest::testCompiledFunction),
+       TEST(CallablesTest::testCompiledFunction2),
+       TEST(CallablesTest::testCompiledFunction3)  
     ) {}
 
      /*! Tests registering functions
@@ -240,6 +250,90 @@ public:
         dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 120) );
+    }
+    
+    void testCompiledFunction()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ctx.registerCallable("setFunction", mkf::from(set_func));
+        ASSERT_TRUE( ctx.getTop() == 0);
+
+        bool eval_result = ctx.eval(" setFunction(function(a) { print(a); return a;  }); ", false,  &error);
+        ctx.cleanStack();
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ASSERT_TRUE( eval_result );
+        ASSERT_TRUE( func.valid() );
+        
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
+        int evalresult = func.call(&ctx);
+        ASSERT_TRUE(evalresult == 1);
+        dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == 22 );
+    }
+    
+    void testCompiledFunction2()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ctx.registerCallable("setFunction", mkf::from(set_func));
+        ASSERT_TRUE( ctx.getTop() == 0);
+
+        bool eval_result = ctx.eval(" setFunction(function(a, b) { }); ", false,  &error);
+        ctx.cleanStack();
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ASSERT_TRUE( eval_result );
+        ASSERT_TRUE( func.valid() );
+        
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
+        int evalresult = func.call(&ctx);
+        ASSERT_TRUE(evalresult == 0);
+    }
+    
+    void testCompiledFunction3()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ctx.registerCallable("setFunction", mkf::from(set_func));
+        ASSERT_TRUE( ctx.getTop() == 0);
+
+        bool eval_result = ctx.eval(" setFunction(function(a, b) { f = m + 2; cvrdze(); }); ", false,  &error);
+        ctx.cleanStack();
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( ctx.getTop() == 0);
+        ASSERT_TRUE( eval_result );
+        ASSERT_TRUE( func.valid() );
+        
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
+        dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
+        int evalresult = func.call(&ctx);
+
+        ASSERT_TRUE(evalresult != 0 && evalresult != 1);
+        dukpp03::Maybe<std::string> data = ctx.errorOnStack(-1);
+        if (data.exists())
+        {
+             std::cout << data.value() << "\n";
+        }
+        ASSERT_TRUE(data.exists());
     }
     
 } _callables_test;

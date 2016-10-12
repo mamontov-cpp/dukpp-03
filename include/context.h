@@ -179,11 +179,30 @@ public:
     {
         duk_push_object(m_context);
     }
+    /*! Returns error string from stack if it's herer
+        \param[in] pos a position on stack
+        \return error string from stack
+     */
+    dukpp03::Maybe<std::string> errorOnStack(int pos)
+    {
+        dukpp03::Maybe<std::string> result;
+        if (duk_is_error(m_context, pos))
+        {
+            result.setValue(duk_safe_to_string(m_context, pos));
+        }
+        return result;
+    }
     /*! Pops object from stack
      */
     void pop()
     {
         duk_pop(m_context);
+    }
+    /*! Cleans stack from other values. Useful after evaluating code
+     */
+    void cleanStack()
+    {
+        while(getTop()) this->pop();
     }
     /*! Registers variable as global object, pushing it into a persistent stack. Replaces existing property.
         \param[in] property_name name of new property of global object

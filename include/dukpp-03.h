@@ -13,3 +13,4 @@
 #include "thismethod.h"
 #include "constructor.h"
 #include "multimethod.h"
+#include "compiledfunction.h"
