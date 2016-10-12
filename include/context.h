@@ -14,19 +14,20 @@
 #include "errorcodes.h"
 #include "callable.h"
 #include "decay.h"
+#include <iostream>
 
 /*! A property name for an object, which must have this property set to a string variant
  */
 #define DUKPP03_VARIANT_PROPERTY_SIGNATURE "\1dukpp03::Variant\1"
-/*! A signature, which points, that current string is linked to variant pool
- */
-#define DUKPP03_VARIANT_SIGNATURE "\1dukpp03::Variant\1"
-/*! A signature, which points, that current string is linked to variant persistent
- */
-#define DUKPP03_PERSISTENT_VARIANT_SIGNATURE "\1dukpp03::Variant__persistent\1"
 
 namespace dukpp03
 {
+
+template<
+    typename _Value,
+    typename _Context
+>
+class PushValue;
 
 /*! A miscellaneous class, for performing garbage collection, 
     used as finalizer in duktape. Specialize this class, to overload
@@ -44,6 +45,9 @@ struct Finalizer
      */
     static duk_ret_t finalize(duk_context *ctx);
 };
+
+
+
 
 /*! A wrapper around basic duktape context with replaceable map, timer and variant implementations
  */
@@ -145,6 +149,30 @@ public:
             duk_pop(m_context);
         }
     }
+    /*! Marks top object on stack as global with name without removing it from stack
+        \param[in] property_name a name of object
+        \return true if object is not on stack
+     */
+    bool markTopObjectAsGlobal(const std::string& property_name)
+    {
+        if (this->getTop() == 0)
+        {
+            return false;
+        }
+        duk_dup_top(m_context);
+        duk_push_string(m_context, property_name.c_str());
+        duk_push_global_object(m_context);
+        duk_swap(m_context, -3, -1); 
+        duk_put_prop(m_context, -3);
+        duk_pop(m_context);
+        return true;
+    }
+    /*! Pops object from stack
+     */
+    void pop()
+    {
+        duk_pop(m_context);
+    }
     /*! Registers variable as global object, pushing it into a persistent stack. Replaces existing property.
         \param[in] property_name name of new property of global object
         \param[in] value a value to be registered
@@ -189,7 +217,7 @@ public:
     void registerImmutableProperty(const std::string& propname, const _Value& v)
     {
         duk_push_string(m_context, propname.c_str());
-        this->template pushVariant<_Value>(VariantUtils::template makeFrom(v));
+        dukpp03::PushValue<_Value, Self>::perform(this, v);
         duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
     }
     /*! Sets mutable property for value on stack top
@@ -202,7 +230,7 @@ public:
     void registerMutableProperty(const std::string& propname, const _Value& v)
     {
         duk_push_string(m_context, propname.c_str());
-        this->template pushVariant<_Value>(VariantUtils::template makeFrom(v));
+        dukpp03::PushValue<_Value, Self>::perform(this, v);
         duk_put_prop(m_context, -3);
     }
     /*! Sets immutable callable property for value on stack top.
@@ -210,7 +238,7 @@ public:
         \param[in] v a callable object
         \param[in] own whether we would own callable
      */
-    void registerImmutableCallable(const std::string& propname, LocalCallable* callable, bool own)
+    void registerImmutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)
     {
         duk_push_string(m_context, propname.c_str());
         this->pushCallable(callable, own);
@@ -221,10 +249,7 @@ public:
         \param[in] v a callable object 
         \param[in] own whether we would own callable
       */
-    template<
-        typename _Value
-    >
-    void registerMutableProperty(const std::string& propname, LocalCallable* callable, bool own)
+    void registerMutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)
     {
         duk_push_string(m_context, propname.c_str());
         this->pushCallable(callable, own);

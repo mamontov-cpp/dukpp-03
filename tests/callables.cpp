@@ -54,7 +54,8 @@ public:
        TEST(CallablesTest::testRegisterReturnFunctions),
        TEST(CallablesTest::testMethods),
        TEST(CallablesTest::testPtrMethods),
-       TEST(CallablesTest::testThisMethods)
+       TEST(CallablesTest::testThisMethods),
+       TEST(CallablesTest::testLocalProperty)
     ) {}
 
      /*! Tests registering functions
@@ -193,6 +194,29 @@ public:
         dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 12) );
+    }
+    
+    void testLocalProperty()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        Point pts2d(3,4);
+        dukpp03::PushValue<Point, dukpp03::context::Context>::perform(&ctx, pts2d);
+        ctx.registerImmutableProperty("_x", 2);
+        ctx.registerImmutableProperty("x", bnd::from(&Point::x));
+        ctx.markTopObjectAsGlobal("pnt");
+        ctx.pop();
+
+        bool eval_result = ctx.eval(" pnt._x + pnt.x() ", false,  &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 5) );
     }
     
 } _callables_test;
