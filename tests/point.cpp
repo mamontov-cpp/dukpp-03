@@ -28,6 +28,7 @@ void Point::setX(int x)
 
 void Point::setXS(const std::string& s)
 {
+    std::cout << "Point::setXS\n";
     std::istringstream str1(s);
     str1 >> m_x;
 }
@@ -39,6 +40,7 @@ void Point::setY(int y)
 
 void Point::setYS(const std::string& s)
 {
+    std::cout << "Point::setYS\n";
     std::istringstream str1(s);
     str1 >> m_y;
 }
@@ -51,4 +53,16 @@ int Point::x() const
 int Point::y() const
 {
     return m_y;
+}
+
+int Point::xv(const std::string& r) const
+{
+    std::cout << r << "\n";
+    return m_x;
+}
+
+void Point::setXV(int x, const std::string& r)
+{
+    std::cout << r << "\n";
+    this->m_x = x;
 }

@@ -50,6 +50,16 @@ struct Point
      */
     void setYS(const std::string& s);
     
+    /*! A simple string-passing getter
+        \param[in] s a getter
+        \return value
+     */
+    int xv(const std::string& s) const;
+    /*! A simple string-passing setter
+        \param[in] s a setter
+        \param[in] x a value
+     */
+    void setXV(int x, const std::string& s);
     /*! Returns x coordinate
         \return x coordinate
      */ 

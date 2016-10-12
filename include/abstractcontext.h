@@ -101,8 +101,9 @@ protected:
     /*! Pushes callable to stack
         \param[in] callable a callable object
         \param[in] own whether context will own callable
+        \param[in] as_attribute push as attribute getter (adds additional pop in wrapper)
      */
-    void pushCallable(dukpp03::AbstractCallable* callable, bool own = true);
+    void pushCallable(dukpp03::AbstractCallable* callable, bool own = true, bool as_attribute = false);
     /*! Inits context for evaluating
      */
     virtual void initContextBeforeAccessing();

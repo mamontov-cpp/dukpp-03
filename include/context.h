@@ -167,6 +167,12 @@ public:
         duk_pop(m_context);
         return true;
     }
+    /*! Pushes new default object to stack
+     */
+    void pushObject()
+    {
+        duk_push_object(m_context);
+    }
     /*! Pops object from stack
      */
     void pop()
@@ -254,6 +260,44 @@ public:
         duk_push_string(m_context, propname.c_str());
         this->pushCallable(callable, own);
         duk_put_prop(m_context, -3);
+    }
+    /*! Registers new attribute property for value on stack top
+        \param[in] propname a property name
+        \param[in] getter a getter
+        \param[in] owngetter whether context should own getter
+        \param[in] setter a setter
+        \param[in] ownsetter whether context should own setter
+     */
+    void registerAtribute(
+        const std::string& propname, 
+        LocalCallable* getter,
+        bool owngetter,
+        LocalCallable* setter,
+        bool ownsetter    
+    )
+    {
+        // Do not allow empty attributes
+        if (!getter && !setter)
+        {
+            return;
+        }
+        duk_push_string(m_context, propname.c_str());
+        duk_idx_t obj = -2;
+        duk_uint_t flags = DUK_DEFPROP_HAVE_CONFIGURABLE | DUK_DEFPROP_HAVE_ENUMERABLE | DUK_DEFPROP_ENUMERABLE;
+        if (getter)
+        {
+            flags = flags | DUK_DEFPROP_HAVE_GETTER;
+            this->dukpp03::AbstractContext::pushCallable(getter, owngetter, true);
+            obj -= 1;
+        }
+        
+        if (setter)
+        {
+            flags = flags | DUK_DEFPROP_HAVE_SETTER;
+            this->dukpp03::AbstractContext::pushCallable(setter, ownsetter, true);
+            obj -= 1;
+        }
+        duk_def_prop(m_context, obj, flags);
     }
     /*! Returns value from variant
         \param[in] v variant

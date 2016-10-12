@@ -149,7 +149,14 @@ static int dukpp03_context_invoke_wrapper(duk_context *ctx) {
     return c->call(callableptr);
 }
 
-void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable, bool own)
+static int dukpp03_attribute_invoke_wrapper(duk_context *ctx) {
+    // Pop attribute value, which will be last on stack
+    duk_pop(ctx);    
+
+    return dukpp03_context_invoke_wrapper(ctx);
+}
+
+void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable, bool own, bool as_attribute)
 {
    assert(callable);
    if (own)
@@ -157,7 +164,13 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
       addCallableToSet(callable);
    }
    
-   duk_push_c_function(m_context, dukpp03_context_invoke_wrapper, DUK_VARARGS);
+   int (*wrapper)(duk_context* ctx) = dukpp03_context_invoke_wrapper;
+   if (as_attribute)
+   {
+       wrapper = dukpp03_attribute_invoke_wrapper;
+   }
+   
+   duk_push_c_function(m_context, wrapper, DUK_VARARGS);
    
    duk_push_string(m_context, DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY);   
    duk_push_pointer(m_context, callable);
