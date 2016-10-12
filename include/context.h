@@ -29,6 +29,12 @@ template<
 >
 class PushValue;
 
+template<
+    typename _Value,
+    typename _Context
+>
+class GetValue;
+
 /*! A miscellaneous class, for performing garbage collection, 
     used as finalizer in duktape. Specialize this class, to overload
     finalization for objects of specific value.
@@ -298,6 +304,20 @@ public:
             obj -= 1;
         }
         duk_def_prop(m_context, obj, flags);
+    }
+    /*! Get global object from value
+        \param[in] propname a property for global object
+        \return a value
+     */
+    template<
+        typename _Value
+    >
+    dukpp03::Maybe<_Value> getGlobal(const std::string& propname)
+    {
+        duk_get_global_string(m_context, propname.c_str());
+        dukpp03::Maybe<_Value> result = dukpp03::GetValue<_Value, Self>::perform(this, -1);
+        duk_pop(m_context);
+        return result;
     }
     /*! Returns value from variant
         \param[in] v variant

@@ -204,7 +204,8 @@ public:
        TEST(ContextTest::testRegisterCallable),
        TEST(ContextTest::testRegisterThisCallable),
        TEST(ContextTest::testRegisterThisCallableWithArg),
-       TEST(ContextTest::testPointConstructor)
+       TEST(ContextTest::testPointConstructor),
+       TEST(ContextTest::testGlobal)   
     ) {}
 
     /*! Tests getting and setting reference data
@@ -482,6 +483,14 @@ public:
             std::cout << error << "\n";
         }
         ASSERT_TRUE( eval_result );  
+    }
+    
+    void testGlobal()
+    {
+        dukpp03::context::Context ctx;
+        ctx.registerGlobal("x", 2);
+        dukpp03::Maybe<int> m = ctx.getGlobal<int>("x"); 
+        ASSERT_TRUE( m.value() == 2 );  
     }
     
 } _context_test;
