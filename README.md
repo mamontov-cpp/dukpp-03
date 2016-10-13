@@ -38,7 +38,7 @@ typedef dukpp03::ClassBinding<Context> ClassBinding;
 ```
 ...and we are ready to start binding functions and classes.
 
-## Binding classes and structures to be used in script
+## Binding classes and structures to be used in JavaScript
 
 Let's start by having struct:
 
@@ -59,7 +59,7 @@ struct Point
 };
 ```
 
-To use it in script you can just do
+To use it in script, you can just do
 
 ```cpp
 Context t;
@@ -81,3 +81,43 @@ t.addClassBinding<Point>(c);
 // And you can write code like these, after binding class
 t.eval("var a = new Point(), b = new Point(2,3); print(a.x() + a.m_x);", false)
 ```
+
+## Binding functions
+
+You can bind a functions too:
+
+```cpp
+
+void print_number_3(int a, int b, int c)
+{
+    printf("print_number_3: %d %d %d\n", a, b, c ); 
+}
+
+... Somewhere in main
+Context ctx;
+ctx.registerCallable("f03", mkf::from(print_number_3));
+eval_result = ctx.eval(" f03(21, 44, 56); ", true); // Outputs 21, 44, 56
+...
+```
+
+You can get a value from functions on stack like this
+
+```cpp
+int return_something()
+{
+    return 32;
+}
+
+... Somewhere in main
+Context ctx;
+ctx.registerCallable("f00", mkf::from(return_something));
+bool eval_result = ctx.eval(" f00() ", false, &error);
+ASSERT_TRUE( eval_result );
+dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
+ASSERT_TRUE( result.exists() );
+ASSERT_TRUE( result.value() == 32 );
+```
+
+## Working with value stack
+
+dukpp-03 works with stack, used in Duktape
