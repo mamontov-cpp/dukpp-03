@@ -38,7 +38,7 @@ typedef dukpp03::ClassBinding<Context> ClassBinding;
 ```
 ...and we are ready to start binding functions and classes.
 
-## Binding classes and structures to be used in JavaScript
+### Binding classes and structures to be used in JavaScript
 
 Let's start by having struct:
 
@@ -67,12 +67,16 @@ Context t;
 ClassBinding* c = new ClassBinding();
 c->addConstructor<Point>("Point");
 c->addConstructor<Point, int, int>("Point");
+
+// A simple method bindings
 c->addMethod("x",  bnd::from(&Point::x));
 c->addMethod("setX",  bnd::from(&Point::setX));
 
+// A simple methods bindings. Note, that those will be pushed in multimethod, so y() could be easily overloaded by another call to
+// c->addMetod("y", bnd::from(&Point::someOtherMethod))
 c->addMethod("y",  bnd::from(&Point::y));
 c->addMethod("setY",  bnd::from(&Point::setY));
-
+// m_x and m_y will be accessed as field
 c->addAccessor("m_x", getter::from(&Point::m_x), setter::from(&Point::m_x));
 c->addAccessor("m_y", getter::from(&Point::m_y), setter::from(&Point::m_y));
 
@@ -82,7 +86,7 @@ t.addClassBinding<Point>(c);
 t.eval("var a = new Point(), b = new Point(2,3); print(a.x() + a.m_x);", false)
 ```
 
-## Binding functions
+### Binding functions
 
 You can bind a functions too:
 
@@ -116,14 +120,44 @@ dukpp03::Maybe<int> result = dukpp03::GetValue<int, Context>::perform(&ctx, -1);
 std::cout << result.value(); // Outputs 32
 ```
 
-## Working with value stack
+### Working with value stack
 
 dukpp-03 works with stack, used in Duktape, so you can push and get values from it as typed values
 
 ```cpp
+Context ctx;
 int c = 121;
+// Push new value on stack
 dukpp03::PushValue<int, Context>::perform(&ctx, c);
+// Get last value from stack
 dukpp03::Maybe<int> maybev = dukpp03::GetValue<int, Contextt>::perform(&ctx, -1); // maybev now hold 121
 ```
+
+### Working with global variables
+
+You can set, get and delete global variables, using dukpp-03, using following code
+
+```cpp
+Context ctx;
+// Register global variable
+ctx.registerGlobal("x", 2);
+// Get global variable
+dukpp03::Maybe<int> m = ctx.getGlobal<int>("x");  // m.value() will return 2 after this
+// Remove global variable
+ctx.unregisterGlobal();
+```
+
+### Registering methods as functions
+
+You can register method to be used as functions, using following code (see Point class for method definition)
+
+```cpp
+dukpp03::context::Context ctx;
+ctx.registerCallable("x", mkm::from(&Point::x)); // Now, if we call - x(Point(2,3)) in JS it will evaluate to 2
+```
+
+### Compiled functions and passing callbacks to native code
+
+To work with callbacks from JS, dukpp-03 uses class CompiledFunctions, which internally stores Duktape bytecode. You can receive it in binding and save it to store before. When you have a need to call it with argument, you can push it on stack after arguments and call it. To illustrate the example:
 
 
