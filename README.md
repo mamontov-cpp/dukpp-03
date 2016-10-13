@@ -112,12 +112,18 @@ int return_something()
 Context ctx;
 ctx.registerCallable("f00", mkf::from(return_something));
 bool eval_result = ctx.eval(" f00() ", false, &error);
-ASSERT_TRUE( eval_result );
-dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
-ASSERT_TRUE( result.exists() );
-ASSERT_TRUE( result.value() == 32 );
+dukpp03::Maybe<int> result = dukpp03::GetValue<int, Context>::perform(&ctx, -1);
+std::cout << result.value(); // Outputs 32
 ```
 
 ## Working with value stack
 
-dukpp-03 works with stack, used in Duktape
+dukpp-03 works with stack, used in Duktape, so you can push and get values from it as typed values
+
+```cpp
+int c = 121;
+dukpp03::PushValue<int, Context>::perform(&ctx, c);
+dukpp03::Maybe<int> maybev = dukpp03::GetValue<int, Contextt>::perform(&ctx, -1); // maybev now hold 121
+```
+
+
