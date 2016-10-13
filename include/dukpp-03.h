@@ -1,6 +1,6 @@
 /*! \file dukpp-03.h
 
-    A basic file, which should be included to work with DukPP-03
+    A basic file, which should be included to work with dukpp-03
  */
 #pragma once
 
