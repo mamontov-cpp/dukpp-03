@@ -25,5 +25,6 @@ typedef dukpp03::bind_method<dukpp03::context::Context> bnd;
 typedef dukpp03::CompiledFunction<dukpp03::context::Context> compiledfunc;
 typedef dukpp03::getter<dukpp03::context::Context> getter;
 typedef dukpp03::setter<dukpp03::context::Context> setter;
+typedef dukpp03::ClassBinding<dukpp03::context::Context> ClassBinding;
 
 

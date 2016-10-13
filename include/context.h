@@ -86,6 +86,9 @@ public:
     /*! A callback set for context
      */
     typedef _MapInterface<dukpp03::AbstractCallable*, dukpp03::AbstractCallable*> CallbackSet;
+    /*! A class binding set for context
+     */
+    typedef _MapInterface<std::string, ClassBinding<Self>*> ClassBindingSet;
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
@@ -106,6 +109,11 @@ public:
         {
             delete it.value();
         }
+        for(typename ClassBindingSet::iterator it = m_class_bindings.begin(); it.end() == false; it.next())
+        {
+            delete it.value();
+        }
+        m_class_bindings.clear();
         m_functions.clear();
     }
     /*! Resets context fully, erasing all data
@@ -117,7 +125,11 @@ public:
             delete it.value();
         }
         m_functions.clear();
-
+        for(typename ClassBindingSet::iterator it = m_class_bindings.begin(); it.end() == false; it.next())
+        {
+            delete it.value();
+        }
+        m_class_bindings.clear();
         duk_destroy_heap(m_context);
         m_context = duk_create_heap(NULL,NULL, NULL, this, NULL);
         this->initContextBeforeAccessing();
@@ -138,6 +150,12 @@ public:
         // Set finalizer for current object
         duk_push_c_function(m_context, dukpp03::Finalizer<Self, _Value>::finalize, 1);
         duk_set_finalizer(m_context, obj);
+        // Default handler for wrapping value
+        std::string cbname = this->typeName<_Value>();
+        if (m_class_bindings.contains(cbname))
+        {
+            m_class_bindings.get(cbname)->wrapValue(this);
+        }
         // Wrap value, populating it with methods if needed
         WrapValue::template perform<_Value>(this);       
     }
@@ -375,6 +393,46 @@ public:
     {
         return _VariantInterface::template TypeName< typename dukpp03::Decay<T>::Type >::type();
     }
+    /*! Adds new class binding. Returns true and does nothing if already
+        \param[in] name a type name for binding, use Context::typeName() to obtain it
+        \param[in] c binding
+        \return true on success, otherwise false
+     */
+    bool addClassBinding(const std::string& name, dukpp03::ClassBinding<Self>* c)
+    {
+        if (m_class_bindings.contains(name))
+        {
+            return false;
+        }
+        m_class_bindings.insert(name, c);
+        c->registerInContext(this);
+        return true;
+    }
+
+    /*! Adds new class binding. Returns true and does nothing if already
+        \param[in] c binding
+        \return true on success, otherwise false
+     */
+    template<
+        typename T
+    >
+    bool addClassBinding(dukpp03::ClassBinding<Self>* c)
+    {
+        return addClassBinding(this->typeName<T>(), c);
+    }
+    /*! Removes class binding by name
+        \param[in] name a name
+     */
+    void removeClassBinding(const std::string& name)
+    {
+        if (m_class_bindings.contains(name))
+        {
+            dukpp03::ClassBinding<Self>* c = m_class_bindings.get(name);
+            c->unregisterInContext(this);
+            delete c;
+            m_class_bindings.remove(name);
+        }
+    }
 protected:
     /*! Starts evaluating object, needed for data
      */
@@ -401,6 +459,9 @@ protected:
     /*! Registered global functions
      */
     CallbackSet m_functions;
+    /*! A class binding set
+     */
+    ClassBindingSet m_class_bindings;
     /*! A timeout timer for context
      */
     Timer m_timeout_timer;

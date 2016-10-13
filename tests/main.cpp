@@ -9,39 +9,25 @@
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
-//#define TEST_INTERACTIVE
+#define TEST_INTERACTIVE
 int main(int argc, char** argv)
 {
 #ifdef TEST_INTERACTIVE
     dukpp03::context::Context t;
-    register_constructor::in_context<Point, double, double>(&t, "Point2");
-    register_constructor::in_context<Point>(&t, "Point1");
     
-    dukpp03::MultiMethod<dukpp03::context::Context>* ctr = new dukpp03::MultiMethod<dukpp03::context::Context>();
-    ctr->add(new dukpp03::Constructor0<dukpp03::context::Context, Point>());
-    ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, double, double>());
-    ctr->add(new dukpp03::Constructor2<dukpp03::context::Context, Point, std::string, std::string>());
+    ClassBinding* c = new ClassBinding();
+    c->addConstructor<Point>("Point");
+    c->addConstructor<Point, int, int>("Point");
+    c->addMethod("x",  bnd::from(&Point::x));
+    c->addMethod("setX",  bnd::from(&Point::setX));
 
-
-    dukpp03::MultiMethod<dukpp03::context::Context>* x = new dukpp03::MultiMethod<dukpp03::context::Context>();
-    x->add(bnd::from(&Point::x));
-    x->add(bnd::from(&Point::setX));
-    x->add(bnd::from(&Point::setXS));
-
-    dukpp03::MultiMethod<dukpp03::context::Context>* y = new dukpp03::MultiMethod<dukpp03::context::Context>();
-    y->add(bnd::from(&Point::y));
-    y->add(bnd::from(&Point::setY));
-    y->add(bnd::from(&Point::setYS));
+    c->addMethod("y",  bnd::from(&Point::y));
+    c->addMethod("setY",  bnd::from(&Point::setY));
     
-    t.registerCallable("Point", ctr);
-    t.registerCallable("mx", x);
-    t.registerCallable("my", y);
+    c->addAccessor("m_x", getter::from(&Point::m_x), setter::from(&Point::m_x));
+    c->addAccessor("m_y", getter::from(&Point::m_y), setter::from(&Point::m_y));
 
-    t.registerCallable("x", mkm::from(&Point::x));
-    t.registerCallable("y", mkm::from(&Point::y));
-
-    t.registerCallable("setX", mkm::from(&Point::setX));
-    t.registerCallable("setY", mkm::from(&Point::setY));
+    t.addClassBinding<Point>(c);
     
     bool exit = false;
     std::cout << "Interactive test shell. Type \"quit\" to quit\n";

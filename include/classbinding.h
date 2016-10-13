@@ -474,21 +474,21 @@ public:
             c->unregisterGlobal(m_constructors[i].first);
         }
     }
-	/*! Wraps value, setting methods for context
-		\param[in] c context
-	 */
-	void wrapValue(_Context* c)
-	{
-		for(size_t i = 0; i < m_methods.size(); i++)
+    /*! Wraps value, setting methods for context
+        \param[in] c context
+     */
+    void wrapValue(_Context* c)
+    {
+        for(size_t i = 0; i < m_methods.size(); i++)
         {
             c->registerMutableProperty(m_methods[i].first, m_methods[i].second, false);
         }
-		
-		for(size_t i = 0; i < m_accessors.size(); i++)
+        
+        for(size_t i = 0; i < m_accessors.size(); i++)
         {
             c->registerAtribute(m_accessors[i].first, m_accessors[i].second.first, false, m_accessors[i].second.second, false);
         }
-	}
+    }
 protected:
     /*! Inserts a callable into multimethod list
         \param[in] name a name of callable
@@ -497,7 +497,7 @@ protected:
      */
     void insert(const std::string& name, MultiMethodList& dest, dukpp03::Callable<_Context>* c)
     {
-        for(size_t i = 0; i < dest.list(); i++)
+        for(size_t i = 0; i < dest.size(); i++)
         {
             if (dest[i].first == name)
             {
@@ -518,7 +518,7 @@ protected:
      */
     void insert(const std::string& name, AccessorList& dest, dukpp03::Callable<_Context>* getter, dukpp03::Callable<_Context>* setter)
     {
-        for(size_t i = 0; i < dest.list(); i++)
+        for(size_t i = 0; i < dest.size(); i++)
         {
             if (dest[i].first == name)
             {
@@ -548,11 +548,13 @@ protected:
         dukpp03::MultiMethod<_Context>* g = NULL;
         if (getter)
         {
+            g = new dukpp03::MultiMethod<_Context>();
             g->add(getter);
         }
         dukpp03::MultiMethod<_Context>* s = NULL;
         if (getter)
         {
+            s = new dukpp03::MultiMethod<_Context>();
             s->add(setter);
         }
         dest.push_back(std::make_pair(name, std::make_pair(g, s)));
