@@ -12,13 +12,19 @@ Point::Point(int x, int y) : m_x(x), m_y(y)
 
 }
 
-Point::Point(const std::string& s1, const std::string& s2)
+Point::Point(const std::string& s1, const std::string& s2) : m_x(0), m_y(0)
 {
     std::cout << "String constructor\n";
     std::istringstream str1(s1);
     str1 >> m_x;
     std::istringstream str2(s2);
     str2 >> m_y; 
+}
+
+
+Point::Point(double x, double y) : m_x(static_cast<int>(x)), m_y(static_cast<int>(y))
+{
+    
 }
 
 void Point::setX(int x)

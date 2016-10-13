@@ -486,6 +486,7 @@ duk_ret_t Finalizer<_Context, _Value>::finalize(duk_context *ctx)
         }
         duk_pop(ctx);
     }
+    return 0;
 }
 
 }

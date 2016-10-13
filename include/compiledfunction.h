@@ -51,6 +51,7 @@ public:
     {
         this->destroy();
         this->copy(f);
+        return *this;
     }
     
     /*! Must return copy of callable object

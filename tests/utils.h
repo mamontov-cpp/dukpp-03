@@ -52,7 +52,7 @@ public:
             _UnderlyingValue* val = boost::any_cast<_UnderlyingValue>(v);
             return dukpp03::Maybe<_UnderlyingValue>(val);
         }
-        catch (boost::bad_any_cast &e)
+        catch (boost::bad_any_cast &)
         {
             return dukpp03::Maybe<_UnderlyingValue>();
         }
@@ -199,7 +199,7 @@ struct TimerInterface
     {
         boost::timer::cpu_times const elapsed_times(t.elapsed());
         boost::timer::nanosecond_type const elapsed(elapsed_times.system + elapsed_times.user);
-        double result = elapsed / 1000000L;
+        double result = static_cast<double>(elapsed / 1000000L);
         return result;
     }
 };

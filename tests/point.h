@@ -31,6 +31,12 @@ struct Point
         \param[in] y second coordinate
      */
     Point(int x, int y);
+    /*! Constructs new point
+        \param[in] x first coordinate
+        \param[in] y second coordinate
+     */
+    Point(double x, double y);
+
 
     /*! Sets x coordinate
         \param[in] x x coordinate

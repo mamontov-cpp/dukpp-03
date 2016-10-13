@@ -161,7 +161,7 @@ public:
      */
     static void perform(_Context* ctx, const long long& v)
     {
-        duk_push_int(ctx->context(), v);
+        duk_push_int(ctx->context(), static_cast<int>(v));
     }
 };
 
@@ -177,7 +177,7 @@ public:
      */
     static void perform(_Context* ctx, const unsigned long long& v)
     {
-        duk_push_int(ctx->context(), v);
+        duk_push_int(ctx->context(), static_cast<int>(v));
     }
 };
 
