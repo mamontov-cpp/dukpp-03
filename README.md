@@ -36,7 +36,7 @@ typedef dukpp03::getter<Context> getter;
 typedef dukpp03::setter<Context> setter;
 typedef dukpp03::ClassBinding<Context> ClassBinding;
 ```
-...and we are ready to start binding functions and classes.
+... and we are ready to start binding functions and classes.
 
 ### Binding classes and structures to be used in JavaScript
 
