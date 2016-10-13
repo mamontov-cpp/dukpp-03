@@ -220,6 +220,15 @@ public:
     {
         registerGlobalVariable<T>(property_name, _VariantInterface::makeFrom(value));
     }    
+    /*! Unregisters global variable
+        \param[in] a name of variable
+     */
+    void unregisterGlobal(const std::string& name)
+    {
+        duk_push_global_object(m_context);
+        duk_del_prop_string(m_context, -1, name.c_str());
+        duk_pop(m_context);
+    }
     /*! Calls function, using self as context
         \param[in] callable a callable value
      */
@@ -230,10 +239,11 @@ public:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object
         \param[in] callable a callable object
+        \param[in] whether context will own a callable
      */
-    void registerCallable(const std::string& callable_name, LocalCallable* callable)
+    void registerCallable(const std::string& callable_name, LocalCallable* callable, bool own = true)
     {
-        this->dukpp03::AbstractContext::registerCallable(callable_name, callable);
+        this->dukpp03::AbstractContext::registerCallable(callable_name, callable, own);
     }
     /*! Pushes callable to property of global object
         \param[in] callable a callable object

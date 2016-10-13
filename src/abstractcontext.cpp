@@ -178,11 +178,11 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
   
 }
 
-void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable)
+void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own)
 {
    duk_push_global_object(m_context);
    
-   this->pushCallable(callable);
+   this->pushCallable(callable, own);
 
    duk_put_prop_string(m_context, -2 /*idx:global*/, callable_name.c_str());
    duk_pop(m_context);  
