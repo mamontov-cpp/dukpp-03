@@ -1,5 +1,5 @@
 # dukpp-03
-A C++03 experimental bindings for Duktape library. This library allows to bind arbitrary classes and functions into Duktape and use them a scripting values. This library also implements timeouts for script execution. 
+A C++03 experimental bindings for Duktape library. A library for bindings like [RubberDuk](https://gitlab.com/calcyss/rubberduk), but with C++03 support. This library allows to bind arbitrary classes and functions into Duktape and use them a scripting values. This library also implements timeouts for script execution. 
 
 ## Limitations
 
