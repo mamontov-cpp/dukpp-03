@@ -27,12 +27,57 @@ After defining prerequisites we can simplify binding values by specifiying conte
 
 ```cpp
 typedef dukpp03::Context<dukpp03::utils::MapInterface, dukpp03::utils::VariantInterface, dukpp03::utils::TimerInterface> Context;
-typedef dukpp03::make_fun<dukpp03::context::Context> mkf;
-typedef dukpp03::register_constructor<dukpp03::context::Context> register_constructor;
-typedef dukpp03::make_method<dukpp03::context::Context> mkm;
-typedef dukpp03::bind_method<dukpp03::context::Context> bnd;
-typedef dukpp03::CompiledFunction<dukpp03::context::Context> compiledfunc;
-typedef dukpp03::getter<dukpp03::context::Context> getter;
-typedef dukpp03::setter<dukpp03::context::Context> setter;
-typedef dukpp03::ClassBinding<dukpp03::context::Context> ClassBinding;
+typedef dukpp03::make_fun<Context> mkf;
+typedef dukpp03::register_constructor<Context> register_constructor;
+typedef dukpp03::make_method<Context> mkm;
+typedef dukpp03::bind_method<Context> bnd;
+typedef dukpp03::CompiledFunction<Context> compiledfunc;
+typedef dukpp03::getter<Context> getter;
+typedef dukpp03::setter<Context> setter;
+typedef dukpp03::ClassBinding<Context> ClassBinding;
+```
+...and we are ready to start binding functions and classes.
+
+## Binding classes and structures to be used in script
+
+Let's start by having struct:
+
+```cpp
+struct Point
+{
+    int m_x;
+    int m_y;
+    
+    Point();
+    Point(int x, int y);
+
+    void setX(int x);
+    void setY(int y);
+    
+    int x() const;
+    int y() const;
+};
+```
+
+To use it in script you can just do
+
+```cpp
+Context t;
+
+ClassBinding* c = new ClassBinding();
+c->addConstructor<Point>("Point");
+c->addConstructor<Point, int, int>("Point");
+c->addMethod("x",  bnd::from(&Point::x));
+c->addMethod("setX",  bnd::from(&Point::setX));
+
+c->addMethod("y",  bnd::from(&Point::y));
+c->addMethod("setY",  bnd::from(&Point::setY));
+
+c->addAccessor("m_x", getter::from(&Point::m_x), setter::from(&Point::m_x));
+c->addAccessor("m_y", getter::from(&Point::m_y), setter::from(&Point::m_y));
+
+t.addClassBinding<Point>(c);
+
+// And you can write code like these, after binding class
+t.eval("var a = new Point(), b = new Point(2,3); print(a.x() + a.m_x);", false)
 ```
