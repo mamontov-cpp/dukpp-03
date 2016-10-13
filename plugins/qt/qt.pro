@@ -16,6 +16,7 @@ HEADERS += variantinterface.h \
            mapinterface.h \
            timerinterface.h \
            context.h \
+           test.h \
 
 SOURCES += main.cpp \
            
