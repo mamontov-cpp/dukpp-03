@@ -1,0 +1,1 @@
+Here will be placed a supplementary library for interacting with Qt.
