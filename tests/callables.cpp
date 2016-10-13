@@ -66,7 +66,8 @@ public:
        TEST(CallablesTest::testRegisterAttribute), 
        TEST(CallablesTest::testCompiledFunction),
        TEST(CallablesTest::testCompiledFunction2),
-       TEST(CallablesTest::testCompiledFunction3)  
+       TEST(CallablesTest::testCompiledFunction3),
+       TEST(CallablesTest::testGetterSetter)   
     ) {}
 
      /*! Tests registering functions
@@ -334,6 +335,28 @@ public:
              std::cout << data.value() << "\n";
         }
         ASSERT_TRUE(data.exists());
+    }
+    
+    void testGetterSetter()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        Point pts2d(3,4);
+        dukpp03::PushValue<Point, dukpp03::context::Context>::perform(&ctx, pts2d);
+        ctx.registerAtribute("x", getter::from(&Point::m_x), true, setter::from(&Point::m_x), true);
+        ctx.markTopObjectAsGlobal("pnt");
+        ctx.pop();
+
+        bool eval_result = ctx.eval(" pnt.x = 120; pnt.x ", false,  &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 120) );
     }
     
 } _callables_test;

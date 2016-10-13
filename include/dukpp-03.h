@@ -14,3 +14,5 @@
 #include "constructor.h"
 #include "multimethod.h"
 #include "compiledfunction.h"
+#include "getfield.h"
+#include "setfield.h"
