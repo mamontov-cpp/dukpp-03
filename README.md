@@ -158,6 +158,31 @@ ctx.registerCallable("x", mkm::from(&Point::x)); // Now, if we call - x(Point(2,
 
 ### Compiled functions and passing callbacks to native code
 
-To work with callbacks from JS, dukpp-03 uses class CompiledFunctions, which internally stores Duktape bytecode. You can receive it in binding and save it to store before. When you have a need to call it with argument, you can push it on stack after arguments and call it. To illustrate the example:
+To work with callbacks from JS, dukpp-03 uses class CompiledFunction, which internally stores Duktape bytecode. You can receive it in binding and save it to store before. When you have a need to call it with argument, you can push it on stack after arguments and call it. 
 
+Note, that the stack must be clean, when calling compiled function
 
+To illustrate the example:
+
+```cpp
+compiledfunc func;
+
+void set_func(const compiledfunc& f)
+{
+    func = f;
+}
+
+...Somewhere in main
+Context ctx;
+ctx.registerCallable("setFunction", mkf::from(set_func));
+
+// Setting callback from JS code
+ctx.eval(" setFunction(function(a) { print(a); return a;  }); ", false);
+// Clean stack after evaluating
+ctx.cleanStack();
+
+// Push argument (22) on stack
+dukpp03::PushValue<int, Context>::perform(&ctx, 22);
+// Evaluate function - it will print 22 and return 22 on stack
+func.call(&ctx);
+```
