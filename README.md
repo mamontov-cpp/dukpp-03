@@ -172,7 +172,7 @@ void set_func(const compiledfunc& f)
     func = f;
 }
 
-...Somewhere in main
+... Somewhere in main
 Context ctx;
 ctx.registerCallable("setFunction", mkf::from(set_func));
 
