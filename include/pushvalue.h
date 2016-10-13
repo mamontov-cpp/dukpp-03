@@ -22,7 +22,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const _Value& v)
     {        
@@ -40,7 +39,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const bool& v)
     {
@@ -58,7 +56,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char& v)
     {
@@ -77,7 +74,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const unsigned char& v)
     {
@@ -96,7 +92,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const int& v)
     {
@@ -114,7 +109,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const unsigned int& v)
     {
@@ -131,8 +125,7 @@ class PushValue<long, _Context>
 public:
     /*! Performs pushing value 
         \param[in] ctx context
-        \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
+        \param[in] v value 
      */
     static void perform(_Context* ctx, const long& v)
     {
@@ -149,7 +142,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const unsigned long& v)
     {
@@ -166,7 +158,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const long long& v)
     {
@@ -183,7 +174,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const unsigned long long& v)
     {
@@ -200,7 +190,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const float& v)
     {
@@ -222,7 +211,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const double& v)
     {
@@ -243,7 +231,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const long double& v)
     {
@@ -264,7 +251,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char*& v)
     {
@@ -282,7 +268,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const char*& v)
     {
@@ -299,7 +284,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const std::string& v)
     {

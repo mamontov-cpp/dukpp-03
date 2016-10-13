@@ -117,9 +117,7 @@ public:
 
         /*! Checks argument, passed as this, filling a if needed
             \param[in] c context
-            \param[in] a an argument
-            \param[in] stackValue a value index on stack
-            \param[in] argnumber number of argument
+            \param[out] a an argument
          */ 
         static void passedAsThis(_Context* c, dukpp03::Maybe< typename dukpp03::Decay<_Arg>::Type >& a)
         {
@@ -137,7 +135,7 @@ public:
 
         /*! Checks argument on stack, filling a if needed
             \param[in] c context
-            \param[in] a an argument
+            \param[out] a an argument
             \param[in] stackValue a value index on stack
             \param[in] argnumber number of argument
          */ 
@@ -155,7 +153,6 @@ public:
         
         /*! Check this value to find value for specified type
             \param[in] c context
-            \param[in] stackValue a value index on stack
             \return 1 if exists, otherwise 0
          */
         static int checkThis(_Context* c)

@@ -512,9 +512,9 @@ protected:
     
     /*! Inserts a callable into multimethod list
         \param[in] name a name of callable
+        \param[in] dest a destination list
         \param[in] getter a getter
         \param[in] setter a setter
-        \param[in] c a callable
      */
     void insert(const std::string& name, AccessorList& dest, dukpp03::Callable<_Context>* getter, dukpp03::Callable<_Context>* setter)
     {

@@ -1,3 +1,7 @@
+/*! \mainpage dukpp-03
+    
+    A C++03 experimental bindings for Duktape library
+ */
 /*! \file context.h
 
 
@@ -136,8 +140,6 @@ public:
     }
     /*! Pushes variant to a pool. Note, that context becames owner of variant, so don't push your own variants into here.
         \param[in] v variant
-        \param[in] persistent whether it should be persistent
-        \return string signature
      */
     template< typename _Value >
     void pushVariant(Variant* v)
@@ -162,7 +164,7 @@ public:
     
     /*! Registers variable as property of global object, pushing it into a persistent stack. Replaces existing property.
         \param[in] property_name name of new property of global object
-        \param[in] value a value to be registered
+        \param[in] v a value to be registered
      */
     template<
         typename _Value
@@ -239,7 +241,7 @@ public:
         registerGlobalVariable<T>(property_name, _VariantInterface::makeFrom(value));
     }    
     /*! Unregisters global variable
-        \param[in] a name of variable
+        \param[in] name name of variable or global callable function
      */
     void unregisterGlobal(const std::string& name)
     {
@@ -257,7 +259,7 @@ public:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object
         \param[in] callable a callable object
-        \param[in] whether context will own a callable
+        \param[in] own whether context will own a callable
      */
     void registerCallable(const std::string& callable_name, LocalCallable* callable, bool own = true)
     {
@@ -299,7 +301,7 @@ public:
     }
     /*! Sets immutable callable property for value on stack top.
         \param[in] propname a property name
-        \param[in] v a callable object
+        \param[in] callable a callable object
         \param[in] own whether we would own callable
      */
     void registerImmutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)
@@ -310,7 +312,7 @@ public:
     }
     /*! Sets mutable callable property  for value on stack top. 
         \param[in] propname a property name
-        \param[in] v a callable object 
+        \param[in] callable a callable object 
         \param[in] own whether we would own callable
       */
     void registerMutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)

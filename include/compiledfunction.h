@@ -217,7 +217,6 @@ public:
     /*! Performs pushing value 
         \param[in] ctx context
         \param[in] v value
-        \param[in] persistent whether value should be in persistent stack 
      */
     static void perform(_Context* ctx, const dukpp03::CompiledFunction<_Context>& v)
     {

@@ -218,7 +218,7 @@ protected:
     /*! Returns candidate for call for multi-method
         \param[in]  c context
         \param[out] result a result of seeking for candidate
-        \param[out] callback, which can be called upon
+        \param[out] callback a callback, which can be called upon
      */
     void getCandidate(_Context* c, std::pair<int, bool>& result, dukpp03::Callable<_Context>** callback)
     {
