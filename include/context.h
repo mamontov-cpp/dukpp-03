@@ -35,6 +35,11 @@ template<
 >
 class GetValue;
 
+template<
+    typename _Context
+>
+class ClassBinding;
+
 /*! A miscellaneous class, for performing garbage collection, 
     used as finalizer in duktape. Specialize this class, to overload
     finalization for objects of specific value.

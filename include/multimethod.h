@@ -60,14 +60,17 @@ public:
     }
     /*! Removes callable from list
         \param[in] callable
+        \return true if callable was removed
      */
-    void remove(Callable<_Context>* callable)
+    bool remove(Callable<_Context>* callable)
     {
         typename std::vector<Callable<_Context*> >::iterator it = std::find(m_callables.begin(), m_callables.end(), callable);
         if (it != m_callables.end())
         {
             m_callables.erase(it);
+            return true;
         }
+        return false;
     }
     /*! Returns whether it could be called as constructor
         \return true if can

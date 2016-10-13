@@ -16,3 +16,4 @@
 #include "compiledfunction.h"
 #include "getfield.h"
 #include "setfield.h"
+#include "classbinding.h"
