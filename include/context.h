@@ -157,8 +157,7 @@ public:
         {
             m_class_bindings.get(cbname)->wrapValue(this);
         }
-        // Wrap value, populating it with methods if needed
-        WrapValue::template perform<_Value>(this);       
+        // Wrap value, populating it with methods if needed  
         WrapValue::perform(this, v);       
     }
 
