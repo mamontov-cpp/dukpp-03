@@ -20,7 +20,7 @@ public slots:
     
     int slot2()
     {
-        
+        return 0;
     }
     
     void slot3()

@@ -4,10 +4,12 @@
 #include <QMetaMethod>
 
 #include "context.h"
-#include <iostream>;
+#include <iostream>
 
 #include "../../src/abstractcallable.cpp"
 #include "../../src/abstractcontext.cpp"
+
+#define HAS_QT5  ( QT_VERSION >= 0x050000 )
 
 Q_DECLARE_METATYPE(Test2*);
 
@@ -22,6 +24,13 @@ int main()
 	QVariant v;
 	Test2* vc;
 	
+    QVariant v1;
+    //v1.setValue(f);
+    std::cout << "v1: Can convert to QObject " <<  v1.canConvert<QObject*>() << ":" << v1.value<QObject*>() << "\n";
+    QVariant v2;
+    v2.setValue(&f);
+    std::cout << "v2: Can convert to QObject " <<  v2.canConvert<QObject*>() << ":" << v2.value<QObject*>() << "\n";
+
 	
 		
 	const QMetaObject* metaObject = f.metaObject();
@@ -37,7 +46,11 @@ int main()
 		{
 			empty = "(empty|\"\")";
 		}
+#ifndef HAS_QT5
 		std::cout <<  metaMethod.typeName() << empty.toStdString() << "| "  << metaMethod.signature() << "\n";
+#else
+		std::cout <<  metaMethod.typeName() << empty.toStdString() << "| "  << QString(metaMethod.methodSignature()).toStdString() << "\n";
+#endif
 	}
 	
 	QMetaMethod m = metaObject->method(metaObject->methodOffset());
