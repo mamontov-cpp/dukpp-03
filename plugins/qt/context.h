@@ -30,6 +30,30 @@ typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterfac
 }
 
 
+
+template<>
+class GetValue<QString, dukpp03::qt::Context>
+{
+public:
+    /*! Performs getting value from stack 
+        \param[in] ctx context
+        \param[in] pos index for stack
+        \return a value if it exists, otherwise empty maybe
+     */
+    inline static dukpp03::Maybe<QString> perform(
+        dukpp03::qt::Context* ctx, 
+        duk_idx_t pos
+    )
+    {
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::qt::Context>::perform(ctx, pos);
+        if (result.exists())
+        {
+            return dukpp03::Maybe<QString>(QString(result.value().c_str()));
+        }
+        return dukpp03::Maybe<QString>();
+    }
+};
+
 template<>
 class GetValue<QVariant, dukpp03::qt::Context>
 {
@@ -77,29 +101,18 @@ inline static dukpp03::Maybe<QVariant> perform(
 };
 
 
-
 template<>
-class GetValue<QString, dukpp03::qt::Context>
+class PushValue<QString, dukpp03::qt::Context>
 {
 public:
-/*! Performs getting value from stack 
-    \param[in] ctx context
-    \param[in] pos index for stack
-    \return a value if it exists, otherwise empty maybe
- */
-inline static dukpp03::Maybe<QString> perform(
-    dukpp03::qt::Context* ctx, 
-    duk_idx_t pos
-)
-{
-    dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::qt::Context>::perform(ctx, pos);
-    if (result.exists())
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(dukpp03::qt::Context* ctx, const QString& v)
     {
-        return dukpp03::Maybe<QString>(QString(result.value().c_str()));
+        dukpp03::PushValue<std::string, dukpp03::qt::Context>::perform(ctx, v.toStdString());
     }
-    return dukpp03::Maybe<QString>();
-}
-
 };
 
 /*! Performs pushing value on stack for every type of value
@@ -130,12 +143,7 @@ public:
         DUK_IF_PUSH(double)
         DUK_IF_PUSH(long double)
         DUK_IF_PUSH(std::string)
-        if (v.typeName() == "QString") 
-        {  
-            dukpp03::PushValue<std::string, dukpp03::qt::Context>::perform(ctx, v.value<QString>().toStdString()); 
-            return;  
-        }
-
+        DUK_IF_PUSH(QString)
 #undef DUK_IF_PUSH
         if (v.typeName() != NULL)
         {
