@@ -82,6 +82,38 @@ public:
     }
 };
 
+template<
+    typename _Context
+>
+class PushValue<short, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const short& v)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
+template<
+    typename _Context
+>
+class PushValue<unsigned short, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const unsigned short& v)
+    {
+        duk_push_int(ctx->context(), v);
+    }
+};
+
 
 template<
     typename _Context
