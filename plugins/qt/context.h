@@ -36,6 +36,18 @@ inline static dukpp03::Maybe<QVariant> perform(
 )
 {
     dukpp03::Maybe<QVariant> result;
+    if (duk_is_string(ctx->context(), pos))
+    {
+        result.setValue(QString(duk_to_string(ctx->context(), pos)));
+    }
+    if (duk_is_boolean(ctx->context(), pos))
+    {
+        result.setValue(static_cast<bool>(duk_to_string(ctx->context(), pos)));
+    }
+    if (duk_is_number(ctx->context(), pos))
+    {
+        result.setValue(duk_to_number(ctx->context(), pos));
+    }
     if (duk_is_object(ctx->context(), pos))
     {
        duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
