@@ -27,12 +27,20 @@ struct Perform
 };
 
 /*! Performs wrapping for value
-    \param[in] context
+    \param[in] context a context
  */
 template<typename _Value>
 inline static void perform(void* context)
 {
     dukpp03::WrapValue::Perform<_Value>::perform(context);
+}
+/*! Performs wrapping value for specified variant
+    \param[in] context a context
+    \parma[in] variant a specified variant
+ */
+inline static void perform(void* context, void* variant)
+{
+    // Does nothing
 }
 
 };

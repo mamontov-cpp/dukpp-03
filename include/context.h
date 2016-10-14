@@ -49,8 +49,7 @@ class ClassBinding;
     finalization for objects of specific value.
  */
 template<
-    typename _Context,
-    typename _Value
+    typename _Context
 >
 struct Finalizer
 {
@@ -150,7 +149,7 @@ public:
         duk_push_pointer(m_context, v);
         duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
         // Set finalizer for current object
-        duk_push_c_function(m_context, dukpp03::Finalizer<Self, _Value>::finalize, 1);
+        duk_push_c_function(m_context, dukpp03::Finalizer<Self>::finalize, 1);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         std::string cbname = this->typeName<_Value>();
@@ -160,6 +159,33 @@ public:
         }
         // Wrap value, populating it with methods if needed
         WrapValue::template perform<_Value>(this);       
+        WrapValue::perform(this, v);       
+    }
+
+    /*! DO NOT use this function, unless you know, what you're doing. This functions pushes on stack
+        variant with type passed in first argument, trying to wrap it onto method. 
+
+        You should check manually, that this type of variant corresponds to name, otherwise the behaviour is undefined
+        \param[in] name name of variant
+        \param[in] v a variant name
+     */ 
+    void pushUntypedVariant(const std::string& name, Variant* v)
+    {
+        duk_idx_t obj = duk_push_object(m_context);
+        // Push pointer value for variant
+        duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
+        duk_push_pointer(m_context, v);
+        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        // Set finalizer for current object
+        duk_push_c_function(m_context,  dukpp03::Finalizer<Self>::finalize, 1);
+        duk_set_finalizer(m_context, obj);
+        // Default handler for wrapping value
+        if (m_class_bindings.contains(name))
+        {
+            m_class_bindings.get(name)->wrapValue(this);
+        }
+        // Wrap value, populating it with methods if needed     
+        WrapValue::perform(this, v);       
     }
     
     /*! Registers variable as property of global object, pushing it into a persistent stack. Replaces existing property.
@@ -470,10 +496,9 @@ protected:
 };
 
 template<
-    typename _Context,
-    typename _Value
+    typename _Context
 >
-duk_ret_t Finalizer<_Context, _Value>::finalize(duk_context *ctx)
+duk_ret_t Finalizer<_Context>::finalize(duk_context *ctx)
 {
     if (duk_is_object(ctx, 0))
     {
