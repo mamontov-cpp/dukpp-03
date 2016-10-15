@@ -53,6 +53,11 @@ template<
 >
 struct Finalizer
 {
+	/*! Returns variant to be finalized
+	    \param[in] ctx context
+	    \return variant or null if nothing
+	 */
+	static typename _Context::Variant* getVariantToFinalize(duk_context* ctx);
     /*! A finalization function
         \param[in] ctx context
         \return 0
@@ -60,7 +65,9 @@ struct Finalizer
     static duk_ret_t finalize(duk_context *ctx);
 };
 
-
+/*! A common finalizing function for finalizer
+ */
+typedef duk_ret_t (*FinalizerFunction)(duk_context*);
 
 
 /*! A wrapper around basic duktape context with replaceable map, timer and variant implementations
@@ -139,9 +146,10 @@ public:
     }
     /*! Pushes variant to a pool. Note, that context becames owner of variant, so don't push your own variants into here.
         \param[in] v variant
+	    \param[in] ff a finalizer that must be used for this context
      */
     template< typename _Value >
-    void pushVariant(Variant* v)
+    void pushVariant(Variant* v,  dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
         duk_idx_t obj = duk_push_object(m_context);
         // Push pointer value for variant
@@ -149,7 +157,7 @@ public:
         duk_push_pointer(m_context, v);
         duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
         // Set finalizer for current object
-        duk_push_c_function(m_context, dukpp03::Finalizer<Self>::finalize, 1);
+        duk_push_c_function(m_context, ff, 1);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         std::string cbname = this->typeName<_Value>();
@@ -167,8 +175,9 @@ public:
         You should check manually, that this type of variant corresponds to name, otherwise the behaviour is undefined
         \param[in] name name of variant
         \param[in] v a variant name
+	    \param[in] ff a finalizer that must be used for this context
      */ 
-    void pushUntypedVariant(const std::string& name, Variant* v)
+    void pushUntypedVariant(const std::string& name, Variant* v, dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
         duk_idx_t obj = duk_push_object(m_context);
         // Push pointer value for variant
@@ -176,7 +185,7 @@ public:
         duk_push_pointer(m_context, v);
         duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
         // Set finalizer for current object
-        duk_push_c_function(m_context,  dukpp03::Finalizer<Self>::finalize, 1);
+        duk_push_c_function(m_context,  ff, 1);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         if (m_class_bindings.contains(name))
@@ -497,19 +506,29 @@ protected:
 template<
     typename _Context
 >
-duk_ret_t Finalizer<_Context>::finalize(duk_context *ctx)
+typename _Context::Variant* Finalizer<_Context>::getVariantToFinalize(duk_context* ctx)
 {
-    if (duk_is_object(ctx, 0))
+	if (duk_is_object(ctx, 0))
     {
-       duk_get_prop_string(ctx, 0, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
+        typename _Context::Variant* result = NULL;
+    	duk_get_prop_string(ctx, 0, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
         if (duk_is_pointer(ctx, -1))
         {
             void* ptr = duk_to_pointer(ctx, -1);
-            typename _Context::Variant* v = reinterpret_cast<typename _Context::Variant*>(ptr);
-            delete v;
+            result = reinterpret_cast<typename _Context::Variant*>(ptr);
         }
         duk_pop(ctx);
+		return result;
     }
+	return NULL;
+}
+
+template<
+    typename _Context
+>
+duk_ret_t Finalizer<_Context>::finalize(duk_context *ctx)
+{
+    delete Finalizer<_Context>::getVariantToFinalize(ctx);
     return 0;
 }
 

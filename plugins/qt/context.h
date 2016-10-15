@@ -26,7 +26,6 @@ namespace qt
  */
 typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface> Context;
 
-
 }
 
 
