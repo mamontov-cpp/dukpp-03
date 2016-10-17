@@ -15,7 +15,7 @@ Q_DECLARE_METATYPE(Test2*);
 
 int main()
 {
-	dukpp03::qt::Context ctx;
+	dukpp03::qt::BasicContext ctx;
 	ctx.setMaximumExecutionTime(30000);
 	
 	qRegisterMetaType<Test2*>("Test2*");

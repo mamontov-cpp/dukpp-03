@@ -21,14 +21,24 @@ public:
     
     /*! Makes variant from value
         \param[in] val value
-        \param[in] v variant
+        \return new variant
      */
     template<
         typename _UnderlyingValue
     >
     static Variant* makeFrom(_UnderlyingValue val)
     {
-        return QVariant(val);
+        return new QVariant(val);
+    }
+	/*! Makes new variant from qobject
+	    \param[in] val a value
+		\return new variant
+	 */
+	inline static Variant* makeFrom(QObject* val)
+    {
+	    QVariant* result = new QVariant();
+		result->setValue(val);
+		return result;
     }
     /*! Fetches underlying value from variant type
         \param[in] v a variant, containing data

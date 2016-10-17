@@ -18,8 +18,14 @@ HEADERS += variantinterface.h \
            context.h \
            test.h \
            test2.h \
+    pushvariant.h \
+    qobjectfinalizer.h \
+    valueownership.h
 
 SOURCES += main.cpp \
+    context.cpp \
+    pushvariant.cpp \
+    qobjectfinalizer.cpp
            
 
 DESTDIR = ../../lib/

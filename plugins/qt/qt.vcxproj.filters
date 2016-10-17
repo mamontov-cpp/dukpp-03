@@ -46,6 +46,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_test2.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="qobjectfinalizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pushvariant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="context.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapinterface.h">
@@ -58,6 +67,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qobjectfinalizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="valueownership.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pushvariant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
