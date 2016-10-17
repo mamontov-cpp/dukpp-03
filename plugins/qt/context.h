@@ -53,6 +53,25 @@ namespace qt
 /*! A basic context to be used with qt. Should not be used, use Context class instead
  */
 typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface> BasicContext;
+/*! A class binding for setting bindings for context
+ */
+typedef dukpp03::ClassBinding<dukpp03::qt::BasicContext> ClassBinding;
+/*! Makes method bindings to context
+ */
+typedef dukpp03::bind_method<dukpp03::qt::BasicContext> bind_method;
+/*! Makes method calls as calls to functions
+ */
+typedef dukpp03::make_method<dukpp03::qt::BasicContext> make_method;
+/*! Makes functions from context calls
+ */
+typedef dukpp03::make_fun<dukpp03::qt::BasicContext> make_function;
+/*! A getter generator for current context
+ */
+typedef dukpp03::getter<dukpp03::qt::BasicContext> getter;
+/*! A setter generator for current context
+ */
+typedef dukpp03::setter<dukpp03::qt::BasicContext> setter;
+
 
 /*! A context to be used with Qt. This context registers all needed metadata and also provides us with
     with deleteQObject.
@@ -67,10 +86,21 @@ public:
 	 */
 	virtual ~Context();
 	/*! Pushes new meta method as function into stack
-	 *  \param[in] index an index of meta_method in object
-	 *  \param[in] meta_method a meta method
+	    \param[in] index an index of meta_method in object
+	    \param[in] meta_method a meta method
 	 */  
 	void pushMetaMethod(int index, const QMetaMethod& meta_method) const;
+	/*! Pushes new object on stack with defined ownership
+	    \param[in] o object
+	    \param[in] p value ownership
+	 */
+	void pushObject(QObject* o, dukpp03::qt::ValueOwnership p);
+	/*! Registers new global object on stack with defined ownership
+	    \param[in] name a name for a global variable
+	    \param[in] o object
+	    \param[in] p value ownership
+	 */
+	void registerGlobal(const QString& name, QObject* o, dukpp03::qt::ValueOwnership p);
 };
 
 
@@ -208,3 +238,5 @@ public:
 };
 
 }
+
+#include "constructor.h"

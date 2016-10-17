@@ -1,6 +1,7 @@
 #pragma once
 #include "test2.h"
 #include <QObject>
+#include <iostream>
 
 struct Test: public QObject
 {
@@ -9,6 +10,26 @@ public:
     inline Test()
     {
         
+    }
+
+	inline Test(const Test& o)
+    {
+        
+    }
+
+	inline Test(int a)
+    {
+	    
+    }
+
+	Test& operator=(const Test&)
+	{
+		return *this;
+	}
+
+	inline void speak()
+    {
+	    std::cout << "I am test";
     }
 public slots:
     /*! A test class

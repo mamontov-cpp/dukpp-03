@@ -91,6 +91,7 @@
     <ClCompile Include="qobjectfinalizer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constructor.h" />
     <ClInclude Include="context.h" />
     <ClInclude Include="mapinterface.h" />
     <ClInclude Include="pushvariant.h" />

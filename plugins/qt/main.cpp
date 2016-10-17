@@ -11,15 +11,28 @@
 
 #define HAS_QT5  ( QT_VERSION >= 0x050000 )
 
+Q_DECLARE_METATYPE(int*);
+Q_DECLARE_METATYPE(Test);
+Q_DECLARE_METATYPE(Test**);
 Q_DECLARE_METATYPE(Test2*);
 
 int main()
 {
-	dukpp03::qt::BasicContext ctx;
+	dukpp03::qt::Context ctx;
 	ctx.setMaximumExecutionTime(30000);
 	
+	qRegisterMetaType<Test>("Test");
+	qRegisterMetaType<Test*>("Test*");
 	qRegisterMetaType<Test2*>("Test2*");
-	
+
+	dukpp03::qt::ClassBinding* testbinding = new dukpp03::qt::ClassBinding();
+	testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test>());
+	testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test, int>());
+	testbinding->addMethod("speak", dukpp03::qt::bind_method::from(&Test::speak));
+	ctx.addClassBinding("Test", testbinding);
+	std::string error;
+	ctx.eval("var a = new Test(); a.speak();", false, &error);
+	std::cout << error;
 	Test f;
 	QVariant v;
 	Test2* vc;

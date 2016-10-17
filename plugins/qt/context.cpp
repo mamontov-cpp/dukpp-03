@@ -34,7 +34,7 @@ dukpp03::qt::Context::Context()
 	duk_push_global_object(m_context);
 	duk_push_string(m_context, "deleteQObject");
 	duk_push_c_function(m_context, dukpp03::qt::qobjectfinalizer, 1);
-	duk_def_prop(m_context, -2, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+	duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
 	duk_pop(m_context); 
 }
 
@@ -267,4 +267,18 @@ void dukpp03::qt::Context::pushMetaMethod(int index, const QMetaMethod& meta_met
 	duk_push_string(m_context, meta_method.signature());
 #endif
 	duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+}
+
+void dukpp03::qt::Context::pushObject(QObject* o, dukpp03::qt::ValueOwnership p)
+{
+	dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(this, dukpp03::qt::ObjectWithOwnership(o, p));
+}
+
+
+void dukpp03::qt::Context::registerGlobal(const QString& name, QObject* o, dukpp03::qt::ValueOwnership p)
+{
+	duk_push_global_object(m_context);
+	pushObject(o, p);
+	duk_put_prop_string(m_context, -2, name.toStdString().c_str());
+	duk_pop(m_context);
 }

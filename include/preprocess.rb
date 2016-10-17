@@ -29,8 +29,11 @@ variants = [];
   variants.push({"not_has_args" => args.count == 0, "has_args" => args.count != 0, "args" => args, "argscount" => args.count, "argscountp1" => args.count + 1})
 end
 
-
-render("function.h.t", "function.h", variants)
-render("method.h.t", "method.h", variants)
-render("constructor.h.t", "constructor.h", variants)
-render("thismethod.h.t", "thismethod.h", variants)
+if (ARGV.empty?)
+	render("function.h.t", "function.h", variants)
+	render("method.h.t", "method.h", variants)
+	render("constructor.h.t", "constructor.h", variants)
+	render("thismethod.h.t", "thismethod.h", variants)
+else
+	render(ARGV[0] + ".t", ARGV[0], variants)
+end

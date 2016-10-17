@@ -1,0 +1,1 @@
+ruby ../../include/preprocess.rb constructor.h
