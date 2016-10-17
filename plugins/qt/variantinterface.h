@@ -49,7 +49,7 @@ public:
     >   
     static dukpp03::Maybe<_UnderlyingValue> get(Variant* v)
     {
-        if (v->canConvert(qMetaTypeId<_UnderlyingValue>()))
+        if (v->canConvert<_UnderlyingValue>())
         {
             return dukpp03::Maybe<_UnderlyingValue>(v->value<_UnderlyingValue>());
         }

@@ -13,6 +13,8 @@
 // ReSharper disable once CppUnusedIncludeDirective
 #include <QPair>
 #include <QVariant>
+#include <QMetaMethod>
+#include <QMetaProperty>
 
 #ifndef DUK_QT_NO_DECLARE_METATYPE_FOR_LONG_DOUBLE
     Q_DECLARE_METATYPE(long double)
@@ -21,6 +23,11 @@
 #ifndef DUK_QT_NO_DECLARE_METATYPE_FOR_STD_STRING
     Q_DECLARE_METATYPE(std::string)
 #endif
+
+Q_DECLARE_METATYPE(QObject**)
+Q_DECLARE_METATYPE(QObject***)
+Q_DECLARE_METATYPE(QVariant*)
+Q_DECLARE_METATYPE(QVariant**)
 
 namespace dukpp03
 {
@@ -59,6 +66,11 @@ public:
 	/*! A destructor
 	 */
 	virtual ~Context();
+	/*! Pushes new meta method as function into stack
+	 *  \param[in] index an index of meta_method in object
+	 *  \param[in] meta_method a meta method
+	 */  
+	void pushMetaMethod(int index, const QMetaMethod& meta_method) const;
 };
 
 
