@@ -50,7 +50,7 @@ public:
         return {{argscount}};
     }
 
-    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName*{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -113,7 +113,7 @@ public:
         return {{argscount}};
     }
 
-    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName*{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -178,7 +178,7 @@ public:
         return {{argscount}};
     }
 
-    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName*{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions
@@ -241,7 +241,7 @@ public:
         return {{argscount}};
     }
 
-    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
+    DUKPP03_CBC_WITH_THIS_{{argscount}}(_ClassName*{{#has_args}},{{#args}}_Arg{{number}}{{#not_last}},{{/not_last}}{{/args}}{{/has_args}})
     /*! Performs call of object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions

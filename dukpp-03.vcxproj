@@ -32,6 +32,7 @@
     <ClInclude Include="include\method.h" />
     <ClInclude Include="include\multimethod.h" />
     <ClInclude Include="include\pushvalue.h" />
+    <ClInclude Include="include\removepointer.h" />
     <ClInclude Include="include\setfield.h" />
     <ClInclude Include="include\thismethod.h" />
     <ClInclude Include="include\timerinterface.h" />

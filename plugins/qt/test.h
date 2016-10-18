@@ -12,24 +12,14 @@ public:
         
     }
 
-	inline Test(const Test& o)
-    {
-        
-    }
-
 	inline Test(int a)
     {
 	    
     }
 
-	Test& operator=(const Test&)
-	{
-		return *this;
-	}
-
 	inline void speak()
     {
-	    std::cout << "I am test";
+	    std::cout << "Test::speak() says: I am test\n";
     }
 public slots:
     /*! A test class

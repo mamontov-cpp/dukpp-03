@@ -57,7 +57,7 @@ public:
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}        
         _ClassName*  t = new  _ClassName{{#has_args}}({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}}){{/has_args}};
-        dukpp03::PushValue<QObject*, dukpp03::qt::BasicContext>::perform(c, t);
+        c->pushVariant<_ClassName*>(dukpp03::qt::BasicContext::VariantUtils::makeFrom(t), dukpp03::qt::qobjectfinalizer);
         return 1;
     }
     /*! Can be inherited

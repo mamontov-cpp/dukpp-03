@@ -70,8 +70,9 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
         QByteArray argTypeName = arg.typeName();
 
         QVariant::Type methodType = QVariant::nameToType(methodTypeName);
+	    // ReSharper disable once CppEntityNeverUsed
         QVariant::Type argType = arg.type();
-
+		
         QVariant copy = QVariant(arg);
 
         // If the types are not the same, attempt a conversion. If it

@@ -25,9 +25,8 @@
 #endif
 
 Q_DECLARE_METATYPE(QObject**)
-Q_DECLARE_METATYPE(QObject***)
 Q_DECLARE_METATYPE(QVariant*)
-Q_DECLARE_METATYPE(QVariant**)
+
 
 namespace dukpp03
 {
