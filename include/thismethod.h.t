@@ -57,11 +57,11 @@ public:
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_THIS(_ClassName);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}
-        ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         return 0;
     }
     /*! Can be inherited
@@ -120,11 +120,11 @@ public:
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_THIS(_ClassName);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}
-        _ReturnType t = ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        _ReturnType t = ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }
@@ -185,11 +185,11 @@ public:
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_THIS(_ClassName);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}              
-        ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         return 0;
     }
     /*! Can be inherited
@@ -248,11 +248,11 @@ public:
      */
     virtual int _call(_Context* c)
     {
-        DUKPP03_MAYBE_FROM_THIS(_ClassName);
+        DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
         DUKPP03_MAYBE_FROM_STACK(_Arg{{number}}, {{number}}, {{number}}, {{numberp1}});
 {{/args}}               
-        _ReturnType t = ((_ac._()).*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
+        _ReturnType t = ((_ac._())->*m_callee)({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
         return 1;
     }

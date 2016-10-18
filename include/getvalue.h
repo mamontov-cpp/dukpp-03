@@ -43,11 +43,7 @@ static void perform(_Context* ctx, duk_idx_t pos, dukpp03::Maybe<_Value>& result
                 result = _Context::template valueFromVariant<_Value>(v);
                 if (result.exists() == false)
                 {
-                    dukpp03::Maybe<_Value*> presult = _Context::template valueFromVariant<_Value*>(v);
-                    if (presult.exists())
-                    {
-                        result =  dukpp03::Maybe<_Value>(presult.value());
-                    }
+                    result = _Context::template valueAddressFromVariant<_Value>(v);
                 }
             }
         }

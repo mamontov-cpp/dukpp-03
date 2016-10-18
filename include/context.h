@@ -419,6 +419,18 @@ public:
         return _VariantInterface::template get<T>(v);
     }
     
+    /*! Returns value from variant
+        \param[in] v variant
+        \return maybe value
+     */
+    template<
+        typename T
+    >
+    inline static dukpp03::Maybe<T> valueAddressFromVariant(Variant* v)
+    {
+        return _VariantInterface::template getAddress<T>(v);
+    }
+
     /*! Returns typename for type
         \return type
      */

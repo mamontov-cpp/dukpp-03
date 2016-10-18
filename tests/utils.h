@@ -59,6 +59,52 @@ public:
         return dukpp03::Maybe<_UnderlyingValue>();
     }
     
+    
+    template<typename _UnderlyingValue>
+    struct GetAddress
+    {
+    public: 
+        static dukpp03::Maybe<_UnderlyingValue> getAddress(Variant* v)
+        {
+            return dukpp03::Maybe<_UnderlyingValue>();
+        };
+    };
+    
+    template<typename _UnderlyingValue>
+    struct GetAddress<_UnderlyingValue*>
+    {
+    public: 
+        static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
+        {
+            try
+            {
+                // Make it strict! No pointer casts are permitted
+                if (typeid(_UnderlyingValue) != v->type())
+                {
+                    return dukpp03::Maybe<_UnderlyingValue*>();
+                }
+                _UnderlyingValue* val = boost::any_cast<_UnderlyingValue>(v);
+                return dukpp03::Maybe<_UnderlyingValue*>(val);
+            }
+            catch (boost::bad_any_cast &)
+            {
+                return dukpp03::Maybe<_UnderlyingValue*>();
+            }
+            return dukpp03::Maybe<_UnderlyingValue*>();
+        };
+    };
+    /*! Fetches underlying value adress from variant type
+        \param[in] v a variant, containing data
+        \return an underlying value
+     */
+    template<
+        typename _UnderlyingValue
+    >   
+    static dukpp03::Maybe<_UnderlyingValue> getAddress(Variant* v)
+    {
+        return GetAddress<_UnderlyingValue>::getAddress(v);
+    }
+    
     /*! A typename interface for variant
      */
     template<

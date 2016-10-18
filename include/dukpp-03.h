@@ -6,6 +6,7 @@
 
 #include "duk_custom.h"
 #include "../duktape/src/duktape.h"
+#include "removepointer.h"
 #include "errorcodes.h"
 #include "context.h"
 #include "function.h"
