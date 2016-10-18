@@ -79,9 +79,8 @@ class Context: public dukpp03::qt::BasicContext
 {
 public:
 	/*! Initializes metatypes, needed to work within context
-	    \param[in] register_finalizer whether register finalizer
 	 */
-	Context(bool register_finalizer = false);
+	Context();
 	/*! A destructor
 	 */
 	virtual ~Context();

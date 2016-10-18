@@ -16,7 +16,7 @@
 
 #define HAS_QT5  ( QT_VERSION >= 0x050000 )
 
-dukpp03::qt::Context::Context(bool register_finalizer)
+dukpp03::qt::Context::Context()
 {
 #define REGISTER_METATYPE(TYPE)                                    \
 	if (QMetaType::type(#TYPE) == QMetaType::UnknownType)          \
@@ -32,10 +32,6 @@ dukpp03::qt::Context::Context(bool register_finalizer)
 	}
 	// Provice global finalizer functions to garbage collect and finalize QObjects
 	duk_push_global_object(m_context);
-	if (register_finalizer) 
-	{
-	    duk_push_string(m_context, "deleteQObject");
-	}
 	duk_push_c_function(m_context, dukpp03::qt::qobjectfinalizer, 1);
 	duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
 	duk_pop(m_context); 
