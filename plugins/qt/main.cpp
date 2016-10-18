@@ -18,7 +18,7 @@ Q_DECLARE_METATYPE(Test2*);
 
 int main()
 {
-	dukpp03::qt::Context ctx;
+	dukpp03::qt::Context ctx(true);
 	ctx.setMaximumExecutionTime(30000);
 	
 	qRegisterMetaType<Test*>("Test*");
@@ -31,7 +31,7 @@ int main()
 	ctx.registerCallable("free_speak", dukpp03::qt::make_method::from(&Test::speak));
 	ctx.addClassBinding("Test*", testbinding);
 	std::string error;
-	ctx.eval("var a = new Test(); a.speak(); free_speak(a);", false, &error);
+	ctx.eval("var a = new Test(); a.speak(); free_speak(a); deleteQObject(a);", false, &error);
 	std::cout << error;
 	Test f;
 	QVariant v;
