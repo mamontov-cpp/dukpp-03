@@ -14,7 +14,7 @@ namespace qt
 
 /*! A main context to be used with qt
  */
-typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface> BasicContext;
+typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface, dukpp03::qt::WrapValue> BasicContext;
 
 /*! Performs pushing variant 
     \param[in] ctx context

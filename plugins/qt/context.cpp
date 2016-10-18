@@ -108,8 +108,13 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
         arguments << genericArgument;
     }
 
-    QVariant returnValue(QMetaType::type(metaMethod.typeName()), 
-        static_cast<void*>(NULL));
+    QString returnType = metaMethod.typeName();
+    QVariant returnValue;
+    if (returnType.length() && (returnType != "void"))
+    {
+        returnValue = QVariant(QMetaType::type(metaMethod.typeName()), 
+                               static_cast<void*>(NULL));
+    }
 
     QGenericReturnArgument returnArgument(
         metaMethod.typeName(),
@@ -196,7 +201,7 @@ static int dukqt_metamethod_call(duk_context *ctx) {
 				QVariantList variants;
 				for(size_t i = 0; i < c->getTop(); i++)
 				{
-					dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::Context>::perform(c, i);
+					dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::BasicContext>::perform(c, i);
 					if (tmp.exists())
 					{
 						variants << tmp.value();

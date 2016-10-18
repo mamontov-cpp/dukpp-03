@@ -89,6 +89,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pushvariant.cpp" />
     <ClCompile Include="qobjectfinalizer.cpp" />
+    <ClCompile Include="wrapvalue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constructor.h" />
@@ -99,6 +100,7 @@
     <ClInclude Include="timerinterface.h" />
     <ClInclude Include="valueownership.h" />
     <ClInclude Include="variantinterface.h" />
+    <ClInclude Include="wrapvalue.h" />
     <CustomBuild Include="test2.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing test2.h...</Message>
@@ -125,7 +127,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties UicDir=".\GeneratedFiles" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" RccDir=".\GeneratedFiles" lupdateOnBuild="0" lupdateOptions="" lreleaseOptions="" Qt5Version_x0020_Win32="5.5-msvc2010" />
+      <UserProperties UicDir=".\GeneratedFiles" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" RccDir=".\GeneratedFiles" lupdateOnBuild="0" lupdateOptions="" lreleaseOptions="" Qt5Version_x0020_Win32="$(DefaultQtVersion)" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

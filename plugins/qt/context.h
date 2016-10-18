@@ -9,6 +9,7 @@
 #include "mapinterface.h"
 #include "timerinterface.h"
 #include "valueownership.h"
+#include "wrapvalue.h"
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <QPair>
@@ -51,7 +52,7 @@ namespace qt
 {
 /*! A basic context to be used with qt. Should not be used, use Context class instead
  */
-typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface> BasicContext;
+typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface, dukpp03::qt::WrapValue> BasicContext;
 /*! A class binding for setting bindings for context
  */
 typedef dukpp03::ClassBinding<dukpp03::qt::BasicContext> ClassBinding;
