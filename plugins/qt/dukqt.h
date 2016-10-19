@@ -7,3 +7,4 @@
 #include "getvalue.h"
 #include "pushvalue.h"
 #include "constructor.h"
+#include "classbinding.h"

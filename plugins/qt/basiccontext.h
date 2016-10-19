@@ -24,9 +24,6 @@ namespace qt
 /*! A basic context to be used with qt. Should not be used, use Context class instead
  */
 typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterface, dukpp03::qt::TimerInterface, dukpp03::qt::WrapValue> BasicContext;
-/*! A class binding for setting bindings for context
- */
-typedef dukpp03::ClassBinding<dukpp03::qt::BasicContext> ClassBinding;
 /*! Makes method bindings to context
  */
 typedef dukpp03::bind_method<dukpp03::qt::BasicContext> bind_method;

@@ -7,12 +7,12 @@ struct Test: public QObject
 {
     Q_OBJECT
 public:
-    inline Test()
+    Q_INVOKABLE inline Test()
     {
         
     }
 
-    inline Test(int a)
+    Q_INVOKABLE inline Test(int a)
     {
         
     }

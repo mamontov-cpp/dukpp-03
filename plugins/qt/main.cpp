@@ -16,6 +16,22 @@ Q_DECLARE_METATYPE(Test2*)
 
 int main()
 {
+    const QMetaObject mo = Test::staticMetaObject;
+    for(int i = 0; i < mo.constructorCount(); i++)
+    {
+        QMetaMethod m = mo.constructor(i);
+        std::cout << "Return type: " << m.typeName()
+                  << " Signature: "  << m.methodSignature().toStdString()
+                  << "\n";
+    }
+    for(int i = mo.methodOffset(); i < mo.methodCount(); i++)
+    {
+        QMetaMethod m = mo.method(i);
+        std::cout << "Return type: " << m.typeName()
+                  << " Signature: "  << m.methodSignature().toStdString()
+                  << "\n";
+    }
+    std::cout << "===============================\n";
     dukpp03::qt::Context ctx;
     ctx.setMaximumExecutionTime(30000);
 
@@ -28,6 +44,7 @@ int main()
     testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test>());
     testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test, int>());
     testbinding->addMethod("speak", dukpp03::qt::bind_method::from(&Test::speak));
+    testbinding->registerMetaObject<Test>();
     ctx.registerCallable("free_speak", dukpp03::qt::make_method::from(&Test::speak));
     ctx.addClassBinding("Test*", testbinding);
     std::string error;

@@ -73,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classbinding.cpp" />
     <ClCompile Include="context.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -87,17 +88,33 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="metamethod.cpp" />
     <ClCompile Include="pushvariant.cpp" />
     <ClCompile Include="qobjectfinalizer.cpp" />
+    <ClCompile Include="registermetatype.cpp" />
+    <ClCompile Include="toqobject.cpp" />
     <ClCompile Include="wrapvalue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="basiccontext.h" />
+    <ClInclude Include="basicmetatypes.h" />
+    <ClInclude Include="classbinding.h" />
     <ClInclude Include="constructor.h" />
     <ClInclude Include="context.h" />
+    <ClInclude Include="dukqt.h" />
+    <ClInclude Include="getaddressoftype.h" />
+    <ClInclude Include="getadressofcommontypeorqobject.h" />
+    <ClInclude Include="getvalue.h" />
+    <ClInclude Include="isqobject.h" />
     <ClInclude Include="mapinterface.h" />
+    <ClInclude Include="metamethod.h" />
+    <ClInclude Include="objectwithownership.h" />
+    <ClInclude Include="pushvalue.h" />
     <ClInclude Include="pushvariant.h" />
     <ClInclude Include="qobjectfinalizer.h" />
+    <ClInclude Include="registermetatype.h" />
     <ClInclude Include="timerinterface.h" />
+    <ClInclude Include="toqobject.h" />
     <ClInclude Include="valueownership.h" />
     <ClInclude Include="variantinterface.h" />
     <ClInclude Include="wrapvalue.h" />
