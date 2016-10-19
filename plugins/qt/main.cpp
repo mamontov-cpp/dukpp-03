@@ -3,13 +3,11 @@
 #include <QObject>
 #include <QMetaMethod>
 
-#include "context.h"
+#include "dukqt.h"
 #include <iostream>
 
 #include "../../src/abstractcallable.cpp"
 #include "../../src/abstractcontext.cpp"
-
-#define HAS_QT5  ( QT_VERSION >= 0x050000 )
 
 Q_DECLARE_METATYPE(int*)
 Q_DECLARE_METATYPE(Test*)
@@ -20,7 +18,7 @@ int main()
 {
     dukpp03::qt::Context ctx;
     ctx.setMaximumExecutionTime(30000);
-    
+
     dukpp03::qt::registerMetaType<Test>();
     dukpp03::qt::registerMetaType<Test2>();
 

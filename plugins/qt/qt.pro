@@ -27,7 +27,13 @@ HEADERS += variantinterface.h \
     constructor.h \
     wrapvalue.h \
     registermetatype.h \
-    toqobject.h
+    toqobject.h \
+    objectwithownership.h \
+    basicmetatypes.h \
+    basiccontext.h \
+    getvalue.h \
+    pushvalue.h \
+    dukqt.h
 
 SOURCES += main.cpp \
     context.cpp \

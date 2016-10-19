@@ -1,5 +1,5 @@
 #include "context.h"
-#include "toqobject.h"
+#include "dukqt.h"
 #include <QMetaType>
 #include <QVariantList>
 
@@ -15,23 +15,26 @@
  */
 #define DUK_QT_METAMETHOD_SIGNATURE_PROPERTY "\1_____meta_method_signature\1"
 
-#define HAS_QT5  ( QT_VERSION >= 0x050000 )
-
 dukpp03::qt::Context::Context()
 {
-/*#define REGISTER_METATYPE(TYPE)                                    \
-    if (QMetaType::type(#TYPE) == QMetaType::UnknownType)          \
+#if HAS_QT5
+    #define UNKNOWN_TYPE QMetaType::UnknownType
+#else
+    #define UNKNOWN_TYPE QMetaType::Void
+#endif
+#define REGISTER_METATYPE(TYPE)                                    \
+    if (QMetaType::type(#TYPE) == UNKNOWN_TYPE)          \
     {                                                              \
         qRegisterMetaType< DUKPP03_TYPE(TYPE) >(#TYPE);            \
     }
     REGISTER_METATYPE(long double)
     REGISTER_METATYPE(std::string)
     REGISTER_METATYPE(dukpp03::qt::ObjectWithOwnership)
-    if (QMetaType::type("QPair<QObject*, dukpp03::qt::ValueOwnership>") == QMetaType::UnknownType)
+    if (QMetaType::type("QPair<QObject*, dukpp03::qt::ValueOwnership>") == UNKNOWN_TYPE)
     {
         qRegisterMetaType<QPair<QObject*, dukpp03::qt::ValueOwnership> >("QPair<QObject*, dukpp03::qt::ValueOwnership>");
     }
-*/
+
 }
 
 dukpp03::qt::Context::~Context()

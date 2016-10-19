@@ -1,5 +1,6 @@
 #include "pushvariant.h"
 #include "context.h"
+#include "pushvalue.h"
 
 void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
 {
