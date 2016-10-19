@@ -49,7 +49,7 @@ public:
     }
     /*! A class binding owns all of it's binding and destroys them automatically
      */
-    ~ClassBinding()
+    virtual ~ClassBinding()
     {
         this->clear();
     }
@@ -477,7 +477,7 @@ public:
     /*! Wraps value, setting methods for context
         \param[in] c context
      */
-    void wrapValue(_Context* c)
+    virtual void wrapValue(_Context* c)
     {
         for(size_t i = 0; i < m_methods.size(); i++)
         {
