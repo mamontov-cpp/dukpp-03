@@ -218,7 +218,7 @@ public:
         \param[in] property_name a name of object
         \return true if object is not on stack
      */
-    bool markTopObjectAsGlobal(const std::string& property_name)
+    bool markTopObjectAsGlobal(const std::string& property_name) const
     {
         if (this->getTop() == 0)
         {
@@ -234,7 +234,7 @@ public:
     }
     /*! Pushes new default object to stack
      */
-    void pushObject()
+    void pushObject() const
     {
         duk_push_object(m_context);
     }
@@ -242,7 +242,7 @@ public:
         \param[in] pos a position on stack
         \return error string from stack
      */
-    dukpp03::Maybe<std::string> errorOnStack(int pos)
+    dukpp03::Maybe<std::string> errorOnStack(int pos) const
     {
         dukpp03::Maybe<std::string> result;
         if (duk_is_error(m_context, pos))
@@ -253,13 +253,13 @@ public:
     }
     /*! Pops object from stack
      */
-    void pop()
+    void pop() const
     {
         duk_pop(m_context);
     }
     /*! Cleans stack from other values. Useful after evaluating code
      */
-    void cleanStack()
+    void cleanStack() const
     {
         while(getTop()) this->pop();
     }
@@ -277,7 +277,7 @@ public:
     /*! Unregisters global variable
         \param[in] name name of variable or global callable function
      */
-    void unregisterGlobal(const std::string& name)
+    void unregisterGlobal(const std::string& name) const
     {
         duk_push_global_object(m_context);
         duk_del_prop_string(m_context, -1, name.c_str());
@@ -480,6 +480,17 @@ public:
             delete c;
             m_class_bindings.remove(name);
         }
+    }
+    /*! Returns class binding if it's exists
+        \param[in] name a name fo bindings
+     */
+    dukpp03::ClassBinding<Self>* getClassBinding(const std::string& name)
+    {
+        if (m_class_bindings.contains(name))
+        {
+            return m_class_bindings.get(name);
+        }
+        return NULL;
     }
 protected:
     /*! Starts evaluating object, needed for data

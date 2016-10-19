@@ -87,6 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="context.h" />
+    <ClInclude Include="getaddressoftype.h" />
     <ClInclude Include="include\3rdparty\tpunit++\tpunit++.hpp" />
     <ClInclude Include="include\3rdparty\tpunit++\tpunitw.h" />
     <ClInclude Include="point.h" />

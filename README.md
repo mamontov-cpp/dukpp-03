@@ -21,7 +21,7 @@ This library is designed to be independent from environments as possible, so, to
 * Timer interface to be used in timeout checks (see TimerInterface)
 * Optionally a type-dependent value wrapper generator, but context can do it for us.
 
-An example of implementation see in https://github.com/mamontov-cpp/dukpp-03/blob/master/tests/utils.h
+An example of implementation see in https://github.com/mamontov-cpp/dukpp-03/blob/master/tests/utils.h and in https://github.com/mamontov-cpp/dukpp-03/blob/master/tests/getaddressoftype.h
 
 After defining prerequisites we can simplify binding values by specifiying context implementation, using following code
 
