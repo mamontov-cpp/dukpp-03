@@ -21,8 +21,8 @@ int main()
     dukpp03::qt::Context ctx;
     ctx.setMaximumExecutionTime(30000);
     
-    qRegisterMetaType<Test*>();
-    qRegisterMetaType<Test2*>();
+    dukpp03::qt::registerMetaType<Test>();
+    dukpp03::qt::registerMetaType<Test2>();
 
 
 

@@ -10,6 +10,8 @@
 #include "timerinterface.h"
 #include "valueownership.h"
 #include "wrapvalue.h"
+#include "registermetatype.h"
+#include "toqobject.h"
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <QPair>
@@ -110,6 +112,42 @@ void pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v);
 
 }
 
+template<>
+class GetValue<QObject*, dukpp03::qt::BasicContext>
+{
+public:
+    /*! Performs getting value from stack
+        \param[in] ctx context
+        \param[in] pos index for stack
+        \return a value if it exists, otherwise empty maybe
+     */
+    inline static dukpp03::Maybe<QObject*> perform(
+        dukpp03::qt::BasicContext* ctx,
+        duk_idx_t pos
+    )
+    {
+        dukpp03::Maybe<QObject*> result;
+        if (duk_is_object(ctx->context(), pos))
+        {
+            duk_get_prop_string(ctx->context(), pos, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
+            if (duk_is_pointer(ctx->context(), -1))
+            {
+                void* ptr = duk_to_pointer(ctx->context(), -1);
+                QVariant * v = reinterpret_cast<QVariant *>(ptr);
+                if (v)
+                {
+                    QObject* o = dukpp03::qt::toQObject(v);
+                    if (o)
+                    {
+                        result.setValue(o);
+                    }
+                }
+            }
+            duk_pop(ctx->context());
+        }
+        return result;
+    }
+};
 
 
 template<>

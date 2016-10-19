@@ -1,4 +1,5 @@
 #include "context.h"
+#include "toqobject.h"
 #include <QMetaType>
 #include <QVariantList>
 

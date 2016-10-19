@@ -25,13 +25,17 @@ HEADERS += variantinterface.h \
     getadressofcommontypeorqobject.h \
     getaddressoftype.h \
     constructor.h \
-    wrapvalue.h
+    wrapvalue.h \
+    registermetatype.h \
+    toqobject.h
 
 SOURCES += main.cpp \
     context.cpp \
     pushvariant.cpp \
     qobjectfinalizer.cpp \
-    wrapvalue.cpp
+    wrapvalue.cpp \
+    registermetatype.cpp \
+    toqobject.cpp
            
 
 DESTDIR = ../../lib/
