@@ -8,7 +8,7 @@
 
 namespace dukpp03
 {
-	
+
 namespace qt
 {
 
@@ -21,7 +21,7 @@ typedef dukpp03::Context<dukpp03::qt::MapInterface, dukpp03::qt::VariantInterfac
     \param[in] v value
  */
 void pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v);
-	
+
 }
 
 }

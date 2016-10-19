@@ -40,7 +40,7 @@ namespace qt
 typedef QPair<QObject*, dukpp03::qt::ValueOwnership> ObjectWithOwnership;
 
 }
-	
+    
 }
 
 Q_DECLARE_METATYPE(dukpp03::qt::ObjectWithOwnership)
@@ -79,28 +79,28 @@ typedef dukpp03::setter<dukpp03::qt::BasicContext> setter;
 class Context: public dukpp03::qt::BasicContext
 {
 public:
-	/*! Initializes metatypes, needed to work within context
-	 */
-	Context();
-	/*! A destructor
-	 */
-	virtual ~Context();
-	/*! Pushes new meta method as function into stack
-	    \param[in] index an index of meta_method in object
-	    \param[in] meta_method a meta method
-	 */  
-	void pushMetaMethod(int index, const QMetaMethod& meta_method) const;
-	/*! Pushes new object on stack with defined ownership
-	    \param[in] o object
-	    \param[in] p value ownership
-	 */
-	void pushObject(QObject* o, dukpp03::qt::ValueOwnership p);
-	/*! Registers new global object on stack with defined ownership
-	    \param[in] name a name for a global variable
-	    \param[in] o object
-	    \param[in] p value ownership
-	 */
-	void registerGlobal(const QString& name, QObject* o, dukpp03::qt::ValueOwnership p);
+    /*! Initializes metatypes, needed to work within context
+     */
+    Context();
+    /*! A destructor
+     */
+    virtual ~Context();
+    /*! Pushes new meta method as function into stack
+        \param[in] index an index of meta_method in object
+        \param[in] meta_method a meta method
+     */  
+    void pushMetaMethod(int index, const QMetaMethod& meta_method) const;
+    /*! Pushes new object on stack with defined ownership
+        \param[in] o object
+        \param[in] p value ownership
+     */
+    void pushObject(QObject* o, dukpp03::qt::ValueOwnership p);
+    /*! Registers new global object on stack with defined ownership
+        \param[in] name a name for a global variable
+        \param[in] o object
+        \param[in] p value ownership
+     */
+    void registerGlobal(const QString& name, QObject* o, dukpp03::qt::ValueOwnership p);
 };
 
 
@@ -208,7 +208,7 @@ public:
      */
     static void perform(dukpp03::qt::BasicContext* ctx, const QVariant& v)
     { 
-		dukpp03::qt::pushVariant(ctx, v);	
+        dukpp03::qt::pushVariant(ctx, v);   
     }
 };
 
@@ -223,17 +223,17 @@ public:
      */
     static void perform(dukpp03::qt::BasicContext* ctx, const dukpp03::qt::ObjectWithOwnership& v)
     {
-		if (v.second == dukpp03::qt::DQ_OWN)
-		{
-			dukpp03::PushValue<QObject*, dukpp03::qt::BasicContext>::perform(ctx, v.first);
-		}
-		else
-		{
-			// QVariant will push a variant with finalizer for qobjects
-			QVariant result;
-			result.setValue(v.first);
-			dukpp03::PushValue<QVariant, dukpp03::qt::BasicContext>::perform(ctx, result);
-		}
+        if (v.second == dukpp03::qt::DQ_OWN)
+        {
+            dukpp03::PushValue<QObject*, dukpp03::qt::BasicContext>::perform(ctx, v.first);
+        }
+        else
+        {
+            // QVariant will push a variant with finalizer for qobjects
+            QVariant result;
+            result.setValue(v.first);
+            dukpp03::PushValue<QVariant, dukpp03::qt::BasicContext>::perform(ctx, result);
+        }
     }
 };
 

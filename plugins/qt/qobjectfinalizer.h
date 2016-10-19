@@ -13,7 +13,7 @@ namespace qt
 {
 /*! A finalizer used to finalize an object variant
     \param[in] ctx context
-	\return 0
+    \return 0
  */
 duk_ret_t qobjectfinalizer(duk_context* ctx);
 

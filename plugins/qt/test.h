@@ -12,14 +12,14 @@ public:
         
     }
 
-	inline Test(int a)
+    inline Test(int a)
     {
-	    
+        
     }
 
-	inline void speak()
+    inline void speak()
     {
-	    std::cout << "Test::speak() says: I am test\n";
+        std::cout << "Test::speak() says: I am test\n";
     }
 
     /*! A test class

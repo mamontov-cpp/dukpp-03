@@ -53,11 +53,11 @@ template<
 >
 struct Finalizer
 {
-	/*! Returns variant to be finalized
-	    \param[in] ctx context
-	    \return variant or null if nothing
-	 */
-	static typename _Context::Variant* getVariantToFinalize(duk_context* ctx);
+    /*! Returns variant to be finalized
+        \param[in] ctx context
+        \return variant or null if nothing
+     */
+    static typename _Context::Variant* getVariantToFinalize(duk_context* ctx);
     /*! A finalization function
         \param[in] ctx context
         \return 0
@@ -146,7 +146,7 @@ public:
     }
     /*! Pushes variant to a pool. Note, that context becames owner of variant, so don't push your own variants into here.
         \param[in] v variant
-	    \param[in] ff a finalizer that must be used for this context
+        \param[in] ff a finalizer that must be used for this context
      */
     template< typename _Value >
     void pushVariant(Variant* v,  dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
@@ -175,7 +175,7 @@ public:
         You should check manually, that this type of variant corresponds to name, otherwise the behaviour is undefined
         \param[in] name name of variant
         \param[in] v a variant name
-	    \param[in] ff a finalizer that must be used for this context
+        \param[in] ff a finalizer that must be used for this context
      */ 
     void pushUntypedVariant(const std::string& name, Variant* v, dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
@@ -520,19 +520,19 @@ template<
 >
 typename _Context::Variant* Finalizer<_Context>::getVariantToFinalize(duk_context* ctx)
 {
-	if (duk_is_object(ctx, 0))
+    if (duk_is_object(ctx, 0))
     {
         typename _Context::Variant* result = NULL;
-    	duk_get_prop_string(ctx, 0, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
+        duk_get_prop_string(ctx, 0, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
         if (duk_is_pointer(ctx, -1))
         {
             void* ptr = duk_to_pointer(ctx, -1);
             result = reinterpret_cast<typename _Context::Variant*>(ptr);
         }
         duk_pop(ctx);
-		return result;
+        return result;
     }
-	return NULL;
+    return NULL;
 }
 
 template<

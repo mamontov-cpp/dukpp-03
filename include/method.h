@@ -38,7 +38,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod0<_Context, _ClassName>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -94,7 +94,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod1<_Context, _ClassName, _Arg0>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -152,7 +152,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod2<_Context, _ClassName, _Arg0, _Arg1>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -212,7 +212,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod3<_Context, _ClassName, _Arg0, _Arg1, _Arg2>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -274,7 +274,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod4<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -338,7 +338,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod5<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -404,7 +404,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod6<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -472,7 +472,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod7<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -542,7 +542,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod8<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -614,7 +614,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod9<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -688,7 +688,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod10<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -764,7 +764,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod11<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -842,7 +842,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod12<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -922,7 +922,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod13<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -1004,7 +1004,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod14<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -1088,7 +1088,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod15<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */
@@ -1174,7 +1174,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod16<_Context, _ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */

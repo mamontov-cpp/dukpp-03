@@ -7,22 +7,22 @@
 
 namespace dukpp03
 {
-	
+    
 template<
-	typename T
+    typename T
 >
 struct RemovePointer
 {
-	typedef T Type;
+    typedef T Type;
 };
 
 
 template<
-	typename T
+    typename T
 >
 struct RemovePointer<T*>
 {
-	typedef T Type;
+    typedef T Type;
 };
 
 

@@ -21,29 +21,29 @@ public:
     typedef QVariant Variant;
 
 
-	template<
-		typename _UnderlyingValue	
-	>
-	struct MakeFrom
-	{
-		static Variant* makeFrom(_UnderlyingValue val)
-		{
-			return new QVariant(val);
-		}		
-	};
+    template<
+        typename _UnderlyingValue   
+    >
+    struct MakeFrom
+    {
+        static Variant* makeFrom(_UnderlyingValue val)
+        {
+            return new QVariant(val);
+        }       
+    };
 
-	template<
-		typename _UnderlyingValue	
-	>
-	struct MakeFrom<_UnderlyingValue*>
-	{
-		static Variant* makeFrom(_UnderlyingValue* val)
-		{
-			QVariant* result = new QVariant();
-			result->setValue(val);
-			return result;
-		}		
-	};
+    template<
+        typename _UnderlyingValue   
+    >
+    struct MakeFrom<_UnderlyingValue*>
+    {
+        static Variant* makeFrom(_UnderlyingValue* val)
+        {
+            QVariant* result = new QVariant();
+            result->setValue(val);
+            return result;
+        }       
+    };
     
     /*! Makes variant from value
         \param[in] val value
@@ -83,32 +83,32 @@ public:
     };
     
 
-	static char is_qobject(QObject* v);
-	template<typename T>
-	static long long is_qobject(T* v);
+    static char is_qobject(QObject* v);
+    template<typename T>
+    static long long is_qobject(T* v);
 
 
-	template<bool, typename _UnderlyingValue>
-	struct GetAddress2
-	{
-		static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
+    template<bool, typename _UnderlyingValue>
+    struct GetAddress2
+    {
+        static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
         {
-			if (v->type() == qMetaTypeId<_UnderlyingValue>())
-			{
-				return dukpp03::Maybe<_UnderlyingValue*>(reinterpret_cast<_UnderlyingValue*>(v->data()));
-			}
+            if (v->type() == qMetaTypeId<_UnderlyingValue>())
+            {
+                return dukpp03::Maybe<_UnderlyingValue*>(reinterpret_cast<_UnderlyingValue*>(v->data()));
+            }
             return dukpp03::Maybe<_UnderlyingValue*>();
         };
-	};
+    };
 
-	template<typename _UnderlyingValue>
-	struct GetAddress2<true, _UnderlyingValue>
-	{
-		static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
+    template<typename _UnderlyingValue>
+    struct GetAddress2<true, _UnderlyingValue>
+    {
+        static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
         {
             return dukpp03::Maybe<_UnderlyingValue*>();
         };
-	};
+    };
 
 
     template<typename _UnderlyingValue>
@@ -118,7 +118,7 @@ public:
 
         static dukpp03::Maybe<_UnderlyingValue*> getAddress(Variant* v)
         {
-			return GetAddress2<sizeof(is_qobject(reinterpret_cast<_UnderlyingValue*>(NULL))) == sizeof(long long), _UnderlyingValue>::getAddress(v);
+            return GetAddress2<sizeof(is_qobject(reinterpret_cast<_UnderlyingValue*>(NULL))) == sizeof(long long), _UnderlyingValue>::getAddress(v);
         };
     };
 
@@ -128,11 +128,11 @@ public:
     public: 
         inline static dukpp03::Maybe<QObject*> getAddress(Variant* v)
         {
-			if (v->canConvert<QObject*>())
-			{
-				return v->value<QObject*>();
-			}
-			return dukpp03::Maybe<QObject*>();
+            if (v->canConvert<QObject*>())
+            {
+                return v->value<QObject*>();
+            }
+            return dukpp03::Maybe<QObject*>();
         };
     };
 

@@ -23,14 +23,14 @@ void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
 #undef DUK_IF_PUSH
         if (v.typeName() != NULL)
         {
-			if (v.canConvert<dukpp03::qt::ObjectWithOwnership>())
-			{
-				dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(ctx, v.value<dukpp03::qt::ObjectWithOwnership>());
-			}
-			else 
-			{  
-				ctx->pushUntypedVariant(v.typeName(), new QVariant(v), dukpp03::qt::qobjectfinalizer);
-			}
+            if (v.canConvert<dukpp03::qt::ObjectWithOwnership>())
+            {
+                dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(ctx, v.value<dukpp03::qt::ObjectWithOwnership>());
+            }
+            else 
+            {  
+                ctx->pushUntypedVariant(v.typeName(), new QVariant(v), dukpp03::qt::qobjectfinalizer);
+            }
         }
         else
         {

@@ -41,7 +41,7 @@ public:
     virtual dukpp03::Callable<_Context>* clone()
     {
         return new dukpp03::VoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
-    }	
+    }   
     /*! Returns count of required arguments
         \return count of required arguments
      */

@@ -39,14 +39,14 @@ public:
         typename _UnderlyingValue
     >   
     static dukpp03::Maybe<_UnderlyingValue> get(_VariantType* v);
-	/*! If objects contains an object, where _UnderlyingValue pointing, should return a pointer to this adress
-	     \param[in] v value
-	     \return result
-	 */
-	template<
+    /*! If objects contains an object, where _UnderlyingValue pointing, should return a pointer to this adress
+         \param[in] v value
+         \return result
+     */
+    template<
         typename _UnderlyingValue
     >
-	static dukpp03::Maybe<_UnderlyingValue> getAddress(_VariantType* v);
+    static dukpp03::Maybe<_UnderlyingValue> getAddress(_VariantType* v);
     
     /*! A typename interface for variant
      */
