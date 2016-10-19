@@ -18,7 +18,7 @@
 
 dukpp03::qt::Context::Context()
 {
-#define REGISTER_METATYPE(TYPE)                                    \
+/*#define REGISTER_METATYPE(TYPE)                                    \
     if (QMetaType::type(#TYPE) == QMetaType::UnknownType)          \
     {                                                              \
         qRegisterMetaType< DUKPP03_TYPE(TYPE) >(#TYPE);            \
@@ -30,6 +30,7 @@ dukpp03::qt::Context::Context()
     {
         qRegisterMetaType<QPair<QObject*, dukpp03::qt::ValueOwnership> >("QPair<QObject*, dukpp03::qt::ValueOwnership>");
     }
+*/
 }
 
 dukpp03::qt::Context::~Context()
@@ -49,7 +50,7 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
     if (methodTypes.size() < args.size()) {
 
         *error = "Insufficient arguments to call "; 
-#ifdef HAS_QT5
+#if HAS_QT5
         *error += metaMethod.methodSignature();
 #else
         *error += metaMethod.signature();
@@ -141,7 +142,7 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
 
     if (!ok) {
         *error = "Calling ";
-#ifdef HAS_QT5
+#if HAS_QT5
         *error += metaMethod.methodSignature();
 #else
         *error += metaMethod.signature();
@@ -190,7 +191,7 @@ static int dukqt_metamethod_call(duk_context *ctx) {
         {
             QMetaMethod method = obj->method(index);
             QString signature;
-#ifdef HAS_QT5
+#if HAS_QT5
             signature = method.methodSignature();
 #else
             signature = method.signature();
@@ -261,7 +262,7 @@ void dukpp03::qt::Context::pushMetaMethod(int index, const QMetaMethod& meta_met
     duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
 
     duk_push_string(m_context, DUK_QT_METAMETHOD_SIGNATURE_PROPERTY);   
-#ifdef HAS_QT5
+#if HAS_QT5
     duk_push_string(m_context, meta_method.methodSignature());
 #else
     duk_push_string(m_context, meta_method.signature());

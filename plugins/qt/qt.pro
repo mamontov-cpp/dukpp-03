@@ -20,12 +20,18 @@ HEADERS += variantinterface.h \
            test2.h \
     pushvariant.h \
     qobjectfinalizer.h \
-    valueownership.h
+    valueownership.h \
+    isqobject.h \
+    getadressofcommontypeorqobject.h \
+    getaddressoftype.h \
+    constructor.h \
+    wrapvalue.h
 
 SOURCES += main.cpp \
     context.cpp \
     pushvariant.cpp \
-    qobjectfinalizer.cpp
+    qobjectfinalizer.cpp \
+    wrapvalue.cpp
            
 
 DESTDIR = ../../lib/
@@ -50,3 +56,5 @@ CONFIG(release, debug|release) {
 }
 
 QMAKE_CXXFLAGS += -Wno-reorder -Wno-unused -Wno-sign-compare -w
+
+DISTFILES +=
