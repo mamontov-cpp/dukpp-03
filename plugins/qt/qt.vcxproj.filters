@@ -70,6 +70,9 @@
     <ClCompile Include="classbinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="metaconstructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapinterface.h">
@@ -136,6 +139,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="classbinding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metaconstructor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

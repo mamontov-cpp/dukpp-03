@@ -11,9 +11,12 @@ namespace dukpp03
     
 namespace qt
 {
-    
+
+/*! A basic meta method, that could be called
+ */    
 class MetaMethod: public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
+friend class MetaConstructor;
 public:
     /*! Makes new meta method
         \param[in] index an index of method
@@ -36,8 +39,8 @@ public:
         \return pair
      */
     virtual std::pair<int, bool> canBeCalled(dukpp03::qt::BasicContext* c);
-    /*! Returns whether it could be called as constructor
-        \return true if can
+    /*! Returns false
+        \return false
      */
     virtual bool canBeCalledAsConstructor();       
     /*! Performs actual function call

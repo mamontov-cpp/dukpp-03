@@ -86,7 +86,8 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
     // We need enough arguments to perform the conversion.
 
     QList<QByteArray> methodTypes = metaMethod.parameterTypes();
-    if (methodTypes.size() < args.size()) {
+    if (methodTypes.size() < args.size()) 
+    {
 
         *error = "Insufficient arguments to call "; 
 #if HAS_QT5
@@ -97,7 +98,8 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
         return QVariant();
     }
 
-    for (int i = 0; i < methodTypes.size(); i++) {
+    for (int i = 0; i < methodTypes.size(); i++) 
+    {
         const QVariant& arg = args.at(i);
         
         QByteArray methodTypeName = methodTypes.at(i);
@@ -141,7 +143,8 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
 
     QList<QGenericArgument> arguments;
 
-    for (int i = 0; i < converted.size(); i++) {
+    for (int i = 0; i < converted.size(); i++) 
+    {
 
         // Notice that we have to take a reference to the argument, else 
         // we'd be pointing to a copy that will be destroyed when this
@@ -207,7 +210,6 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
 
 int dukpp03::qt::MetaMethod::_call(dukpp03::qt::BasicContext* c)
 {
-    int cnt = c->getTop();
     QObject* obj = this->checkThis(c);
     if (!obj)
     {

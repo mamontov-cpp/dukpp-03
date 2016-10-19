@@ -41,8 +41,6 @@ int main()
 
 
     dukpp03::qt::ClassBinding* testbinding = new dukpp03::qt::ClassBinding();
-    testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test>());
-    testbinding->addConstructor("Test", dukpp03::qt::qobject::construct<Test, int>());
     testbinding->addMethod("speak", dukpp03::qt::bind_method::from(&Test::speak));
     testbinding->registerMetaObject<Test>();
     ctx.registerCallable("free_speak", dukpp03::qt::make_method::from(&Test::speak));
@@ -54,12 +52,5 @@ int main()
     QVariant v;
     Test2* vc;
     
-    QVariant v1;
-    //v1.setValue(f);
-    std::cout << "v1: Can convert to QObject " <<  v1.canConvert<QObject*>() << ":" << v1.value<QObject*>() << "\n";
-    QVariant v2;
-    v2.setValue(&f);
-    std::cout << "v2: Can convert to QObject " <<  v2.canConvert<QObject*>() << ":" << v2.value<QObject*>() << "\n";
-
     return 0;
 }

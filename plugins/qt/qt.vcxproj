@@ -88,6 +88,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="metaconstructor.cpp" />
     <ClCompile Include="metamethod.cpp" />
     <ClCompile Include="pushvariant.cpp" />
     <ClCompile Include="qobjectfinalizer.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="getvalue.h" />
     <ClInclude Include="isqobject.h" />
     <ClInclude Include="mapinterface.h" />
+    <ClInclude Include="metaconstructor.h" />
     <ClInclude Include="metamethod.h" />
     <ClInclude Include="objectwithownership.h" />
     <ClInclude Include="pushvalue.h" />

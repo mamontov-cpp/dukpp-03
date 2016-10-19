@@ -13,7 +13,10 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant)
     if (o)
     {
         const QMetaObject* mo = o->metaObject();
-        if (ctx->getClassBinding(mo->className()) == NULL) 
+        std::string ptrclassname = mo->className();
+        ptrclassname.append("*");
+        dukpp03::ClassBinding<dukpp03::qt::BasicContext>* ctxbinding = ctx->getClassBinding(ptrclassname);
+        if (ctxbinding == NULL) 
         {
             QString bindingName = mo->className();
             bindingName.append("*");
@@ -22,6 +25,13 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant)
             binding->registerMetaObject(mo, false);
             binding->wrapValue(ctx);
             ctx->addClassBinding(bindingName.toStdString(), binding);
+        }
+        else
+        {
+            if (QString(v->typeName()) != ptrclassname.c_str())
+            {
+                ctxbinding->wrapValue(ctx);
+            }
         }
     }
 }
