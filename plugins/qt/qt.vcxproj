@@ -75,6 +75,7 @@
   <ItemGroup>
     <ClCompile Include="classbinding.cpp" />
     <ClCompile Include="context.cpp" />
+    <ClCompile Include="convert.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -90,6 +91,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="metaconstructor.cpp" />
     <ClCompile Include="metamethod.cpp" />
+    <ClCompile Include="metapropertyaccessor.cpp" />
     <ClCompile Include="pushvariant.cpp" />
     <ClCompile Include="qobjectfinalizer.cpp" />
     <ClCompile Include="registermetatype.cpp" />
@@ -102,6 +104,7 @@
     <ClInclude Include="classbinding.h" />
     <ClInclude Include="constructor.h" />
     <ClInclude Include="context.h" />
+    <ClInclude Include="convert.h" />
     <ClInclude Include="dukqt.h" />
     <ClInclude Include="getaddressoftype.h" />
     <ClInclude Include="getadressofcommontypeorqobject.h" />
@@ -110,6 +113,7 @@
     <ClInclude Include="mapinterface.h" />
     <ClInclude Include="metaconstructor.h" />
     <ClInclude Include="metamethod.h" />
+    <ClInclude Include="metapropertyaccessor.h" />
     <ClInclude Include="objectwithownership.h" />
     <ClInclude Include="pushvalue.h" />
     <ClInclude Include="pushvariant.h" />
