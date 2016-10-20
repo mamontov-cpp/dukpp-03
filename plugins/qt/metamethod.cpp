@@ -265,7 +265,7 @@ QObject* dukpp03::qt::MetaMethod::checkThis(dukpp03::qt::BasicContext* c) const
     {
         QObject* thisobj  = maybethisobject.value();
         const QMetaObject* obj = thisobj->metaObject();
-        if (m_index >= obj->methodOffset() && m_index < (obj->methodOffset() + obj->methodCount()))
+        if (m_index >= obj->methodOffset() && m_index < obj->methodCount())
         {
             QMetaMethod method = obj->method(m_index);
 #if HAS_QT5

@@ -7,6 +7,8 @@ struct Test: public QObject
 {
     Q_OBJECT
 public:
+    Q_PROPERTY(int x READ getX WRITE setX)
+
     Q_INVOKABLE inline Test()
     {
         
@@ -36,6 +38,16 @@ public:
         std::cout << "void Test::slot33()\n";
     }
 
+    inline void setX(int x)
+    {
+        m_x = x;
+    }
+
+    inline int getX()
+    {
+        return m_x;
+    }
+
 public slots:    
     int slot2()
     {
@@ -52,4 +64,6 @@ public slots:
     {
         std::cout << "void Test::slotx()\n";        
     }
+public:
+    int m_x;
 };
