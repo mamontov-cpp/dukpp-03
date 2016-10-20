@@ -16,10 +16,10 @@ else()
 	set(DUKPP03_LINKABLE_NAME "dukpp-03-${CMAKE_BUILD_TYPE_LOWERCASED}")
 endif()
 
-include_directories(../include)
+include_directories(../../include)
 include_directories(${Boost_INCLUDE_DIRS})
 
-link_directories("../lib" ${Boost_LIBRARY_DIRS})
+link_directories("../../lib" ${Boost_LIBRARY_DIRS})
 
 set(SRCS "main.cpp" "context.cpp" "callables.cpp" "point.cpp")
 
@@ -29,15 +29,15 @@ target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${DUKPP03_LINKABLE_NAME} ${Boos
 
 set_target_properties(${DUKPP03_EXECUTABLE_NAME}
     PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY "../lib"
-	ARCHIVE_OUTPUT_DIRECTORY_DEBUG "../lib"
-	ARCHIVE_OUTPUT_DIRECTORY_RELEASE "../lib"	
-    LIBRARY_OUTPUT_DIRECTORY "../lib"
-	LIBRARY_OUTPUT_DIRECTORY_DEBUG "../lib"
-	LIBRARY_OUTPUT_DIRECTORY_RELEASE "../lib"	
-    RUNTIME_OUTPUT_DIRECTORY "../bin"
-	RUNTIME_OUTPUT_DIRECTORY_DEBUG "../bin"
-	RUNTIME_OUTPUT_DIRECTORY_RELEASE "../bin"
+    ARCHIVE_OUTPUT_DIRECTORY "../../lib"
+	ARCHIVE_OUTPUT_DIRECTORY_DEBUG "../../lib"
+	ARCHIVE_OUTPUT_DIRECTORY_RELEASE "../../lib"
+    LIBRARY_OUTPUT_DIRECTORY "../../lib"
+	LIBRARY_OUTPUT_DIRECTORY_DEBUG "../../lib"
+	LIBRARY_OUTPUT_DIRECTORY_RELEASE "../lib"
+    RUNTIME_OUTPUT_DIRECTORY "../../bin"
+	RUNTIME_OUTPUT_DIRECTORY_DEBUG "../../bin"
+	RUNTIME_OUTPUT_DIRECTORY_RELEASE "../../bin"
 	DEBUG_POSTFIX "-debug"
 	RELEASE_POSTFIX "-release"
 )
