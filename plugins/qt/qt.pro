@@ -33,7 +33,11 @@ HEADERS += variantinterface.h \
     basiccontext.h \
     getvalue.h \
     pushvalue.h \
-    dukqt.h
+    dukqt.h \
+    classbinding.h \
+    metaconstructor.h \
+    metamethod.h \
+    trygetpointertoqobjectdescendant.h
 
 SOURCES += main.cpp \
     context.cpp \
@@ -41,7 +45,10 @@ SOURCES += main.cpp \
     qobjectfinalizer.cpp \
     wrapvalue.cpp \
     registermetatype.cpp \
-    toqobject.cpp
+    toqobject.cpp \
+    classbinding.cpp \
+    metaconstructor.cpp \
+    metamethod.cpp
            
 
 DESTDIR = ../../lib/

@@ -21,14 +21,14 @@ int main()
     {
         QMetaMethod m = mo.constructor(i);
         std::cout << "Return type: " << m.typeName()
-                  << " Signature: "  << m.methodSignature().toStdString()
+                  //<< " Signature: "  << m.methodSignature().toStdString()
                   << "\n";
     }
     for(int i = mo.methodOffset(); i < mo.methodCount(); i++)
     {
         QMetaMethod m = mo.method(i);
         std::cout << "Return type: " << m.typeName()
-                  << " Signature: "  << m.methodSignature().toStdString()
+                  //<< " Signature: "  << m.methodSignature().toStdString()
                   << "\n";
     }
     std::cout << "===============================\n";

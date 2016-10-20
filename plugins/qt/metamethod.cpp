@@ -56,7 +56,7 @@ std::pair<int, bool> dukpp03::qt::MetaMethod::canBeCalled(dukpp03::qt::BasicCont
                 if (copy.type() != methodType) 
                 {
                     bool qobject_castable = false;
-                    if ((methodTypeName.toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
+                    if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
                     {
                         qobject_castable = true;
                     }
@@ -117,7 +117,7 @@ static QVariant metamethod_call(QObject* object, QMetaMethod metaMethod, QVarian
         if (copy.type() != methodType) {
             if (copy.canConvert(methodType)) {
                 bool qobject_castable = false;
-                if ((methodTypeName.toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
+                if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
                 {
                     qobject_castable = true;
                 }
@@ -273,7 +273,7 @@ QObject* dukpp03::qt::MetaMethod::checkThis(dukpp03::qt::BasicContext* c) const
             QString sourceSignature = m_method.methodSignature();
 #else
             QString signature = method.signature();
-            QString sourceSignature = method.methodSignature();
+            QString sourceSignature = method.signature();
 #endif
             if (QString(method.typeName()) == QString(m_method.typeName()) && sourceSignature == signature)
             {

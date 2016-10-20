@@ -54,7 +54,7 @@ std::pair<int, bool> dukpp03::qt::MetaConstructor::canBeCalled(dukpp03::qt::Basi
             if (copy.type() != methodType) 
             {
                 bool qobject_castable = false;
-                if ((methodTypeName.toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
+                if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
                 {
                     qobject_castable = true;
                 }
@@ -112,7 +112,7 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
         if (copy.type() != methodType) {
             if (copy.canConvert(methodType)) {
                 bool qobject_castable = false;
-                if ((methodTypeName.toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
+                if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
                 {
                     qobject_castable = true;
                 }

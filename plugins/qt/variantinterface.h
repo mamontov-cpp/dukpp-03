@@ -5,6 +5,7 @@
 #pragma once
 #include <maybe.h>
 #include "getaddressoftype.h"
+#include "trygetpointertoqobjectdescendant.h"
 #include <QVariant>
 #include <QMetaType>
 #include <QObject>
@@ -44,6 +45,13 @@ public:
         if (v->canConvert<_UnderlyingValue>())
         {
             return dukpp03::Maybe<_UnderlyingValue>(v->value<_UnderlyingValue>());
+        }
+        else
+        {
+            if (v->canConvert<QObject*>())
+            {
+                return dukpp03::qt::TryToGetPointerToQObjectDescendant<_UnderlyingValue>::perform(v->value<QObject*>());
+            }
         }
         return dukpp03::Maybe<_UnderlyingValue>();
     }
