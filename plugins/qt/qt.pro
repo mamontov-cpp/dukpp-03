@@ -4,7 +4,7 @@
 
 QT += core
 CONFIG += console 
-TEMPLATE =  app # lib
+TEMPLATE =  lib
 TARGET = 
 DEPENDPATH += . \
               ../../include/
@@ -16,8 +16,6 @@ HEADERS += variantinterface.h \
            mapinterface.h \
            timerinterface.h \
            context.h \
-           test.h \
-           test2.h \
     pushvariant.h \
     qobjectfinalizer.h \
     valueownership.h \
@@ -41,8 +39,7 @@ HEADERS += variantinterface.h \
     metapropertyaccessor.h \
     convert.h
 
-SOURCES += main.cpp \
-    context.cpp \
+SOURCES += context.cpp \
     pushvariant.cpp \
     qobjectfinalizer.cpp \
     wrapvalue.cpp \

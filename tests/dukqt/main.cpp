@@ -1,4 +1,13 @@
-#include "test.h"
+#pragma warning(push)
+#pragma warning(disable: 4273)
+#pragma warning(disable: 4351)
+#include <cstdio>
+#include <iostream>
+#define _INC_STDIO
+#include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
+#pragma warning(pop)
+
+/*#include "test.h"
 #include "../../src/duktape.cpp"
 #include <QObject>
 #include <QMetaMethod>
@@ -63,10 +72,11 @@ QMap<QString, int> testMap(QMap<QString, int>& r, const QString& m, int v)
     std::cout << "===========\n";
     return r; 
 }
+*/
 
-int main()
+int main(int argc, char** argv[])
 {
-    dukpp03::qt::Context ctx;
+/*    dukpp03::qt::Context ctx;
     ctx.setMaximumExecutionTime(30000);
 
     dukpp03::qt::registerMetaType<Test>();
@@ -101,6 +111,12 @@ int main()
 
     ctx.eval("testMap(testMap({\"a\" : 1, \"b\" : 2}, \"333\", 82), \"5555\", 10);", false, &error);
     std::cout << error << "\n";
-    
-    return 0;
+*/
+    /**
+     * Run all of the registered tpunit++ tests. Returns 0 if
+     * all tests are successful, otherwise returns the number
+     * of failing assertions.
+     */
+    int result = tpunit::Tests::Run(); 
+    return result;
 }
