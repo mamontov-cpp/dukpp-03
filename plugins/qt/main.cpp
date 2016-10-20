@@ -30,7 +30,7 @@ int main()
     ctx.registerCallable("free_speak", dukpp03::qt::make_method::from(&Test::speak));
     ctx.addClassBinding("Test*", testbinding);
     std::string error;
-    ctx.eval("var a = new Test(1.2); a.speak(); a.slot33(2); a.slot2(); a.slot3(); a.slotx(2, 3, \"a\", 4); free_speak(a); a.x = 122; print(a.x);", false, &error);
+    ctx.eval("var a = new Test(1.2); a.speak(); a.slot33(2); a.slot2(); a.slot3(); a.slotx(2, 3, \"a\", 4); free_speak(a); a.x = 122; print(a.x); print(a.slot(127).slot(127));", false, &error);
     std::cout << error << "\n";
     Test f;
     QVariant v;
