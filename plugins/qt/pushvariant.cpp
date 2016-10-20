@@ -4,7 +4,8 @@
 
 void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
 {
-#define  DUK_IF_PUSH(TYPE)   if (v.typeName() == #TYPE) {  dukpp03::PushValue< DUKPP03_TYPE(TYPE), dukpp03::qt::BasicContext>::perform(ctx, v.value<DUKPP03_TYPE(TYPE)>()); return;  }
+       QString typeName = v.typeName();
+#define  DUK_IF_PUSH(TYPE)   if (typeName == #TYPE) {  dukpp03::PushValue< DUKPP03_TYPE(TYPE), dukpp03::qt::BasicContext>::perform(ctx, v.value<DUKPP03_TYPE(TYPE)>()); return;  }
         DUK_IF_PUSH(bool)
         DUK_IF_PUSH(char)
         DUK_IF_PUSH(unsigned char)
@@ -22,7 +23,7 @@ void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
         DUK_IF_PUSH(std::string)
         DUK_IF_PUSH(QString)
 #undef DUK_IF_PUSH
-        if (v.typeName() != NULL)
+        if (typeName != NULL)
         {
             if (v.canConvert<dukpp03::qt::ObjectWithOwnership>())
             {

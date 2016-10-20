@@ -1,4 +1,5 @@
 #include "metaconstructor.h"
+#include "convert.h"
 #include "metamethod.h"
 #include "getvalue.h"
 #include "pushvalue.h"
@@ -43,25 +44,10 @@ std::pair<int, bool> dukpp03::qt::MetaConstructor::canBeCalled(dukpp03::qt::Basi
         {
             const QVariant& arg = lst.at(i);
         
-            QByteArray methodTypeName = methodTypes.at(i);
-            QByteArray argTypeName = arg.typeName();
-
-            QVariant::Type methodType = QVariant::nameToType(methodTypeName);
-            // ReSharper disable once CppEntityNeverUsed
-            QVariant::Type argType = arg.type();
-        
-            QVariant copy = QVariant(arg);
-            if (copy.type() != methodType) 
+            QString methodTypeName = methodTypes.at(i);
+            if (dukpp03::qt::Convert::canConvert(methodTypeName, &arg))
             {
-                bool qobject_castable = false;
-                if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
-                {
-                    qobject_castable = true;
-                }
-                if (copy.canConvert(methodType) || qobject_castable) 
-                {
-                    matchedargs += 1;
-                }
+                 matchedargs += 1;
             }
         }
     }    
@@ -109,28 +95,13 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
         // If the types are not the same, attempt a conversion. If it
         // fails, we cannot proceed.
 
-        if (copy.type() != methodType) {
-            if (copy.canConvert(methodType)) {
-                bool qobject_castable = false;
-                if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
-                {
-                    qobject_castable = true;
-                }
-                if (!copy.convert(methodType)) {
-                    if (qobject_castable)
-                    {
-                        copy = QVariant::fromValue(dukpp03::qt::toQObject(&copy));
-                    } 
-                    else
-                    {
-                        *error     = "Cannot convert ";
-                        *error     += argTypeName;
-                        *error     += " to ";
-                        *error     += methodTypeName;
-                        return NULL;
-                    }
-                }
-            }
+        if (!dukpp03::qt::Convert::convert(methodTypeName, &arg, copy))
+        {
+            *error     = "Cannot convert ";
+            *error     += argTypeName;
+            *error     += " to ";
+            *error     += methodTypeName;
+            return NULL;
         }
 
         converted << copy;

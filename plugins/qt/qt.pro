@@ -38,7 +38,8 @@ HEADERS += variantinterface.h \
     metaconstructor.h \
     metamethod.h \
     trygetpointertoqobjectdescendant.h \
-    metapropertyaccessor.h
+    metapropertyaccessor.h \
+    convert.h
 
 SOURCES += main.cpp \
     context.cpp \
@@ -50,7 +51,8 @@ SOURCES += main.cpp \
     classbinding.cpp \
     metaconstructor.cpp \
     metamethod.cpp \
-    metapropertyaccessor.cpp
+    metapropertyaccessor.cpp \
+    convert.cpp
            
 
 DESTDIR = ../../lib/

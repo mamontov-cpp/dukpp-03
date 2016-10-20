@@ -1,6 +1,6 @@
 #include "metapropertyaccessor.h"
 
-
+#include "convert.h"
 #include "getvalue.h"
 #include "pushvalue.h"
 
@@ -50,22 +50,10 @@ std::pair<int, bool> dukpp03::qt::MetaPropertyAccessor::canBeCalled(dukpp03::qt:
             {
                 QVariant arg = tmp.value();
                 QString methodTypeName = m_property.typeName();
-                QString argTypeName = arg.typeName();
 
-                QVariant copy = QVariant(arg);
-                QVariant::Type methodType = QVariant::nameToType(methodTypeName.toStdString().c_str());
-
-                if (copy.type() != methodType)
+                if (dukpp03::qt::Convert::canConvert(methodTypeName, &arg))
                 {
-                    bool qobject_castable = false;
-                    if ((QString(methodTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
-                    {
-                        qobject_castable = true;
-                    }
-                    if (copy.canConvert(methodType) || qobject_castable)
-                    {
-                        matchedargs += 1;
-                    }
+                    matchedargs += 1;
                 }
             }
         }
@@ -97,21 +85,15 @@ int dukpp03::qt::MetaPropertyAccessor::_call(dukpp03::qt::BasicContext* c)
             QString propTypeName = m_property.typeName();
             QString argTypeName = arg.typeName();
 
-            QVariant copy = QVariant(arg);
-            QVariant::Type propType = QVariant::nameToType(propTypeName.toStdString().c_str());
-
             bool ok = false;
-            if (copy.type() != propType)
+            if (dukpp03::qt::Convert::canConvert(propTypeName, &arg))
             {
-                bool qobject_castable = false;
-                if ((QString(propTypeName).toStdString() == "QObject*") && dukpp03::qt::is_metatype_qobject(argTypeName))
-                {
-                    qobject_castable = true;
-                }
-                if (copy.canConvert(propType) || qobject_castable)
-                {
-                    m_property.write(obj, copy.convert(propType));
-                }
+                 QVariant parg;
+                 if (dukpp03::qt::Convert::convert(propTypeName, &arg, parg))
+                 {
+                     ok = true;
+                     m_property.write(obj, parg);
+                 }
             }
 
             if (!ok)
@@ -130,7 +112,7 @@ int dukpp03::qt::MetaPropertyAccessor::_call(dukpp03::qt::BasicContext* c)
     else
     {
         QVariant returnValue = m_property.read(obj);
-        dukpp03::PushValue<QVariant, dukpp03::qt::BasicContext>::perform(c, returnValue);
+        dukpp03::qt::pushVariant(c, returnValue);
         return 1;
     }
     return 0;

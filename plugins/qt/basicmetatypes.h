@@ -8,7 +8,6 @@
 #include <QMetaType>
 #include <string>
 
-
 #ifndef DUK_QT_NO_DECLARE_METATYPE_FOR_LONG_DOUBLE
     Q_DECLARE_METATYPE(long double)
 #endif
