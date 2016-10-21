@@ -8,3 +8,6 @@
 #include "pushvalue.h"
 #include "constructor.h"
 #include "classbinding.h"
+#include "convert.h"
+#include "isqobject.h"
+#include "registermetatype.h"

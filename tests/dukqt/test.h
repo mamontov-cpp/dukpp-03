@@ -67,3 +67,5 @@ public slots:
 public:
     int m_x;
 };
+
+

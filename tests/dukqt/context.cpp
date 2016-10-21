@@ -21,7 +21,7 @@ public:
     void testTimeout()
     {
         dukpp03::qt::Context ctx;
-        ctx.setMaximumExecutionTime(2000);
+        ctx.setMaximumExecutionTime(1000);
         ctx.eval("while(true) {}");
     }
 } _context_test;

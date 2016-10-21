@@ -70,6 +70,43 @@ static void initConverters()
         insertConverterToList<long double, unsigned long>();
         insertConverterToList<long double, long long>();
         insertConverterToList<long double, unsigned long long>();
+        insertConverterToList<long double, double>();
+        insertConverterToList<long double, float>();
+
+        insertConverterToList<short, unsigned short>();
+        insertConverterToList<short, int>();
+        insertConverterToList<short, unsigned int>();
+        insertConverterToList<short, long>();
+        insertConverterToList<short, unsigned long>();
+        insertConverterToList<short, long long>();
+        insertConverterToList<short, unsigned long long>();
+
+        insertConverterToList<unsigned short, int>();
+        insertConverterToList<unsigned short, unsigned int>();
+        insertConverterToList<unsigned short, long>();
+        insertConverterToList<unsigned short, unsigned long>();
+        insertConverterToList<unsigned short, long long>();
+        insertConverterToList<unsigned short, unsigned long long>();
+
+        insertConverterToList<int, unsigned int>();
+        insertConverterToList<int, long>();
+        insertConverterToList<int, unsigned long>();
+        insertConverterToList<int, long long>();
+        insertConverterToList<int, unsigned long long>();
+
+        insertConverterToList<unsigned int, long>();
+        insertConverterToList<unsigned int, unsigned long>();
+        insertConverterToList<unsigned int, long long>();
+        insertConverterToList<unsigned int, unsigned long long>();
+
+        insertConverterToList<long, unsigned long>();
+        insertConverterToList<long, long long>();
+        insertConverterToList<long, unsigned long long>();
+
+        insertConverterToList<unsigned long, long long>();
+        insertConverterToList<unsigned long, unsigned long long>();
+
+        insertConverterToList<long long, unsigned long long>();
     }
     mtx.unlock();
 }
