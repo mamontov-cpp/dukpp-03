@@ -33,11 +33,6 @@ public:
     /*! A destructor
      */
     virtual ~Context();
-    /*! Pushes new meta method as function into stack
-        \param[in] index an index of meta_method in object
-        \param[in] meta_method a meta method
-     */  
-    void pushMetaMethod(int index, const QMetaMethod& meta_method) const;
     /*! Pushes new object on stack with defined ownership
         \param[in] o object
         \param[in] p value ownership

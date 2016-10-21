@@ -6,10 +6,6 @@
 #include <QMutex>
 #include <iostream>
 
-// A simple sets to perform checks
-static QString doubleTypes = "float|double|long double";
-static QString intTypes = "short|unsigned short|int|unsigned int|long|unsigned long|long long|unsigned long long";
-
 
 template<typename _To, typename _From>
 static QVariant convert(QVariant* v)
