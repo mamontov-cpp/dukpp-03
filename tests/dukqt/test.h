@@ -69,11 +69,20 @@ public:
         \param[in] ptr pointer
      */
     static void deleteHolder(Test::ValueHolder* ptr);
+    /*! Sets half of value
+        \param[in] value1 a value
+        \param[in] value2 a value
+     */
+    void setHalfOfValueFromSum(int value1, int value2);
 public slots:    
     /*! Returns 3
         \return 3
      */
     int return3();
+    /*! Sets half of value
+        \param[in] value a value
+     */
+    void setHalfOfValue(int value);
 public:
     int m_value;
 };

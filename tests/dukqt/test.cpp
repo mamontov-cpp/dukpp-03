@@ -35,6 +35,11 @@ int Test::return3()
     return 3;
 }
 
+void Test::setHalfOfValue(int value)
+{
+    m_value = value / 2;
+}
+
 // ReSharper disable once CppMemberFunctionMayBeStatic
 // ReSharper disable once CppMemberFunctionMayBeConst
 Test2* Test::returnDerived(int a)
@@ -60,6 +65,11 @@ Test::ValueHolder* Test::returnHolderPtr()
 void Test::deleteHolder(Test::ValueHolder* ptr)
 {
     delete ptr;
+}
+
+void Test::setHalfOfValueFromSum(int value1, int value2)
+{
+    m_value = (value1 + value2) / 2;
 }
 
 // =================================== PUBLIC Test::ValueHolder ===================================
