@@ -58,12 +58,30 @@
     <ClCompile Include="interop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gccollectcheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_gccollectcheck.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_gccollectcheck.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="test.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="test2.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="gccollectcheck.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

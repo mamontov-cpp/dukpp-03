@@ -17,9 +17,10 @@ struct WrapValue
 
 /*! Performs wrapping value for specified variant
     \param[in] context a context
-    \parma[in] variant a specified variant
+    \param[in] variant a specified variant
+    \param[in] wrapped whether value has been wrapped
  */
-static void perform(void* context, void* variant);
+static void perform(void* context, void* variant, bool wrapped);
 
 };
 

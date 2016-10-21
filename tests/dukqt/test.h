@@ -1,71 +1,87 @@
+/*! \file test.h
+    
+    Returns simple derived object
+ */
 #pragma once
 #include "test2.h"
 #include <QObject>
 #include <iostream>
 
+/*! A simple test object
+ */
 struct Test: public QObject
 {
     Q_OBJECT
 public:
-    Q_PROPERTY(int x READ getX WRITE setX)
-
-    Q_INVOKABLE inline Test()
-    {
-        
-    }
-
-    Q_INVOKABLE inline Test(int a)
-    {
-        
-    }
-
-    inline void speak()
-    {
-        std::cout << "Test::speak() says: I am test\n";
-    }
-
-    /*! A test class
+    /*! A value holder for test
      */
-    Q_INVOKABLE Test2* slot(int a)
+    struct ValueHolder
     {
-        return new Test2(a);
-    }
+        /*! A value holder
+         */
+        int Value;
+        /*! Constructs new holder with default value
+         */
+        ValueHolder();
+        /*! Constructs new holder
+            \param[in] v value
+         */
+        ValueHolder(int v);
+        /*! Prints value on screen
+         */
+        void printValue() const;
+        /*! Returns value from holder
+            \return value
+         */ 
+        int getValue() const;
+    };
 
-    /*! A test class
+    Q_PROPERTY(int value READ getValue WRITE setValue)
+    /*! A test object initializer value with 0
      */
-    Q_INVOKABLE void slot33(int a)
-    {
-        std::cout << "void Test::slot33()\n";
-    }
-
-    inline void setX(int x)
-    {
-        m_x = x;
-    }
-
-    inline int getX()
-    {
-        return m_x;
-    }
-
+    Q_INVOKABLE Test();
+    /*! Initializes object with value
+        \param[in] value a value
+     */
+    Q_INVOKABLE Test(int value);
+    /*! Sets a value for test
+        \param[in] value a value for test
+     */
+    void setValue(int value);
+    /*! Returns a value
+        \return value
+     */
+    int getValue();
+    /*! Returns derived object
+        \param[in] a
+        \return constructed a
+     */
+    Q_INVOKABLE Test2* returnDerived(int a);
+    /*! A test function, that returns a holder
+        \return a holder
+     */
+    Q_INVOKABLE Test::ValueHolder returnHolder();
+    /*! A test function, that returns a holder pointer
+        \return a holder
+     */
+    Q_INVOKABLE Test::ValueHolder* returnHolderPtr();
+    /*! Deletes a holder pointer
+        \param[in] ptr pointer
+     */
+    static void deleteHolder(Test::ValueHolder* ptr);
 public slots:    
-    int slot2()
-    {
-        std::cout << "int Test::slot2()\n";
-        return 0;
-    }
-    
-    void slot3()
-    {
-        std::cout << "void Test::slot3()\n";        
-    }
-    
-    void slotx(int a, long b, const QString& c, int d)
-    {
-        std::cout << "void Test::slotx()\n";        
-    }
+    /*! Returns 3
+        \return 3
+     */
+    int return3();
 public:
-    int m_x;
+    int m_value;
 };
 
 
+Q_DECLARE_METATYPE(Test*)
+Q_DECLARE_METATYPE(Test**)
+Q_DECLARE_METATYPE(Test2*)
+Q_DECLARE_METATYPE(Test::ValueHolder)
+Q_DECLARE_METATYPE(Test::ValueHolder*)
+Q_DECLARE_METATYPE(Test::ValueHolder**)

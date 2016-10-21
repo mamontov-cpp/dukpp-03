@@ -161,12 +161,14 @@ public:
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         std::string cbname = this->typeName<_Value>();
+        bool wrapped = false;
         if (m_class_bindings.contains(cbname))
         {
             m_class_bindings.get(cbname)->wrapValue(this);
+            wrapped = true;
         }
         // Wrap value, populating it with methods if needed  
-        WrapValue::perform(this, v);       
+        WrapValue::perform(this, v, wrapped);       
     }
 
     /*! DO NOT use this function, unless you know, what you're doing. This functions pushes on stack
@@ -188,12 +190,14 @@ public:
         duk_push_c_function(m_context,  ff, 1);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
+        bool wrapped = false;
         if (m_class_bindings.contains(name))
         {
             m_class_bindings.get(name)->wrapValue(this);
+            wrapped = true;
         }
         // Wrap value, populating it with methods if needed     
-        WrapValue::perform(this, v);       
+        WrapValue::perform(this, v, wrapped);       
     }
     
     /*! Registers variable as property of global object, pushing it into a persistent stack. Replaces existing property.

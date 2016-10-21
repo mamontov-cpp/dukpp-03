@@ -16,13 +16,17 @@ INCLUDEPATH += . \
 
 # Input
 HEADERS += test.h \
-           test2.h 
+           test2.h \ 
+    gccollectcheck.h
 
 SOURCES += main.cpp \
     bindings.cpp \
     context.cpp \
     interop.cpp \
-    values.cpp
+    values.cpp \
+    gccollectcheck.cpp \
+    test.cpp \
+    test2.cpp
            
 
 DESTDIR = ../../bin/

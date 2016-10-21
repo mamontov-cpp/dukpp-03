@@ -1,3 +1,7 @@
+/*! \mainpage dukqt
+    
+    A C++03 experimental bindings for Duktape library with support for interaction with Qt
+ */
 /*! \file context.h
 
     A context to be used with Qt
@@ -14,6 +18,7 @@
 // ReSharper disable once CppUnusedIncludeDirective
 #include <QMetaMethod>
 #include <QMetaProperty>
+#include <QString>
 
 namespace dukpp03
 {

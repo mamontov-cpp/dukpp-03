@@ -40,6 +40,8 @@ static void initConverters()
     mtx.lock();
     if (converters.size() == 0)
     {
+        insertConverterToList<char, unsigned char>();
+
         insertConverterToList<float, short>();
         insertConverterToList<float, unsigned short>();
         insertConverterToList<float, int>();

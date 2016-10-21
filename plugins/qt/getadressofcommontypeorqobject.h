@@ -1,4 +1,4 @@
-/** \file getaddressofcommontypeorqobject.h
+/** \file getadressofcommontypeorqobject.h
  *
  * Describes a common compile-time function for getting adress of stored value
  */
@@ -34,6 +34,10 @@ struct GetAddressOfCommonTypeOrQObject
         if (v->type() == qMetaTypeId<_UnderlyingValue>())
         {
             return dukpp03::Maybe<_UnderlyingValue*>(reinterpret_cast<_UnderlyingValue*>(v->data()));
+        }
+        if (v->canConvert<_UnderlyingValue>())
+        {
+            return dukpp03::Maybe<_UnderlyingValue*>(reinterpret_cast<_UnderlyingValue*>(v->data()));            
         }
         return dukpp03::Maybe<_UnderlyingValue*>();
     }
