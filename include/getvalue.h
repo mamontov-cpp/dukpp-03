@@ -10,6 +10,13 @@
 #include <string>
 #include <iostream>
 
+// Fix for MinGW
+#ifndef DUKPP03_VARIANT_PROPERTY_SIGNATURE
+   /*! A property name for an object, which must have this property set to a string variant
+    */
+   #define DUKPP03_VARIANT_PROPERTY_SIGNATURE "\1dukpp03::Variant\1"
+#endif
+
 namespace dukpp03
 {
 
