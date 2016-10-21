@@ -3,7 +3,8 @@
 ######################################################################
 
 QT += core
-CONFIG += console 
+CONFIG += console
+CONFIG += staticlib
 TEMPLATE =  lib
 TARGET = 
 DEPENDPATH += . \
