@@ -10,7 +10,12 @@
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
-#if not HAS_QT5
+#if HAS_QT5
+#else
+#define HAS_QT4
+#endif
+
+#ifdef HAS_QT4
 #define MAP_TYPE QMap<QString, int>
 #define HASH_TYPE QHash<QString, int>
 Q_DECLARE_METATYPE(MAP_TYPE)

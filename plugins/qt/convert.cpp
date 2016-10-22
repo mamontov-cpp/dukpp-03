@@ -74,6 +74,7 @@ static void initConverters()
         insertConverterToList<long double, double>();
         insertConverterToList<long double, float>();
 
+        insertConverterToList<short, short>();
         insertConverterToList<short, unsigned short>();
         insertConverterToList<short, int>();
         insertConverterToList<short, unsigned int>();
@@ -82,6 +83,7 @@ static void initConverters()
         insertConverterToList<short, long long>();
         insertConverterToList<short, unsigned long long>();
 
+        insertConverterToList<unsigned short, unsigned short>();
         insertConverterToList<unsigned short, int>();
         insertConverterToList<unsigned short, unsigned int>();
         insertConverterToList<unsigned short, long>();
@@ -105,7 +107,16 @@ static void initConverters()
         insertConverterToList<long, unsigned long long>();
 
         insertConverterToList<unsigned long, long long>();
+        insertConverterToList<unsigned long, unsigned long>();
         insertConverterToList<unsigned long, unsigned long long>();
+
+        insertConverterToList<float, float>();
+        insertConverterToList<double, double>();
+        insertConverterToList<long double, long double>();
+
+        insertConverterToList<float, double>();
+        insertConverterToList<float, long double>();
+        insertConverterToList<double, long double>();
 
         insertConverterToList<long long, unsigned long long>();
     }
@@ -140,12 +151,24 @@ static Converter getConverter(const QString& destType, const QString& sourceType
 bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
 {
     QVariant copy = *v;
-    QVariant::Type destType = QVariant::nameToType(type.toStdString().c_str());
+    int destType = QMetaType::type(type.toStdString().c_str());
+    QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
     QString typeName = copy.typeName();
+#if HAS_QT5
     if (copy.type() != destType)
+#else
+    if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+#endif
     {
+
+        // If we have a plain converter
+        if (getConverter(type, typeName))
+        {
+            return true;
+        }
+
         // If we can convert type easily, do it
-        if (copy.canConvert(destType))
+        if (copy.canConvert(destType2))
         {
             return true;
         }
@@ -181,12 +204,7 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
             return true;
         }
 
-        // If we have a plain converter
-        if (getConverter(type, typeName))
-        {
-            return true;
-        }
-
+        
         return false;
     }
 
@@ -196,15 +214,29 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
 bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVariant& result)
 {
     result = *v;
-    QVariant::Type destType = QVariant::nameToType(type.toStdString().c_str());
+    int destType = QMetaType::type(type.toStdString().c_str());
+    QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
+
     QString typeName = result.typeName();
 
-    if (result.type() != destType)
+#if HAS_QT5
+    if (copy.type() != destType)
+#else
+    if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+#endif
     {
-        // If we can convert type easily, do it
-        if (result.canConvert(destType))
+        // If we have a plain converter
+        Converter cvt = getConverter(type, typeName);
+        if (cvt)
         {
-            result.convert(destType);
+            result = cvt(&result);
+            return true;
+        }
+
+        // If we can convert type easily, do it
+        if (result.canConvert(destType2))
+        {
+            result.convert(destType2);
             return true;
         }
 
@@ -243,15 +275,7 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
             result = QVariant::fromValue(QString(result.value<std::string>().c_str()));
             return true;
         }
-
-        // If we have a plain converter
-        Converter cvt = getConverter(type, typeName);
-        if (cvt)
-        {
-            result = cvt(&result);
-            return true;
-        }
-
+       
         return false;
     }
 

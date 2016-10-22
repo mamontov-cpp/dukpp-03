@@ -46,7 +46,6 @@ public:
     {
 
         dukpp03::qt::registerMetaType<::Test>();
-
         // Sanity checks
         {
             QVariant v(2);
@@ -93,7 +92,7 @@ public:
         
 
         CONVERSION_TEST_PAIR(float, double);
-        CONVERSION_TEST_PAIR(float, long double);
+        CONVERSION_TEST_PAIR(float, long double);        
         CONVERSION_TEST_PAIR(double, long double);
 
         CONVERSION_TEST(float, float);
