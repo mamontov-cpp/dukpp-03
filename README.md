@@ -1,5 +1,16 @@
-# dukpp-03
+# dukpp-03 (and dukqt)
+
 A C++03 experimental bindings for Duktape library. A library for bindings like [RubberDuk](https://gitlab.com/calcyss/rubberduk), but with C++03 support. This library allows to bind arbitrary classes and functions into Duktape and use them a scripting values. This library also implements timeouts for script execution. 
+
+# dukqt
+
+A C++03 experimental bindings for Duktape library interaction with Qt, built on top of [dukpp-03](https://github.com/mamontov-cpp/dukpp-03). This library allows to bind arbitrary Qt classes and functions into Duktape and use them a scripting values. 
+
+Also it supports serializing and deserializing QVectors and QLists as arrays and QHash and QMaps as objects (if key type supplied for those is string).
+
+The library will uses this method https://gist.github.com/andref/2838534 to support calling metamethods.
+
+See examples, limitations and what it capable of in it's [README](https://github.com/mamontov-cpp/dukpp-03/tree/master/plugins/qt)
 
 ## Limitations
 
