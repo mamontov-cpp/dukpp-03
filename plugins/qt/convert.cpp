@@ -40,7 +40,10 @@ static void initConverters()
     mtx.lock();
     if (converters.size() == 0)
     {
+        // Weird issue with Qt 4 - char -> char fails
+        insertConverterToList<char, char>();
         insertConverterToList<char, unsigned char>();
+        insertConverterToList<unsigned char, unsigned char>();
 
         insertConverterToList<float, short>();
         insertConverterToList<float, unsigned short>();

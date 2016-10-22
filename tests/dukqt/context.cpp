@@ -7,6 +7,8 @@
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
+Q_DECLARE_METATYPE(GCCollectCheck*)
+
 struct ContextTest : tpunit::TestFixture
 {
 public:

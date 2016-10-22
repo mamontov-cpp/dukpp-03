@@ -11,6 +11,7 @@
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
+Q_DECLARE_METATYPE(GCCollectCheck*)
 
 inline bool toIntAndEqual(int a, int b)
 {

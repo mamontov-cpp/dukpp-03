@@ -5,6 +5,7 @@
 #pragma once
 #include "test2.h"
 #include <QObject>
+#include <QMetaType>
 #include <iostream>
 
 /*! A simple test object

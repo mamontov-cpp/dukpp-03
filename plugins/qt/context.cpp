@@ -27,6 +27,8 @@ dukpp03::qt::Context::Context()
     {                                                              \
         qRegisterMetaType< DUKPP03_TYPE(TYPE) >(#TYPE);            \
     }
+    REGISTER_METATYPE(float)
+    REGISTER_METATYPE(double)
     REGISTER_METATYPE(long double)
     REGISTER_METATYPE(std::string)
     REGISTER_METATYPE(dukpp03::qt::ObjectWithOwnership)

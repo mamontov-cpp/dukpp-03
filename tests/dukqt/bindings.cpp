@@ -10,6 +10,14 @@
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
+#if not HAS_QT5
+#define MAP_TYPE QMap<QString, int>
+#define HASH_TYPE QHash<QString, int>
+Q_DECLARE_METATYPE(MAP_TYPE)
+Q_DECLARE_METATYPE(HASH_TYPE)
+Q_DECLARE_METATYPE(QVector<int>)
+Q_DECLARE_METATYPE(QList<int>)
+#endif
 
 QVector<int> pushToVector(QVector<int>& v, int d)
 {
