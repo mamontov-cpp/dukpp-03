@@ -654,11 +654,11 @@ protected:
             Accessor newacc = acc;
             if (newacc.first)
             {
-                newacc.first = newacc.first->clone();
+                newacc.first = static_cast<dukpp03::MultiMethod<_Context>* >(newacc.first->clone());
             }
             if (newacc.second)
             {
-                newacc.second = newacc.second->clone();
+                newacc.second = static_cast<dukpp03::MultiMethod<_Context>* >(newacc.second->clone());
             }
             dest.push_back(std::make_pair(src[i].first, newacc));
         }
