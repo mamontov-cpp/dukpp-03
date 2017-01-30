@@ -639,7 +639,7 @@ protected:
     {
         for(size_t i = 0; i < src.size(); i++)
         {
-            dest.push_back(std::make_pair(src[i].first, src[i].second->clone()));
+            dest.push_back(std::make_pair(src[i].first,  static_cast<dukpp03::MultiMethod<_Context>* >(src[i].second->clone())));
         }
     }
     /*! Copies source multimethod list to destination
