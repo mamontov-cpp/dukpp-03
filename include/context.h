@@ -450,7 +450,7 @@ public:
         \param[in] c binding
         \return true on success, otherwise false
      */
-    bool addClassBinding(const std::string& name, dukpp03::ClassBinding<Self>* c)
+    virtual bool addClassBinding(const std::string& name, dukpp03::ClassBinding<Self>* c)
     {
         if (m_class_bindings.contains(name))
         {
