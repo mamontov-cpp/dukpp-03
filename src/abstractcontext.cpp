@@ -175,7 +175,10 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
    duk_push_string(m_context, DUKPP03_NATIVE_FUNCTION_SIGNATURE_PROPERTY);   
    duk_push_pointer(m_context, callable);
    duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
-  
+
+   /* Init it with correct prototype */
+   duk_push_object(m_context);
+   duk_put_prop_string(m_context, -2, "prototype");
 }
 
 void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own)
