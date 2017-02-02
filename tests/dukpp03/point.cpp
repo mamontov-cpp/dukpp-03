@@ -72,3 +72,24 @@ void Point::setXV(int x, const std::string& r)
     std::cout << r << "\n";
     this->m_x = x;
 }
+
+
+Point3::Point3() : Point(0, 0), m_z(0)
+{
+
+}
+
+Point3::Point3(double x, double y, double z) : Point(x, y), m_z(z)
+{
+
+}
+
+void Point3::setZ(int z)
+{
+    m_z = z;
+}
+
+int Point3::z() const
+{
+    return m_z;
+}

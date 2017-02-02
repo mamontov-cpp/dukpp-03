@@ -77,6 +77,34 @@ struct Point
     int y() const;
 };
 
+/*! A point with third point (Z)
+ */
+struct Point3: public Point
+{
+    /*! A z-coordinate
+     */
+    int m_z;
+
+    /*! A default constructor
+     */
+    Point3();
+
+    /*! Constructs new point
+        \param[in] x first coordinate
+        \param[in] y second coordinate
+     */
+    Point3(double x, double y, double z);
+
+    /*! Sets z coordinate
+        \param[in] z z coordinate
+     */
+    void setZ(int z);
+    /*! Returns z coordinate
+        \return z coordinate
+     */
+    int z() const;
+};
+
 /*! Tests if two double values are equal with precision of 0.001
     \param[in] a first part
     \param[in] b second part

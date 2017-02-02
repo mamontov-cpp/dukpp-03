@@ -68,7 +68,8 @@ public:
        TEST(CallablesTest::testCompiledFunction2),
        TEST(CallablesTest::testCompiledFunction3),
        TEST(CallablesTest::testGetterSetter),
-       TEST(CallablesTest::testClassBindings)    
+       TEST(CallablesTest::testClassBindings),
+       TEST(CallablesTest::testRebindMethods) 
     ) {}
 
      /*! Tests registering functions
@@ -423,6 +424,39 @@ public:
             dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 120) );
+        }
+    }
+    
+    void testRebindMethods()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        ClassBinding* c = new ClassBinding();
+        c->addConstructor<Point3>("Point3");
+        c->addConstructor<Point3, double, double, double>("Point3");
+        c->addMethod("x",  bnd::from(&Point::x));
+        c->addMethod("setX",  bnd::from(&Point::setX));
+
+        c->addMethod("y",  bnd::from(&Point::y));
+        c->addMethod("setY",  bnd::from(&Point::setY));
+        
+        c->addAccessor("x", rebind_method::to<Point3>::from<Point>(&Point::x),  rebind_method::to<Point3>::from<Point>(&Point::setX));
+        c->addAccessor("y", rebind_method::to<Point3>::from<Point>(&Point::y),  rebind_method::to<Point3>::from<Point>(&Point::setY));
+        c->addAccessor("z", bnd::from(&Point3::z),  bnd::from(&Point3::setZ));
+
+        ctx.addClassBinding(ctx.typeName<Point3>(), c);
+
+        {
+            bool eval_result = ctx.eval(" var a = new Point3(2,3,4); a.x + a.y + a.z ", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( is_fuzzy_equal(result.value(), 9) );
         }
     }
     
