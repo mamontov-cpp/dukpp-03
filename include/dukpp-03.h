@@ -12,6 +12,7 @@
 #include "function.h"
 #include "method.h"
 #include "thismethod.h"
+#include "rebindmethod.h"
 #include "constructor.h"
 #include "multimethod.h"
 #include "compiledfunction.h"

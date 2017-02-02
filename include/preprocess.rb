@@ -34,6 +34,7 @@ if (ARGV.empty?)
 	render("method.h.t", "method.h", variants)
 	render("constructor.h.t", "constructor.h", variants)
 	render("thismethod.h.t", "thismethod.h", variants)
+	render("rebindmethod.h.t", "rebindmethod.h", variants)
 else
 	render(ARGV[0] + ".t", ARGV[0], variants)
 end
