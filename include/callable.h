@@ -41,20 +41,6 @@ public:
     {
         return std::make_pair(0, false);
     }
-    /*! Returns whether it could be called as constructor
-        \return true if can
-     */
-    virtual bool canBeCalledAsConstructor()
-    {
-        return true;
-    }
-    /*! Returns whether it could be called as function
-        \return true if can
-     */
-    virtual bool canBeCalledAsFunction()
-    {
-        return true;
-    }
     /*! Performs call on object, using specified context
         \param[in] c context
         \return count of values on stack, placed by functions

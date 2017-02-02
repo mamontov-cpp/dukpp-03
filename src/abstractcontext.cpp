@@ -179,6 +179,15 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
    /* Init it with correct prototype */
    duk_push_object(m_context);
    duk_put_prop_string(m_context, -2, "prototype");
+
+   if (callable)
+   {
+       if (callable->canBeCalledAsConstructor())
+       {
+           duk_get_prop_string(m_context, -1, "prototype");
+           duk_set_prototype(m_context, -2);
+       }
+   }
 }
 
 void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own)

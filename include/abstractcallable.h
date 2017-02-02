@@ -28,6 +28,14 @@ public:
 class AbstractCallable
 {
 public:
+    /*! Returns whether it could be called as constructor
+        \return true if can
+     */
+    virtual bool canBeCalledAsConstructor();
+    /*! Returns whether it could be called as function
+        \return true if can
+     */
+    virtual bool canBeCalledAsFunction();
     /*! Returns count of required arguments
         \return count of required arguments
      */
