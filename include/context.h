@@ -99,6 +99,9 @@ public:
     /*! A class binding set for context
      */
     typedef _MapInterface<std::string, ClassBinding<Self>*> ClassBindingSet;
+    /*! Registered objects set for context
+     */
+    typedef _MapInterface<Variant*, Variant*> RegisteredObjectSet;
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
@@ -125,6 +128,11 @@ public:
         }
         m_class_bindings.clear();
         m_functions.clear();
+        if (m_context)
+        {
+            duk_destroy_heap(m_context);
+            m_context = NULL;
+        }
     }
     /*! Resets context fully, erasing all data
      */
@@ -156,8 +164,11 @@ public:
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_pointer(m_context, v);
         duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+
+        m_registered_objects.insert(v, v);
+
         // Set finalizer for current object
-        duk_push_c_function(m_context, ff, 1);
+        duk_push_c_function(m_context, ff, 2);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         std::string cbname = this->typeName<_Value>();
@@ -182,12 +193,16 @@ public:
     void pushUntypedVariant(const std::string& name, Variant* v, dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
         duk_idx_t obj = duk_push_object(m_context);
+
         // Push pointer value for variant
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_pointer(m_context, v);
         duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+
+        m_registered_objects.insert(v, v);
+
         // Set finalizer for current object
-        duk_push_c_function(m_context,  ff, 1);
+        duk_push_c_function(m_context,  ff, 2);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
         bool wrapped = false;
@@ -198,6 +213,23 @@ public:
         }
         // Wrap value, populating it with methods if needed     
         WrapValue::perform(this, v, wrapped);       
+    }
+
+    /*! Test if variant is register
+        \param[in] v variant
+        \return if value is registered
+     */
+    bool isVariantRegistered(Variant* v)
+    {
+        return m_registered_objects.contains(v);            
+    }
+
+    /*! Unregisters variant from context
+        \param[in] v variant
+     */
+    void unregisterVariant(Variant* v)
+    {
+        m_registered_objects.remove(v);
     }
     
     /*! Registers variable as property of global object, pushing it into a persistent stack. Replaces existing property.
@@ -525,6 +557,9 @@ protected:
     /*! A class binding set
      */
     ClassBindingSet m_class_bindings;
+    /*! Registered objects set
+     */
+    RegisteredObjectSet m_registered_objects;
     /*! A timeout timer for context
      */
     Timer m_timeout_timer;
@@ -550,12 +585,19 @@ typename _Context::Variant* Finalizer<_Context>::getVariantToFinalize(duk_contex
     return NULL;
 }
 
+
 template<
     typename _Context
 >
 duk_ret_t Finalizer<_Context>::finalize(duk_context *ctx)
-{
-    delete Finalizer<_Context>::getVariantToFinalize(ctx);
+{    
+    typename _Context::Variant* variant = Finalizer<_Context>::getVariantToFinalize(ctx);
+    _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
+    if (variant && parent->isVariantRegistered(variant)) 
+    {
+        delete variant;
+        parent->unregisterVariant(variant);
+    }
     return 0;
 }
 

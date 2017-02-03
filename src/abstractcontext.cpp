@@ -16,7 +16,10 @@ dukpp03::AbstractContext::AbstractContext() : m_maximal_execution_time(30000), m
 
 dukpp03::AbstractContext::~AbstractContext()
 {
-    duk_destroy_heap(m_context);
+    if (m_context)
+    {
+         duk_destroy_heap(m_context);
+    }
 }
 
 

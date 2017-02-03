@@ -162,7 +162,7 @@ public:
      */
     void remove(const _Key& k)
     {
-        m_map.remove(k);
+        m_map.erase(k);
     }
     /*! Returns true, if map contains key value
         \param[in] k key value
