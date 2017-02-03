@@ -180,17 +180,11 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
    duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
 
    /* Init it with correct prototype */
-   duk_push_object(m_context);
-   duk_put_prop_string(m_context, -2, "prototype");
-
-   if (callable)
-   {
-       if (callable->canBeCalledAsConstructor())
-       {
-           duk_get_prop_string(m_context, -1, "prototype");
-           duk_set_prototype(m_context, -2);
-       }
-   }
+   duk_int_t result = duk_peval_string(m_context, "new Function()");
+   assert(result == 0);
+   duk_dup(m_context, -1);
+   duk_put_prop_string(m_context, -3, "prototype");
+   duk_set_prototype(m_context, - 2);   
 }
 
 void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own)

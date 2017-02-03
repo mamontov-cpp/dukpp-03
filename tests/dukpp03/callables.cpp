@@ -72,7 +72,8 @@ public:
        TEST(CallablesTest::testRebindMethods),
        TEST(CallablesTest::testPrototypeInheritance),
        TEST(CallablesTest::testSecondPrototypeInheritance),
-       TEST(CallablesTest::testBetterInheritance)
+       TEST(CallablesTest::testBetterInheritance),
+       TEST(CallablesTest::testNativeFunctionPrototype)
     ) {}
 
      /*! Tests registering functions
@@ -554,6 +555,37 @@ public:
                 "var ChildPoint = function(a, b) { Object.setPrototypeOf(this, new Point(a,b)); };"
                 "var a = new ChildPoint(1,2), b = new ChildPoint(9,3);"
                 "a.f() + b.f() ", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( is_fuzzy_equal(result.value(), 10) );
+        }
+    }
+
+    void testNativeFunctionPrototype()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        ClassBinding* c = new ClassBinding();
+        c->addConstructor<Point>("Point");
+        c->addConstructor<Point, int, int>("Point");
+        c->addMethod("x",  bnd::from(&Point::x));
+        c->addMethod("setX",  bnd::from(&Point::setX));
+
+        c->addMethod("y",  bnd::from(&Point::y));
+        c->addMethod("setY",  bnd::from(&Point::setY));
+        
+        c->addAccessor("m_x", getter::from(&Point::m_x), setter::from(&Point::m_x));
+        c->addAccessor("m_y", getter::from(&Point::m_y), setter::from(&Point::m_y));
+        ctx.addClassBinding(ctx.typeName<Point>(), c);
+        
+        {
+            bool eval_result = ctx.eval("var b = Point.call(0,10,2); b.m_x", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
