@@ -10,6 +10,7 @@
 #include "callable.h"
 #include "constructor.h"
 #include "multimethod.h"
+#include <cassert>
 
 namespace dukpp03
 {
@@ -488,6 +489,21 @@ public:
         {
             c->registerAtribute(m_accessors[i].first, m_accessors[i].second.first, false, m_accessors[i].second.second, false);
         }
+
+        if (m_prototype_function.size() != 0)
+        {
+            duk_bool_t result = duk_peval_string(c->context(), m_prototype_function.c_str());
+            assert( result == 0);
+            duk_set_prototype(c->context(), -2);
+        }
+    }
+
+    /*! Sets a function, which should be used a prototype for objects, pushed on stack
+        \param[in] fun a function
+     */
+    void setPrototypeFunction(const std::string& fun)
+    {
+        m_prototype_function = fun;
     }
 protected:
     /*! Inserts a callable into multimethod list
@@ -630,6 +646,7 @@ protected:
         copy(m_constructors, m.m_constructors);
         copy(m_methods, m.m_methods);
         copy(m_accessors, m.m_accessors);
+        m_prototype_function = m.m_prototype_function;
     }
     /*! Copies source multimethod list to destination
         \param[in] dest destination
@@ -697,6 +714,9 @@ protected:
     /*! An accessor list for binding
      */
     AccessorList m_accessors;
+    /*! A function, which should be evaluated to set prototype for wrapped object
+     */
+    std::string m_prototype_function;
 };
 
 
