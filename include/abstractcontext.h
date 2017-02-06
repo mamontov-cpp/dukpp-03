@@ -91,6 +91,12 @@ public:
     /*! Throws, error, that function should not be called as constructor
      */
     virtual void throwFunctionCallShouldNotBeCalledAsConstructor();
+    /*! Registers native function
+        \param[in] callable_name a name for function
+        \param[in] f function
+        \param[in] args an argument list
+     */
+    void registerNativeFunction(const std::string& callable_name, duk_c_function f, duk_idx_t args);
 protected:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object

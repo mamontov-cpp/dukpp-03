@@ -135,6 +135,22 @@ void dukpp03::AbstractContext::throwFunctionCallShouldNotBeCalledAsConstructor()
     this->throwError("Function should not be called as constructor");
 }
 
+// ReSharper disable once CppMemberFunctionMayBeConst
+void dukpp03::AbstractContext::registerNativeFunction(const std::string& callable_name, duk_c_function f, duk_idx_t args)
+{
+    duk_push_global_object(m_context);
+
+    duk_push_c_function(m_context, f, args);
+    duk_int_t result = duk_peval_string(m_context, "new Function()");
+    assert(result == 0);
+    duk_dup(m_context, -1);
+    duk_put_prop_string(m_context, -3, "prototype");
+    duk_set_prototype(m_context, - 2);
+
+    duk_put_prop_string(m_context, -2 /*idx:global*/, callable_name.c_str());
+    duk_pop(m_context);  
+}
+
 void dukpp03::AbstractContext::throwCaughtException()
 {
     this->throwError("Caught exception while calling function");
