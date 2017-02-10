@@ -41,7 +41,16 @@ bool dukpp03::AbstractContext::eval(const std::string& string, bool clean_heap, 
     {
         if (error)
         {
-            *error = duk_safe_to_string(m_context, -1);
+            if (duk_has_prop_string(m_context,  -1, "stack"))
+            {
+                duk_get_prop_string(m_context, -1, "stack");
+                *error = duk_safe_to_string(m_context, -1);
+                duk_pop(m_context);
+            }
+            else 
+            {
+                *error = duk_safe_to_string(m_context, -1);
+            }
         }
         duk_pop(m_context);
     } 
