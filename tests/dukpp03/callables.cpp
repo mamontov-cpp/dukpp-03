@@ -286,6 +286,14 @@ public:
         
         dukpp03::PushValue<int, dukpp03::context::Context>::perform(&ctx, 22);
         int evalresult = func.call(&ctx);
+        if (evalresult != 1)
+        {
+            dukpp03::Maybe<std::string> val = ctx.errorOnStack(-1);
+            if (val.exists())
+            {
+                std::cout << val.value() << "\n";
+            }
+        }
         ASSERT_TRUE(evalresult == 1);
         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
         ASSERT_TRUE( result.exists() );

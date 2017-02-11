@@ -12,6 +12,7 @@
 dukpp03::AbstractContext::AbstractContext() : m_maximal_execution_time(30000), m_running(false)
 {
     m_context = duk_create_heap(NULL,NULL, NULL, this, NULL);
+    duk_print_alert_init(m_context, 0 /*flags*/);
 }
 
 dukpp03::AbstractContext::~AbstractContext()
@@ -122,7 +123,7 @@ void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::s
 {
     std::ostringstream ss;
     ss << "Invalid type passed for argument #" << argnumber << ". Argument #" <<  argnumber << " must have type " << type;
-    this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
+    this->throwError(ss.str(), dukpp03::D03_DUK_TYPE_ERROR);
 }
 
 
@@ -130,7 +131,7 @@ void dukpp03::AbstractContext::throwInvalidTypeForThisError(const std::string& t
 {
     std::ostringstream ss;
     ss << "Invalid type passed as this. Current object must have type " << type;
-    this->throwError(ss.str(), dukpp03::D03_DUK_API_ERROR);
+    this->throwError(ss.str(), dukpp03::D03_DUK_TYPE_ERROR);
 }
 
 

@@ -381,7 +381,7 @@ public:
     {
         std::string error;
         dukpp03::context::Context ctx;
-        ctx.setMaximumExecutionTime(1000);
+        ctx.setMaximumExecutionTime(4000);
         bool eval_result = ctx.eval("while(true) {}", true, &error);
         ASSERT_TRUE( !eval_result );
         ASSERT_TRUE( error.size() != 0 );

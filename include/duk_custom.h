@@ -4,19 +4,9 @@
  */
 #pragma once
 
-#ifndef DUK_OPT_INTERRUPT_COUNTER
-    #define DUK_OPT_INTERRUPT_COUNTER
-#endif
+#define DUK_USE_INTERRUPT_COUNTER
+#define DUK_USE_DEBUGGER_SUPPORT
 
-#ifndef DUK_USE_INTERRUPT_COUNTER
-    #define DUK_USE_INTERRUPT_COUNTER 1
-#endif
-
-#ifndef DUK_USE_DEBUGGER_SUPPORT
-    #define DUK_USE_DEBUGGER_SUPPORT 1
-#endif 
-
-#ifndef DUK_USE_EXEC_TIMEOUT_CHECK
 
 namespace dukpp03
 {
@@ -30,11 +20,3 @@ int ____check_timeout(void* ptr);
 }
 
 #define DUK_USE_EXEC_TIMEOUT_CHECK(udata)  (dukpp03::____check_timeout(udata))
-
-#endif
-
-#ifndef DUK_OPT_EXEC_TIMEOUT_CHECK
-
-#define DUK_OPT_EXEC_TIMEOUT_CHECK(udata)  (dukpp03::____check_timeout(udata))
-
-#endif
