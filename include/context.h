@@ -283,7 +283,16 @@ public:
         dukpp03::Maybe<std::string> result;
         if (duk_is_error(m_context, pos))
         {
-            result.setValue(duk_safe_to_string(m_context, pos));
+            if (duk_has_prop_string(m_context,  -1, "stack"))
+            {
+                duk_get_prop_string(m_context, -1, "stack");
+                result.setValue(duk_safe_to_string(m_context, -1));
+                duk_pop(m_context);
+            }
+            else 
+            {
+                result.setValue(duk_safe_to_string(m_context, -1));
+            }
         }
         return result;
     }
