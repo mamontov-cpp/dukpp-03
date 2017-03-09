@@ -3423,5 +3423,5 @@ typedef struct duk_hthread duk_context;
 #endif  /* defined(DUK_USE_BYTEORDER) */
 
 #endif  /* DUK_CONFIG_H_INCLUDED */
-#include "../duktape/extras/print-alert/duk_print_alert.h"
-#include "../duktape/extras/duk-v1-compat/duk_v1_compat.h"
+#include "../extras/print-alert/duk_print_alert.h"
+#include "../extras/duk-v1-compat/duk_v1_compat.h"
