@@ -2,6 +2,7 @@
 #pragma warning(disable: 4273)
 #pragma warning(disable: 4351)
 #include "context.h"
+#include <object.h>
 #include "gccollectcheck.h"
 #include <dukqt.h>
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
@@ -17,7 +18,8 @@ public:
        TEST(ContextTest::testPushOwnObject),
        TEST(ContextTest::testPushScriptObject),
        TEST(ContextTest::testRegisterOwnObject),
-       TEST(ContextTest::testRegisterScriptObject)
+       TEST(ContextTest::testRegisterScriptObject),
+	   TEST(ContextTest::testObject)
     ) {}
 
     // ReSharper disable once CppMemberFunctionMayBeStatic
@@ -120,6 +122,20 @@ public:
         ASSERT_TRUE( GCCollectCheck::counter == 1 );
         
         GCCollectCheck::clearCounter();
+    }
+
+
+	void testObject()
+    {
+	    dukpp03::qt::Context ctx;
+		dukpp03::Object o;
+		dukpp03::Object* o2 = new dukpp03::Object();
+		o2->addProperty("m","3");
+		o.addProperty("m", "2");
+		o.addProperty("mx", o2);
+		ctx.registerObject("object", &o);
+		bool result = ctx.eval("print(object.mx.m);");
+		ASSERT_TRUE( result );
     }
 
 } _context_test;

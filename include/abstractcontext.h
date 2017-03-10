@@ -5,10 +5,12 @@
 #pragma once
 #include "errorcodes.h"
 #include <string>
+#include "object.h"
 
 namespace dukpp03
 {
 
+class Object;
 class AbstractCallable;
 
 /*! A wapper for basic context for data
@@ -97,19 +99,28 @@ public:
         \param[in] args an argument list
      */
     void registerNativeFunction(const std::string& callable_name, duk_c_function f, duk_idx_t args);
+	/*! Pushes callable to stack
+        \param[in] callable a callable object
+        \param[in] own whether context will own callable
+        \param[in] as_attribute push as attribute getter (adds additional pop in wrapper)
+     */
+    void pushCallable(dukpp03::AbstractCallable* callable, bool own = true, bool as_attribute = false);
+    /*! Registers object as global property
+        \param[in] name a name of global property for object
+        \param[in] o object
+     */
+    void registerObject(const std::string& name, dukpp03::Object* o);
+	/*! Pushes object to stack
+        \param[in] o object
+     */
+    void pushObject(dukpp03::Object* o);
 protected:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object
         \param[in] callable a callable object
         \param[in] own whether context will own callable
      */
-    void registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own = true);
-    /*! Pushes callable to stack
-        \param[in] callable a callable object
-        \param[in] own whether context will own callable
-        \param[in] as_attribute push as attribute getter (adds additional pop in wrapper)
-     */
-    void pushCallable(dukpp03::AbstractCallable* callable, bool own = true, bool as_attribute = false);
+    void registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own = true);    
     /*! Inits context for evaluating
      */
     virtual void initContextBeforeAccessing();
