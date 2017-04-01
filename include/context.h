@@ -328,6 +328,7 @@ public:
         duk_del_prop_string(m_context, -1, name.c_str());
         duk_pop(m_context);
     }
+
     /*! Calls function, using self as context
         \param[in] callable a callable value
      */
@@ -451,6 +452,21 @@ public:
         dukpp03::Maybe<_Value> result = dukpp03::GetValue<_Value, Self>::perform(this, -1);
         duk_pop(m_context);
         return result;
+    }
+
+    /*! Evals string, with code in it. If no error occured, result is not popped
+        out from stack, since we still may need it
+        \param[in] string a string
+        \param[out] error a string, where error should be written
+        \return true if no error
+     */
+    template<
+        typename _Value
+    >
+    dukpp03::Maybe<_Value> evalAndGet(const std::string& string,std::string* error = NULL)
+    {
+        this->eval(string, false, error);   
+        return dukpp03::GetValue<_Value, Self>::perform(this, -1);
     }
     /*! Returns value from variant
         \param[in] v variant

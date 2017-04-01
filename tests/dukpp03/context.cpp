@@ -198,6 +198,7 @@ public:
        TEST(ContextTest::testEvalNormal),
        TEST(ContextTest::testEvalFail),
        TEST(ContextTest::testEvalTimeout),
+       TEST(ContextTest::testEvalAndGet),
        TEST(ContextTest::testReset),
        TEST(ContextTest::testThrow),
        TEST(ContextTest::testRegisterGlobal),
@@ -386,7 +387,17 @@ public:
         ASSERT_TRUE( !eval_result );
         ASSERT_TRUE( error.size() != 0 );
     }
-        
+    /*! Test for evaluation and fetching value
+     */
+    void testEvalAndGet()
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+        dukpp03::Maybe<int> eval_result = ctx.evalAndGet<int>("1 + 1", &error);
+        ASSERT_TRUE( eval_result.exists() );
+        ASSERT_TRUE( error.size() == 0 );
+        ASSERT_TRUE( eval_result.value() == 2);      
+    }        
     /*! Test cleaning both pools and full reset of context
      */
     void testReset()
