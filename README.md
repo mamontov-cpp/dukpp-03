@@ -12,6 +12,16 @@ The library will uses this method https://gist.github.com/andref/2838534 to supp
 
 See examples, limitations and what it capable of in it's [README](https://github.com/mamontov-cpp/dukpp-03/tree/master/plugins/qt)
 
+## Differences between dukpp-03 and dukqt, dukglue and RubberDuk 
+
+ * dukpp-03 has support for C++03
+ * dukpp-03 is more customizable. You can use own containers, instead of built-ins
+ * dukpp-03 can manage object finalizing, if you specify finalizer for objects (see dukqt for example)
+ * dukpp-03 does not require RTTI to be enabled, if you roll your own variant type
+ * dukpp-03 has support for interacting with Qt (dukqt).
+ * dukpp-03 uses CMake for building and has support for MSVC2010+
+ * dukpp-03 aims to be more OOP-oriented, so it has support for binding classes directly and customizations for automatic property bindings.
+
 ## Limitations
 
  * You cannot bind methods or functions, that require mutable references for plain types (int, char, long, etc.) or std::string
