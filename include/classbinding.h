@@ -675,6 +675,7 @@ protected:
         copy(m_constructors, m.m_constructors);
         copy(m_methods, m.m_methods);
         copy(m_accessors, m.m_accessors);
+        m_parent_bindings = m.m_parent_bindings;
         m_prototype_function = m.m_prototype_function;
     }
     /*! Copies source multimethod list to destination
