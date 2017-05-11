@@ -480,6 +480,11 @@ public:
      */
     virtual void wrapValue(_Context* c)
     {
+        for (size_t i = 0; i < m_parent_bindings.size(); i++)
+        {
+            m_parent_bindings[i]->wrapValue(c);
+        }
+
         for(size_t i = 0; i < m_methods.size(); i++)
         {
             c->registerMutableProperty(m_methods[i].first, m_methods[i].second, false);
@@ -504,6 +509,30 @@ public:
     void setPrototypeFunction(const std::string& fun)
     {
         m_prototype_function = fun;
+    }
+
+    /*! Adds new parent binding to a current binding. Parent bindings are invoked sequentially when wrapping value and used only to wrap value.
+        Note, that bindings are stored by reference in hope, that they would belong to same context.
+        \param[in] binding a parent binding
+     */
+    void addParentBinding(dukpp03::ClassBinding<_Context>* binding)
+    {
+        removeParentBinding(binding);
+        m_parent_bindings.push_back(binding);
+    }
+    /*! Removes a parent binding from a current binding
+        \param[in] binding a parent binding
+     */
+    void removeParentBinding(dukpp03::ClassBinding<_Context>* binding)
+    {
+        for(size_t i = 0;  i < m_parent_bindings.size(); i++) 
+        {
+            if (m_parent_bindings[i] == binding) 
+            {
+                m_parent_bindings.erase(m_parent_bindings.begin() + i);
+                --i;
+            }
+        }
     }
 protected:
     /*! Inserts a callable into multimethod list
@@ -717,6 +746,9 @@ protected:
     /*! A function, which should be evaluated to set prototype for wrapped object
      */
     std::string m_prototype_function;
+    /*! A list of parent bindings, that should be used when invoking wrapping value
+     */
+    std::vector<dukpp03::ClassBinding<_Context> *> m_parent_bindings;
 };
 
 
