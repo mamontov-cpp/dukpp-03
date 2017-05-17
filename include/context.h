@@ -364,7 +364,7 @@ public:
     {
         duk_push_string(m_context, propname.c_str());
         dukpp03::PushValue<_Value, Self>::perform(this, v);
-        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
     }
     /*! Sets mutable property for value on stack top
         \param[in] propname a property name
@@ -388,7 +388,7 @@ public:
     {
         duk_push_string(m_context, propname.c_str());
         this->pushCallable(callable, own);
-        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
     }
     /*! Sets mutable callable property  for value on stack top. 
         \param[in] propname a property name
@@ -423,7 +423,7 @@ public:
         }
         duk_push_string(m_context, propname.c_str());
         duk_idx_t obj = -2;
-        duk_uint_t flags = DUK_DEFPROP_HAVE_CONFIGURABLE | DUK_DEFPROP_HAVE_ENUMERABLE | DUK_DEFPROP_ENUMERABLE;
+        duk_uint_t flags = DUK_DEFPROP_HAVE_CONFIGURABLE | DUK_DEFPROP_HAVE_ENUMERABLE | DUK_DEFPROP_ENUMERABLE | DUK_DEFPROP_FORCE;
         if (getter)
         {
             flags = flags | DUK_DEFPROP_HAVE_GETTER;
