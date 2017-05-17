@@ -163,7 +163,7 @@ public:
         // Push pointer value for variant
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_pointer(m_context, v);
-        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
 
         m_registered_objects.insert(v, v);
 
@@ -197,7 +197,7 @@ public:
         // Push pointer value for variant
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_pointer(m_context, v);
-        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+        duk_def_prop(m_context, obj, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
 
         m_registered_objects.insert(v, v);
 
