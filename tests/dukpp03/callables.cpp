@@ -10,6 +10,13 @@
 #pragma warning(pop)
 
 
+//#define TEST_LAMBDA
+
+#ifdef TEST_LAMBDA
+    #include "lambda.h"
+    typedef dukpp03::make_lambda<dukpp03::context::Context> mkl;
+#endif
+
 void print_something()
 {
     printf("print_something(): zero argments \n");
@@ -80,6 +87,9 @@ public:
        TEST(CallablesTest::testBetterInheritance),
        TEST(CallablesTest::testNativeFunctionPrototype),
        TEST(CallablesTest::wrapValuePrototype)
+#ifdef TEST_LAMBDA
+       ,TEST(CallablesTest::testLambda)
+#endif   
     ) {}
 
      /*! Tests registering functions
@@ -645,5 +655,30 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 120) );
         }
     }
-    
+
+#ifdef TEST_LAMBDA    
+    void testLambda()
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+
+        std::function<int(int,int)> f = [](int a, int b) -> int {return a + b;};
+        ctx.registerCallable("sum", mkl::from(f));
+        std::function<void(int,int)> f2 = [](int a, int b) {  };
+        ctx.registerCallable("null", mkl::from(f2));
+        
+
+        bool eval_result = ctx.eval("sum(2,3)", false, &error);
+        std::cout << error << "\n";
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        if (!is_fuzzy_equal(result.value(), 5)) 
+        {
+            std::cout << "Result is " << result.value() << "\n";
+        }
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 5) );
+    }
+#endif
+
 } _callables_test;
