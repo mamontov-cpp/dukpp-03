@@ -74,6 +74,7 @@ public:
        TEST(CallablesTest::testMethods),
        TEST(CallablesTest::testPtrMethods),
        TEST(CallablesTest::testThisMethods),
+       TEST(CallablesTest::testThisExplicitMethods),
        TEST(CallablesTest::testLocalProperty),
        TEST(CallablesTest::testRegisterAttribute), 
        TEST(CallablesTest::testCompiledFunction),
@@ -222,6 +223,25 @@ public:
 
         ctx.registerCallable("setX", bnd::from(&Point::setX));
         ctx.registerCallable("setY", bnd::from(&Point::setY));
+
+        bool eval_result = ctx.eval(" var f = pnt(3, 4); f.x = x; f.setX = setX;  f.setX(12);  f.x() ", false);
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 12) );
+    }
+
+    void testThisExplicitMethods()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        register_constructor::in_context<Point, double, double>(&ctx, "pnt");
+        ctx.registerCallable("x", bnd_exp::with_args_and_and_return_type0<Point, double>::from(&Point::x));
+        ctx.registerCallable("y", bnd_exp::with_args_and_and_return_type0<Point, double>::from(&Point::y));
+
+        ctx.registerCallable("setX", bnd_exp::with_args_and_no_return_type1<Point, double>::from(&Point::setX));
+        ctx.registerCallable("setY", bnd_exp::with_args_and_no_return_type1<Point, double>::from(&Point::setY));
 
         bool eval_result = ctx.eval(" var f = pnt(3, 4); f.x = x; f.setX = setX;  f.setX(12);  f.x() ", false);
         ASSERT_TRUE( eval_result );
