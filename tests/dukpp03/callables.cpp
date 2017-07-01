@@ -14,7 +14,9 @@
 
 #ifdef TEST_LAMBDA
     #include "lambda.h"
+    #include "thislambda.h"
     typedef dukpp03::make_lambda<dukpp03::context::Context> mkl;
+    typedef dukpp03::bind_lambda<dukpp03::context::Context> bl;
 #endif
 
 void print_something()
@@ -75,6 +77,9 @@ public:
        TEST(CallablesTest::testPtrMethods),
        TEST(CallablesTest::testThisMethods),
        TEST(CallablesTest::testThisExplicitMethods),
+#ifdef TEST_LAMBDA
+       TEST(CallablesTest::testThisLambda),
+#endif    
        TEST(CallablesTest::testLocalProperty),
        TEST(CallablesTest::testRegisterAttribute), 
        TEST(CallablesTest::testCompiledFunction),
@@ -249,6 +254,43 @@ public:
         ASSERT_TRUE( result.exists() );
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 12) );
     }
+
+#ifdef TEST_LAMBDA
+    void testThisLambda()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        register_constructor::in_context<Point, double, double>(&ctx, "pnt");
+        std::function<double(Point*)> xl = [](Point* p) {
+            return p->x();
+        };
+        std::function<double(Point*)> yl = [](Point* p) {
+            return p->y();
+        };
+        ctx.registerCallable("x", bl::from(xl));
+        ctx.registerCallable("y", bl::from(yl));
+
+        std::function<void(Point*, double)> setxl = [](Point* p, double v) {
+            return p->setX(v);
+        };
+        std::function<void(Point*, double)> setyl = [](Point* p, double v) {
+            return p->setY(v);
+        };
+        ctx.registerCallable("setX", bl::from(setxl));
+        ctx.registerCallable("setY", bl::from(setyl));
+
+        bool eval_result = ctx.eval(" var f = pnt(3, 4); f.x = x; f.setX = setX; f.setX(12);  f.x() ", false, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ASSERT_TRUE( eval_result );
+        dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( is_fuzzy_equal(result.value(), 12) );
+    }
+#endif
     
     void testLocalProperty()
     {
