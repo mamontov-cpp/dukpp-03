@@ -2,7 +2,6 @@
 #include <QSet>
 #include <QMutex>
 
-static QMutex mtx;
 static QSet<QString> descendants;
 
 bool dukpp03::qt::is_metatype_qobject(const QString& name)

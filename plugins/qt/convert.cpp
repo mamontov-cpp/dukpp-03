@@ -220,7 +220,7 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
     QString typeName = result.typeName();
 
 #if HAS_QT5
-    if (copy.type() != destType)
+    if (v->type() != destType)
 #else
     if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
 #endif
