@@ -31,7 +31,7 @@ public:
 	Object& operator=(const dukpp03::Object& o);
 	/*! Destroys any related items in object
 	 */
-	~Object();
+	virtual ~Object();
 	/*! Pushes new object on stack of context
 	    \param[in] ctx context
 	 */ 
@@ -40,27 +40,27 @@ public:
 	    \param[in] ctx context
 	    \param[in] name a name of object as field
 	 */
-	void registerIn(dukpp03::AbstractContext* ctx, const std::string& name);
+	virtual void registerIn(dukpp03::AbstractContext* ctx, const std::string& name);
 	/*! Adds new property to object. If property exists, replaces it
 	    \param[in] name a name of property
         \param[in] val a value
 	    \param[in] own whether we own it
 	 */
-	void addProperty(const std::string& name, dukpp03::AbstractCallable* val, bool own = true);
+	virtual void addProperty(const std::string& name, dukpp03::AbstractCallable* val, bool own = true);
 	/*! Adds new property to object. If property exists, replaces it
 	    \param[in] name a name of property
         \param[on] val a value
 	 */
-	void addProperty(const std::string& name, dukpp03::Object* val);
+	virtual void addProperty(const std::string& name, dukpp03::Object* val);
 	/*! Adds new property to object. If property exists, replaces it
 	    \param[in] name a name of property
         \param[on] val a value, that will be evaluated in context
 	 */
-	void addProperty(const std::string& name, const std::string val);
+	virtual void addProperty(const std::string& name, const std::string val);
 	/*! Removes property from object
 	    \param[in] name a name for property of object
 	 */
-	void removeProperty(const std::string& name);
+	virtual void removeProperty(const std::string& name);
 protected:
 /*! A field of object
  */
@@ -80,6 +80,10 @@ public:
 	/*! Clones a field 
 	 */
 	virtual dukpp03::Object::Field* clone() = 0;
+protected:
+    /*! An object name to get registered
+     */
+    std::string m_object_name;
 };
 
 
