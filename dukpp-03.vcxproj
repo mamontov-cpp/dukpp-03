@@ -27,6 +27,7 @@
     <ClInclude Include="include\getfield.h" />
     <ClInclude Include="include\getvalue.h" />
     <ClInclude Include="include\isnotpodreference.h" />
+    <ClInclude Include="include\jsobject.h" />
     <ClInclude Include="include\mapinterface.h" />
     <ClInclude Include="include\maybe.h" />
     <ClInclude Include="include\method.h" />
