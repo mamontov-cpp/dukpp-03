@@ -1,4 +1,3 @@
-#include "object.h"
 #include "context.h"
 #include <vector>
 #include <stdexcept>
@@ -32,11 +31,19 @@ public:
         
     }
 
+    /*! Pushes object of context
+        \param[in] ctx context
+     */
+    void pushOnStackOfContext(_Context* ctx)
+    {
+        
+    }
+
     /*! Registers object as global in some context
 	    \param[in] ctx context
 	    \param[in] name a name of object as field
 	 */
-	virtual void registerIn(_Context* ctx, const std::string& name)
+	 void registerIn(_Context* ctx, const std::string& name)
     {
         bool found = false;
         for(size_t i = 0; i < m_links.size(); i++)
@@ -50,65 +57,72 @@ public:
         // TODO: Actually implement registering
     }
 
-	/*! Adds new property to object. If property exists, replaces it
+	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
 	    \param[in] name a name of property
         \param[in] val a value
 	    \param[in] own whether we own it
 	 */
-	virtual void addProperty(const std::string& name, dukpp03::AbstractCallable* val, bool own = true)
+	void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
     {
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to add property to a null object");
-        }
+        this->throwPropertyCannotBeSetfNullObject();
+
 
         // TODO: 
     }
-	/*! Adds new property to object. If property exists, replaces it
+	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
 	    \param[in] name a name of property
-        \param[on] val a value
+        \param[in] val a value
 	 */
-	virtual void addProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
+	void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
 	{
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to add property to a null object");
-        }
+        this->throwPropertyCannotBeSetfNullObject();
+
 
         // TODO: 
     }
-	/*! Adds new property to object. If property exists, replaces it
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
 	    \param[in] name a name of property
-        \param[on] val a value
-	 */
-	virtual void addProperty(const std::string& name, dukpp03::Object* val)
+        \param[in] value a value of property
+     */
+    template<
+        typename _Value
+    >
+    void setProperty(const std::string& name, const _Value& value)
 	{
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to add property to a null object");
-        }
-	}
-	/*! Adds new property to object. If property exists, replaces it
+        this->throwPropertyCannotBeSetfNullObject();
+
+
+        // TODO: 
+    }
+    /*! Sets new property of object or replaces old. Edit runtime object if needed
+         \param[in] name a name of property
+         \param[in] function a function
+     */
+    void setProperty(const std::string& name, duk_c_function function)
+    {
+        this->throwPropertyCannotBeSetfNullObject();
+
+
+        // TODO:         
+    }
+	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
 	    \param[in] name a name of property
         \param[on] val a value, that will be evaluated in context
 	 */
-	virtual void addProperty(const std::string& name, const std::string val)
+	void setProperty(const std::string& name, const std::string val)
     {
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to add property to a null object");
-        }
+        this->throwPropertyCannotBeSetfNullObject();
 
         // TODO: 
     }
 	/*! Removes property from object
 	    \param[in] name a name for property of object
 	 */
-	virtual void removeProperty(const std::string& name)
+	void deleteProperty(const std::string& name)
     {
         if (m_is_null)
         {
-            throw new std::logic_error("Attempted to remove property to a null object");
+            throw new std::logic_error("Attempted to remove property from a null object");
         }
         for(size_t i = 0; i < m_links.size(); i++)
         {
@@ -146,6 +160,15 @@ public:
         return result;
     }
 protected:
+    /*! Throws exception if object is null. Used to mark operations, that can be 
+     */
+    void throwPropertyCannotBeSetfNullObject()
+    {
+        if (m_is_null)
+        {
+            throw new std::logic_error("Attempted to remove property from a null object");
+        }
+    }
     /*! A contexts with name where object is registered
      */
     std::vector<typename dukpp03::JSObject<_Context>::Link> m_links;
@@ -160,5 +183,28 @@ protected:
     bool m_is_null;
 };
 
+/*! A structure to mark, that object should be deleted when pushed on stack
+ */ 
+template<
+    typename _Context
+>
+struct DeleteJSObjectContext
+{
+    dukpp03::JSObject<_Context>* Object; //!< An object    
+};
+
+/*! Mark object to be deleted when object is pushed
+    \param[in] object an object
+    \return value result
+ */   
+template<
+   typename _Context
+>
+DeleteJSObjectContext<_Context> deleteJSObjectWhenPushed(dukpp03::JSObject<_Context>* object)
+{
+    DeleteJSObjectContext<_Context> result;
+    result.Object = object;
+    return result;
+}
 
 }
