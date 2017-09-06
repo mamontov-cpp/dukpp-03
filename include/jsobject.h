@@ -2,8 +2,34 @@
 #include <vector>
 #include <stdexcept>
 
+#define DUKPP03_JSOBJECT_POINTER_SIGNATURE "\1dukpp03::JSObject<_Context>\1"
+
 namespace dukpp03
 {
+
+template<typename _Context>
+class JSObject;
+
+/*! A miscellaneous class, for performing garbage collection, 
+    used as finalizer in duktape. Specialize this class, to overload
+    finalization for objects of specific value.
+ */
+template<
+    typename _Context
+>
+struct JSObjectFinalizer
+{
+    /*! Returns object to be finalized
+        \param[in] ctx context
+        \return variant or null if nothing
+     */
+    static typename dukpp03::JSObject<_Context>* getObject(duk_context* ctx);
+    /*! A finalization function
+        \param[in] ctx context
+        \return 0
+     */
+    static duk_ret_t finalize(duk_context *ctx);
+};
 
 template<typename _Context>
 class JSObject
@@ -40,10 +66,10 @@ public:
     }
 
     /*! Registers object as global in some context
-	    \param[in] ctx context
-	    \param[in] name a name of object as field
-	 */
-	 void registerIn(_Context* ctx, const std::string& name)
+        \param[in] ctx context
+        \param[in] name a name of object as field
+     */
+     void registerIn(_Context* ctx, const std::string& name)
     {
         bool found = false;
         for(size_t i = 0; i < m_links.size(); i++)
@@ -57,38 +83,38 @@ public:
         // TODO: Actually implement registering
     }
 
-	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
-	    \param[in] name a name of property
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+        \param[in] name a name of property
         \param[in] val a value
-	    \param[in] own whether we own it
-	 */
-	void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
+        \param[in] own whether we own it
+     */
+    void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
     {
         this->throwPropertyCannotBeSetfNullObject();
 
 
         // TODO: 
     }
-	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
-	    \param[in] name a name of property
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+        \param[in] name a name of property
         \param[in] val a value
-	 */
-	void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
-	{
+     */
+    void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
+    {
         this->throwPropertyCannotBeSetfNullObject();
 
 
         // TODO: 
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
-	    \param[in] name a name of property
+        \param[in] name a name of property
         \param[in] value a value of property
      */
     template<
         typename _Value
     >
     void setProperty(const std::string& name, const _Value& value)
-	{
+    {
         this->throwPropertyCannotBeSetfNullObject();
 
 
@@ -105,20 +131,20 @@ public:
 
         // TODO:         
     }
-	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
-	    \param[in] name a name of property
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+        \param[in] name a name of property
         \param[on] val a value, that will be evaluated in context
-	 */
-	void setProperty(const std::string& name, const std::string val)
+     */
+    void setProperty(const std::string& name, const std::string val)
     {
         this->throwPropertyCannotBeSetfNullObject();
 
         // TODO: 
     }
-	/*! Removes property from object
-	    \param[in] name a name for property of object
-	 */
-	void deleteProperty(const std::string& name)
+    /*! Removes property from object
+        \param[in] name a name for property of object
+     */
+    void deleteProperty(const std::string& name)
     {
         if (m_is_null)
         {
@@ -153,11 +179,22 @@ public:
         }
     }
 
+    /*! Returns null object
+     */
     static JSObject<_Context>* null()
     {
         JSObject<_Context>* result = new JSObject<_Context>();
         result->m_is_null = true;
         return result;
+    }
+
+    /*! Called, when object is erased from heap of context. Note, that this could be only one of many links to object, so, 
+        we should proceed carefully.
+        \param[in] ctx context
+     */
+    void eraseLinkFromContext(_Context* ctx)
+    {
+        // TODO: 
     }
 protected:
     /*! Throws exception if object is null. Used to mark operations, that can be 
@@ -205,6 +242,42 @@ DeleteJSObjectContext<_Context> deleteJSObjectWhenPushed(dukpp03::JSObject<_Cont
     DeleteJSObjectContext<_Context> result;
     result.Object = object;
     return result;
+}
+
+
+template<
+    typename _Context
+>
+typename dukpp03::JSObject<_Context>* JSObjectFinalizer<_Context>::getObject(duk_context* ctx)
+{
+    if (duk_is_object(ctx, 0))
+    {
+        dukpp03::JSObject<_Context>* result = NULL;
+        duk_get_prop_string(ctx, 0, DUKPP03_JSOBJECT_POINTER_SIGNATURE);
+        if (duk_is_pointer(ctx, -1))
+        {
+            void* ptr = duk_to_pointer(ctx, -1);
+            result = reinterpret_cast<dukpp03::JSObject<_Context>*>(ptr);
+        }
+        duk_pop(ctx);
+        return result;
+    }
+    return NULL;
+}
+
+
+template<
+    typename _Context
+>
+duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
+{    
+    typename dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
+    _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
+    if (o && parent->isLinkedPointerStored(o)) 
+    {
+        o->eraseLinkFromContext(_parent);
+    }
+    return 0;
 }
 
 }
