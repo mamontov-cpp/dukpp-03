@@ -102,6 +102,9 @@ public:
     /*! Registered objects set for context
      */
     typedef _MapInterface<Variant*, Variant*> RegisteredObjectSet;
+    /*! A registerd item set for context
+     */
+    typedef _MapInterface<void*, void*> LinkedPointerSet;
     /*! A type for selecting utilities from context
      */
     typedef _VariantInterface VariantUtils;
@@ -553,6 +556,36 @@ public:
         }
         return NULL;
     }
+
+    /*! Inserts linked pointer to context, storing it 
+        \param[in] ptr pointer
+     */
+    void insertLinkedPointer(void* ptr)
+    {
+        if (m_linked_pointers.contains(ptr) == false)
+        {
+            m_linked_pointers.insert(ptr, ptr);
+        }
+    }
+    /*! Returns true if linked pointer is stored in context
+        \param[in] ptr a pointer
+        \return whether an inner map has this pointer
+     */
+    bool isLinkedPointerStored(void* ptr)
+    {
+        return m_linked_pointers.contains(ptr);
+    }
+
+    /*! Removes linked pointer to context, deleting it 
+        \param[in] ptr pointer
+     */
+    void removeLinkedPointer(void* ptr)
+    {
+        if (m_linked_pointers.contains(ptr))
+        {
+            m_linked_pointers.remove(ptr);
+        }
+    }
 protected:
     /*! Starts evaluating object, needed for data
      */
@@ -585,6 +618,9 @@ protected:
     /*! Registered objects set
      */
     RegisteredObjectSet m_registered_objects;
+    /*! A stored registered pointer of random types
+     */ 
+    LinkedPointerSet m_linked_pointers;
     /*! A timeout timer for context
      */
     Timer m_timeout_timer;
