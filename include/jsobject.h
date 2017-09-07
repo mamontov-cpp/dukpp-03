@@ -1,6 +1,7 @@
 #include "context.h"
 #include <vector>
 #include <stdexcept>
+#pragma once
 
 #define DUKPP03_JSOBJECT_POINTER_SIGNATURE "\1dukpp03::JSObject<_Context>\1"
 
@@ -60,7 +61,7 @@ public:
     /*! Pushes object of context
         \param[in] ctx context
      */
-    void pushOnStackOfContext(_Context* ctx)
+    void pushOnStackOfContext(_Context* ctx) const
     {
         
     }
@@ -69,7 +70,7 @@ public:
         \param[in] ctx context
         \param[in] name a name of object as field
      */
-     void registerIn(_Context* ctx, const std::string& name)
+     void registerAsGlobalVariable(_Context* ctx, const std::string& name) const
     {
         bool found = false;
         for(size_t i = 0; i < m_links.size(); i++)
@@ -199,11 +200,11 @@ public:
 protected:
     /*! Throws exception if object is null. Used to mark operations, that can be 
      */
-    void throwPropertyCannotBeSetfNullObject()
+    void throwPropertyCannotBeSetfNullObject() const
     {
         if (m_is_null)
         {
-            throw new std::logic_error("Attempted to remove property from a null object");
+            throw new std::logic_error("Attempted to add property to a null object");
         }
     }
     /*! A contexts with name where object is registered
@@ -219,31 +220,6 @@ protected:
      */
     bool m_is_null;
 };
-
-/*! A structure to mark, that object should be deleted when pushed on stack
- */ 
-template<
-    typename _Context
->
-struct DeleteJSObjectContext
-{
-    dukpp03::JSObject<_Context>* Object; //!< An object    
-};
-
-/*! Mark object to be deleted when object is pushed
-    \param[in] object an object
-    \return value result
- */   
-template<
-   typename _Context
->
-DeleteJSObjectContext<_Context> deleteJSObjectWhenPushed(dukpp03::JSObject<_Context>* object)
-{
-    DeleteJSObjectContext<_Context> result;
-    result.Object = object;
-    return result;
-}
-
 
 template<
     typename _Context
@@ -275,9 +251,27 @@ duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
     _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
     if (o && parent->isLinkedPointerStored(o)) 
     {
-        o->eraseLinkFromContext(_parent);
+        o->eraseLinkFromContext(parent);
     }
     return 0;
 }
+
+/*! Makes possible to return an object from a function
+ */
+template<
+    typename _Context
+>
+class PushValue<dukpp03::JSObject<_Context>*, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const dukpp03::JSObject<_Context>* v)
+    {
+        // TODO:
+    }
+};
 
 }

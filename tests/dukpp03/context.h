@@ -5,6 +5,7 @@
 #pragma once
 #include <dukpp-03.h>
 #include <thisexplicitmethod.h>
+#include <jsobject.h>
 #include "utils.h"
 
 namespace dukpp03
@@ -29,3 +30,4 @@ typedef dukpp03::getter<dukpp03::context::Context> getter;
 typedef dukpp03::setter<dukpp03::context::Context> setter;
 typedef dukpp03::ClassBinding<dukpp03::context::Context> ClassBinding;
 typedef dukpp03::rebind_method<dukpp03::context::Context> rebind_method;
+typedef dukpp03::JSObject<dukpp03::context::Context> JSObject;
