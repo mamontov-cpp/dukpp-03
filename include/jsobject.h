@@ -136,7 +136,7 @@ public:
         \param[in] name a name of property
         \param[on] val a value, that will be evaluated in context
      */
-    void setProperty(const std::string& name, const std::string val)
+    void setEvaluatedProperty(const std::string& name, const std::string val)
     {
         this->throwPropertyCannotBeSetfNullObject();
 

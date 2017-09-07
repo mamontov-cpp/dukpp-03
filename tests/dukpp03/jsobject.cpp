@@ -11,11 +11,70 @@
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
 
+/*! Amount of allocated marked objects
+ */
+size_t allocated_objects = 0;
+
+/*! A javascript marked object
+ */
+class JSMarkedObject: public JSObject
+{
+public:
+	/*! When  constructor is called, amount of allocated objects increases
+	 */
+	JSMarkedObject()
+	{
+		++allocated_objects;
+	}
+
+	/*! When destructor is called, amount of deallocated object decreases
+	 */
+	~JSMarkedObject()
+	{
+		--allocated_objects;
+	}
+};
+
+namespace dukpp03
+{
+
+/*! Makes possible to return a marked object from a function
+ */
+template<>
+class PushValue<JSMarkedObject*, dukpp03::context::Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(dukpp03::context::Context* ctx, const JSMarkedObject* v)
+    {
+        dukpp03::PushValue<dukpp03::JSObject<dukpp03::context::Context>*, dukpp03::context::Context>::perform(ctx, v);
+    }
+};	
+
+}
+
+
+/*! A basic testing functions
+ */
 JSObject* testFunction()
 {
 	JSObject* r  = new JSObject();
-	r->setProperty("m_x", "10");
+	r->setEvaluatedProperty("m_x", "10");
 	return r;
+}
+
+/*! A basic marked function
+ */
+JSMarkedObject* basicMarkedFunction()
+{
+	JSMarkedObject* r = new JSMarkedObject();
+	r->setEvaluatedProperty("m_x", "10");
+	r->setEvaluatedProperty("o", "(function() { return this.m_x; })");
+	return r;
+
 }
 
 struct JSObjectTest : tpunit::TestFixture
