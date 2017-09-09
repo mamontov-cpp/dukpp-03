@@ -46,7 +46,7 @@ public:
     };
     /*! Makes new empty object
      */
-    JSObject() : m_refcount(0), m_is_null(false)
+    JSObject() : m_refcount(0)
     {
         
     }
@@ -63,14 +63,14 @@ public:
      */
     void pushOnStackOfContext(_Context* ctx) const
     {
-        
+        // TODO: Implement it
     }
 
     /*! Registers object as global in some context
         \param[in] ctx context
         \param[in] name a name of object as field
      */
-     void registerAsGlobalVariable(_Context* ctx, const std::string& name) const
+    void registerAsGlobalVariable(_Context* ctx, const std::string& name)
     {
         bool found = false;
         for(size_t i = 0; i < m_links.size(); i++)
@@ -91,9 +91,6 @@ public:
      */
     void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
     {
-        this->throwPropertyCannotBeSetfNullObject();
-
-
         // TODO: 
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
@@ -102,10 +99,31 @@ public:
      */
     void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
     {
-        this->throwPropertyCannotBeSetfNullObject();
-
-
         // TODO: 
+    }
+
+	/*! Set null property for object
+	    \param[in] name a name of property
+	 */ 
+	void setNullProperty(const std::string& name)
+    {
+	    // TODO:
+    }
+
+	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+        \param[in] name a name of property
+        \param[in] val a value
+     */
+    void setProperty(const std::string& name, dukpp03::Maybe<dukpp03::JSObject<_Context>*> val)
+    {
+        if (val.exists())
+        {
+	        this->setProperty(name, val.value());
+        }
+        else
+        {
+	        this->setNullProperty(name);
+        }
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
         \param[in] name a name of property
@@ -116,9 +134,6 @@ public:
     >
     void setProperty(const std::string& name, const _Value& value)
     {
-        this->throwPropertyCannotBeSetfNullObject();
-
-
         // TODO: 
     }
     /*! Sets new property of object or replaces old. Edit runtime object if needed
@@ -127,8 +142,6 @@ public:
      */
     void setProperty(const std::string& name, duk_c_function function)
     {
-        this->throwPropertyCannotBeSetfNullObject();
-
 
         // TODO:         
     }
@@ -138,7 +151,6 @@ public:
      */
     void setEvaluatedProperty(const std::string& name, const std::string val)
     {
-        this->throwPropertyCannotBeSetfNullObject();
 
         // TODO: 
     }
@@ -147,10 +159,6 @@ public:
      */
     void deleteProperty(const std::string& name)
     {
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to remove property from a null object");
-        }
         for(size_t i = 0; i < m_links.size(); i++)
         {
             duk_context* c = m_links[i].Context->context();
@@ -180,15 +188,6 @@ public:
         }
     }
 
-    /*! Returns null object
-     */
-    static JSObject<_Context>* null()
-    {
-        JSObject<_Context>* result = new JSObject<_Context>();
-        result->m_is_null = true;
-        return result;
-    }
-
     /*! Called, when object is erased from heap of context. Note, that this could be only one of many links to object, so, 
         we should proceed carefully.
         \param[in] ctx context
@@ -198,15 +197,6 @@ public:
         // TODO: 
     }
 protected:
-    /*! Throws exception if object is null. Used to mark operations, that can be 
-     */
-    void throwPropertyCannotBeSetfNullObject() const
-    {
-        if (m_is_null)
-        {
-            throw new std::logic_error("Attempted to add property to a null object");
-        }
-    }
     /*! A contexts with name where object is registered
      */
     std::vector<typename dukpp03::JSObject<_Context>::Link> m_links;
@@ -216,9 +206,6 @@ protected:
     /*! A reference counting
      */
     unsigned int m_refcount;
-    /*! Whether we should push null value for object
-     */
-    bool m_is_null;
 };
 
 template<
@@ -262,6 +249,24 @@ template<
     typename _Context
 >
 class PushValue<dukpp03::JSObject<_Context>*, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const dukpp03::JSObject<_Context>* v)
+    {
+        // TODO:
+    }
+};
+
+/*! Makes possible to return an object or null from a function
+ */
+template<
+    typename _Context
+>
+class PushValue<dukpp03::Maybe<dukpp03::JSObject<_Context>*>, _Context>
 {
 public:
     /*! Performs pushing value 
