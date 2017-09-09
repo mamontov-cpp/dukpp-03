@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="callables.cpp" />
     <ClCompile Include="context.cpp" />
+    <ClCompile Include="jsobject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="point.cpp" />
   </ItemGroup>

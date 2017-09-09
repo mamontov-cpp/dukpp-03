@@ -88,7 +88,8 @@ public:
 
 	/*! Tests prototype inheritance for JSObject and garbage collection
 	 */
-	void testPrototype1()
+    // ReSharper disable once CppMemberFunctionMayBeConst
+	void testPrototype1() 
     {
 	    dukpp03::context::Context ctx;
 		ctx.registerCallable("Base", mkf::from(testFunction));
@@ -109,6 +110,7 @@ public:
 
 	/*! A basic inheritance test for JSObject
 	 */
+    // ReSharper disable once CppMemberFunctionMayBeConst
 	void testInheritance1()
     {
 	    dukpp03::context::Context ctx;
@@ -132,6 +134,7 @@ public:
 
 	/*! A second inheritance test for JSObject
 	 */
+    // ReSharper disable once CppMemberFunctionMayBeConst
 	void testInheritance2()
     {
 	    dukpp03::context::Context ctx;
@@ -153,6 +156,21 @@ public:
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 20) );
         }
+    }
+
+	/*! Tests adding objects to two contexts
+	 */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    void testAddToTwoContexts()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx1 = new dukpp03::context::Context();
+        dukpp03::context::Context* ctx2 = new dukpp03::context::Context();
+
+        JSMarkedObject* obj = new JSMarkedObject();
+        obj->setProperty("22", 22);
+        ASSERT_TRUE( allocated_objects == 1);
     }
 
 } js_object_test;
