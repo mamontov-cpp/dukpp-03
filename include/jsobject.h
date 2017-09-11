@@ -102,15 +102,15 @@ public:
         // TODO: 
     }
 
-	/*! Set null property for object
-	    \param[in] name a name of property
-	 */ 
-	void setNullProperty(const std::string& name)
+    /*! Set null property for object
+        \param[in] name a name of property
+     */ 
+    void setNullProperty(const std::string& name)
     {
-	    // TODO:
+        // TODO:
     }
 
-	/*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
         \param[in] name a name of property
         \param[in] val a value
      */
@@ -118,11 +118,11 @@ public:
     {
         if (val.exists())
         {
-	        this->setProperty(name, val.value());
+            this->setProperty(name, val.value());
         }
         else
         {
-	        this->setNullProperty(name);
+            this->setNullProperty(name);
         }
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it

@@ -20,19 +20,19 @@ size_t allocated_objects = 0;
 class JSMarkedObject: public JSObject
 {
 public:
-	/*! When  constructor is called, amount of allocated objects increases
-	 */
-	JSMarkedObject()
-	{
-		++allocated_objects;
-	}
+    /*! When  constructor is called, amount of allocated objects increases
+     */
+    JSMarkedObject()
+    {
+        ++allocated_objects;
+    }
 
-	/*! When destructor is called, amount of deallocated object decreases
-	 */
-	~JSMarkedObject()
-	{
-		--allocated_objects;
-	}
+    /*! When destructor is called, amount of deallocated object decreases
+     */
+    ~JSMarkedObject()
+    {
+        --allocated_objects;
+    }
 };
 
 namespace dukpp03
@@ -52,7 +52,7 @@ public:
     {
         dukpp03::PushValue<dukpp03::JSObject<dukpp03::context::Context>*, dukpp03::context::Context>::perform(ctx, v);
     }
-};	
+};  
 
 }
 
@@ -61,19 +61,19 @@ public:
  */
 JSObject* testFunction()
 {
-	JSObject* r  = new JSObject();
-	r->setEvaluatedProperty("m_x", "10");
-	return r;
+    JSObject* r  = new JSObject();
+    r->setEvaluatedProperty("m_x", "10");
+    return r;
 }
 
 /*! A basic marked function
  */
 JSMarkedObject* basicMarkedFunction()
 {
-	JSMarkedObject* r = new JSMarkedObject();
-	r->setEvaluatedProperty("m_x", "10");
-	r->setEvaluatedProperty("o", "(function() { return this.m_x; })");
-	return r;
+    JSMarkedObject* r = new JSMarkedObject();
+    r->setEvaluatedProperty("m_x", "10");
+    r->setEvaluatedProperty("o", "(function() { return this.m_x; })");
+    return r;
 }
 
 
@@ -85,19 +85,19 @@ JSMarkedObject* selected_object;
  */ 
 JSMarkedObject* returnSelectedObject()
 {
-	return selected_object;
+    return selected_object;
 }
 
 dukpp03::Maybe<JSMarkedObject*> returnNullOrSelected(bool null)
 {
-	if (null)
-	{
-		return dukpp03::Maybe<JSMarkedObject*>();
-	}
-	else
-	{
-		return  dukpp03::Maybe<JSMarkedObject*>(selected_object);
-	}
+    if (null)
+    {
+        return dukpp03::Maybe<JSMarkedObject*>();
+    }
+    else
+    {
+        return  dukpp03::Maybe<JSMarkedObject*>(selected_object);
+    }
 }
 
 struct JSObjectTest : tpunit::TestFixture
@@ -107,23 +107,23 @@ public:
        TEST(JSObjectTest::testPrototype1),
        TEST(JSObjectTest::testInheritance1),
        TEST(JSObjectTest::testInheritance2),
-	   TEST(JSObjectTest::testAddToTwoContexts),
-	   TEST(JSObjectTest::testAddToContextTwice),
-	   TEST(JSObjectTest::testAddToDifferentContextsSeveralTimes),
-	   TEST(JSObjectTest::testReturnSelectedObjectFromFunctionTwice),
-	   TEST(JSObjectTest::testNullOrObject),
-	   TEST(JSObjectTest::testRegisterAndPushToSeveralContexts),
-	   TEST(JSObjectTest::testRegisterAndPushToSeveralContextsSeveralTimes),
-	   TEST(JSObjectTest::testRegisterAsComplexProperty)
+       TEST(JSObjectTest::testAddToTwoContexts),
+       TEST(JSObjectTest::testAddToContextTwice),
+       TEST(JSObjectTest::testAddToDifferentContextsSeveralTimes),
+       TEST(JSObjectTest::testReturnSelectedObjectFromFunctionTwice),
+       TEST(JSObjectTest::testNullOrObject),
+       TEST(JSObjectTest::testRegisterAndPushToSeveralContexts),
+       TEST(JSObjectTest::testRegisterAndPushToSeveralContextsSeveralTimes),
+       TEST(JSObjectTest::testRegisterAsComplexProperty)
     ) {}
 
-	/*! Tests prototype inheritance for JSObject and garbage collection
-	 */
+    /*! Tests prototype inheritance for JSObject and garbage collection
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
-	void testPrototype1() 
+    void testPrototype1() 
     {
-	    dukpp03::context::Context ctx;
-		ctx.registerCallable("Base", mkf::from(testFunction));
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("Base", mkf::from(testFunction));
         std::string error;
 
         {
@@ -139,16 +139,16 @@ public:
         } 
     }
 
-	/*! A basic inheritance test for JSObject
-	 */
+    /*! A basic inheritance test for JSObject
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
-	void testInheritance1()
+    void testInheritance1()
     {
-	    dukpp03::context::Context ctx;
-		ctx.registerCallable("Base", mkf::from(testFunction));
-		std::string error;
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("Base", mkf::from(testFunction));
+        std::string error;
 
-		 bool eval_result = ctx.eval(
+         bool eval_result = ctx.eval(
                 "Base.prototype.f = function() { return 120; };"
                 "var ChildPoint = function() { }, m = new Base();"
                 "ChildPoint.prototype = m;"
@@ -163,16 +163,16 @@ public:
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 120) );
     }
 
-	/*! A second inheritance test for JSObject
-	 */
+    /*! A second inheritance test for JSObject
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
-	void testInheritance2()
+    void testInheritance2()
     {
-	    dukpp03::context::Context ctx;
-		ctx.registerCallable("Base", mkf::from(testFunction));
-		std::string error;
+        dukpp03::context::Context ctx;
+        ctx.registerCallable("Base", mkf::from(testFunction));
+        std::string error;
 
-		{
+        {
             bool eval_result = ctx.eval(
                 "Base.prototype.f = function() { return this.m_x; };"
                 "var ChildPoint = function(a, b) { Object.setPrototypeOf(this, new Base()); };"
@@ -189,8 +189,8 @@ public:
         }
     }
 
-	/*! Tests adding objects to two contexts
-	 */
+    /*! Tests adding objects to two contexts
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
     void testAddToTwoContexts()
@@ -204,18 +204,18 @@ public:
         obj->setProperty("22", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		dukpp03::PushValue<JSObject*, dukpp03::context::Context>::perform(ctx1, obj);
-		dukpp03::PushValue<JSObject*, dukpp03::context::Context>::perform(ctx2, obj);
+        dukpp03::PushValue<JSObject*, dukpp03::context::Context>::perform(ctx1, obj);
+        dukpp03::PushValue<JSObject*, dukpp03::context::Context>::perform(ctx2, obj);
 
         ASSERT_TRUE( allocated_objects == 1);
-		delete ctx1;
-		delete ctx2;
+        delete ctx1;
+        delete ctx2;
 
         ASSERT_TRUE( allocated_objects == 0);
     }
 
-	/*! Tests adding same object to context twice
-	 */
+    /*! Tests adding same object to context twice
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
     void testAddToContextTwice()
@@ -228,24 +228,24 @@ public:
         obj->setProperty("22", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		obj->registerAsGlobalVariable(ctx, "a");
-		obj->registerAsGlobalVariable(ctx, "b");
+        obj->registerAsGlobalVariable(ctx, "a");
+        obj->registerAsGlobalVariable(ctx, "b");
 
-		ctx->eval("delete b;");
+        ctx->eval("delete b;");
 
         ASSERT_TRUE( allocated_objects == 1);
-		delete ctx;
+        delete ctx;
 
         ASSERT_TRUE( allocated_objects == 0);
     }
 
-	/*! Tests adding same object to several contexts 
-	 */
+    /*! Tests adding same object to several contexts 
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testAddToDifferentContextsSeveralTimes()
+    void testAddToDifferentContextsSeveralTimes()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx1 = new dukpp03::context::Context();
         dukpp03::context::Context* ctx2 = new dukpp03::context::Context();
@@ -254,36 +254,36 @@ public:
         obj->setProperty("22", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		obj->registerAsGlobalVariable(ctx1, "a");
-		obj->registerAsGlobalVariable(ctx1, "b");
+        obj->registerAsGlobalVariable(ctx1, "a");
+        obj->registerAsGlobalVariable(ctx1, "b");
 
-		obj->registerAsGlobalVariable(ctx2, "a");
-		obj->registerAsGlobalVariable(ctx2, "b");
+        obj->registerAsGlobalVariable(ctx2, "a");
+        obj->registerAsGlobalVariable(ctx2, "b");
 
-		ctx1->eval("delete a;");
-		ctx2->eval("delete b;");
+        ctx1->eval("delete a;");
+        ctx2->eval("delete b;");
 
         ASSERT_TRUE( allocated_objects == 1);
-		delete ctx1;
-		delete ctx2;
+        delete ctx1;
+        delete ctx2;
 
         ASSERT_TRUE( allocated_objects == 0);
     }
 
-	/*! Tests returning same object from function twice
-	 */
+    /*! Tests returning same object from function twice
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testReturnSelectedObjectFromFunctionTwice()
+    void testReturnSelectedObjectFromFunctionTwice()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
-		selected_object = new JSMarkedObject();
+        selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		ctx->registerCallable("f", mkf::from(testFunction));
+        ctx->registerCallable("f", mkf::from(testFunction));
         std::string error;
 
         {
@@ -297,25 +297,25 @@ public:
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
-    	delete ctx;
+        delete ctx;
 
-		ASSERT_TRUE( allocated_objects == 0);
+        ASSERT_TRUE( allocated_objects == 0);
     }
 
-	/*! Tests returning null or object values
-	 */
+    /*! Tests returning null or object values
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testNullOrObject()
+    void testNullOrObject()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
-		selected_object = new JSMarkedObject();
+        selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		ctx->registerCallable("f", mkf::from(returnNullOrSelected));
+        ctx->registerCallable("f", mkf::from(returnNullOrSelected));
         std::string error;
 
         {
@@ -330,7 +330,7 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 22) );
         }
 
-		 {
+         {
             bool eval_result = ctx->eval("f(true) == null", false,  &error);
             if (!eval_result)
             {
@@ -341,31 +341,31 @@ public:
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( result.value() == true );
         }
-    	delete ctx;
+        delete ctx;
 
-		ASSERT_TRUE( allocated_objects == 0);	    
+        ASSERT_TRUE( allocated_objects == 0);       
     }
 
-	/*! Tests registering and pushing values several times to several contexts
-	 */
+    /*! Tests registering and pushing values several times to several contexts
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testRegisterAndPushToSeveralContexts()
+    void testRegisterAndPushToSeveralContexts()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx1 = new dukpp03::context::Context();
         dukpp03::context::Context* ctx2 = new dukpp03::context::Context();
 
-		selected_object = new JSMarkedObject();
+        selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		ctx1->registerCallable("f", mkf::from(returnSelectedObject));
-		selected_object->registerAsGlobalVariable(ctx1, "a");
+        ctx1->registerCallable("f", mkf::from(returnSelectedObject));
+        selected_object->registerAsGlobalVariable(ctx1, "a");
 
-		ctx2->registerCallable("f", mkf::from(returnSelectedObject));
-		selected_object->registerAsGlobalVariable(ctx2, "a");
+        ctx2->registerCallable("f", mkf::from(returnSelectedObject));
+        selected_object->registerAsGlobalVariable(ctx2, "a");
 
         std::string error;
 
@@ -393,34 +393,34 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
 
-    	delete ctx1;
-    	delete ctx2;
+        delete ctx1;
+        delete ctx2;
 
-		ASSERT_TRUE( allocated_objects == 0);
+        ASSERT_TRUE( allocated_objects == 0);
     }
 
-	/*! Tests registering and pushing values several times several times to several contexts
-	 */
+    /*! Tests registering and pushing values several times several times to several contexts
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testRegisterAndPushToSeveralContextsSeveralTimes()
+    void testRegisterAndPushToSeveralContextsSeveralTimes()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx1 = new dukpp03::context::Context();
         dukpp03::context::Context* ctx2 = new dukpp03::context::Context();
 
-		selected_object = new JSMarkedObject();
+        selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		ctx1->registerCallable("f", mkf::from(returnSelectedObject));
-		selected_object->registerAsGlobalVariable(ctx1, "a");
-		selected_object->registerAsGlobalVariable(ctx1, "b");
+        ctx1->registerCallable("f", mkf::from(returnSelectedObject));
+        selected_object->registerAsGlobalVariable(ctx1, "a");
+        selected_object->registerAsGlobalVariable(ctx1, "b");
 
-		ctx2->registerCallable("f", mkf::from(returnSelectedObject));
-		selected_object->registerAsGlobalVariable(ctx2, "a");
-		selected_object->registerAsGlobalVariable(ctx2, "b");
+        ctx2->registerCallable("f", mkf::from(returnSelectedObject));
+        selected_object->registerAsGlobalVariable(ctx2, "a");
+        selected_object->registerAsGlobalVariable(ctx2, "b");
 
         std::string error;
 
@@ -448,28 +448,28 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 88) );
         }
 
-    	delete ctx1;
-    	delete ctx2;
+        delete ctx1;
+        delete ctx2;
 
-		ASSERT_TRUE( allocated_objects == 0);	    
+        ASSERT_TRUE( allocated_objects == 0);       
     }
 
-	/*! Tests registering complex property
-	 */
+    /*! Tests registering complex property
+     */
     // ReSharper disable once CppMemberFunctionMayBeConst
     // ReSharper disable once CppMemberFunctionMayBeStatic
-	void testRegisterAsComplexProperty()
+    void testRegisterAsComplexProperty()
     {
-	    allocated_objects = 0;
+        allocated_objects = 0;
 
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
 
-		selected_object = new JSMarkedObject();
+        selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-		ctx->eval("E = {}; E.o = {};");
-		selected_object->registerAsGlobalVariable(ctx, "E.o.m");
+        ctx->eval("E = {}; E.o = {};");
+        selected_object->registerAsGlobalVariable(ctx, "E.o.m");
 
         std::string error;
 
@@ -485,9 +485,9 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
 
-    	delete ctx;
+        delete ctx;
 
-		ASSERT_TRUE( allocated_objects == 0);
+        ASSERT_TRUE( allocated_objects == 0);
     }
 
 } js_object_test;
