@@ -117,7 +117,10 @@ public:
        TEST(JSObjectTest::testRegisterAsComplexProperty),
        TEST(JSObjectTest::testDeletePropertyBeforeRegistering),
        TEST(JSObjectTest::testDeletePropertyAfterRegistering),
-       TEST(JSObjectTest::testDeletePropertyAfterPush)
+       TEST(JSObjectTest::testDeletePropertyAfterPush),
+       TEST(JSObjectTest::testSetTProperty),
+       TEST(JSObjectTest::testSetTPropertyAfterRegister),
+       TEST(JSObjectTest::testSetTPropertyAfterPush)
     ) {}
 
     /*! Tests prototype inheritance for JSObject and garbage collection
@@ -526,7 +529,7 @@ public:
 
         delete ctx;
 
-        ASSERT_TRUE( allocated_objects == 0);  
+        ASSERT_TRUE( allocated_objects == 0);
     }
 
 
@@ -611,6 +614,124 @@ public:
 
         delete ctx;
 
-        ASSERT_TRUE( allocated_objects == 0);  
+        ASSERT_TRUE( allocated_objects == 0);
     }
+
+    /*! Tests setting property before registering value
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetTProperty()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("me", 22);
+        ASSERT_TRUE( allocated_objects == 1);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting property after registering value
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetTPropertyAfterRegister()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        ASSERT_TRUE( allocated_objects == 1);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
+        selected_object->setProperty("me", 22);
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting property after pushing value
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetTPropertyAfterPush()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+
+        ASSERT_TRUE( allocated_objects == 1);
+
+        ctx->registerCallable("f", mkf::from(returnSelectedObject));
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("var E = f();", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+        }
+
+        selected_object->setProperty("me", 22);
+
+        {
+            bool eval_result = ctx->eval("E.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
 } js_object_test;
