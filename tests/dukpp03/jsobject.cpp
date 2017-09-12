@@ -166,7 +166,7 @@ public:
     void testPrototype1() 
     {
         dukpp03::context::Context ctx;
-        ctx.registerCallable("Base", mkf::from(testFunction));
+        ctx.registerCallable("Base", mkcf::from(testFunction));
         std::string error;
 
         {
@@ -188,7 +188,7 @@ public:
     void testInheritance1()
     {
         dukpp03::context::Context ctx;
-        ctx.registerCallable("Base", mkf::from(testFunction));
+        ctx.registerCallable("Base", mkcf::from(testFunction));
         std::string error;
 
          bool eval_result = ctx.eval(
@@ -212,7 +212,7 @@ public:
     void testInheritance2()
     {
         dukpp03::context::Context ctx;
-        ctx.registerCallable("Base", mkf::from(testFunction));
+        ctx.registerCallable("Base", mkcf::from(testFunction));
         std::string error;
 
         {

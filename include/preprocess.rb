@@ -38,6 +38,7 @@ if (ARGV.empty?)
 	render("lambda.h.t", "lambda.h", variants)
 	render("thislambda.h.t", "thislambda.h", variants)
 	render("thisexplicitmethod.h.t", "thisexplicitmethod.h", variants)
+	render("constructorfunction.h.t", "constructorfunction.h", variants)
 else
 	render(ARGV[0] + ".t", ARGV[0], variants)
 end

@@ -6,6 +6,7 @@
 #include <dukpp-03.h>
 #include <thisexplicitmethod.h>
 #include <jsobject.h>
+#include <constructorfunction.h>
 #include "utils.h"
 
 namespace dukpp03
@@ -21,6 +22,7 @@ typedef dukpp03::Context<dukpp03::utils::MapInterface, dukpp03::utils::VariantIn
 }
 
 typedef dukpp03::make_fun<dukpp03::context::Context> mkf;
+typedef dukpp03::make_constructor_fun<dukpp03::context::Context> mkcf;
 typedef dukpp03::register_constructor<dukpp03::context::Context> register_constructor;
 typedef dukpp03::make_method<dukpp03::context::Context> mkm;
 typedef dukpp03::bind_method<dukpp03::context::Context> bnd;
