@@ -258,7 +258,14 @@ public:
      */
     static void perform(_Context* ctx, const dukpp03::JSObject<_Context>* v)
     {
-        // TODO:
+        if (v)
+        {
+            // TODO:
+        }
+        else
+        {
+            duk_push_null(ctx->context());
+        }
     }
 };
 
@@ -274,9 +281,16 @@ public:
         \param[in] ctx context
         \param[in] v value
      */
-    static void perform(_Context* ctx, const dukpp03::JSObject<_Context>* v)
+    static void perform(_Context* ctx, const dukpp03::Maybe<dukpp03::JSObject<_Context>*>& v)
     {
-        // TODO:
+        if (v.exists())
+        {
+            dukpp03::PushValue<dukpp03::JSObject<_Context>*, _Context>::perform(ctx, v.value());
+        }
+        else
+        {
+            duk_push_null(ctx->context());
+        }
     }
 };
 
