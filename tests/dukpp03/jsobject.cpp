@@ -153,11 +153,11 @@ public:
        TEST(JSObjectTest::testObjectLoop2),
        TEST(JSObjectTest::testSetNestedProperty1),
        TEST(JSObjectTest::testSetNestedProperty2),
-       TEST(JSObjectTest::testSetNestedProperty3)/*,
+       TEST(JSObjectTest::testSetNestedProperty3),
        TEST(JSObjectTest::testSetNestedProperty4),
        TEST(JSObjectTest::testSetNestedProperty5),
        TEST(JSObjectTest::testSetNestedProperty6),
-       TEST(JSObjectTest::testSetNestedProperty7)*/
+       TEST(JSObjectTest::testSetNestedProperty7)
     ) {}
 
     /*! Tests prototype inheritance for JSObject and garbage collection
@@ -1385,7 +1385,7 @@ public:
         selected_object = new JSMarkedObject();
 
         {
-            bool eval_result = ctx->eval("E.nested = f();", false,  &error);
+            bool eval_result = ctx->eval("E = f();", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
@@ -1396,6 +1396,186 @@ public:
         ASSERT_TRUE( allocated_objects == 2);
 
         selected_object->setProperty("nested", child);
+
+        {
+            bool eval_result = ctx->eval("E.nested.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting nested property
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetNestedProperty4()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        JSMarkedObject* child = new JSMarkedObject();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("nested", child);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
+        child->setProperty("me", 22);
+
+        ASSERT_TRUE( allocated_objects == 2);
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.nested.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting nested property
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetNestedProperty5()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        JSMarkedObject* child = new JSMarkedObject();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("nested", child);
+
+        ctx->registerCallable("f", mkf::from(returnSelectedObject));
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E = f();", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+        }
+
+        child->setProperty("me", 22);
+
+        ASSERT_TRUE( allocated_objects == 2);
+
+
+        {
+            bool eval_result = ctx->eval("E.nested.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting nested property
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetNestedProperty6()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        JSMarkedObject* child = new JSMarkedObject();
+
+        selected_object = new JSMarkedObject();
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
+        selected_object->setProperty("nested", child);
+
+        child->setProperty("me", 22);
+
+        ASSERT_TRUE( allocated_objects == 2);
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.nested.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests setting nested property
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testSetNestedProperty7()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        JSMarkedObject* child = new JSMarkedObject();
+
+        selected_object = new JSMarkedObject();
+
+        ctx->registerCallable("f", mkf::from(returnSelectedObject));
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E = f();", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+        }
+
+        selected_object->setProperty("nested", child);
+        child->setProperty("me", 22);
+
+        ASSERT_TRUE( allocated_objects == 2);
+
 
         {
             bool eval_result = ctx->eval("E.nested.me", false,  &error);
