@@ -254,7 +254,13 @@ template<
 >
 duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
 {
-    printf("Finalizer is called for %p\n", duk_get_heapptr(ctx, 0));
+    printf("Finalizer is called for %p: %s\n", duk_get_heapptr(ctx, 0), duk_to_string(ctx, 0));   
+    duk_enum(ctx, 0, DUK_ENUM_INCLUDE_HIDDEN);
+    while (duk_next(ctx, -1, 1)) {
+        printf("key=%s, value=%s\n", duk_to_string(ctx, -2), duk_to_string(ctx, -1));
+        duk_pop_2(ctx);
+    }
+    duk_pop(ctx);
     typename dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
     _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
     if (o) 
