@@ -67,7 +67,6 @@ public:
         // Add reference, so if object is replacing the same value it won't be collected
         const_cast<JSObject<_Context>*>(this)->addRef();
 
-        int before = duk_get_top(c);
         // Push object and store heap pointer
         duk_push_object(c);
         void* heapptr = duk_get_heapptr(c, -1);
@@ -85,7 +84,7 @@ public:
         // Set finalizer
         duk_push_c_function(c,  dukpp03::JSObjectFinalizer<_Context>::finalize, 2);
         duk_set_finalizer(c, -1);
-        printf("Stack difference: %d\n", duk_get_top(c) - before);
+        printf("Set finalizer for: %p\n", duk_get_heapptr(c, -1));
 
         // TODO: Register fields
     }
@@ -234,10 +233,12 @@ typename dukpp03::JSObject<_Context>* JSObjectFinalizer<_Context>::getObject(duk
 {
     if (duk_is_object(ctx, 0))
     {
+        printf("Attempt to get pointer\n");
         dukpp03::JSObject<_Context>* result = NULL;
         duk_get_prop_string(ctx, 0, DUKPP03_JSOBJECT_POINTER_SIGNATURE);
         if (duk_is_pointer(ctx, -1))
         {
+            printf("Fetching pointer\n");
             void* ptr = duk_to_pointer(ctx, -1);
             result = reinterpret_cast<dukpp03::JSObject<_Context>*>(ptr);
         }
@@ -253,7 +254,7 @@ template<
 >
 duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
 {
-    printf("Finalizer is called\n");
+    printf("Finalizer is called for %p\n", duk_get_heapptr(ctx, 0));
     typename dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
     _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
     if (o) 
