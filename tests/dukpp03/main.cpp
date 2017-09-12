@@ -17,16 +17,7 @@
 
 duk_ret_t finalizer(duk_context* ctx)
 {
-	for(int i = 0; i < duk_get_top(ctx); i++)
-	{
-		printf("Object: %s\n", duk_to_string(ctx, i));
-	}
 	printf("Called fnalizer!");
-	duk_call(ctx, 0);
-	for(int i = 0; i < duk_get_top(ctx); i++)
-	{
-		printf("Object: %s\n", duk_to_string(ctx, i));
-	}
     duk_enum(ctx, 0, DUK_ENUM_INCLUDE_NONENUMERABLE | DUK_ENUM_INCLUDE_HIDDEN);
     while (duk_next(ctx, -1, 1)) {
         printf("key=%s, value=%s\n", duk_to_string(ctx, -2), duk_to_string(ctx, -1));
@@ -39,14 +30,14 @@ duk_ret_t finalizer(duk_context* ctx)
 duk_ret_t retf(duk_context* ctx)
 {
         printf("Called!\n");
-        duk_push_object(ctx);
+        duk_idx_t obj = duk_push_object(ctx);
 
         // Set finalizer
         duk_push_c_function(ctx,  finalizer, 1);
-        duk_set_finalizer(ctx, -1);
+        duk_set_finalizer(ctx, obj);
 
         duk_push_string(ctx, "test");   
-        duk_put_prop_string(ctx, -2, "test");
+        duk_put_prop_string(ctx, obj, "test");
         return 1;
 }
 
