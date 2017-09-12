@@ -43,7 +43,6 @@ public:
     {
         _Context* Context;     //!< A linked context
         void* HeapPointer;     //!< A heap pointer
-        unsigned int RefCount; //!< A reference counter data
     };
     /*! Makes new empty object
      */
@@ -65,10 +64,30 @@ public:
     void pushOnStackOfContext(_Context* ctx) const
     {
         duk_context* c = ctx->context();
+        // Add reference, so if object is replacing the same value it won't be collected
+        const_cast<JSObject<_Context>*>(this)->addRef();
+
+        int before = duk_get_top(c);
+        // Push object and store heap pointer
         duk_push_object(c);
         void* heapptr = duk_get_heapptr(c, -1);
-        printf("%p\n", heapptr);
-        // TODO: Implement it
+        Link lnk;
+        lnk.Context = ctx;
+        lnk.HeapPointer = heapptr;
+        ctx->insertLinkedPointer(heapptr);
+        (const_cast<JSObject<_Context>*>(this))->m_links.push_back(lnk);
+
+        // Set inner value, stored to ensure consistency
+        duk_push_string(c, DUKPP03_JSOBJECT_POINTER_SIGNATURE);   
+        duk_push_pointer(c, (const_cast<JSObject<_Context>*>(this)));
+        duk_def_prop(c, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | 0);
+
+        // Set finalizer
+        duk_push_c_function(c,  dukpp03::JSObjectFinalizer<_Context>::finalize, 2);
+        duk_set_finalizer(c, -1);
+        printf("Stack difference: %d\n", duk_get_top(c) - before);
+
+        // TODO: Register fields
     }
 
     /*! Registers object as global in some context
@@ -77,15 +96,6 @@ public:
      */
     void registerAsGlobalVariable(_Context* ctx, const std::string& name)
     {
-        bool found = false;
-        for(size_t i = 0; i < m_links.size(); i++)
-        {
-            if (m_links[i].Context == ctx)
-            {
-                found = true;
-                ++m_links[i].RefCount;
-            }
-        }
         // TODO: Actually implement registering
     }
 
@@ -197,10 +207,13 @@ public:
     /*! Called, when object is erased from heap of context. Note, that this could be only one of many links to object, so, 
         we should proceed carefully.
         \param[in] ctx context
+        \param[in] heapptr a heap pointer from context
      */
-    void eraseLinkFromContext(_Context* ctx)
+    void eraseLinkFromContext(_Context* ctx, void* heapptr)
     {
         // TODO: 
+        printf("Erased %p  from %p\n", heapptr, ctx);
+        ctx->removeLinkedPointer(heapptr);
     }
 protected:
     /*! A contexts with name where object is registered
@@ -239,12 +252,18 @@ template<
     typename _Context
 >
 duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
-{    
+{
+    printf("Finalizer is called\n");
     typename dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
     _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
-    if (o && parent->isLinkedPointerStored(o)) 
+    if (o) 
     {
-        o->eraseLinkFromContext(parent);
+        printf("Found object %p\n");
+        void* heapptr = duk_get_heapptr(ctx, -1);
+        if (parent->isLinkedPointerStored(heapptr))
+        {
+            o->eraseLinkFromContext(parent, heapptr);
+        }
     }
     return 0;
 }
