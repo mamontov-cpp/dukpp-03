@@ -1,6 +1,7 @@
 #include "context.h"
 #include <vector>
 #include <stdexcept>
+#include <cstdio>
 #pragma once
 
 #define DUKPP03_JSOBJECT_POINTER_SIGNATURE "\1dukpp03::JSObject<_Context>\1"
@@ -63,6 +64,10 @@ public:
      */
     void pushOnStackOfContext(_Context* ctx) const
     {
+        duk_context* c = ctx->context();
+        duk_push_object(c);
+        void* heapptr = duk_get_heapptr(c, -1);
+        printf("%p\n", heapptr);
         // TODO: Implement it
     }
 
@@ -260,7 +265,7 @@ public:
     {
         if (v)
         {
-            // TODO:
+            v->pushOnStackOfContext(ctx);
         }
         else
         {

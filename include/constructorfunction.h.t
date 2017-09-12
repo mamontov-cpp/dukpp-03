@@ -63,6 +63,8 @@ public:
 
         _ReturnType t = m_callee({{#args}}_a{{number}}._(){{#not_last}}, {{/not_last}}{{/args}});
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, t);
+        duk_push_current_function(c->context());
+        duk_set_prototype(c->context(), -2);
         return 1;
     }
     /*! Can be inherited
