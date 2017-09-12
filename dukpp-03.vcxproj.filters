@@ -96,6 +96,9 @@
     <ClInclude Include="include\jsobject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\constructorfunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\abstractcallable.cpp">

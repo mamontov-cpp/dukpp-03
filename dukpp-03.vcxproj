@@ -17,6 +17,7 @@
     <ClInclude Include="include\classbinding.h" />
     <ClInclude Include="include\compiledfunction.h" />
     <ClInclude Include="include\constructor.h" />
+    <ClInclude Include="include\constructorfunction.h" />
     <ClInclude Include="include\context.h" />
     <ClInclude Include="include\decay.h" />
     <ClInclude Include="include\dukpp-03.h" />
