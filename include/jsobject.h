@@ -139,8 +139,9 @@ public:
     /*! Sets new property of object or replaces old. Edit runtime object if needed
          \param[in] name a name of property
          \param[in] function a function
+         \param[in] nargs amount of arguments in a function
      */
-    void setProperty(const std::string& name, duk_c_function function)
+    void setProperty(const std::string& name, duk_c_function function, duk_idx_t nargs)
     {
 
         // TODO:         
