@@ -104,8 +104,8 @@ public:
          */
         virtual void registerForObject(_Context* ctx, duk_idx_t id)
         {
-			dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
-        	duk_put_prop_string(ctx->context(), id, this->name().c_str());
+            dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
+            duk_put_prop_string(ctx->context(), id, this->name().c_str());
         }
         /*! Could be inherited
          */
@@ -116,11 +116,11 @@ public:
     protected:
         T m_value;
     };
-	/*! An evaluated field, that is evaluated when registered
-	 */
-	class EvaluatedField: public Field
-	{
-	public:
+    /*! An evaluated field, that is evaluated when registered
+     */
+    class EvaluatedField: public Field
+    {
+    public:
         /*! Constructs new value field
             \param[in] value a value
          */
@@ -142,17 +142,17 @@ public:
         virtual void registerForObject(_Context* ctx, duk_idx_t id)
         {
             duk_context* c = ctx->context();
-        	duk_idx_t before = duk_get_top(c);
-			duk_push_string(c, m_value.c_str());
-			if (duk_peval(c) != 0)
-			{
-				assert(false);
-			}
-			duk_idx_t after = duk_get_top(c);
-			int diff = after - before;
-			assert( diff >= 1);
+            duk_idx_t before = duk_get_top(c);
+            duk_push_string(c, m_value.c_str());
+            if (duk_peval(c) != 0)
+            {
+                assert(false);
+            }
+            duk_idx_t after = duk_get_top(c);
+            int diff = after - before;
+            assert( diff >= 1);
 
-        	duk_put_prop_string(c, id, this->name().c_str());
+            duk_put_prop_string(c, id, this->name().c_str());
         }
         /*! Could be inherited
          */
@@ -161,8 +161,135 @@ public:
             
         }
     protected:
-        std::string m_value;		
-	};
+        std::string m_value;        
+    };
+    /*! A callable field, that contains any kind of callable for context
+     */
+    class CallableField: public Field
+    {
+    public:
+        /*! Constructs new callable field
+            \param[in] value a calalble value
+            \param[in] own owned field
+         */
+        inline CallableField(dukpp03::Callable<_Context>* value, bool own) : m_value(value)
+        {
+            
+        }
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            return new CallableField(m_value->clone(), true);
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            duk_context* c = ctx->context();
+            ctx->pushCallable(m_value->clone());
+
+            duk_put_prop_string(c, id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~CallableField()
+        {
+            if (m_own)
+            {
+                delete m_value;
+            }
+        }
+    protected:
+        /*! An inner callable value
+         */
+        dukpp03::Callable<_Context>* m_value;
+        /*! Whether field owns callable value
+         */
+        bool m_own;
+    };
+    /*! A null field, that contains null
+     */
+    class NullField: public Field
+    {
+    public:
+        /*! Constructs new field
+         */
+        inline NullField()
+        {
+            
+        }
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            return new NullField();
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            duk_context* c = ctx->context();
+            duk_push_null(c);
+
+            duk_put_prop_string(c, id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~NullField()
+        {
+
+        }
+    };
+    /*! A callable field, that contains mative function
+     */
+    class CFunctionField: public Field
+    {
+    public:
+        /*! Constructs new field
+         */
+        inline CFunctionField(duk_c_function function, duk_idx_t nargs) : m_function(function), m_nargs(nargs)
+        {
+            
+        }
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            return new CFunctionField(m_function, m_nargs);
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            duk_context* c = ctx->context();
+            duk_push_c_function(c, m_function, m_nargs);
+
+            duk_put_prop_string(c, id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~CFunctionField()
+        {
+
+        }
+    protected:
+        /*! An inner stored function
+         */
+        duk_c_function m_function;
+        /*! An inner argument count for function
+         */ 
+        duk_idx_t m_nargs;
+    };
     /*! A link for storing link of object to context
      */
     struct Link
@@ -227,27 +354,27 @@ public:
     void registerAsGlobalVariable(_Context* ctx, const std::string& name) const
     {
         duk_context* c = ctx->context();
-		std::string::size_type pos = name.find_last_of('.');
+        std::string::size_type pos = name.find_last_of('.');
         if (pos == std::string::npos)
-		{
-    		duk_push_global_object(c);
-			duk_push_string(c, name.c_str());
-		}
+        {
+            duk_push_global_object(c);
+            duk_push_string(c, name.c_str());
+        }
         else
-		{
-			std::string subname = name.substr(0, pos);
-			std::string propname = name.substr(pos + 1);
-		    duk_idx_t before = duk_get_top(c);
-			duk_push_string(c, subname.c_str());
-			if (duk_peval(c) != 0)
-			{
-				assert(false);
-			}
-			duk_idx_t after = duk_get_top(c);
-			int diff = after - before;
-			assert( diff >= 1);
-			duk_push_string(c, propname.c_str());
-		}
+        {
+            std::string subname = name.substr(0, pos);
+            std::string propname = name.substr(pos + 1);
+            duk_idx_t before = duk_get_top(c);
+            duk_push_string(c, subname.c_str());
+            if (duk_peval(c) != 0)
+            {
+                assert(false);
+            }
+            duk_idx_t after = duk_get_top(c);
+            int diff = after - before;
+            assert( diff >= 1);
+            duk_push_string(c, propname.c_str());
+        }
         this->pushOnStackOfContext(ctx);
         duk_put_prop(c, -3);
         duk_pop(c);
@@ -261,8 +388,10 @@ public:
     void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
     {
         this->deleteProperty(name);
-
-        // TODO: 
+        Field* f = new CallableField(val, own);
+        f->setName(name);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
         \param[in] name a name of property
@@ -281,7 +410,10 @@ public:
     void setNullProperty(const std::string& name)
     {
         this->deleteProperty(name);
-        // TODO:
+        Field* f = new NullField();
+        f->setName(name);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
     }
 
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
@@ -310,7 +442,7 @@ public:
     {
         this->deleteProperty(name);
         Field* f = new ValueField<_Value>(value);
-		f->setName(name);
+        f->setName(name);
         m_fields.push_back(f);
         registerFieldInAllContexts(f);
     }
@@ -322,8 +454,10 @@ public:
     void setProperty(const std::string& name, duk_c_function function, duk_idx_t nargs)
     {
         this->deleteProperty(name);
-
-        // TODO:         
+        Field* f = new CFunctionField(function, nargs);
+        f->setName(name);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
         \param[in] name a name of property
@@ -333,7 +467,7 @@ public:
     {
         this->deleteProperty(name);
         Field* f = new EvaluatedField(val);
-		f->setName(name);
+        f->setName(name);
         m_fields.push_back(f);
         registerFieldInAllContexts(f);
     }

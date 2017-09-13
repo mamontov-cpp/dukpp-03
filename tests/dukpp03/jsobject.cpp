@@ -136,7 +136,7 @@ public:
        TEST(JSObjectTest::testDeletePropertyAfterPush),
        TEST(JSObjectTest::testSetTProperty),
        TEST(JSObjectTest::testSetTPropertyAfterRegister),
-       TEST(JSObjectTest::testSetTPropertyAfterPush)/*,
+       TEST(JSObjectTest::testSetTPropertyAfterPush),
        TEST(JSObjectTest::testSetCallableProperty),
        TEST(JSObjectTest::testSetCallablePropertyAfterRegister),
        TEST(JSObjectTest::testSetCallablePropertyAfterPush),
@@ -148,7 +148,7 @@ public:
        TEST(JSObjectTest::testSetCFunctionPropertyAfterPush),
        TEST(JSObjectTest::testSetEvaluatedProperty),
        TEST(JSObjectTest::testSetEvaluatedPropertyAfterRegister),
-       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush),
+       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush)/*,
        TEST(JSObjectTest::testObjectLoop1),
        TEST(JSObjectTest::testObjectLoop2),
        TEST(JSObjectTest::testSetNestedProperty1),
@@ -158,6 +158,7 @@ public:
        TEST(JSObjectTest::testSetNestedProperty5),
        TEST(JSObjectTest::testSetNestedProperty6),
        TEST(JSObjectTest::testSetNestedProperty7)*/
+       // TODO: Test copy and assignment overload
     ) {}
 
     /*! Tests prototype inheritance for JSObject and garbage collection
@@ -741,8 +742,6 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
 
         selected_object = new JSMarkedObject();
-		// Note, that in that case we MUST store a reference
-		selected_object->addRef();
 
         ASSERT_TRUE( allocated_objects == 1);
 
@@ -774,7 +773,6 @@ public:
         }
 
         delete ctx;
-		selected_object->delRef();
 
         ASSERT_TRUE( allocated_objects == 0);
     }
@@ -1005,7 +1003,7 @@ public:
             ASSERT_TRUE( eval_result );
             dukpp03::Maybe<bool> result = dukpp03::GetValue<bool, dukpp03::context::Context>::perform(ctx, -1);
             ASSERT_TRUE( result.exists() );
-            ASSERT_TRUE( result.value() == 22 );
+            ASSERT_TRUE( result.value() );
         }
 
         delete ctx;
