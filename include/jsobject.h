@@ -37,6 +37,40 @@ template<typename _Context>
 class JSObject
 {
 public:
+    /*! An inner field for object
+     */
+    class Field
+    {
+    public:
+        /*! A clone field is needed to implement cloning of object fields
+         */
+        virtual Field* clone() const = 0;
+        /*! Registers for object of a field
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(duk_idx_t id) = 0;
+        /*! Sets name for a field
+            \param[in] name a name for a field
+         */
+        void setName(const std::string& name)
+        {
+            m_name = name;
+        }
+        /*! Returns name of a field
+            \return name of a field
+         */
+        const std::string& name() const
+        {
+            return m_name;
+        }
+        /*! Field can be inherited
+         */
+        virtual ~Field();
+    protected:
+        /*! A name for a field
+         */
+        std::string m_name;
+    };
     /*! A link for storing link of object to context
      */
     struct Link
@@ -50,12 +84,15 @@ public:
     {
         
     }
-
+    //!< TODO: Copy constructor and assignment overload here
     /*! Releases existing resources, destroying object
      */
     virtual ~JSObject()
     {
-        
+        for(size_t i = 0 ; i < m_fields.size(); i++)
+        {
+            delete m_fields[i];
+        }
     }
 
     /*! Pushes object of context
@@ -228,9 +265,9 @@ protected:
     /*! A contexts with name where object is registered
      */
     std::vector<typename dukpp03::JSObject<_Context>::Link> m_links;
-    /*! A list of parent objects
-     */
-    std::vector<dukpp03::JSObject<_Context>* > m_parent_objects;
+    /*! A local field list
+     */ 
+    std::vector<Field*> m_fields;
     /*! A reference counting
      */
     unsigned int m_refcount;
