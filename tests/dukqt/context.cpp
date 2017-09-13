@@ -2,7 +2,6 @@
 #pragma warning(disable: 4273)
 #pragma warning(disable: 4351)
 #include "context.h"
-#include <object.h>
 #include "gccollectcheck.h"
 #include <dukqt.h>
 #include "../dukpp03/include/3rdparty/tpunit++/tpunit++.hpp"
@@ -19,7 +18,7 @@ public:
        TEST(ContextTest::testPushScriptObject),
        TEST(ContextTest::testRegisterOwnObject),
        TEST(ContextTest::testRegisterScriptObject),
-	   TEST(ContextTest::testObject)
+       TEST(ContextTest::testObject)
     ) {}
 
     // ReSharper disable once CppMemberFunctionMayBeStatic
@@ -124,18 +123,19 @@ public:
         GCCollectCheck::clearCounter();
     }
 
-
-	void testObject()
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    void testObject()
     {
-	    dukpp03::qt::Context ctx;
-		dukpp03::Object o;
-		dukpp03::Object* o2 = new dukpp03::Object();
-		o2->addProperty("m","3");
-		o.addProperty("m", "2");
-		o.addProperty("mx", o2);
-		ctx.registerObject("object", &o);
-		bool result = ctx.eval("print(object.mx.m);");
-		ASSERT_TRUE( result );
+        dukpp03::qt::Context ctx;
+        dukpp03::qt::JSObject* o = new dukpp03::qt::JSObject();
+        dukpp03::qt::JSObject* o2 = new dukpp03::qt::JSObject();
+        o2->setProperty("m","3");
+        o->setProperty("m", "2");
+        o->setProperty("mx", o2);
+        o->registerAsGlobalVariable(&ctx, "object");
+        bool result = ctx.eval("print(object.mx.m);");
+        ASSERT_TRUE( result );
     }
 
 } _context_test;

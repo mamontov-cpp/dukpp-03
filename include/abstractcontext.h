@@ -5,12 +5,10 @@
 #pragma once
 #include "errorcodes.h"
 #include <string>
-#include "object.h"
 
 namespace dukpp03
 {
 
-class Object;
 class AbstractCallable;
 
 /*! A wapper for basic context for data
@@ -105,15 +103,6 @@ public:
         \param[in] as_attribute push as attribute getter (adds additional pop in wrapper)
      */
     void pushCallable(dukpp03::AbstractCallable* callable, bool own = true, bool as_attribute = false);
-    /*! Registers object as global property
-        \param[in] name a name of global property for object
-        \param[in] o object
-     */
-    void registerObject(const std::string& name, dukpp03::Object* o);
-	/*! Pushes object to stack
-        \param[in] o object
-     */
-    void pushObject(dukpp03::Object* o);
 protected:
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object

@@ -23,6 +23,7 @@ link_directories("../../lib" ${Boost_LIBRARY_DIRS})
 
 set(SRCS "main.cpp" "context.cpp" "callables.cpp" "point.cpp" "jsobject.cpp")
 
+
 add_executable(${DUKPP03_EXECUTABLE_NAME} ${SRCS} ${HDRS})
 
 target_link_libraries(${DUKPP03_EXECUTABLE_NAME} ${DUKPP03_LINKABLE_NAME} ${Boost_LIBRARIES})

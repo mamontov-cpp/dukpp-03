@@ -104,15 +104,15 @@ JSMarkedObject* returnSelectedObject()
     return selected_object;
 }
 
-dukpp03::Maybe<JSMarkedObject*> returnNullOrSelected(bool null)
+dukpp03::Maybe<JSObject*> returnNullOrSelected(bool null)
 {
     if (null)
     {
-        return dukpp03::Maybe<JSMarkedObject*>();
+        return dukpp03::Maybe<JSObject*>();
     }
     else
     {
-        return  dukpp03::Maybe<JSMarkedObject*>(selected_object);
+        return  dukpp03::Maybe<JSObject*>(selected_object);
     }
 }
 
@@ -157,7 +157,9 @@ public:
        TEST(JSObjectTest::testSetNestedProperty4),
        TEST(JSObjectTest::testSetNestedProperty5),
        TEST(JSObjectTest::testSetNestedProperty6),
-       TEST(JSObjectTest::testSetNestedProperty7)
+       TEST(JSObjectTest::testSetNestedProperty7),
+       TEST(JSObjectTest::testCopyConstructor),
+       TEST(JSObjectTest::testAssignmentOverload)
     ) {}
 
     /*! Tests prototype inheritance for JSObject and garbage collection
@@ -170,7 +172,7 @@ public:
         std::string error;
 
         {
-            bool eval_result = ctx.eval(" Base.prototype.f = function() { return 120; }; var a = new Base(); a.f() ", false,  &error);
+            bool eval_result = ctx.eval(" Base.prototype.f = function() { return 120; }; var a = new Base(), b = new Base(); a.f() ", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
@@ -220,7 +222,7 @@ public:
                 "Base.prototype.f = function() { return this.m_x; };"
                 "var ChildPoint = function(a, b) { Object.setPrototypeOf(this, new Base()); };"
                 "var a = new ChildPoint(), b = new ChildPoint();"
-                "a.f() + b.f() ", false,  &error);
+                "a.f() + b.f()", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
@@ -324,13 +326,16 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
+        // This is essential, because if not, the object will be freed
+        // after first f() call. So, do not ignore this.
+        selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
-        ctx->registerCallable("f", mkf::from(testFunction));
+        ctx->registerCallable("f", mkf::from(returnSelectedObject));
         std::string error;
 
         {
-            bool eval_result = ctx->eval("f().me + f().me ", false,  &error);
+            bool eval_result = ctx->eval("f().me + f().me", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
@@ -341,6 +346,7 @@ public:
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
         delete ctx;
+        selected_object->delRef();
 
         ASSERT_TRUE( allocated_objects == 0);
     }
@@ -356,6 +362,7 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
+        selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
         ctx->registerCallable("f", mkf::from(returnNullOrSelected));
@@ -385,7 +392,8 @@ public:
             ASSERT_TRUE( result.value() == true );
         }
         delete ctx;
-
+        selected_object->delRef();
+        
         ASSERT_TRUE( allocated_objects == 0);       
     }
 
@@ -703,7 +711,6 @@ public:
         ASSERT_TRUE( allocated_objects == 1);
 
         selected_object->registerAsGlobalVariable(ctx, "E");
-
         selected_object->setProperty("me", 22);
 
         std::string error;
@@ -997,7 +1004,7 @@ public:
             ASSERT_TRUE( eval_result );
             dukpp03::Maybe<bool> result = dukpp03::GetValue<bool, dukpp03::context::Context>::perform(ctx, -1);
             ASSERT_TRUE( result.exists() );
-            ASSERT_TRUE( result.value() == 22 );
+            ASSERT_TRUE( result.value() );
         }
 
         delete ctx;
@@ -1247,15 +1254,17 @@ public:
     {
         JSMarkedObject* o1 = new JSMarkedObject();
         JSMarkedObject* o2 = new JSMarkedObject();
-        o1->setProperty("nested", o2);
+        o1->addRef();
+        o2->addRef();
+        o1->setProperty("nested", (JSObject*)o2);
         try
         {
-            o2->setProperty("nested", o1);
+            o2->setProperty("nested", (JSObject*)o1);
         }
         catch(std::logic_error e)
         {
-            delete o1;
-            delete o2;
+            o1->delRef();
+            o2->delRef();
             return;
         }
 
@@ -1271,18 +1280,22 @@ public:
         JSMarkedObject* o1 = new JSMarkedObject();
         JSMarkedObject* o2 = new JSMarkedObject();
         JSMarkedObject* o3 = new JSMarkedObject();
-        o1->setProperty("nested", o2);
-        o2->setProperty("nested", o3);
+        o1->addRef();
+        o2->addRef();
+        o3->addRef();
+        
+        o1->setProperty("nested",  (JSObject*)o2);
+        o2->setProperty("nested",  (JSObject*)o3);
 
         try
         {
-            o3->setProperty("nested", o1);
+            o3->setProperty("nested",  (JSObject*)o1);
         }
         catch(std::logic_error e)
         {
-            delete o1;
-            delete o2;
-            delete o3;
+            o1->delRef();
+            o2->delRef();
+            o3->delRef();
             return;
         }
 
@@ -1303,7 +1316,7 @@ public:
         child->setProperty("me", 22);
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ASSERT_TRUE( allocated_objects == 2);
 
@@ -1341,10 +1354,12 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
         child->setProperty("me", 22);
 
-        selected_object->registerAsGlobalVariable(ctx, "E");
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ASSERT_TRUE( allocated_objects == 2);
 
@@ -1395,7 +1410,7 @@ public:
 
         ASSERT_TRUE( allocated_objects == 2);
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         {
             bool eval_result = ctx->eval("E.nested.me", false,  &error);
@@ -1427,7 +1442,7 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         selected_object->registerAsGlobalVariable(ctx, "E");
 
@@ -1467,7 +1482,7 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ctx->registerCallable("f", mkf::from(returnSelectedObject));
 
@@ -1519,7 +1534,7 @@ public:
         selected_object = new JSMarkedObject();
         selected_object->registerAsGlobalVariable(ctx, "E");
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         child->setProperty("me", 22);
 
@@ -1571,7 +1586,7 @@ public:
             ASSERT_TRUE( eval_result );
         }
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
         child->setProperty("me", 22);
 
         ASSERT_TRUE( allocated_objects == 2);
@@ -1587,6 +1602,84 @@ public:
             dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests copy constructor
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testCopyConstructor()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("me", 22);
+
+        JSObject* o  = new JSObject(*selected_object);
+        ASSERT_TRUE( allocated_objects == 1);
+
+        o->registerAsGlobalVariable(ctx, "E");
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete selected_object;
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+    /*! Tests assignment overload
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testAssignmentOverload()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("me", 22);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+        // TODO: NOT HANDLED REMOVING PROPERTIES!!! HANDLE ASAP
+        JSObject* o  = new JSObject(*selected_object);
+        o->setProperty("phi", 50);
+        *((JSObject*)selected_object) = *o;
+        delete o;
+        ASSERT_TRUE( allocated_objects == 1);
+
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.phi", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 50 );
         }
 
         delete ctx;

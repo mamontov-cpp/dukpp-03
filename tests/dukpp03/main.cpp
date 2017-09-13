@@ -1,21 +1,26 @@
+//#define TEST_INTERACTIVE
+//#define NO_POINT_BINDINGS
 #pragma warning(push)
 #pragma warning(disable: 4273)
 #pragma warning(disable: 4351)
 #include <cstdio>
 #include <iostream>
-#include "context.h"
-#include "point.h"
+
+#ifdef TEST_INTERACTIVE
+    #include "context.h"
+    #include "point.h"
+#endif
+
 #define _INC_STDIO
 #include "include/3rdparty/tpunit++/tpunit++.hpp"
 #pragma warning(pop)
-
-//#define TEST_INTERACTIVE
 
 int main(int argc, char** argv)
 {
 #ifdef TEST_INTERACTIVE
     dukpp03::context::Context t;
-    
+
+#ifndef NO_POINT_BINDINGS
     ClassBinding* c = new ClassBinding();
     c->addConstructor<Point>("Point");
     c->addConstructor<Point, int, int>("Point");
@@ -29,7 +34,7 @@ int main(int argc, char** argv)
     c->addAccessor("m_y", getter::from(&Point::m_y), setter::from(&Point::m_y));
 
     t.addClassBinding<Point>(c);
-    
+#endif
     bool exit = false;
     std::cout << "Interactive test shell. Type \"quit\" to quit\n";
     do 
