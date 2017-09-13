@@ -388,7 +388,6 @@ public:
         this->copy(o);
         return *this;
     }
-    //!< TODO: Copy constructor and assignment overload here
     /*! Releases existing resources, destroying object
      */
     virtual ~JSObject()
