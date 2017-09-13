@@ -489,7 +489,6 @@ public:
      */
     bool hasInFields(dukpp03::JSObject<_Context>* val)
     {
-        printf("Checking %p and %p", this, val);
         if (this == val)
         {
             return true;
@@ -498,7 +497,6 @@ public:
         {
             if (m_object_fields[i]->value())
             {
-                printf("Checking %p and %p", this, val);
                 if (m_object_fields[i]->value()->hasInFields(val))
                 {
                     return true;
@@ -601,7 +599,6 @@ public:
                 --i;
             }
         }
-        // TODO: Same for jsobject fields
         if (has_field)
         {
             for(size_t i = 0; i < m_links.size(); i++)

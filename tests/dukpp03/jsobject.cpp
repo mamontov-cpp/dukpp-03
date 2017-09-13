@@ -120,7 +120,7 @@ struct JSObjectTest : tpunit::TestFixture
 {
 public:
     JSObjectTest() : tpunit::TestFixture(
-       /*TEST(JSObjectTest::testPrototype1),
+       TEST(JSObjectTest::testPrototype1),
        TEST(JSObjectTest::testInheritance1),
        TEST(JSObjectTest::testInheritance2),
        TEST(JSObjectTest::testAddToTwoContexts),
@@ -148,16 +148,16 @@ public:
        TEST(JSObjectTest::testSetCFunctionPropertyAfterPush),
        TEST(JSObjectTest::testSetEvaluatedProperty),
        TEST(JSObjectTest::testSetEvaluatedPropertyAfterRegister),
-       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush),*/
+       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush),
        TEST(JSObjectTest::testObjectLoop1),
-       TEST(JSObjectTest::testObjectLoop2)/*,
+       TEST(JSObjectTest::testObjectLoop2),
        TEST(JSObjectTest::testSetNestedProperty1),
        TEST(JSObjectTest::testSetNestedProperty2),
        TEST(JSObjectTest::testSetNestedProperty3),
        TEST(JSObjectTest::testSetNestedProperty4),
        TEST(JSObjectTest::testSetNestedProperty5),
        TEST(JSObjectTest::testSetNestedProperty6),
-       TEST(JSObjectTest::testSetNestedProperty7)*/
+       TEST(JSObjectTest::testSetNestedProperty7)
        // TODO: Test copy and assignment overload
     ) {}
 
@@ -1253,6 +1253,8 @@ public:
     {
         JSMarkedObject* o1 = new JSMarkedObject();
         JSMarkedObject* o2 = new JSMarkedObject();
+        o1->addRef();
+        o2->addRef();
         o1->setProperty("nested", (JSObject*)o2);
         try
         {
@@ -1260,8 +1262,8 @@ public:
         }
         catch(std::logic_error e)
         {
-            delete o1;
-            delete o2;
+            o1->delRef();
+            o2->delRef();
             return;
         }
 
@@ -1351,9 +1353,11 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
         child->setProperty("me", 22);
 
-        selected_object->registerAsGlobalVariable(ctx, "E");
 
         selected_object = new JSMarkedObject();
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+
         selected_object->setProperty("nested",  (JSObject*)child);
 
         ASSERT_TRUE( allocated_objects == 2);
