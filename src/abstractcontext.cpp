@@ -1,6 +1,5 @@
 #include "../include/abstractcontext.h"
 #include "../include/callable.h"
-#include "../include/object.h"
 #include <cassert>
 #include <stdexcept>
 #include <sstream>
@@ -212,16 +211,6 @@ void dukpp03::AbstractContext::pushCallable(dukpp03::AbstractCallable* callable,
    duk_dup(m_context, -1);
    duk_put_prop_string(m_context, -3, "prototype");
    duk_set_prototype(m_context, - 2);   
-}
-
-void dukpp03::AbstractContext::registerObject(const std::string& name, dukpp03::Object* o)
-{
-   o->registerIn(this, name);
-}
-
-void dukpp03::AbstractContext::pushObject(dukpp03::Object* o)
-{
-	o->push(this);
 }
 
 void dukpp03::AbstractContext::registerCallable(const std::string& callable_name, dukpp03::AbstractCallable* callable, bool own)

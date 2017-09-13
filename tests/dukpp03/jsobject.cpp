@@ -1662,6 +1662,9 @@ public:
         selected_object->registerAsGlobalVariable(ctx, "E");
         // TODO: NOT HANDLED REMOVING PROPERTIES!!! HANDLE ASAP
         JSObject* o  = new JSObject(*selected_object);
+        o->setProperty("phi", 50);
+        *((JSObject*)selected_object) = *o;
+        delete o;
         ASSERT_TRUE( allocated_objects == 1);
 
 
@@ -1676,10 +1679,9 @@ public:
             ASSERT_TRUE( eval_result );
             dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
             ASSERT_TRUE( result.exists() );
-            ASSERT_TRUE( result.value() == 22 );
+            ASSERT_TRUE( result.value() == 50 );
         }
 
-        delete selected_object;
         delete ctx;
 
         ASSERT_TRUE( allocated_objects == 0);

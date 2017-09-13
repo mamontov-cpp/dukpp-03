@@ -172,7 +172,7 @@ public:
             \param[in] value a calalble value
             \param[in] own owned field
          */
-        inline CallableField(dukpp03::Callable<_Context>* value, bool own) : m_value(value)
+        inline CallableField(dukpp03::Callable<_Context>* value, bool own) : m_value(value), m_own(false)
         {
             
         }
@@ -384,6 +384,7 @@ public:
      */
     JSObject<_Context>& operator=(const JSObject<_Context>& o)
     {
+        this->unregisterOldFields();
         this->destroy();
         this->copy(o);
         return *this;
@@ -623,13 +624,7 @@ public:
         }
         if (has_field)
         {
-            for(size_t i = 0; i < m_links.size(); i++)
-            {
-                duk_context* c = m_links[i].Context->context();
-                duk_push_heapptr(c, m_links[i].HeapPointer);
-                duk_del_prop_string(c, -1, name.c_str());
-                duk_pop(c);
-            }
+            this->unregisterPropertyOnObject(name);
         }
     }
 
@@ -669,6 +664,40 @@ public:
         }
     }
 protected:
+    /*! Unregisters old fields from object
+     */
+    void unregisterOldFields()
+    {
+        unregisterOldFields(m_fields);
+        unregisterOldFields(m_object_fields);
+    }
+    /*! Unregisters old fields from vector
+        \param[in] v vector
+     */
+    template<
+        typename T
+    >
+    void unregisterOldFields(const std::vector<T>& v)
+    {
+        for(size_t i = 0; i < v.size(); i++)
+        {
+            unregisterPropertyOnObject(v[i]->name());
+        }
+    }
+
+    /*! Unregisters property on registered object
+        \param[in] name a name of property
+     */
+    void unregisterPropertyOnObject(const std::string& name)
+    {
+        for(size_t i = 0; i < m_links.size(); i++)
+        {
+            duk_context* c = m_links[i].Context->context();
+            duk_push_heapptr(c, m_links[i].HeapPointer);
+            duk_del_prop_string(c, -1, name.c_str());
+            duk_pop(c);
+        }
+    }
     /*! Copies other object's state
         \param[in] o object
      */

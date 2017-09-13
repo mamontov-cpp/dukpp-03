@@ -21,9 +21,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 link_directories("../../lib" ${Boost_LIBRARY_DIRS})
 
-set(SRCS "main.cpp"  "jsobject.cpp")
+set(SRCS "main.cpp" "context.cpp" "callables.cpp" "point.cpp" "jsobject.cpp")
 
-# "context.cpp" "callables.cpp" "point.cpp"
 
 add_executable(${DUKPP03_EXECUTABLE_NAME} ${SRCS} ${HDRS})
 
