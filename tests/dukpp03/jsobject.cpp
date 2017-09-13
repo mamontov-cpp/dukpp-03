@@ -120,7 +120,7 @@ struct JSObjectTest : tpunit::TestFixture
 {
 public:
     JSObjectTest() : tpunit::TestFixture(
-       /*TEST(JSObjectTest::testPrototype1),
+       TEST(JSObjectTest::testPrototype1),
        TEST(JSObjectTest::testInheritance1),
        TEST(JSObjectTest::testInheritance2),
        TEST(JSObjectTest::testAddToTwoContexts),
@@ -134,7 +134,7 @@ public:
        TEST(JSObjectTest::testDeletePropertyBeforeRegistering),
        TEST(JSObjectTest::testDeletePropertyAfterRegistering),
        TEST(JSObjectTest::testDeletePropertyAfterPush),
-       TEST(JSObjectTest::testSetTProperty),*/
+       TEST(JSObjectTest::testSetTProperty),
        TEST(JSObjectTest::testSetTPropertyAfterRegister),
        TEST(JSObjectTest::testSetTPropertyAfterPush)/*,
        TEST(JSObjectTest::testSetCallableProperty),
@@ -709,15 +709,12 @@ public:
         ASSERT_TRUE( allocated_objects == 1);
 
         selected_object->registerAsGlobalVariable(ctx, "E");
-		printf("At 712\n");
         selected_object->setProperty("me", 22);
-		printf("At 714\n");
 
         std::string error;
 
         {
             bool eval_result = ctx->eval("E.me", false,  &error);
-			printf("At 719\n");
         	if (!eval_result)
             {
                 std::cout << error << "\n";

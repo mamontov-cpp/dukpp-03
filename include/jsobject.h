@@ -105,7 +105,6 @@ public:
         virtual void registerForObject(_Context* ctx, duk_idx_t id)
         {
 			dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
-            printf("Set property %s\n", this->name().c_str());
         	duk_put_prop_string(ctx->context(), id, this->name().c_str());
         }
         /*! Could be inherited
@@ -182,7 +181,6 @@ public:
      */
     virtual ~JSObject()
     {
-		printf("Object is killed\n");
         for(size_t i = 0 ; i < m_fields.size(); i++)
         {
             delete m_fields[i];
@@ -314,7 +312,6 @@ public:
         Field* f = new ValueField<_Value>(value);
 		f->setName(name);
         m_fields.push_back(f);
-		printf("Attempting to register property\n");
         registerFieldInAllContexts(f);
     }
     /*! Sets new property of object or replaces old. Edit runtime object if needed
@@ -411,8 +408,8 @@ protected:
     {
         for(size_t i = 0; i < m_links.size(); i++)
         {
-            duk_push_heapptr(m_links[i].Context->context(), m_links[i].HeapPointer);
-            f->registerForObject(m_links[i].Context, -1);
+            duk_idx_t obj = duk_push_heapptr(m_links[i].Context->context(), m_links[i].HeapPointer);
+            f->registerForObject(m_links[i].Context, obj);
             duk_pop(m_links[i].Context->context());
         }
     }
