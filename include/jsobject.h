@@ -370,19 +370,30 @@ public:
     {
         
     }
+    /*! Makes new copied object
+        \param[in] o object
+     */
+    JSObject(const JSObject<_Context>& o)  : m_refcount(0)
+    {
+        m_links.clear();
+        this->copy(o);
+    }
+    /*! Handles assignment. Only properties are copied. Object must be correctly updated
+        \param[in] o object
+        \return
+     */
+    JSObject<_Context>& operator=(const JSObject<_Context>& o)
+    {
+        this->destroy();
+        this->copy(o);
+        return *this;
+    }
     //!< TODO: Copy constructor and assignment overload here
     /*! Releases existing resources, destroying object
      */
     virtual ~JSObject()
     {
-        for(size_t i = 0 ; i < m_fields.size(); i++)
-        {
-            delete m_fields[i];
-        }
-        for(size_t i = 0 ; i < m_object_fields.size(); i++)
-        {
-            delete m_object_fields[i];
-        }
+       this->destroy();
     }
 
     /*! Pushes object of context
@@ -518,6 +529,18 @@ public:
         registerFieldInAllContexts(f);
     }
 
+    /*! Set a property for object
+        \param[in] name a name of property
+        \param[in] f a field
+     */ 
+    void setProperty(const std::string& name, Field* f)
+    {
+        this->deleteProperty(name);
+        f->setName(name);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
+    }
+
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
         \param[in] name a name of property
         \param[in] val a value
@@ -647,6 +670,39 @@ public:
         }
     }
 protected:
+    /*! Copies other object's state
+        \param[in] o object
+     */
+    void copy(const dukpp03::JSObject<_Context>& o)
+    {
+        m_fields.clear();
+        m_object_fields.clear();
+        for(size_t i = 0; i < o.m_fields.size(); i++)
+        {
+            m_fields.push_back(o.m_fields[i]->clone());
+            registerFieldInAllContexts(o.m_fields[i]);
+        }
+        for(size_t i = 0; i < o.m_object_fields.size(); i++)
+        {
+            m_object_fields.push_back(static_cast<JSObjectField*>(o.m_object_fields[i]->clone()));
+            registerFieldInAllContexts(o.m_object_fields[i]);
+        }
+    }
+    /*! Destroys an object
+     */
+    void destroy()
+    {
+        for(size_t i = 0 ; i < m_fields.size(); i++)
+        {
+            delete m_fields[i];
+        }
+        for(size_t i = 0 ; i < m_object_fields.size(); i++)
+        {
+            delete m_object_fields[i];
+        }
+        m_fields.clear();
+        m_object_fields.clear();
+    }
     /*! Registers field in all contexts
      */
     void registerFieldInAllContexts(Field* f)
