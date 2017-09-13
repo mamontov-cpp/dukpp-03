@@ -679,11 +679,13 @@ protected:
         for(size_t i = 0; i < o.m_fields.size(); i++)
         {
             m_fields.push_back(o.m_fields[i]->clone());
+            m_fields[i]->setName(o.m_fields[i]->name());
             registerFieldInAllContexts(o.m_fields[i]);
         }
         for(size_t i = 0; i < o.m_object_fields.size(); i++)
         {
             m_object_fields.push_back(static_cast<JSObjectField*>(o.m_object_fields[i]->clone()));
+            m_object_fields[i]->setName(o.m_object_fields[i]->name());
             registerFieldInAllContexts(o.m_object_fields[i]);
         }
     }

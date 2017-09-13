@@ -157,8 +157,9 @@ public:
        TEST(JSObjectTest::testSetNestedProperty4),
        TEST(JSObjectTest::testSetNestedProperty5),
        TEST(JSObjectTest::testSetNestedProperty6),
-       TEST(JSObjectTest::testSetNestedProperty7)
-       // TODO: Test copy and assignment overload
+       TEST(JSObjectTest::testSetNestedProperty7),
+       TEST(JSObjectTest::testCopyConstructor),
+       TEST(JSObjectTest::testAssignmentOverload)
     ) {}
 
     /*! Tests prototype inheritance for JSObject and garbage collection
@@ -1603,6 +1604,82 @@ public:
             ASSERT_TRUE( result.value() == 22 );
         }
 
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+
+    /*! Tests copy constructor
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testCopyConstructor()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("me", 22);
+
+        JSObject* o  = new JSObject(*selected_object);
+        ASSERT_TRUE( allocated_objects == 1);
+
+        o->registerAsGlobalVariable(ctx, "E");
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.me", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete selected_object;
+        delete ctx;
+
+        ASSERT_TRUE( allocated_objects == 0);
+    }
+    /*! Tests assignment overload
+     */
+    // ReSharper disable once CppMemberFunctionMayBeConst
+    // ReSharper disable once CppMemberFunctionMayBeStatic
+    void testAssignmentOverload()
+    {
+        allocated_objects = 0;
+
+        dukpp03::context::Context* ctx = new dukpp03::context::Context();
+
+        selected_object = new JSMarkedObject();
+        selected_object->setProperty("me", 22);
+
+        selected_object->registerAsGlobalVariable(ctx, "E");
+        // TODO: NOT HANDLED REMOVING PROPERTIES!!! HANDLE ASAP
+        JSObject* o  = new JSObject(*selected_object);
+        ASSERT_TRUE( allocated_objects == 1);
+
+
+        std::string error;
+
+        {
+            bool eval_result = ctx->eval("E.phi", false,  &error);
+            if (!eval_result)
+            {
+                std::cout << error << "\n";
+            }
+            ASSERT_TRUE( eval_result );
+            dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(ctx, -1);
+            ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.value() == 22 );
+        }
+
+        delete selected_object;
         delete ctx;
 
         ASSERT_TRUE( allocated_objects == 0);
