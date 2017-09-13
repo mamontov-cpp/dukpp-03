@@ -104,7 +104,6 @@ public:
          */
         virtual void registerForObject(_Context* ctx, duk_idx_t id)
         {
-            printf("Putting for context: %p for %d\n", ctx, id);
             dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
             duk_put_prop_string(ctx->context(), id, this->name().c_str());
         }
@@ -117,6 +116,53 @@ public:
     protected:
         T m_value;
     };
+	/*! An evaluated field, that is evaluated when registered
+	 */
+	class EvaluatedField: public Field
+	{
+	public:
+        /*! Constructs new value field
+            \param[in] value a value
+         */
+        inline EvaluatedField(const std::string& value) : m_value(value)
+        {
+            
+        }
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            return new EvaluatedField(m_value);
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            duk_context* c = ctx->context();
+        	duk_idx_t before = duk_get_top(c);
+			duk_push_string(c, m_value.c_str());
+			if (duk_peval(c) != 0)
+			{
+				assert(false);
+			}
+			duk_idx_t after = duk_get_top(c);
+			int diff = after - before;
+			assert( diff >= 1);
+
+        	duk_put_prop_string(c, id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~EvaluatedField()
+        {
+            
+        }
+    protected:
+        std::string m_value;		
+	};
     /*! A link for storing link of object to context
      */
     struct Link
@@ -182,8 +228,27 @@ public:
     void registerAsGlobalVariable(_Context* ctx, const std::string& name) const
     {
         duk_context* c = ctx->context();
-        duk_push_global_object(c);
-        duk_push_string(c, name.c_str());
+		std::string::size_type pos = name.find_last_of('.');
+        if (pos == std::string::npos)
+		{
+    		duk_push_global_object(c);
+			duk_push_string(c, name.c_str());
+		}
+        else
+		{
+			std::string subname = name.substr(0, pos);
+			std::string propname = name.substr(pos + 1);
+		    duk_idx_t before = duk_get_top(c);
+			duk_push_string(c, subname.c_str());
+			if (duk_peval(c) != 0)
+			{
+				assert(false);
+			}
+			duk_idx_t after = duk_get_top(c);
+			int diff = after - before;
+			assert( diff >= 1);
+			duk_push_string(c, propname.c_str());
+		}
         this->pushOnStackOfContext(ctx);
         duk_put_prop(c, -3);
         duk_pop(c);
@@ -246,9 +311,9 @@ public:
     {
         this->deleteProperty(name);
         Field* f = new ValueField<_Value>(value);
+		f->setName(name);
         m_fields.push_back(f);
         registerFieldInAllContexts(f);
-        // TODO: 
     }
     /*! Sets new property of object or replaces old. Edit runtime object if needed
          \param[in] name a name of property
@@ -268,8 +333,10 @@ public:
     void setEvaluatedProperty(const std::string& name, const std::string val)
     {
         this->deleteProperty(name);
-
-        // TODO: 
+        Field* f = new EvaluatedField(val);
+		f->setName(name);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
     }
     /*! Removes property from object
         \param[in] name a name for property of object

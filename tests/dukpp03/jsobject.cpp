@@ -220,7 +220,7 @@ public:
                 "Base.prototype.f = function() { return this.m_x; };"
                 "var ChildPoint = function(a, b) { Object.setPrototypeOf(this, new Base()); };"
                 "var a = new ChildPoint(), b = new ChildPoint();"
-                "a.f() + b.f() ", false,  &error);
+                "a.f() + b.f()", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
@@ -326,7 +326,7 @@ public:
         selected_object->setProperty("me", 22);
         ASSERT_TRUE( allocated_objects == 1);
 
-        ctx->registerCallable("f", mkf::from(testFunction));
+        ctx->registerCallable("f", mkf::from(returnSelectedObject));
         std::string error;
 
         {
