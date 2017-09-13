@@ -19,3 +19,4 @@
 #include "getfield.h"
 #include "setfield.h"
 #include "classbinding.h"
+#include "jsobject.h"

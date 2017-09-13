@@ -571,6 +571,15 @@ public:
         m_fields.push_back(f);
         registerFieldInAllContexts(f);
     }
+
+    /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
+        \param[in] name a name of property
+        \param[in] value a value of property
+     */
+    void setProperty(const std::string& name, const char* value)
+    {
+        setProperty(name, std::string(value));
+    }
     /*! Sets new property of object or replaces old. Edit runtime object if needed
          \param[in] name a name of property
          \param[in] function a function
