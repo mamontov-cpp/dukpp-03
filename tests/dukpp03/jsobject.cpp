@@ -104,15 +104,15 @@ JSMarkedObject* returnSelectedObject()
     return selected_object;
 }
 
-dukpp03::Maybe<JSMarkedObject*> returnNullOrSelected(bool null)
+dukpp03::Maybe<JSObject*> returnNullOrSelected(bool null)
 {
     if (null)
     {
-        return dukpp03::Maybe<JSMarkedObject*>();
+        return dukpp03::Maybe<JSObject*>();
     }
     else
     {
-        return  dukpp03::Maybe<JSMarkedObject*>(selected_object);
+        return  dukpp03::Maybe<JSObject*>(selected_object);
     }
 }
 
@@ -120,7 +120,7 @@ struct JSObjectTest : tpunit::TestFixture
 {
 public:
     JSObjectTest() : tpunit::TestFixture(
-       TEST(JSObjectTest::testPrototype1),
+       /*TEST(JSObjectTest::testPrototype1),
        TEST(JSObjectTest::testInheritance1),
        TEST(JSObjectTest::testInheritance2),
        TEST(JSObjectTest::testAddToTwoContexts),
@@ -129,14 +129,14 @@ public:
        TEST(JSObjectTest::testReturnSelectedObjectFromFunctionTwice),
        TEST(JSObjectTest::testNullOrObject),
        TEST(JSObjectTest::testRegisterAndPushToSeveralContexts),
-       TEST(JSObjectTest::testRegisterAndPushToSeveralContextsSeveralTimes)/*,
+       TEST(JSObjectTest::testRegisterAndPushToSeveralContextsSeveralTimes),
        TEST(JSObjectTest::testRegisterAsComplexProperty),
        TEST(JSObjectTest::testDeletePropertyBeforeRegistering),
        TEST(JSObjectTest::testDeletePropertyAfterRegistering),
        TEST(JSObjectTest::testDeletePropertyAfterPush),
-       TEST(JSObjectTest::testSetTProperty),
+       TEST(JSObjectTest::testSetTProperty),*/
        TEST(JSObjectTest::testSetTPropertyAfterRegister),
-       TEST(JSObjectTest::testSetTPropertyAfterPush),
+       TEST(JSObjectTest::testSetTPropertyAfterPush)/*,
        TEST(JSObjectTest::testSetCallableProperty),
        TEST(JSObjectTest::testSetCallablePropertyAfterRegister),
        TEST(JSObjectTest::testSetCallablePropertyAfterPush),
@@ -324,23 +324,27 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
+		// This is essential, because if not, the object will be freed
+		// after first f() call. So, do not ignore this.
+    	selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
         ctx->registerCallable("f", mkf::from(returnSelectedObject));
         std::string error;
 
         {
-            bool eval_result = ctx->eval("f().me + f().me ", false,  &error);
+            bool eval_result = ctx->eval("f().me + f().me", false,  &error);
             if (!eval_result)
             {
                 std::cout << error << "\n";
             }
-            ASSERT_TRUE( eval_result );
+        	ASSERT_TRUE( eval_result );
             dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(ctx, -1);
-            ASSERT_TRUE( result.exists() );
+        	ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
-        delete ctx;
+    	delete ctx;
+		selected_object->delRef();
 
         ASSERT_TRUE( allocated_objects == 0);
     }
@@ -356,6 +360,7 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
+		selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
         ctx->registerCallable("f", mkf::from(returnNullOrSelected));
@@ -384,8 +389,9 @@ public:
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( result.value() == true );
         }
-        delete ctx;
-
+		delete ctx;
+		selected_object->delRef();
+        
         ASSERT_TRUE( allocated_objects == 0);       
     }
 
@@ -703,14 +709,16 @@ public:
         ASSERT_TRUE( allocated_objects == 1);
 
         selected_object->registerAsGlobalVariable(ctx, "E");
-
+		printf("At 712\n");
         selected_object->setProperty("me", 22);
+		printf("At 714\n");
 
         std::string error;
 
         {
             bool eval_result = ctx->eval("E.me", false,  &error);
-            if (!eval_result)
+			printf("At 719\n");
+        	if (!eval_result)
             {
                 std::cout << error << "\n";
             }
@@ -736,6 +744,8 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
 
         selected_object = new JSMarkedObject();
+		// Note, that in that case we MUST store a reference
+		selected_object->addRef();
 
         ASSERT_TRUE( allocated_objects == 1);
 
@@ -767,6 +777,7 @@ public:
         }
 
         delete ctx;
+		selected_object->delRef();
 
         ASSERT_TRUE( allocated_objects == 0);
     }
