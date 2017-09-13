@@ -120,7 +120,7 @@ struct JSObjectTest : tpunit::TestFixture
 {
 public:
     JSObjectTest() : tpunit::TestFixture(
-       TEST(JSObjectTest::testPrototype1),
+       /*TEST(JSObjectTest::testPrototype1),
        TEST(JSObjectTest::testInheritance1),
        TEST(JSObjectTest::testInheritance2),
        TEST(JSObjectTest::testAddToTwoContexts),
@@ -148,9 +148,9 @@ public:
        TEST(JSObjectTest::testSetCFunctionPropertyAfterPush),
        TEST(JSObjectTest::testSetEvaluatedProperty),
        TEST(JSObjectTest::testSetEvaluatedPropertyAfterRegister),
-       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush)/*,
+       TEST(JSObjectTest::testSetEvaluatedPropertyAfterPush),*/
        TEST(JSObjectTest::testObjectLoop1),
-       TEST(JSObjectTest::testObjectLoop2),
+       TEST(JSObjectTest::testObjectLoop2)/*,
        TEST(JSObjectTest::testSetNestedProperty1),
        TEST(JSObjectTest::testSetNestedProperty2),
        TEST(JSObjectTest::testSetNestedProperty3),
@@ -325,9 +325,9 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
-		// This is essential, because if not, the object will be freed
-		// after first f() call. So, do not ignore this.
-    	selected_object->addRef();
+        // This is essential, because if not, the object will be freed
+        // after first f() call. So, do not ignore this.
+        selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
         ctx->registerCallable("f", mkf::from(returnSelectedObject));
@@ -339,13 +339,13 @@ public:
             {
                 std::cout << error << "\n";
             }
-        	ASSERT_TRUE( eval_result );
+            ASSERT_TRUE( eval_result );
             dukpp03::Maybe<double> result = dukpp03::GetValue<double, dukpp03::context::Context>::perform(ctx, -1);
-        	ASSERT_TRUE( result.exists() );
+            ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( is_fuzzy_equal(result.value(), 44) );
         }
-    	delete ctx;
-		selected_object->delRef();
+        delete ctx;
+        selected_object->delRef();
 
         ASSERT_TRUE( allocated_objects == 0);
     }
@@ -361,7 +361,7 @@ public:
         dukpp03::context::Context* ctx = new dukpp03::context::Context();
         selected_object = new JSMarkedObject();
         selected_object->setProperty("me", 22);
-		selected_object->addRef();
+        selected_object->addRef();
         ASSERT_TRUE( allocated_objects == 1);
 
         ctx->registerCallable("f", mkf::from(returnNullOrSelected));
@@ -390,8 +390,8 @@ public:
             ASSERT_TRUE( result.exists() );
             ASSERT_TRUE( result.value() == true );
         }
-		delete ctx;
-		selected_object->delRef();
+        delete ctx;
+        selected_object->delRef();
         
         ASSERT_TRUE( allocated_objects == 0);       
     }
@@ -716,7 +716,7 @@ public:
 
         {
             bool eval_result = ctx->eval("E.me", false,  &error);
-        	if (!eval_result)
+            if (!eval_result)
             {
                 std::cout << error << "\n";
             }
@@ -1253,10 +1253,10 @@ public:
     {
         JSMarkedObject* o1 = new JSMarkedObject();
         JSMarkedObject* o2 = new JSMarkedObject();
-        o1->setProperty("nested", o2);
+        o1->setProperty("nested", (JSObject*)o2);
         try
         {
-            o2->setProperty("nested", o1);
+            o2->setProperty("nested", (JSObject*)o1);
         }
         catch(std::logic_error e)
         {
@@ -1277,18 +1277,22 @@ public:
         JSMarkedObject* o1 = new JSMarkedObject();
         JSMarkedObject* o2 = new JSMarkedObject();
         JSMarkedObject* o3 = new JSMarkedObject();
-        o1->setProperty("nested", o2);
-        o2->setProperty("nested", o3);
+        o1->addRef();
+        o2->addRef();
+        o3->addRef();
+        
+        o1->setProperty("nested",  (JSObject*)o2);
+        o2->setProperty("nested",  (JSObject*)o3);
 
         try
         {
-            o3->setProperty("nested", o1);
+            o3->setProperty("nested",  (JSObject*)o1);
         }
         catch(std::logic_error e)
         {
-            delete o1;
-            delete o2;
-            delete o3;
+            o1->delRef();
+            o2->delRef();
+            o3->delRef();
             return;
         }
 
@@ -1309,7 +1313,7 @@ public:
         child->setProperty("me", 22);
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ASSERT_TRUE( allocated_objects == 2);
 
@@ -1350,7 +1354,7 @@ public:
         selected_object->registerAsGlobalVariable(ctx, "E");
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ASSERT_TRUE( allocated_objects == 2);
 
@@ -1401,7 +1405,7 @@ public:
 
         ASSERT_TRUE( allocated_objects == 2);
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         {
             bool eval_result = ctx->eval("E.nested.me", false,  &error);
@@ -1433,7 +1437,7 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         selected_object->registerAsGlobalVariable(ctx, "E");
 
@@ -1473,7 +1477,7 @@ public:
         JSMarkedObject* child = new JSMarkedObject();
 
         selected_object = new JSMarkedObject();
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         ctx->registerCallable("f", mkf::from(returnSelectedObject));
 
@@ -1525,7 +1529,7 @@ public:
         selected_object = new JSMarkedObject();
         selected_object->registerAsGlobalVariable(ctx, "E");
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
 
         child->setProperty("me", 22);
 
@@ -1577,7 +1581,7 @@ public:
             ASSERT_TRUE( eval_result );
         }
 
-        selected_object->setProperty("nested", child);
+        selected_object->setProperty("nested",  (JSObject*)child);
         child->setProperty("me", 22);
 
         ASSERT_TRUE( allocated_objects == 2);

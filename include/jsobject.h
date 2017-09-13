@@ -290,6 +290,73 @@ public:
          */ 
         duk_idx_t m_nargs;
     };
+    /*! A callable field, that contains mative function
+     */
+    class JSObjectField: public Field
+    {
+    public:
+        /*! Constructs new field
+         */
+        inline JSObjectField(dukpp03::JSObject<_Context>* val) : m_value(val)
+        {
+            if (val)
+            {
+                val->addRef();
+            }
+        }
+        /*! Returns value
+            \return value
+         */
+        dukpp03::JSObject<_Context>* value() const
+        {
+            return m_value;
+        };
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            if (!m_value)
+            {
+                return new JSObjectField(NULL);
+            }
+            else
+            {
+                return new JSObjectField(new dukpp03::JSObject<_Context>(*m_value));
+            }
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            duk_context* c = ctx->context();
+            if (m_value)
+            {
+                m_value->pushOnStackOfContext(ctx);
+            }
+            else
+            {
+                duk_push_null(c);
+            }
+
+            duk_put_prop_string(c, id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~JSObjectField()
+        {
+            if (m_value)
+            {
+                m_value->delRef();
+            }
+        }
+    protected:
+        /*! An inner value
+         */
+        dukpp03::JSObject<_Context>* m_value;
+    };
     /*! A link for storing link of object to context
      */
     struct Link
@@ -311,6 +378,10 @@ public:
         for(size_t i = 0 ; i < m_fields.size(); i++)
         {
             delete m_fields[i];
+        }
+        for(size_t i = 0 ; i < m_object_fields.size(); i++)
+        {
+            delete m_object_fields[i];
         }
     }
 
@@ -344,7 +415,10 @@ public:
         {
             m_fields[i]->registerForObject(ctx, obj);
         }
-        // TODO: Register object fields
+        for(size_t i = 0; i < m_object_fields.size(); i++)
+        {
+            m_object_fields[i]->registerForObject(ctx, obj);
+        }
     }
 
     /*! Registers object as global in some context
@@ -399,9 +473,39 @@ public:
      */
     void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
     {
+        if (val->hasInFields(this))
+        {
+            throw std::logic_error("Attempt to create loop in fields");
+        }
         this->deleteProperty(name);
-
-        // TODO: 
+        JSObjectField* f = new JSObjectField(val);
+        f->setName(name);
+        m_object_fields.push_back(f);
+        registerFieldInAllContexts(f);
+    }
+    /*! Test if object is in fields of other object
+        \param[in] val value
+        \return true, if object is in fields of other object
+     */
+    bool hasInFields(dukpp03::JSObject<_Context>* val)
+    {
+        printf("Checking %p and %p", this, val);
+        if (this == val)
+        {
+            return true;
+        }
+        for(size_t i = 0; i < m_object_fields.size(); i++)
+        {
+            if (m_object_fields[i]->value())
+            {
+                printf("Checking %p and %p", this, val);
+                if (m_object_fields[i]->value()->hasInFields(val))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /*! Set null property for object
@@ -487,6 +591,16 @@ public:
                 --i;
             }
         }
+        for(size_t i = 0; i < m_object_fields.size(); i++)
+        {
+            if (m_object_fields[i]->name() == name)
+            {
+                delete m_object_fields[i];
+                m_object_fields.erase(m_object_fields.begin() + i);
+                has_field = true;
+                --i;
+            }
+        }
         // TODO: Same for jsobject fields
         if (has_field)
         {
@@ -553,6 +667,9 @@ protected:
     /*! A local field list
      */ 
     std::vector<Field*> m_fields;
+    /*! An object field list
+     */
+    std::vector<JSObjectField*> m_object_fields;
     /*! A reference counting
      */
     unsigned int m_refcount;
