@@ -42,13 +42,15 @@ public:
     class Field
     {
     public:
-        /*! A clone field is needed to implement cloning of object fields
+        /*! Returns a copy of field
+            \return a copy of field
          */
         virtual Field* clone() const = 0;
         /*! Registers for object of a field
+            \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(duk_idx_t id) = 0;
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) = 0;
         /*! Sets name for a field
             \param[in] name a name for a field
          */
@@ -65,11 +67,55 @@ public:
         }
         /*! Field can be inherited
          */
-        virtual ~Field();
+        virtual ~Field()
+        {
+            
+        }
     protected:
         /*! A name for a field
          */
         std::string m_name;
+    };
+    /*! A value field, which stores a value
+     */
+    template<
+        typename T
+    >
+    class ValueField: public Field
+    {
+    public:
+        /*! Constructs new value field
+            \param[in] value a value
+         */
+        inline ValueField(const T& value) : m_value(value)
+        {
+            
+        }
+        /*! Returns a copy of field
+            \return a copy of field
+         */
+        virtual Field* clone() const
+        {
+            return new ValueField<T>(m_value);
+        }
+        /*! Registers for object of a field
+            \param[in] ctx context
+            \param[in] id an id for object
+         */
+        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        {
+            printf("Putting for context: %p for %d\n", ctx, id);
+            dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
+            duk_put_prop_string(ctx->context(), id, this->name().c_str());
+        }
+        /*! Could be inherited
+         */
+        virtual ~ValueField()
+        {
+            
+        }
+    protected:
+        T m_value;
     };
     /*! A link for storing link of object to context
      */
@@ -122,7 +168,11 @@ public:
         duk_push_c_function(c,  dukpp03::JSObjectFinalizer<_Context>::finalize, 2);
         duk_set_finalizer(c, obj);
 
-        // TODO: Register fields
+        for(size_t i = 0; i < m_fields.size(); i++)
+        {
+            m_fields[i]->registerForObject(ctx, obj);
+        }
+        // TODO: Register object fields
     }
 
     /*! Registers object as global in some context
@@ -146,6 +196,8 @@ public:
      */
     void setProperty(const std::string& name, dukpp03::Callable<_Context>* val, bool own = true)
     {
+        this->deleteProperty(name);
+
         // TODO: 
     }
     /*! Sets new property of object or replaces old. Edits runtime object if needed. If property exists, replaces it
@@ -154,6 +206,8 @@ public:
      */
     void setProperty(const std::string& name, dukpp03::JSObject<_Context>* val)
     {
+        this->deleteProperty(name);
+
         // TODO: 
     }
 
@@ -162,6 +216,7 @@ public:
      */ 
     void setNullProperty(const std::string& name)
     {
+        this->deleteProperty(name);
         // TODO:
     }
 
@@ -189,6 +244,10 @@ public:
     >
     void setProperty(const std::string& name, const _Value& value)
     {
+        this->deleteProperty(name);
+        Field* f = new ValueField<_Value>(value);
+        m_fields.push_back(f);
+        registerFieldInAllContexts(f);
         // TODO: 
     }
     /*! Sets new property of object or replaces old. Edit runtime object if needed
@@ -198,6 +257,7 @@ public:
      */
     void setProperty(const std::string& name, duk_c_function function, duk_idx_t nargs)
     {
+        this->deleteProperty(name);
 
         // TODO:         
     }
@@ -207,6 +267,7 @@ public:
      */
     void setEvaluatedProperty(const std::string& name, const std::string val)
     {
+        this->deleteProperty(name);
 
         // TODO: 
     }
@@ -215,15 +276,28 @@ public:
      */
     void deleteProperty(const std::string& name)
     {
-        for(size_t i = 0; i < m_links.size(); i++)
+        bool has_field = false;
+        for(size_t i = 0; i < m_fields.size(); i++)
         {
-            duk_context* c = m_links[i].Context->context();
-            duk_push_heapptr(c, m_links[i].HeapPointer);
-            duk_del_prop_string(c, -1, name.c_str());
-            duk_pop(c);
+            if (m_fields[i]->name() == name)
+            {
+                delete m_fields[i];
+                m_fields.erase(m_fields.begin() + i);
+                has_field = true;
+                --i;
+            }
         }
-        // TODO: Field-dependent removal
-        // TODO: Remove field from arrays
+        // TODO: Same for jsobject fields
+        if (has_field)
+        {
+            for(size_t i = 0; i < m_links.size(); i++)
+            {
+                duk_context* c = m_links[i].Context->context();
+                duk_push_heapptr(c, m_links[i].HeapPointer);
+                duk_del_prop_string(c, -1, name.c_str());
+                duk_pop(c);
+            }
+        }
     }
 
     /*! Adds reference to object
@@ -262,6 +336,17 @@ public:
         }
     }
 protected:
+    /*! Registers field in all contexts
+     */
+    void registerFieldInAllContexts(Field* f)
+    {
+        for(size_t i = 0; i < m_links.size(); i++)
+        {
+            duk_push_heapptr(m_links[i].Context->context(), m_links[i].HeapPointer);
+            f->registerForObject(m_links[i].Context, -1);
+            duk_pop(m_links[i].Context->context());
+        }
+    }
     /*! A contexts with name where object is registered
      */
     std::vector<typename dukpp03::JSObject<_Context>::Link> m_links;
