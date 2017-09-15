@@ -5,6 +5,7 @@
  */
 #pragma once
 #include "context.h"
+#include "maybe.h"
 #include <string>
 
 namespace dukpp03
@@ -28,7 +29,6 @@ public:
         ctx->template pushVariant<_Value>(_Context::VariantUtils::template makeFrom(v));
     }
 };
-
 
 template<
     typename _Context
@@ -320,6 +320,33 @@ public:
     static void perform(_Context* ctx, const std::string& v)
     {
         duk_push_string(ctx->context(), v.c_str());
+    }
+};
+
+
+/*! Performs pushing value on stack for every type of value
+ */
+template<
+    typename _Value,
+    typename _Context
+>
+class PushValue<dukpp03::Maybe<_Value>, _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const dukpp03::Maybe<_Value>& v)
+    {        
+        if (v.exists())
+        {
+            dukpp03::PushValue<_Value,_Context>::perform(ctx, v.value());
+        }
+        else
+        {
+            duk_push_null(ctx->context());
+        }
     }
 };
 
