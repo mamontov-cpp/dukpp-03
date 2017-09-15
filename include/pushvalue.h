@@ -68,6 +68,22 @@ public:
 template<
     typename _Context
 >
+class PushValue<signed char , _Context>
+{
+public:
+    /*! Performs pushing value 
+        \param[in] ctx context
+        \param[in] v value
+     */
+    static void perform(_Context* ctx, const signed char& v)
+    {
+        dukpp03::PushValue<char, _Context>::push(ctx, v);
+    }
+};
+
+template<
+    typename _Context
+>
 class PushValue<unsigned char, _Context>
 {
 public:

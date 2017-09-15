@@ -161,6 +161,29 @@ static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
 };
 
 
+template<    
+    typename _Context
+>
+class GetValue<signed char, _Context>
+{
+public:
+/*! Performs getting value from stack 
+    \param[in] ctx context
+    \param[in] pos index for stack
+    \return a value if it exists, otherwise empty maybe
+ */
+static dukpp03::Maybe<signed char> perform(_Context* ctx, duk_idx_t pos)
+{
+    dukpp03::Maybe<char> mc = dukpp03::GetValue<char, _Context>::perform(ctx, pos);
+    if (mc.exists())
+    {
+        return dukpp03::Maybe<signed char>(mc.value());
+    }
+    return dukpp03::Maybe<signed char>();
+}
+
+};
+
 
 template<    
     typename _Context
