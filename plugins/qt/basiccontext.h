@@ -45,6 +45,15 @@ typedef dukpp03::JSObject<dukpp03::qt::BasicContext> JSObject;
 /*! A rebind method helper
  */
 typedef dukpp03::rebind_method<dukpp03::qt::BasicContext> rebind_method;
+/*! A callable helper
+ */
+typedef dukpp03::Callable<dukpp03::qt::BasicContext> Callable;
+/*! A function callable helper
+ */
+typedef dukpp03::FunctionCallable<dukpp03::qt::BasicContext> FunctionCallable;
+/*! A multimethod helper
+ */
+typedef dukpp03::MultiMethod<dukpp03::qt::BasicContext> MultiMethod;
 
 }
 
