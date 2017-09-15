@@ -42,6 +42,9 @@ typedef dukpp03::setter<dukpp03::qt::BasicContext> setter;
 /*! An object, used for basic context
  */
 typedef dukpp03::JSObject<dukpp03::qt::BasicContext> JSObject;
+/*! A rebind method helper
+ */
+typedef dukpp03::rebind_method<dukpp03::qt::BasicContext> rebind_method;
 
 }
 
