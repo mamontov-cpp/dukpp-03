@@ -77,7 +77,7 @@ public:
      */
     static void perform(_Context* ctx, const signed char& v)
     {
-        dukpp03::PushValue<char, _Context>::push(ctx, v);
+        dukpp03::PushValue<char, _Context>::perform(ctx, v);
     }
 };
 
