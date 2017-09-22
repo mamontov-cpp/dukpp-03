@@ -24,14 +24,17 @@ void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
         DUK_IF_PUSH(QString)
 #undef DUK_IF_PUSH
         if (typeName == "uint") {  dukpp03::PushValue< unsigned int, dukpp03::qt::BasicContext>::perform(ctx, v.value<unsigned int>()); return;  }
+        if (typeName == "ulong") {  dukpp03::PushValue< unsigned long, dukpp03::qt::BasicContext>::perform(ctx, v.value<unsigned long>()); return;  }
+        if (typeName == "qulong") {  dukpp03::PushValue< unsigned long, dukpp03::qt::BasicContext>::perform(ctx, v.value<unsigned long>()); return;  }
+        if (typeName == "qulonglong") {  dukpp03::PushValue< unsigned long long, dukpp03::qt::BasicContext>::perform(ctx, v.value<unsigned long long>()); return;  }
         if (typeName != NULL)
         {
             if (v.canConvert<dukpp03::qt::ObjectWithOwnership>())
             {
                 dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(ctx, v.value<dukpp03::qt::ObjectWithOwnership>());
             }
-            else 
-            {  
+            else
+            {
                 ctx->pushUntypedVariant(v.typeName(), new QVariant(v), dukpp03::qt::qobjectfinalizer);
             }
         }
