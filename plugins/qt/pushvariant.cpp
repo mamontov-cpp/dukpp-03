@@ -23,6 +23,7 @@ void dukpp03::qt::pushVariant(dukpp03::qt::BasicContext* ctx, const QVariant& v)
         DUK_IF_PUSH(std::string)
         DUK_IF_PUSH(QString)
 #undef DUK_IF_PUSH
+        if (typeName == "uint") {  dukpp03::PushValue< unsigned int, dukpp03::qt::BasicContext>::perform(ctx, v.value<unsigned int>()); return;  }
         if (typeName != NULL)
         {
             if (v.canConvert<dukpp03::qt::ObjectWithOwnership>())
