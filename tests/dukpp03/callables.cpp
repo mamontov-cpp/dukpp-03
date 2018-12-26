@@ -92,10 +92,19 @@ public:
        TEST(CallablesTest::testSecondPrototypeInheritance),
        TEST(CallablesTest::testBetterInheritance),
        TEST(CallablesTest::testNativeFunctionPrototype),
-       TEST(CallablesTest::wrapValuePrototype)
+       TEST(CallablesTest::wrapValuePrototype),
 #ifdef TEST_LAMBDA
-       ,TEST(CallablesTest::testLambda)
-#endif   
+       TEST(CallablesTest::testLambda),
+#endif 
+       TEST(CallablesTest::testCallGlobal0),
+       TEST(CallablesTest::testCallGlobal1),
+       TEST(CallablesTest::testCallGlobal2),
+       TEST(CallablesTest::testCallGlobal3),
+       TEST(CallablesTest::testCallGlobal4),
+       TEST(CallablesTest::testCallGlobal5),
+       TEST(CallablesTest::testCallGlobal6),
+       TEST(CallablesTest::testCallGlobal7),
+       TEST(CallablesTest::testCallGlobal8)
     ) {}
 
      /*! Tests registering functions
@@ -742,5 +751,149 @@ public:
         ASSERT_TRUE( is_fuzzy_equal(result.value(), 5) );
     }
 #endif
+
+    void testCallGlobal0()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test() { return \"string\"; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "string" );
+    }
+
+    void testCallGlobal1()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a) { return \"string\" + a; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "test");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "stringtest" );
+    }
+
+    void testCallGlobal2()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b) { return a + b; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "12" );
+    }
+
+    void testCallGlobal3()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c) { return a + b + c; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "123" );
+    }
+
+    void testCallGlobal4()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c, d) { return a + b + c + d; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3", "4");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "1234" );
+    }
+
+    void testCallGlobal5()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c, d, e) { return a + b + c + d + e; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3", "4", "5");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "12345" );
+    }
+
+    void testCallGlobal6()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c, d, e, f) { return a + b + c + d + e + f; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3", "4", "5", "6");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "123456" );
+    }
+
+    void testCallGlobal7()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c, d, e, f, g) { return a + b + c + d + e + f + g; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3", "4", "5", "6", "7");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "1234567" );
+    }
+
+    void testCallGlobal8()
+    {
+        std::string error;  
+        
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("function test(a, b, c, d, e, f, g, h) { return a + b + c + d + e + f + g + h; }", true, &error);
+        if (!eval_result)
+        {
+            std::cout << error << "\n";
+        }
+        ctx.callGlobalFunction("test", "1", "2", "3", "4", "5", "6", "7", "8");
+        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == "12345678" );
+    }
 
 } _callables_test;
