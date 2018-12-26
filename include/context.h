@@ -589,7 +589,7 @@ public:
     /*! Calls global function
         \param[in] function a function
      */
-    bool callGlobalFunction(const char* function)
+    void callGlobalFunction(const char* function)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -600,7 +600,7 @@ public:
         \param[in] v1 a first argument
      */
     template<typename _T1>
-    bool callGlobalFunction(const char* function, _T1 v1)
+    void callGlobalFunction(const char* function, _T1 v1)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -613,7 +613,7 @@ public:
         \param[in] v2 a second argument
      */
     template<typename _T1, typename _T2>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -628,7 +628,7 @@ public:
         \param[in] v3 a third argument
      */
     template<typename _T1, typename _T2, typename _T3>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -645,7 +645,7 @@ public:
         \param[in] v4 a fourth argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -664,7 +664,7 @@ public:
         \param[in] v5 a fifth argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4, typename _T5>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -685,7 +685,7 @@ public:
         \param[in] v6 a sixth argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4, typename _T5, typename _T6>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -708,7 +708,7 @@ public:
         \param[in] v7 a seventh argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4, typename _T5, typename _T6, typename _T7>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6, _T7 v7)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6, _T7 v7)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
@@ -732,7 +732,7 @@ public:
         \param[in] v7 a seventh argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4, typename _T5, typename _T6, typename _T7, typename _T8>
-    bool callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6, _T7 v7, _T8 v8)
+    void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6, _T7 v7, _T8 v8)
     {
         duk_context* ctx = this->context();
         duk_get_global_string(ctx, function);
