@@ -2,16 +2,16 @@
 Duktape
 =======
 
-Duktape is a small and portable Ecmascript E5/E5.1 implementation.  It is
+Duktape is a small and portable ECMAScript E5/E5.1 implementation.  It is
 intended to be easily embeddable into C programs, with a C API similar in
 spirit to Lua's.
 
 Duktape supports the full E5/E5.1 feature set (with some semantics updated
 from ES2015+) including errors, Unicode strings, and regular expressions,
-a subset of Ecmascript 2015 (E6) and Ecmascript 2016 (E7) features (e.g.
+a subset of ECMAScript 2015 (E6) and ECMAScript 2016 (E7) features (e.g.
 computed property names, Proxy objects, exponentiation operator, Reflect),
-ES2015 ArrayBuffer/TypedView, Node.js Buffer, and WHATWG Encoding API
-living standard.
+ES2015 ArrayBuffer/TypedView, Node.js Buffer, performance.now(), and WHATWG
+Encoding API living standard.
 
 Duktape also provides a number of custom features such as error tracebacks,
 additional data types for better C integration, combined reference counting
@@ -116,9 +116,13 @@ This distributable contains:
 You can find release notes at:
 
 * https://github.com/svaarala/duktape/blob/master/RELEASES.rst
+  (summary of all versions)
 
-This distributable contains Duktape version 2.0.1, created from git
-commit 3f5e91704aff97c754f6ef5d44aedc5e529d1b16 (v2.0.1).
+* https://github.com/svaarala/duktape/blob/master/doc/release-notes-v2-3.rst
+  (more detailed notes for this version)
+
+This distributable contains Duktape version 2.3.0, created from git
+commit d7fdb67f18561a50e06bafd196c6b423af9ad6fe (v2.3.0).
 
 Duktape is copyrighted by its authors (see ``AUTHORS.rst``) and licensed
 under the MIT license (see ``LICENSE.txt``).  String hashing algorithms are

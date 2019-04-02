@@ -2,7 +2,7 @@
  *  Lexer for source files, ToNumber() string conversions, RegExp expressions,
  *  and JSON.
  *
- *  Provides a stream of Ecmascript tokens from an UTF-8/CESU-8 buffer.  The
+ *  Provides a stream of ECMAScript tokens from an UTF-8/CESU-8 buffer.  The
  *  caller can also rewind the token stream into a certain position which is
  *  needed by the compiler part for multi-pass scanning.  Tokens are
  *  represented as duk_token structures, and contain line number information.
@@ -25,14 +25,14 @@
  *
  *  Token parsing supports the full range of Unicode characters as described
  *  in the E5 specification.  Parsing has been optimized for ASCII characters
- *  because ordinary Ecmascript code consists almost entirely of ASCII
+ *  because ordinary ECMAScript code consists almost entirely of ASCII
  *  characters.  Matching of complex Unicode codepoint sets (such as in the
  *  IdentifierStart and IdentifierPart productions) is optimized for size,
  *  and is done using a linear scan of a bit-packed list of ranges.  This is
  *  very slow, but should never be entered unless the source code actually
  *  contains Unicode characters.
  *
- *  Ecmascript tokenization is partially context sensitive.  First,
+ *  ECMAScript tokenization is partially context sensitive.  First,
  *  additional future reserved words are recognized in strict mode (see E5
  *  Section 7.6.1.2).  Second, a forward slash character ('/') can be
  *  recognized either as starting a RegExp literal or as a division operator,
@@ -129,7 +129,7 @@
  *
  *    * In particular, surrogate pairs are allowed and not combined, which
  *      allows source files to represent all SourceCharacters with CESU-8.
- *      Broken surrogate pairs are allowed, as Ecmascript does not mandate
+ *      Broken surrogate pairs are allowed, as ECMAScript does not mandate
  *      their validation.
  *
  *    * Allow non-shortest UTF-8 encodings.
@@ -137,20 +137,20 @@
  *  Leniency here causes few security concerns because all character data is
  *  decoded into Unicode codepoints before lexer processing, and is then
  *  re-encoded into CESU-8.  The source can be parsed as strict UTF-8 with
- *  a compiler option.  However, Ecmascript source characters include -all-
+ *  a compiler option.  However, ECMAScript source characters include -all-
  *  16-bit unsigned integer codepoints, so leniency seems to be appropriate.
  *
  *  Note that codepoints above the BMP are not strictly SourceCharacters,
  *  but the lexer still accepts them as such.  Before ending up in a string
  *  or an identifier name, codepoints above BMP are converted into surrogate
  *  pairs and then CESU-8 encoded, resulting in 16-bit Unicode data as
- *  expected by Ecmascript.
+ *  expected by ECMAScript.
  *
  *  An alternative approach to dealing with invalid or partial sequences
  *  would be to skip them and replace them with e.g. the Unicode replacement
  *  character U+FFFD.  This has limited utility because a replacement character
  *  will most likely cause a parse error, unless it occurs inside a string.
- *  Further, Ecmascript source is typically pure ASCII.
+ *  Further, ECMAScript source is typically pure ASCII.
  *
  *  See:
  *
@@ -312,7 +312,8 @@ DUK_LOCAL void duk__fill_lexer_buffer(duk_lexer_ctx *lex_ctx, duk_small_uint_t s
 	lex_ctx->input_offset = (duk_size_t) (p - lex_ctx->input);
 	lex_ctx->input_line = input_line;
 
-	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_DECODE_FAILED);
+	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_SOURCE_DECODE_FAILED);
+	DUK_WO_NORETURN(return;);
 }
 
 DUK_LOCAL void duk__advance_bytes(duk_lexer_ctx *lex_ctx, duk_small_uint_t count_bytes) {
@@ -335,7 +336,7 @@ DUK_LOCAL void duk__advance_bytes(duk_lexer_ctx *lex_ctx, duk_small_uint_t count
 		/* Not enough data to provide a full window, so "scroll" window to
 		 * start of buffer and fill up the rest.
 		 */
-		DUK_MEMMOVE((void *) lex_ctx->buffer,
+		duk_memmove((void *) lex_ctx->buffer,
 		            (const void *) lex_ctx->window,
 		            (size_t) avail_bytes);
 		lex_ctx->window = lex_ctx->buffer;
@@ -472,8 +473,8 @@ DUK_LOCAL duk_codepoint_t duk__read_char(duk_lexer_ctx *lex_ctx) {
 
  error_clipped:   /* clipped codepoint */
  error_encoding:  /* invalid codepoint encoding or codepoint */
-	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_DECODE_FAILED);
-	return 0;
+	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_SOURCE_DECODE_FAILED);
+	DUK_WO_NORETURN(return 0;);
 }
 
 DUK_LOCAL void duk__advance_bytes(duk_lexer_ctx *lex_ctx, duk_small_uint_t count_bytes) {
@@ -486,7 +487,7 @@ DUK_LOCAL void duk__advance_bytes(duk_lexer_ctx *lex_ctx, duk_small_uint_t count
 	/* Zero 'count' is also allowed to make call sites easier. */
 
 	keep_bytes = DUK_LEXER_WINDOW_SIZE * sizeof(duk_lexer_codepoint) - count_bytes;
-	DUK_MEMMOVE((void *) lex_ctx->window,
+	duk_memmove((void *) lex_ctx->window,
 	            (const void *) ((duk_uint8_t *) lex_ctx->window + count_bytes),
 	            (size_t) keep_bytes);
 
@@ -561,13 +562,11 @@ DUK_LOCAL void duk__appendbuffer_ascii(duk_lexer_ctx *lex_ctx, duk_codepoint_t x
  */
 
 DUK_LOCAL duk_hstring *duk__internbuffer(duk_lexer_ctx *lex_ctx, duk_idx_t valstack_idx) {
-	duk_context *ctx = (duk_context *) lex_ctx->thr;
-
 	DUK_ASSERT(valstack_idx == lex_ctx->slot1_idx || valstack_idx == lex_ctx->slot2_idx);
 
 	DUK_BW_PUSH_AS_STRING(lex_ctx->thr, &lex_ctx->bw);
-	duk_replace(ctx, valstack_idx);
-	return duk_known_hstring(ctx, valstack_idx);
+	duk_replace(lex_ctx->thr, valstack_idx);
+	return duk_known_hstring(lex_ctx->thr, valstack_idx);
 }
 
 /*
@@ -577,7 +576,7 @@ DUK_LOCAL duk_hstring *duk__internbuffer(duk_lexer_ctx *lex_ctx, duk_idx_t valst
 DUK_INTERNAL void duk_lexer_initctx(duk_lexer_ctx *lex_ctx) {
 	DUK_ASSERT(lex_ctx != NULL);
 
-	DUK_MEMZERO(lex_ctx, sizeof(*lex_ctx));
+	duk_memzero(lex_ctx, sizeof(*lex_ctx));
 #if defined(DUK_USE_EXPLICIT_NULL_INIT)
 #if defined(DUK_USE_LEXER_SLIDING_WINDOW)
 	lex_ctx->window = NULL;
@@ -655,7 +654,7 @@ DUK_LOCAL duk_codepoint_t duk__lexer_parse_escape(duk_lexer_ctx *lex_ctx, duk_bo
 	duk_small_int_t digits;  /* Initial value 2 or 4 for fixed length escapes, 0 for ES2015 \u{H+}. */
 	duk_codepoint_t escval;
 	duk_codepoint_t x;
-	duk_small_int_t adv;
+	duk_small_uint_t adv;
 
 	DUK_ASSERT(DUK__L0() == DUK_ASC_BACKSLASH);  /* caller responsibilities */
 	DUK_ASSERT(DUK__L1() == DUK_ASC_LC_X || DUK__L1() == DUK_ASC_LC_U);
@@ -742,11 +741,75 @@ DUK_LOCAL duk_codepoint_t duk__lexer_parse_escape(duk_lexer_ctx *lex_ctx, duk_bo
 
  fail_escape:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_ESCAPE);
+	DUK_WO_NORETURN(return 0;);
+}
+
+/* Parse legacy octal escape of the form \N{1,3}, e.g. \0, \5, \0377.  Maximum
+ * allowed value is \0377 (U+00FF), longest match is used.  Used for both string
+ * RegExp octal escape parsing.  Window[0] must be the slash '\' and the first
+ * digit must already be validated to be in [0-9] by the caller.
+ */
+DUK_LOCAL duk_codepoint_t duk__lexer_parse_legacy_octal(duk_lexer_ctx *lex_ctx, duk_small_uint_t *out_adv, duk_bool_t reject_annex_b) {
+	duk_codepoint_t cp;
+	duk_small_uint_t lookup_idx;
+	duk_small_uint_t adv;
+	duk_codepoint_t tmp;
+
+	DUK_ASSERT(out_adv != NULL);
+	DUK_ASSERT(DUK__LOOKUP(lex_ctx, 0) == DUK_ASC_BACKSLASH);
+	DUK_ASSERT(DUK__LOOKUP(lex_ctx, 1) >= DUK_ASC_0 && DUK__LOOKUP(lex_ctx, 1) <= DUK_ASC_9);
+
+	cp = 0;
+	tmp = 0;
+	for (lookup_idx = 1; lookup_idx <= 3; lookup_idx++) {
+		DUK_DDD(DUK_DDDPRINT("lookup_idx=%ld, cp=%ld", (long) lookup_idx, (long) cp));
+		tmp = DUK__LOOKUP(lex_ctx, lookup_idx);
+		if (tmp < DUK_ASC_0 || tmp > DUK_ASC_7) {
+			/* No more valid digits. */
+			break;
+		}
+		tmp = (cp << 3) + (tmp - DUK_ASC_0);
+		if (tmp > 0xff) {
+			/* Three digit octal escapes above \377 (= 0xff)
+			 * are not allowed.
+			 */
+			break;
+		}
+		cp = tmp;
+	}
+	DUK_DDD(DUK_DDDPRINT("final lookup_idx=%ld, cp=%ld", (long) lookup_idx, (long) cp));
+
+	adv = lookup_idx;
+	if (lookup_idx == 1) {
+		DUK_DDD(DUK_DDDPRINT("\\8 or \\9 -> treat as literal, accept in strict mode too"));
+		DUK_ASSERT(tmp == DUK_ASC_8 || tmp == DUK_ASC_9);
+		cp = tmp;
+		adv++;  /* correction to above, eat offending character */
+	} else if (lookup_idx == 2 && cp == 0) {
+		/* Note: 'foo\0bar' is OK in strict mode, but 'foo\00bar' is not.
+		 * It won't be interpreted as 'foo\u{0}0bar' but as a SyntaxError.
+		 */
+		DUK_DDD(DUK_DDDPRINT("\\0 -> accept in strict mode too"));
+	} else {
+		/* This clause also handles non-shortest zero, e.g. \00. */
+		if (reject_annex_b) {
+			DUK_DDD(DUK_DDDPRINT("non-zero octal literal %ld -> reject in strict-mode", (long) cp));
+			cp = -1;
+		} else {
+			DUK_DDD(DUK_DDDPRINT("non-zero octal literal %ld -> accepted", (long) cp));
+			DUK_ASSERT(cp >= 0 && cp <= 0xff);
+		}
+	}
+
+	*out_adv = adv;
+
+	DUK_ASSERT((cp >= 0 && cp <= 0xff) || (cp == -1 && reject_annex_b));
+	return cp;
 }
 
 /* XXX: move strict mode to lex_ctx? */
 DUK_LOCAL void duk__lexer_parse_string_literal(duk_lexer_ctx *lex_ctx, duk_token *out_token, duk_small_int_t quote, duk_bool_t strict_mode) {
-	duk_small_int_t adv;
+	duk_small_uint_t adv;
 
 	for (adv = 1 /* initial quote */ ;;) {
 		duk_codepoint_t x;
@@ -829,46 +892,9 @@ DUK_LOCAL void duk__lexer_parse_string_literal(duk_lexer_ctx *lex_ctx, duk_token
 					 *  Parse octal (up to 3 digits) from the lookup window.
 					 */
 
-					duk_codepoint_t tmp;
-					duk_small_uint_t lookup_idx;
-
-					emitcp = 0;
-					for (lookup_idx = 1; lookup_idx <= 3; lookup_idx++) {
-						DUK_DDD(DUK_DDDPRINT("lookup_idx=%ld, emitcp=%ld", (long) lookup_idx, (long) emitcp));
-						tmp = DUK__LOOKUP(lex_ctx, lookup_idx);
-						if (tmp < DUK_ASC_0 || tmp > DUK_ASC_7) {
-							/* No more valid digits. */
-							break;
-						}
-						tmp = (emitcp << 3) + (tmp - DUK_ASC_0);
-						if (tmp > 0xff) {
-							/* Three digit octal escapes above \377 (= 0xff)
-							 * are not allowed.
-							 */
-							break;
-						}
-						emitcp = tmp;
-					}
-					DUK_DDD(DUK_DDDPRINT("final lookup_idx=%ld, emitcp=%ld", (long) lookup_idx, (long) emitcp));
-
-					adv = lookup_idx;
-					if (lookup_idx == 1) {
-						/* \8 or \9 -> treat as literal, accept also
-						 * in strict mode.
-						 */
-						DUK_DDD(DUK_DDDPRINT("\\8 or \\9 -> treat as literal, accept in strict mode too"));
-						emitcp = x;
-						adv++;  /* correction to above, eat offending character */
-					} else if (lookup_idx == 2 && emitcp == 0) {
-						/* Zero escape, also allowed in non-strict mode. */
-						DUK_DDD(DUK_DDDPRINT("\\0 -> accept in strict mode too"));
-					} else {
-						/* Valid octal, only accept in non-strict mode. */
-						DUK_DDD(DUK_DDDPRINT("octal literal %ld -> accept only in non-strict-mode", (long) emitcp));
-						DUK_ASSERT(emitcp >= 0 && emitcp <= 0xff);
-						if (strict_mode) {
-							goto fail_escape;
-						}
+					emitcp = duk__lexer_parse_legacy_octal(lex_ctx, &adv, strict_mode /*reject_annex_b*/);
+					if (emitcp < 0) {
+						goto fail_escape;
 					}
 				} else if (x < 0) {
 					goto fail_unterminated;
@@ -912,15 +938,28 @@ DUK_LOCAL void duk__lexer_parse_string_literal(duk_lexer_ctx *lex_ctx, duk_token
 
  fail_escape:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_ESCAPE);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_unterminated:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_UNTERMINATED_STRING);
-	return;
+	DUK_WO_NORETURN(return;);
+}
+
+/* Skip to end-of-line (or end-of-file), used for single line comments. */
+DUK_LOCAL void duk__lexer_skip_to_endofline(duk_lexer_ctx *lex_ctx) {
+	for (;;) {
+		duk_codepoint_t x;
+
+		x = DUK__L0();
+		if (x < 0 || duk_unicode_is_line_terminator(x)) {
+			break;
+		}
+		DUK__ADVANCECHARS(lex_ctx, 1);
+	}
 }
 
 /*
- *  Parse Ecmascript source InputElementDiv or InputElementRegExp
+ *  Parse ECMAScript source InputElementDiv or InputElementRegExp
  *  (E5 Section 7), skipping whitespace, comments, and line terminators.
  *
  *  Possible results are:
@@ -947,13 +986,13 @@ DUK_LOCAL void duk__lexer_parse_string_literal(duk_lexer_ctx *lex_ctx, duk_token
  *  lookup window to quickly determine which production is the -longest-
  *  matching one, and then parse that.  The top-level if-else clauses
  *  match the first character, and the code blocks for each clause
- *  handle -all- alternatives for that first character.  Ecmascript
+ *  handle -all- alternatives for that first character.  ECMAScript
  *  specification uses the "longest match wins" semantics, so the order
  *  of the if-clauses matters.
  *
  *  Misc notes:
  *
- *    * Ecmascript numeric literals do not accept a sign character.
+ *    * ECMAScript numeric literals do not accept a sign character.
  *      Consequently e.g. "-1.0" is parsed as two tokens: a negative
  *      sign and a positive numeric literal.  The compiler performs
  *      the negation during compilation, so this has no adverse impact.
@@ -999,7 +1038,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 	}
 
 	out_token->t = DUK_TOK_EOF;
-	out_token->t_nores = -1;  /* marker: copy t if not changed */
+	out_token->t_nores = DUK_TOK_INVALID;  /* marker: copy t if not changed */
 #if 0  /* not necessary to init, disabled for faster parsing */
 	out_token->num = DUK_DOUBLE_NAN;
 	out_token->str1 = NULL;
@@ -1014,8 +1053,8 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 	 * freed normally.
 	 */
 #if 0
-	duk_to_undefined((duk_context *) lex_ctx->thr, lex_ctx->slot1_idx);
-	duk_to_undefined((duk_context *) lex_ctx->thr, lex_ctx->slot2_idx);
+	duk_to_undefined(lex_ctx->thr, lex_ctx->slot1_idx);
+	duk_to_undefined(lex_ctx->thr, lex_ctx->slot2_idx);
 #endif
 
 	/* 'advtok' indicates how much to advance and which token id to assign
@@ -1057,6 +1096,17 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		DUK__ADVANCECHARS(lex_ctx, 1);
 		got_lineterm = 1;
 		goto restart_lineupdate;
+#if defined(DUK_USE_SHEBANG_COMMENTS)
+	case DUK_ASC_HASH:  /* '#' */
+		if (DUK__L1() == DUK_ASC_EXCLAMATION && lex_ctx->window[0].offset == 0 &&
+		    (lex_ctx->flags & DUK_COMPILE_SHEBANG)) {
+			/* "Shebang" comment ('#! ...') on first line. */
+			/* DUK__ADVANCECHARS(lex_ctx, 2) would be correct here, but not necessary */
+			duk__lexer_skip_to_endofline(lex_ctx);
+			goto restart;  /* line terminator will be handled on next round */
+		}
+		goto fail_token;
+#endif  /* DUK_USE_SHEBANG_COMMENTS */
 	case DUK_ASC_SLASH:  /* '/' */
 		if (DUK__L1() == DUK_ASC_SLASH) {
 			/*
@@ -1064,14 +1114,8 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 			 *  code point).
 			 */
 
-			/* DUK__ADVANCECHARS(lex_ctx, 2) would be correct here, but it unnecessary */
-			for (;;) {
-				x = DUK__L0();
-				if (x < 0 || duk_unicode_is_line_terminator(x)) {
-					break;
-				}
-				DUK__ADVANCECHARS(lex_ctx, 1);
-			}
+			/* DUK__ADVANCECHARS(lex_ctx, 2) would be correct here, but not necessary */
+			duk__lexer_skip_to_endofline(lex_ctx);
 			goto restart;  /* line terminator will be handled on next round */
 		} else if (DUK__L1() == DUK_ASC_STAR) {
 			/*
@@ -1256,6 +1300,18 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		advtok = DUK__ADVTOK(1, DUK_TOK_COMMA);
 		break;
 	case DUK_ASC_LANGLE:  /* '<' */
+#if defined(DUK_USE_HTML_COMMENTS)
+		if (DUK__L1() == DUK_ASC_EXCLAMATION && DUK__L2() == DUK_ASC_MINUS && DUK__L3() == DUK_ASC_MINUS) {
+			/*
+			 *  ES2015: B.1.3, handle "<!--" SingleLineHTMLOpenComment
+			 */
+
+			/* DUK__ADVANCECHARS(lex_ctx, 4) would be correct here, but not necessary */
+			duk__lexer_skip_to_endofline(lex_ctx);
+			goto restart;  /* line terminator will be handled on next round */
+		}
+		else
+#endif  /* DUK_USE_HTML_COMMENTS */
 		if (DUK__L1() == DUK_ASC_LANGLE && DUK__L2() == DUK_ASC_EQUALS) {
 			advtok = DUK__ADVTOK(3, DUK_TOK_ALSHIFT_EQ);
 		} else if (DUK__L1() == DUK_ASC_EQUALS) {
@@ -1309,6 +1365,25 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		}
 		break;
 	case DUK_ASC_MINUS:  /* '-' */
+#if defined(DUK_USE_HTML_COMMENTS)
+		if (got_lineterm && DUK__L1() == DUK_ASC_MINUS && DUK__L2() == DUK_ASC_RANGLE) {
+			/*
+			 *  ES2015: B.1.3, handle "-->" SingleLineHTMLCloseComment
+			 *  Only allowed:
+			 *  - on new line
+			 *  - preceded only by whitespace
+			 *  - preceded by end of multiline comment and optional whitespace
+			 *
+			 * Since whitespace generates no tokens, and multiline comments
+			 * are treated as a line ending, consulting `got_lineterm` is
+			 * sufficient to test for these three options.
+			 */
+
+			/* DUK__ADVANCECHARS(lex_ctx, 3) would be correct here, but not necessary */
+			duk__lexer_skip_to_endofline(lex_ctx);
+			goto restart;  /* line terminator will be handled on next round */
+		} else
+#endif  /* DUK_USE_HTML_COMMENTS */
 		if (DUK__L1() == DUK_ASC_MINUS) {
 			advtok = DUK__ADVTOK(2, DUK_TOK_DECREMENT);
 		} else if (DUK__L1() == DUK_ASC_EQUALS) {
@@ -1377,7 +1452,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		DUK__INITBUFFER(lex_ctx);
 		duk__lexer_parse_string_literal(lex_ctx, out_token, x /*quote*/, strict_mode);
 		duk__internbuffer(lex_ctx, lex_ctx->slot1_idx);
-		out_token->str1 = duk_known_hstring((duk_context *) lex_ctx->thr, lex_ctx->slot1_idx);
+		out_token->str1 = duk_known_hstring(lex_ctx->thr, lex_ctx->slot1_idx);
 
 		DUK__INITBUFFER(lex_ctx);  /* free some memory */
 
@@ -1427,7 +1502,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		 *  (the tokens DUK_TOK_GET and DUK_TOK_SET are actually not
 		 *  used now).  The compiler needs to work around this.
 		 *
-		 *  Strictly speaking, following Ecmascript longest match
+		 *  Strictly speaking, following ECMAScript longest match
 		 *  specification, an invalid escape for the first character
 		 *  should cause a syntax error.  However, an invalid escape
 		 *  for IdentifierParts should just terminate the identifier
@@ -1436,7 +1511,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		 *  parsing the identifier.  This has little practical impact.
 		 */
 
-		duk_small_int_t i, i_end;
+		duk_small_uint_t i, i_end;
 		duk_bool_t first = 1;
 		duk_hstring *str;
 
@@ -1508,7 +1583,8 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		advtok = DUK__ADVTOK(0, DUK_TOK_IDENTIFIER);
 		if (out_token->num_escapes == 0) {
 			for (i = DUK_STRIDX_START_RESERVED; i < i_end; i++) {
-				DUK_ASSERT(i >= 0 && i < DUK_HEAP_NUM_STRINGS);
+				DUK_ASSERT_DISABLE(i >= 0);  /* unsigned */
+				DUK_ASSERT(i < DUK_HEAP_NUM_STRINGS);
 				if (DUK_HTHREAD_GET_STRING(lex_ctx->thr, i) == str) {
 					advtok = DUK__ADVTOK(0, DUK_STRIDX_TO_TOK(i));
 					break;
@@ -1549,7 +1625,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 		                         */
 		duk_small_uint_t s2n_flags;
 		duk_codepoint_t y, z;
-		duk_small_uint_t s2n_radix = 10;
+		duk_small_int_t s2n_radix = 10;
 		duk_small_uint_t pre_adv = 0;
 
 		DUK__INITBUFFER(lex_ctx);
@@ -1655,13 +1731,13 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 			            DUK_S2N_FLAG_ALLOW_LEADING_ZERO;
 		}
 
-		duk_dup((duk_context *) lex_ctx->thr, lex_ctx->slot1_idx);
-		duk_numconv_parse((duk_context *) lex_ctx->thr, s2n_radix, s2n_flags);
-		val = duk_to_number_m1((duk_context *) lex_ctx->thr);
+		duk_dup(lex_ctx->thr, lex_ctx->slot1_idx);
+		duk_numconv_parse(lex_ctx->thr, s2n_radix, s2n_flags);
+		val = duk_to_number_m1(lex_ctx->thr);
 		if (DUK_ISNAN(val)) {
 			goto fail_number_literal;
 		}
-		duk_replace((duk_context *) lex_ctx->thr, lex_ctx->slot1_idx);  /* could also just pop? */
+		duk_replace(lex_ctx->thr, lex_ctx->slot1_idx);  /* could also just pop? */
 
 		DUK__INITBUFFER(lex_ctx);  /* free some memory */
 
@@ -1691,7 +1767,7 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 
 	DUK__ADVANCEBYTES(lex_ctx, advtok >> 8);
 	out_token->t = advtok & 0xff;
-	if (out_token->t_nores < 0) {
+	if (out_token->t_nores == DUK_TOK_INVALID) {
 		out_token->t_nores = out_token->t;
 	}
 	out_token->lineterm = got_lineterm;
@@ -1710,32 +1786,32 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
 
  fail_token_limit:
 	DUK_ERROR_RANGE(lex_ctx->thr, DUK_STR_TOKEN_LIMIT);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_token:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_TOKEN);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_number_literal:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_NUMBER_LITERAL);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_escape:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_ESCAPE);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_unterm_regexp:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_UNTERMINATED_REGEXP);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_unterm_comment:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_UNTERMINATED_COMMENT);
-	return;
+	DUK_WO_NORETURN(return;);
 
 #if !defined(DUK_USE_REGEXP_SUPPORT)
  fail_regexp_support:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_REGEXP_SUPPORT_DISABLED);
-	return;
+	DUK_WO_NORETURN(return;);
 #endif
 }
 
@@ -1751,14 +1827,14 @@ void duk_lexer_parse_js_input_element(duk_lexer_ctx *lex_ctx,
  */
 
 DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token *out_token) {
-	duk_small_int_t advtok = 0;  /* init is unnecessary but suppresses "may be used uninitialized" warnings */
+	duk_small_uint_t advtok = 0;  /* init is unnecessary but suppresses "may be used uninitialized" warnings */
 	duk_codepoint_t x, y;
 
 	if (++lex_ctx->token_count >= lex_ctx->token_limit) {
 		goto fail_token_limit;
 	}
 
-	DUK_MEMZERO(out_token, sizeof(*out_token));
+	duk_memzero(out_token, sizeof(*out_token));
 
 	x = DUK__L0();
 	y = DUK__L1();
@@ -1816,8 +1892,8 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 	}
 	case DUK_ASC_LCURLY: {
 		/* Production allows 'DecimalDigits', including leading zeroes */
-		duk_uint_fast32_t val1 = 0;
-		duk_uint_fast32_t val2 = DUK_RE_QUANTIFIER_INFINITE;
+		duk_uint32_t val1 = 0;
+		duk_uint32_t val2 = DUK_RE_QUANTIFIER_INFINITE;
 		duk_small_int_t digits = 0;
 #if defined(DUK_USE_ES6_REGEXP_SYNTAX)
 		duk_lexer_point lex_pt;
@@ -1833,7 +1909,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 			x = DUK__L0();
 			if (DUK__ISDIGIT(x)) {
 				digits++;
-				val1 = val1 * 10 + (duk_uint_fast32_t) duk__hexval(x);
+				val1 = val1 * 10 + (duk_uint32_t) duk__hexval(x);
 			} else if (x == DUK_ASC_COMMA) {
 				if (digits > DUK__MAX_RE_QUANT_DIGITS) {
 					goto invalid_quantifier;
@@ -1929,7 +2005,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 			x = DUK__L2();
 			if ((x >= DUK_ASC_LC_A && x <= DUK_ASC_LC_Z) ||
 			    (x >= DUK_ASC_UC_A && x <= DUK_ASC_UC_Z)) {
-				out_token->num = (x % 32);
+				out_token->num = (duk_uint32_t) (x % 32);
 				advtok = DUK__ADVTOK(3, DUK_RETOK_ATOM_CHAR);
 			} else {
 				goto fail_escape;
@@ -1940,7 +2016,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 			 * here.  The \u{H+} is only allowed in Unicode mode
 			 * which we don't support yet.
 			 */
-			out_token->num = duk__lexer_parse_escape(lex_ctx, 0 /*allow_es6*/);
+			out_token->num = (duk_uint32_t) duk__lexer_parse_escape(lex_ctx, 0 /*allow_es6*/);
 			advtok = DUK__ADVTOK(0, DUK_RETOK_ATOM_CHAR);
 		} else if (y == DUK_ASC_LC_D) {
 			advtok = DUK__ADVTOK(2, DUK_RETOK_ATOM_DIGIT);
@@ -1964,7 +2040,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 				advtok = DUK__ADVTOK(2, DUK_RETOK_ATOM_CHAR);
 			} else {
 				/* XXX: shared parsing? */
-				duk_uint_fast32_t val = 0;
+				duk_uint32_t val = 0;
 				duk_small_int_t i;
 				for (i = 0; ; i++) {
 					if (i >= DUK__MAX_RE_DECESC_DIGITS) {
@@ -1975,7 +2051,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 					if (!DUK__ISDIGIT(x)) {
 						break;
 					}
-					val = val * 10 + (duk_uint_fast32_t) duk__hexval(x);
+					val = val * 10 + (duk_uint32_t) duk__hexval(x);
 				}
 				/* DUK__L0() cannot be a digit, because the loop doesn't terminate if it is */
 				advtok = DUK__ADVTOK(0, DUK_RETOK_ATOM_BACKREFERENCE);
@@ -2001,7 +2077,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 			 * test-regexp-identity-escape-dollar.js.
 			 */
 #endif  /* DUK_USE_ES6_REGEXP_SYNTAX */
-			out_token->num = y;
+			out_token->num = (duk_uint32_t) y;
 		} else {
 			goto fail_escape;
 		}
@@ -2020,6 +2096,8 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 			} else if (DUK__L2() == DUK_ASC_COLON) {
 				/* (?: */
 				advtok = DUK__ADVTOK(3, DUK_RETOK_ATOM_START_NONCAPTURE_GROUP);
+			} else {
+				goto fail_group;
 			}
 		} else {
 			/* ( */
@@ -2066,7 +2144,7 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 	default: {
 		/* PatternCharacter, all excluded characters are matched by cases above */
 		advtok = DUK__ADVTOK(1, DUK_RETOK_ATOM_CHAR);
-		out_token->num = x;
+		out_token->num = (duk_uint32_t) x;
 		break;
 	}
 	}
@@ -2081,20 +2159,24 @@ DUK_INTERNAL void duk_lexer_parse_re_token(duk_lexer_ctx *lex_ctx, duk_re_token 
 
  fail_token_limit:
 	DUK_ERROR_RANGE(lex_ctx->thr, DUK_STR_TOKEN_LIMIT);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_escape:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_REGEXP_ESCAPE);
-	return;
+	DUK_WO_NORETURN(return;);
+
+ fail_group:
+	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_REGEXP_GROUP);
+	DUK_WO_NORETURN(return;);
 
 #if !defined(DUK_USE_ES6_REGEXP_SYNTAX)
  fail_invalid_char:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_REGEXP_CHARACTER);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_quantifier:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_QUANTIFIER);
-	return;
+	DUK_WO_NORETURN(return;);
 #endif
 }
 
@@ -2141,7 +2223,7 @@ DUK_INTERNAL void duk_lexer_parse_re_ranges(duk_lexer_ctx *lex_ctx, duk_re_range
 	duk_codepoint_t ch;
 	duk_codepoint_t x;
 	duk_bool_t dash = 0;
-	duk_small_int_t adv = 0;
+	duk_small_uint_t adv = 0;
 
 	DUK_DD(DUK_DDPRINT("parsing regexp ranges"));
 
@@ -2163,7 +2245,7 @@ DUK_INTERNAL void duk_lexer_parse_re_ranges(duk_lexer_ctx *lex_ctx, duk_re_range
 			DUK__ADVANCECHARS(lex_ctx, 1);  /* eat ']' before finishing */
 			break;
 		} else if (x == DUK_ASC_MINUS) {
-			if (start >= 0 && !dash && DUK__L0() != DUK_ASC_RBRACKET) {
+			if (start >= 0 && !dash && DUK__L1() != DUK_ASC_RBRACKET) {
 				/* '-' as a range indicator */
 				dash = 1;
 				continue;
@@ -2260,12 +2342,24 @@ DUK_INTERNAL void duk_lexer_parse_re_ranges(duk_lexer_ctx *lex_ctx, duk_re_range
 				                            sizeof(duk_unicode_re_ranges_not_wordchar) / sizeof(duk_uint16_t));
 				ch = -1;
 			} else if (DUK__ISDIGIT(x)) {
-				/* DecimalEscape, only \0 is allowed, no leading zeroes are allowed */
+				/* DecimalEscape, only \0 is allowed, no leading
+				 * zeroes are allowed.
+				 *
+				 * ES2015 Annex B also allows (maximal match) legacy
+				 * octal escapes up to \377 and \8 and \9 are
+				 * accepted as literal '8' and '9', also in strict mode.
+				 */
+
+#if defined(DUK_USE_ES6_REGEXP_SYNTAX)
+				ch = duk__lexer_parse_legacy_octal(lex_ctx, &adv, 0 /*reject_annex_b*/);
+				DUK_ASSERT(ch >= 0);  /* no rejections */
+#else
 				if (x == DUK_ASC_0 && !DUK__ISDIGIT(DUK__L2())) {
 					ch = 0x0000;
 				} else {
 					goto fail_escape;
 				}
+#endif
 #if defined(DUK_USE_ES6_REGEXP_SYNTAX)
 			} else if (x >= 0) {
 				/* IdentityEscape: ES2015 Annex B allows almost all
@@ -2331,15 +2425,15 @@ DUK_INTERNAL void duk_lexer_parse_re_ranges(duk_lexer_ctx *lex_ctx, duk_re_range
 
  fail_escape:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_REGEXP_ESCAPE);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_range:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_INVALID_RANGE);
-	return;
+	DUK_WO_NORETURN(return;);
 
  fail_unterm_charclass:
 	DUK_ERROR_SYNTAX(lex_ctx->thr, DUK_STR_UNTERMINATED_CHARCLASS);
-	return;
+	DUK_WO_NORETURN(return;);
 }
 
 #endif  /* DUK_USE_REGEXP_SUPPORT */

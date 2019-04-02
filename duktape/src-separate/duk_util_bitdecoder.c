@@ -41,7 +41,7 @@ DUK_INTERNAL duk_uint32_t duk_bd_decode(duk_bitdecoder_ctx *ctx, duk_small_int_t
 	 * to be cleared, we just ignore them on next round.
 	 */
 	shift = ctx->currbits - bits;
-	mask = (1 << bits) - 1;
+	mask = (((duk_uint32_t) 1U) << bits) - 1U;
 	tmp = (ctx->currval >> shift) & mask;
 	ctx->currbits = shift;  /* remaining */
 
@@ -58,8 +58,7 @@ DUK_INTERNAL duk_small_uint_t duk_bd_decode_flag(duk_bitdecoder_ctx *ctx) {
 }
 
 /* Decode a one-bit flag, and if set, decode a value of 'bits', otherwise return
- * default value.  Return value is signed so that negative marker value can be
- * used by caller as a "not present" value.
+ * default value.
  */
 DUK_INTERNAL duk_uint32_t duk_bd_decode_flagged(duk_bitdecoder_ctx *ctx, duk_small_int_t bits, duk_uint32_t def_value) {
 	if (duk_bd_decode_flag(ctx)) {
@@ -67,6 +66,11 @@ DUK_INTERNAL duk_uint32_t duk_bd_decode_flagged(duk_bitdecoder_ctx *ctx, duk_sma
 	} else {
 		return def_value;
 	}
+}
+
+/* Signed variant, allows negative marker value. */
+DUK_INTERNAL duk_int32_t duk_bd_decode_flagged_signed(duk_bitdecoder_ctx *ctx, duk_small_int_t bits, duk_int32_t def_value) {
+	return (duk_int32_t) duk_bd_decode_flagged(ctx, bits, (duk_uint32_t) def_value);
 }
 
 /* Shared varint encoding.  Match dukutil.py BitEncode.varuint(). */
@@ -109,7 +113,7 @@ DUK_LOCAL const duk_uint8_t duk__bitpacked_lookup[16] = {
 	DUK_ASC_0, DUK_ASC_1, DUK_ASC_2, DUK_ASC_3,
 	DUK_ASC_4, DUK_ASC_5, DUK_ASC_6, DUK_ASC_7,
 	DUK_ASC_8, DUK_ASC_9, DUK_ASC_UNDERSCORE, DUK_ASC_SPACE,
-	0xff, 0x80, DUK_ASC_DOUBLEQUOTE, DUK_ASC_LCURLY
+	0x82, 0x80, DUK_ASC_DOUBLEQUOTE, DUK_ASC_LCURLY
 };
 
 DUK_INTERNAL duk_small_uint_t duk_bd_decode_bitpacked_string(duk_bitdecoder_ctx *bd, duk_uint8_t *out) {
