@@ -6,8 +6,9 @@
 
 #define DUK_USE_INTERRUPT_COUNTER 1
 #define DUK_USE_DEBUGGER_SUPPORT 1
+#ifdef defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
 #define DUK_USE_DATE_NOW_WINDOWS 1
-
+#endif
 namespace dukpp03
 {
     
