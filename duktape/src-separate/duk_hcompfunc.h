@@ -1,7 +1,7 @@
 /*
- *  Heap compiled function (Ecmascript function) representation.
+ *  Heap compiled function (ECMAScript function) representation.
  *
- *  There is a single data buffer containing the Ecmascript function's
+ *  There is a single data buffer containing the ECMAScript function's
  *  bytecode, constants, and inner functions.
  */
 
@@ -127,6 +127,13 @@
 #define DUK_HCOMPFUNC_GET_CODE_COUNT(heap,h)  \
 	((duk_size_t) (DUK_HCOMPFUNC_GET_CODE_SIZE((heap), (h)) / sizeof(duk_instr_t)))
 
+/*
+ *  Validity assert
+ */
+
+#define DUK_ASSERT_HCOMPFUNC_VALID(h) do { \
+		DUK_ASSERT((h) != NULL); \
+	} while (0)
 
 /*
  *  Main struct

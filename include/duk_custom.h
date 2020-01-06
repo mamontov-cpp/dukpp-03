@@ -4,8 +4,8 @@
  */
 #pragma once
 
-#define DUK_USE_INTERRUPT_COUNTER
-#define DUK_USE_DEBUGGER_SUPPORT
+#define DUK_USE_INTERRUPT_COUNTER 1
+#define DUK_USE_DEBUGGER_SUPPORT 1
 #define DUK_USE_DATE_NOW_WINDOWS 1
 
 namespace dukpp03

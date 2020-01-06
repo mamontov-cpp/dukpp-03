@@ -6,6 +6,7 @@
 #pragma once
 #include "duk_custom.h"
 #include "../duktape/src/duktape.h"
+#include "../duktape/extras/print-alert/duk_print_alert.h"
 
 namespace dukpp03
 {
