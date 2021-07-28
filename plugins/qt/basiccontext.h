@@ -9,6 +9,10 @@
     #define HAS_QT5 ( QT_VERSION >= 0x050000 )
 #endif
 
+#ifndef HAS_QT6
+	#define HAS_QT6 ( QT_VERSION >= 0x060000 )
+#endif
+
 #include "variantinterface.h"
 #include "mapinterface.h"
 #include "timerinterface.h"

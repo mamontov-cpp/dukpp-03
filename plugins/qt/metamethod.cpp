@@ -8,7 +8,7 @@
 
 dukpp03::qt::MetaMethod::MetaMethod(int index, const QMetaMethod& m) : m_index(index), m_method(m)
 {
-    
+   
 }
 
 dukpp03::qt::MetaMethod::~MetaMethod()
@@ -22,7 +22,7 @@ dukpp03::Callable<dukpp03::qt::BasicContext>* dukpp03::qt::MetaMethod::clone()
 
 int dukpp03::qt::MetaMethod::requiredArguments()
 {
-    return m_method.parameterTypes().size();
+    return m_method.parameterTypes().size();  // NOLINT(clang-diagnostic-shorten-64-to-32)
 }
 
 std::pair<int, bool> dukpp03::qt::MetaMethod::canBeCalled(dukpp03::qt::BasicContext* c)
@@ -94,11 +94,11 @@ static QVariant metamethod_call(
 
         const QByteArray& method_type_name = method_types.at(i);
         const QByteArray argument_type_name = arg.typeName();
-
+#if !HAS_QT6
         QVariant::Type method_type = QVariant::nameToType(method_type_name);
         // ReSharper disable once CppEntityNeverUsed
         QVariant::Type arg_type = arg.type();
-        
+#endif
         QVariant copy = QVariant(arg);
 
         // If the types are not the same, attempt a conversion. If it
@@ -127,10 +127,17 @@ static QVariant metamethod_call(
         // A const_cast is needed because calling data() would detach
         // the QVariant.
 
+#if HAS_QT6
+        QGenericArgument genericArgument(
+            QMetaType(argument.userType()).name(),
+            const_cast<void*>(argument.constData())
+        );
+#else
         QGenericArgument genericArgument(
             QMetaType::typeName(argument.userType()),
             const_cast<void*>(argument.constData())
         );
+#endif
 
         arguments << genericArgument;
     }
@@ -139,8 +146,12 @@ static QVariant metamethod_call(
     QVariant returnValue;
     if (returnType.length() && (returnType != "void"))
     {
-        returnValue = QVariant(QMetaType::type(metaMethod.typeName()), 
+#if HAS_QT6
+        returnValue = QVariant(QMetaType::fromName(metaMethod.typeName()), 
                                static_cast<void*>(nullptr));
+#else
+        returnValue = QVariant(QMetaType::type(metaMethod.typeName()), static_cast<void*>(nullptr));
+#endif
     }
 
     const QGenericReturnArgument returnArgument(

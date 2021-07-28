@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FAB1D97E-3CEA-4983-BF35-534495645323}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">dukqt-tests-debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dukqt-tests-debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">dukqt-tests-release</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dukqt-tests-release</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);..\..\plugins\qt;..\..\include;$(QTDIR)\include\QtCore\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\dukqt-tests-debug.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dukpp-03-debug.lib;dukqt-debug.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);..\..\plugins\qt;..\..\include;$(QTDIR)\include\QtCore\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\dukqt-tests-debug.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dukpp-03-debug.lib;dukqt-debug.lib;Qt6Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions> /SUBSYSTEM:CONSOLE</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);..\..\include;..\..\plugins\qt;$(QTDIR)\include\QtCore\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\dukqt-tests-release.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>qtmain.lib;dukpp-03-release.lib;dukqt-release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>QT_NO_DEBUG;NDEBUG;_SCL_SECURE_NO_WARNINGS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);..\..\include;..\..\plugins\qt;$(QTDIR)\include\QtCore\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>$(OutDir)\dukqt-tests-release.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>dukpp-03-release.lib;dukqt-release.lib;Qt6Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions>/SUBSYSTEM:CONSOLE</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="bindings.cpp" />
+    <ClCompile Include="context.cpp" />
+    <ClCompile Include="gccollectcheck.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_gccollectcheck.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_test2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_gccollectcheck.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="interop.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="test2.cpp" />
+    <ClCompile Include="values.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="test.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing test.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing test.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing test.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing test.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="test2.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing test2.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing test2.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing test2.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing test2.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="gccollectcheck.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing gccollectcheck.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing gccollectcheck.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\plugins\qt" "-I.\..\..\include" "-I$(QTDIR)\include\QtCore"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing gccollectcheck.h...</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing gccollectcheck.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_NO_DEBUG -DNDEBUG -D_SCL_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -D%(PreprocessorDefinitions)  "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)" "-I.\..\..\include" "-I.\..\..\plugins\qt" "-I$(QTDIR)\include\QtCore"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties lreleaseOptions="" lupdateOnBuild="0" lupdateOptions="" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" Qt5Version_x0020_Win32="5.14.2_msvc2017" Qt5Version_x0020_x64="6.1.2_msvc2019_64" RccDir=".\GeneratedFiles" UicDir=".\GeneratedFiles" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

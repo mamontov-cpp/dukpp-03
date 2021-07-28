@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{342ea55b-3e2d-4852-84a2-809044a2e90d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{af39573a-875a-4538-a04a-c8eb83bfcc91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\thismethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\timerinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\variantinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wrapvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\abstractcallable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\abstractcontext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\callable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\classbinding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\compiledfunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\constructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\duk_custom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dukpp-03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\duktape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\errorcodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\getfield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\getvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\isnotpodreference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mapinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\maybe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\method.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\multimethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pushvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\setfield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\removepointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\jsobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\constructorfunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\abstractcallable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\abstractcontext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\duktape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

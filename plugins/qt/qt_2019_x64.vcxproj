@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E4E0CA0-F181-43DB-82D8-D03E6B0B07F6}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\lib\</OutDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">dukqt-debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">dukqt-debug</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">dukqt-release</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">dukqt-release</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\lib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\..\include;$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>..\..\lib\dukqt-debug.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;dukpp-03-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>QT_CORE_LIB;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\..\include;$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\..\lib\dukqt-debug.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;dukpp-03-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions> /SUBSYSTEM:WINDOWS</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\..\include;$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>..\..\lib\dukqt-release.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>qtmain.lib;dukpp-03-release.lib;Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);.\..\..\include;$(QTDIR)\include\QtCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>..\..\lib\dukqt-release.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>qtmain.lib;dukpp-03-release.lib;Qt6Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions> /SUBSYSTEM:WINDOWS</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="classbinding.cpp" />
+    <ClCompile Include="context.cpp" />
+    <ClCompile Include="convert.cpp" />
+    <ClCompile Include="metaconstructor.cpp" />
+    <ClCompile Include="metamethod.cpp" />
+    <ClCompile Include="metapropertyaccessor.cpp" />
+    <ClCompile Include="pushvariant.cpp" />
+    <ClCompile Include="qobjectfinalizer.cpp" />
+    <ClCompile Include="registermetatype.cpp" />
+    <ClCompile Include="toqobject.cpp" />
+    <ClCompile Include="wrapvalue.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="basiccontext.h" />
+    <ClInclude Include="basicmetatypes.h" />
+    <ClInclude Include="classbinding.h" />
+    <ClInclude Include="constructor.h" />
+    <ClInclude Include="context.h" />
+    <ClInclude Include="convert.h" />
+    <ClInclude Include="dukqt.h" />
+    <ClInclude Include="getaddressoftype.h" />
+    <ClInclude Include="getadressofcommontypeorqobject.h" />
+    <ClInclude Include="getvalue.h" />
+    <ClInclude Include="isqobject.h" />
+    <ClInclude Include="mapinterface.h" />
+    <ClInclude Include="metaconstructor.h" />
+    <ClInclude Include="metamethod.h" />
+    <ClInclude Include="metapropertyaccessor.h" />
+    <ClInclude Include="objectwithownership.h" />
+    <ClInclude Include="pushvalue.h" />
+    <ClInclude Include="pushvariant.h" />
+    <ClInclude Include="qobjectfinalizer.h" />
+    <ClInclude Include="registermetatype.h" />
+    <ClInclude Include="timerinterface.h" />
+    <ClInclude Include="toqobject.h" />
+    <ClInclude Include="valueownership.h" />
+    <ClInclude Include="variantinterface.h" />
+    <ClInclude Include="wrapvalue.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties lreleaseOptions="" lupdateOnBuild="0" lupdateOptions="" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" Qt5Version_x0020_Win32="$(DefaultQtVersion)" Qt5Version_x0020_x64="6.1.2_msvc2019_64" RccDir=".\GeneratedFiles" UicDir=".\GeneratedFiles" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1525
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dukpp-03", "dukpp-03.vcxproj", "{66C1998B-FED8-4B20-B744-F528D1C5326E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dukpp-03_2019_x64", "dukpp-03_2019_x64.vcxproj", "{66C1998B-FED8-4B20-B744-F528D1C5326E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

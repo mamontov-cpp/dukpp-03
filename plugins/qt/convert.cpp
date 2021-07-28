@@ -1,6 +1,7 @@
 #include "convert.h"
 #include "basicmetatypes.h"
 #include "registermetatype.h"
+#include "basiccontext.h"
 
 #include <QHash>
 #include <QMutex>
@@ -16,8 +17,14 @@ static QVariant convert(QVariant* v)
 
 typedef QVariant (*Converter)(QVariant*);
 
-static QHash<int, QHash<int, Converter> > converters;
-static QMutex mtx;
+/**
+ * \brief list of converters
+ */
+static QHash<int, QHash<int, Converter> > converters;  // NOLINT(clang-diagnostic-exit-time-destructors)
+/**
+ * \brief global init mutex
+ */
+static QMutex mtx;  // NOLINT(clang-diagnostic-exit-time-destructors)
 
 template<typename _To, typename _From>
 static void insertConverterToList()
@@ -39,7 +46,7 @@ static void insertConverterToList()
 static void initConverters()
 {
     mtx.lock();
-    if (converters.size() == 0)
+    if (converters.empty())
     {
         // Weird issue with Qt 4 - char -> char fails
         insertConverterToList<char, char>();
@@ -128,8 +135,13 @@ static void initConverters()
 static Converter getConverter(const QString& destType, const QString& sourceType)
 {
     initConverters();
+#if HAS_QT6
+    const int destTypeId = QMetaType::fromName(destType.toStdString().c_str()).id();
+    const int sourceTypeId = QMetaType::fromName(sourceType.toStdString().c_str()).id();
+#else
     const int destTypeId = QMetaType::type(destType.toStdString().c_str());
     const int sourceTypeId = QMetaType::type(sourceType.toStdString().c_str());
+#endif
     Converter result = nullptr;
     mtx.lock();
     if (converters.contains(destTypeId))
@@ -152,13 +164,26 @@ static Converter getConverter(const QString& destType, const QString& sourceType
 bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
 {
 	const QVariant copy = *v;
-    int destType = QMetaType::type(type.toStdString().c_str());
-	const QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
-	const QString typeName = copy.typeName();
-#if HAS_QT5
-    if (copy.type() != destType)
+#if HAS_QT6
+    const int destType = QMetaType::fromName(type.toStdString().c_str()).id();
 #else
-    if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+    const int destType = QMetaType::type(type.toStdString().c_str());
+#endif
+#if HAS_QT6
+    const int destType2 = QMetaType::fromName(type.toStdString().c_str()).id();
+#else
+    const QVariant::Type destType2 = QVariant::nameToType(type.toStdString().c_str());
+#endif
+    const QString typeName = copy.typeName();
+
+#if HAS_QT6
+    if (copy.metaType().id() != destType)
+#else
+    #if HAS_QT5
+        if (copy.type() != destType)
+    #else
+        if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+    #endif
 #endif
     {
 
@@ -169,7 +194,11 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
         }
 
         // If we can convert type easily, do it
+#if HAS_QT6
+        if (copy.canConvert(QMetaType(destType2)))
+#else
         if (copy.canConvert(destType2))
+#endif
         {
             return true;
         }
@@ -182,25 +211,30 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
         // If we want a (QObject*)(T*) -> T* and it's applicable
         if (dukpp03::qt::is_metatype_qobject(type) && copy.canConvert<QObject*>())
         {
-            auto dest = copy.value<QObject*>();
+            auto* const dest = copy.value<QObject*>();
             if (dest)
             {
                 QString className = dest->metaObject()->className();
                 className.append("*");
-                if (type == className && QMetaType::type(className.toStdString().c_str()) != UNKNOWN_TYPE)
+#if HAS_QT6
+                const int classNameType = QMetaType::fromName(className.toStdString().c_str()).id();
+#else
+                const int classNameType = QMetaType::type(className.toStdString().c_str());
+#endif
+                if (type == className && classNameType  != UNKNOWN_TYPE)
                 {
                     return true;
                 }
             }
         }
         // If QString -> std::string
-        if (type == "std::string" && typeName == "QString")
+        if ((type == "std::string" ||  type == "std::basic_string<char,std::char_traits<char>,std::allocator<char>>") && typeName == "QString")
         {
             return true;
         }
 
         // std::string -> QString
-        if (type == "QString" && typeName == "std::string")
+        if (type == "QString" && (typeName == "std::string" || typeName == "std::basic_string<char,std::char_traits<char>,std::allocator<char>>"))
         {
             return true;
         }
@@ -215,15 +249,22 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
 bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVariant& result)
 {
     result = *v;
+#if  HAS_QT6
+    const int destType = QMetaType::fromName(type.toStdString().c_str()).id();
+    const int destType2 = QMetaType::fromName(type.toStdString().c_str()).id();
+#else
     int destType = QMetaType::type(type.toStdString().c_str());
     const QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
-
+#endif
     const QString typeName = result.typeName();
-
-#if HAS_QT5
-    if (v->type() != destType)
+#if HAS_QT6
+    if (v->metaType().id() != destType)
 #else
-    if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+    #if HAS_QT5
+        if (v->type() != destType)
+    #else
+        if (typeName != type.toStdString().c_str()) // Better use string typing, because of invalid types
+    #endif
 #endif
     {
         // If we have a plain converter
@@ -235,12 +276,19 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
         }
 
         // If we can convert type easily, do it
+#if HAS_QT6
+        if (result.canConvert(QMetaType(destType2)))
+        {
+            result.convert(QMetaType(destType2));
+            return true;
+        }
+#else
         if (result.canConvert(destType2))
         {
             result.convert(destType2);
             return true;
         }
-
+#endif
         // If we want a T* -> QObject*, and it's applicable
         if ((type == "QObject*") && dukpp03::qt::is_metatype_qobject(typeName))
         {
@@ -250,28 +298,36 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
         // If we want a (QObject*)(T*) -> T* and it's applicable
         if (dukpp03::qt::is_metatype_qobject(type) && result.canConvert<QObject*>())
         {
-	        auto* dest = result.value<QObject*>();
+            auto* dest = result.value<QObject*>();
             if (dest)
             {
                 QString className = dest->metaObject()->className();
                 className.append("*");
-                const int typeId =  QMetaType::type(className.toStdString().c_str());
+#if HAS_QT6
+                const int typeId = QMetaType::fromName(className.toStdString().c_str()).id();
+#else
+                const int typeId = QMetaType::type(className.toStdString().c_str());
+#endif
                 if (type == className && typeId != UNKNOWN_TYPE)
                 {
+#if HAS_QT6
+                    result = QVariant(QMetaType(typeId), &dest);
+#else
                     result = QVariant(typeId, &dest);
+#endif                    
                     return true;
                 }
             }
         }
         // If QString -> std::string
-        if (type == "std::string" && typeName == "QString")
+        if ((type == "std::string" ||  type == "std::basic_string<char,std::char_traits<char>,std::allocator<char>>") && typeName == "QString")
         {
             result = QVariant::fromValue(result.toString().toStdString());
             return true;
         }
 
         // std::string -> QString
-        if (type == "QString" && typeName == "std::string")
+        if (type == "QString" && (typeName == "std::string" || typeName == "std::basic_string<char,std::char_traits<char>,std::allocator<char>>"))
         {
             result = QVariant::fromValue(QString(result.value<std::string>().c_str()));
             return true;

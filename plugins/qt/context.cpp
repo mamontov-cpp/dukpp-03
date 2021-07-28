@@ -34,7 +34,11 @@ dukpp03::qt::Context::Context()
     REGISTER_METATYPE(unsigned long)
     REGISTER_METATYPE(std::string)
     REGISTER_METATYPE(dukpp03::qt::ObjectWithOwnership)
+#if  HAS_QT6
+    if (QMetaType::fromName("QPair<QObject*, dukpp03::qt::ValueOwnership>").id() == static_cast<int>(UNKNOWN_TYPE))
+#else
     if (QMetaType::type("QPair<QObject*, dukpp03::qt::ValueOwnership>") == UNKNOWN_TYPE)
+#endif
     {
         qRegisterMetaType<QPair<QObject*, dukpp03::qt::ValueOwnership> >("QPair<QObject*, dukpp03::qt::ValueOwnership>");
     }
@@ -42,9 +46,7 @@ dukpp03::qt::Context::Context()
 }
 
 dukpp03::qt::Context::~Context()
-{
-    
-}
+= default;
 
 void dukpp03::qt::Context::pushObject(QObject* o, dukpp03::qt::ValueOwnership p)
 {

@@ -80,7 +80,11 @@ public:
          */
         static std::string type()
         {
+#if ( QT_VERSION >= 0x060000 )
+            return QMetaType(qMetaTypeId<_UnderlyingValue>()).name();
+#else
             return QMetaType::typeName(qMetaTypeId<_UnderlyingValue>());
+#endif
         }
     };
 };

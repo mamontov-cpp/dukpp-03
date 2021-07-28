@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="qobjectfinalizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pushvariant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="context.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wrapvalue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="toqobject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="registermetatype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metamethod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="classbinding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metaconstructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metapropertyaccessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="convert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mapinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timerinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="variantinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qobjectfinalizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="valueownership.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pushvariant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wrapvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="toqobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basiccontext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basicmetatypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dukqt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getaddressoftype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getadressofcommontypeorqobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="isqobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objectwithownership.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pushvalue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="registermetatype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metamethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="classbinding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metaconstructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metapropertyaccessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -18,38 +18,74 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\abstractcallable.h" />
+    <ClInclude Include="include\abstractcontext.h" />
+    <ClInclude Include="include\callable.h" />
+    <ClInclude Include="include\classbinding.h" />
+    <ClInclude Include="include\compiledfunction.h" />
+    <ClInclude Include="include\constructor.h" />
+    <ClInclude Include="include\constructorfunction.h" />
+    <ClInclude Include="include\context.h" />
+    <ClInclude Include="include\decay.h" />
+    <ClInclude Include="include\dukpp-03.h" />
+    <ClInclude Include="include\duktape.h" />
+    <ClInclude Include="include\duk_custom.h" />
+    <ClInclude Include="include\errorcodes.h" />
+    <ClInclude Include="include\function.h" />
+    <ClInclude Include="include\getfield.h" />
+    <ClInclude Include="include\getvalue.h" />
+    <ClInclude Include="include\isnotpodreference.h" />
+    <ClInclude Include="include\jsobject.h" />
+    <ClInclude Include="include\mapinterface.h" />
+    <ClInclude Include="include\maybe.h" />
+    <ClInclude Include="include\method.h" />
+    <ClInclude Include="include\multimethod.h" />
+    <ClInclude Include="include\pushvalue.h" />
+    <ClInclude Include="include\removepointer.h" />
+    <ClInclude Include="include\setfield.h" />
+    <ClInclude Include="include\thismethod.h" />
+    <ClInclude Include="include\timerinterface.h" />
+    <ClInclude Include="include\variantinterface.h" />
+    <ClInclude Include="include\wrapvalue.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\abstractcallable.cpp" />
+    <ClCompile Include="src\abstractcontext.cpp" />
+    <ClCompile Include="src\duktape.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F51B9EBE-CA21-47A9-B67D-48BB3CDE2ACF}</ProjectGuid>
+    <ProjectGuid>{66C1998B-FED8-4B20-B744-F528D1C5326E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>dukpp03tests</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <RootNamespace>dukpp03</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -68,26 +104,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
-    <TargetName>dukpp-03-tests-debug</TargetName>
-    <OutDir>..\..\bin\</OutDir>
+    <OutDir>lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>dukpp-03-debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>dukpp-03-tests-debug</TargetName>
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\..\bin\</OutDir>
+    <TargetName>dukpp-03-debug</TargetName>
+    <OutDir>lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
-    <TargetName>dukpp-03-tests-release</TargetName>
-    <OutDir>..\..\bin\</OutDir>
+    <OutDir>lib\</OutDir>
+    <TargetName>dukpp-03-release</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>dukpp-03-tests-release</TargetName>
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\..\bin\</OutDir>
+    <TargetName>dukpp-03-release</TargetName>
+    <OutDir>lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,14 +127,11 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../include/;$(BOOST);$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT)\stage\lib\;$(BOOST)\stage\lib\;../../lib/;$(BOOST_ROOT)\boost\stage\lib\;$(BOOST)\boost\stage\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libboost_system-vc141-mt-gd-x32-1_73.lib;libboost_chrono-vc141-mt-gd-x32-1_73.lib;libboost_timer-vc141-mt-gd-x32-1_73.lib;dukpp-03-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,14 +140,13 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../include/;$(BOOST);$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT)\stage\lib\;$(BOOST)\stage\lib\;../../lib/;$(BOOST_ROOT)\boost\stage\lib\;$(BOOST)\boost\stage\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libboost_system-vc141-mt-gd-x64-1_73.lib;libboost_chrono-vc141-mt-gd-x64-1_73.lib;libboost_timer-vc141-mt-gd-x64-1_73.lib;dukpp-03-debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,16 +157,13 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../include/;$(BOOST);$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT)\stage\lib\;$(BOOST)\stage\lib\;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libboost_system-vc141-m-x32-1_73.lib;libboost_chrono-vc141-mt-x32-1_73.lib;libboost_timer-vc141-mt-x32-1_73.lib;%(AdditionalDependencies);dukpp-03-release.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,33 +174,17 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../include/;$(BOOST);$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(BOOST_ROOT)\stage\lib\;$(BOOST)\stage\lib\;..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libboost_system-vc141-mt-x64-1_73.lib;libboost_chrono-vc141-mt-x64-1_73.lib;libboost_timer-vc141-mt-x64-1_73.lib;dukpp-03-release.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="context.h" />
-    <ClInclude Include="getaddressoftype.h" />
-    <ClInclude Include="include\3rdparty\tpunit++\tpunit++.hpp" />
-    <ClInclude Include="include\3rdparty\tpunit++\tpunitw.h" />
-    <ClInclude Include="point.h" />
-    <ClInclude Include="utils.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="callables.cpp" />
-    <ClCompile Include="context.cpp" />
-    <ClCompile Include="jsobject.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="point.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -31,10 +31,17 @@ struct GetAddressOfCommonTypeOrQObject
      */
     static dukpp03::Maybe<_UnderlyingValue*> getAddress(QVariant* v)
     {
+#if ( QT_VERSION >= 0x060000 )
+        if (v->metaType().id() == qMetaTypeId<_UnderlyingValue>())
+        {
+            return dukpp03::Maybe<_UnderlyingValue*>(static_cast<_UnderlyingValue*>(v->data()));
+        }
+#else
         if (v->type() == qMetaTypeId<_UnderlyingValue>())
         {
             return dukpp03::Maybe<_UnderlyingValue*>(static_cast<_UnderlyingValue*>(v->data()));
         }
+#endif
         if (v->canConvert<_UnderlyingValue>())
         {
             return dukpp03::Maybe<_UnderlyingValue*>(static_cast<_UnderlyingValue*>(v->data()));            

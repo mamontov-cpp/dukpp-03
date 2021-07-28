@@ -53,7 +53,11 @@ public:
     {
         qRegisterMetaType<T*>();
         const int type = qMetaTypeId<T*>();
-        register_qobject_descendant(QMetaType::typeName(type));       
+#if ( QT_VERSION >= 0x060000 )
+        register_qobject_descendant(QMetaType(type).name());
+#else
+        register_qobject_descendant(QMetaType::typeName(type));
+#endif
     }
 };
 

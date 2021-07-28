@@ -231,7 +231,7 @@ inline static dukpp03::Maybe<QVariant> perform(
 
 };
 
-
+#if !HAS_QT6
 template<typename T>
 class GetValue<QVector<T>, dukpp03::qt::BasicContext>
 {
@@ -251,7 +251,7 @@ public:
         return result;
     }
 };
-
+#endif
 
 template<typename T>
 class GetValue<QList<T>, dukpp03::qt::BasicContext>

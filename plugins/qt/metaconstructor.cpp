@@ -24,7 +24,7 @@ dukpp03::Callable<dukpp03::qt::BasicContext>* dukpp03::qt::MetaConstructor::clon
 
 int dukpp03::qt::MetaConstructor::requiredArguments()
 {
-    return m_method.parameterTypes().size();
+    return m_method.parameterTypes().size();  // NOLINT(clang-diagnostic-shorten-64-to-32)
 }
 
 std::pair<int, bool> dukpp03::qt::MetaConstructor::canBeCalled(dukpp03::qt::BasicContext* c)
@@ -59,7 +59,7 @@ bool dukpp03::qt::MetaConstructor::canBeCalledAsFunction()
 }
 
 // Taken from https://gist.github.com/andref/2838534
-static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod metaMethod, QVariantList args, QString* error)
+static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod metaMethod, const QVariantList& variant_list_arguments, QString* error)
 {
     // Convert the arguments
     QVariantList converted;
@@ -67,7 +67,7 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
     // We need enough arguments to perform the conversion.
 
     const QList<QByteArray> methodTypes = metaMethod.parameterTypes();
-    if (methodTypes.size() < args.size()) {
+    if (methodTypes.size() < variant_list_arguments.size()) {
 
         *error = "Insufficient arguments to call "; 
 #if HAS_QT5
@@ -79,15 +79,15 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
     }
 
     for (int i = 0; i < methodTypes.size(); i++) {
-        const QVariant& arg = args.at(i);
+        const QVariant& arg = variant_list_arguments.at(i);
 
         const QByteArray& method_type_name = methodTypes.at(i);
         const QByteArray argTypeName = arg.typeName();
-
+#if !HAS_QT6
         QVariant::Type methodType = QVariant::nameToType(method_type_name);
         // ReSharper disable once CppEntityNeverUsed
         QVariant::Type argType = arg.type();
-        
+#endif
         QVariant copy = QVariant(arg);
 
         // If the types are not the same, attempt a conversion. If it
@@ -116,12 +116,17 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
 
         // A const_cast is needed because calling data() would detach
         // the QVariant.
-
+#if HAS_QT6
+        QGenericArgument genericArgument(
+            QMetaType(argument.userType()).name(),
+            const_cast<void*>(argument.constData())
+        );
+#else
         QGenericArgument genericArgument(
             QMetaType::typeName(argument.userType()),
             const_cast<void*>(argument.constData())
         );
-
+#endif
         arguments << genericArgument;
     }
 

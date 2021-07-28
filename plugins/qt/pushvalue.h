@@ -148,7 +148,7 @@ public:
     }
 };
 
-
+#if !HAS_QT6
 template<typename T>
 class PushValue<QVector<T>, dukpp03::qt::BasicContext>
 {
@@ -162,6 +162,7 @@ public:
         dukpp03::PushLinearStructure<QVector, T, dukpp03::qt::BasicContext>::perform(ctx, v);
     }
 };
+#endif
 
 template<typename T>
 class PushValue<QList<T>, dukpp03::qt::BasicContext>
