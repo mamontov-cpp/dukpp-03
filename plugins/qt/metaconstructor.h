@@ -29,29 +29,29 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual Callable<dukpp03::qt::BasicContext>* clone();
+    virtual Callable<dukpp03::qt::BasicContext>* clone() override;
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments();
+    virtual int requiredArguments() override;
     /*! Performs check, whether callable can be called, without actually calling an object in context
         \param[in] c context
         \return pair
      */
-    virtual std::pair<int, bool> canBeCalled(dukpp03::qt::BasicContext* c);
+    virtual std::pair<int, bool> canBeCalled(dukpp03::qt::BasicContext* c) override;
     /*! Returns false
         \return false
      */
-    virtual bool canBeCalledAsFunction();       
+    virtual bool canBeCalledAsFunction() override;
     /*! Performs actual function call
         \param[in] c context
      */
-    virtual int _call(dukpp03::qt::BasicContext* c);
+    virtual int _call(dukpp03::qt::BasicContext* c) override;
 protected:
     /*! A meta object to be created
      */ 
     const QMetaObject* m_meta_object;
-    /*! A new metametod
+    /*! A new meta-method
      */  
     QMetaMethod m_method;
 };

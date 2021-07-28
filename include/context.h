@@ -11,13 +11,18 @@
 #include "abstractcontext.h"
 #include "dukpp-03.h"
 #include "maybe.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "mapinterface.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "variantinterface.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "timerinterface.h"
 #include "wrapvalue.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "errorcodes.h"
 #include "callable.h"
 #include "decay.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include <iostream>
 
 /*! A property name for an object, which must have this property set to a string variant
@@ -102,7 +107,7 @@ public:
     /*! Registered objects set for context
      */
     typedef _MapInterface<Variant*, Variant*> RegisteredObjectSet;
-    /*! A registerd item set for context
+    /*! A registered item set for context
      */
     typedef _MapInterface<void*, void*> LinkedPointerSet;
     /*! A type for selecting utilities from context
@@ -119,7 +124,7 @@ public:
     }
     /*! Context is inheritable
      */
-    virtual ~Context()
+    virtual ~Context() override
     {
         for(typename CallbackSet::iterator it = m_functions.begin(); it.end() == false; it.next())
         {
@@ -134,12 +139,12 @@ public:
         if (m_context)
         {
             duk_destroy_heap(m_context);
-            m_context = NULL;
+            m_context = nullptr;
         }
     }
     /*! Resets context fully, erasing all data
      */
-    void reset()
+    virtual void reset()  override
     {
         for(typename CallbackSet::iterator it = m_functions.begin(); it.end() == false; it.next())
         {
@@ -152,17 +157,17 @@ public:
         }
         m_class_bindings.clear();
         duk_destroy_heap(m_context);
-        m_context = duk_create_heap(NULL,NULL, NULL, this, NULL);
+        m_context = duk_create_heap(nullptr,nullptr, nullptr, this, nullptr);
         this->initContextBeforeAccessing();
     }
-    /*! Pushes variant to a pool. Note, that context becames owner of variant, so don't push your own variants into here.
+    /*! Pushes variant to a pool. Note, that context becomes owner of variant, so don't push your own variants into here.
         \param[in] v variant
         \param[in] ff a finalizer that must be used for this context
      */
     template< typename _Value >
     void pushVariant(Variant* v,  dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
-        duk_idx_t obj = duk_push_object(m_context);
+	    const duk_idx_t obj = duk_push_object(m_context);
         // Push pointer value for variant
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
         duk_push_pointer(m_context, v);
@@ -174,15 +179,15 @@ public:
         duk_push_c_function(m_context, ff, 2);
         duk_set_finalizer(m_context, obj);
         // Default handler for wrapping value
-        std::string cbname = this->typeName<_Value>();
+        std::string class_binding_name = this->typeName<_Value>();
         bool wrapped = false;
-        if (m_class_bindings.contains(cbname))
+        if (m_class_bindings.contains(class_binding_name))
         {
-            m_class_bindings.get(cbname)->wrapValue(this);
+            m_class_bindings.get(class_binding_name)->wrapValue(this);
             wrapped = true;
         }
         // Wrap value, populating it with methods if needed  
-        WrapValue::perform(this, v, wrapped);       
+        WrapValue::perform(this, v, wrapped);
     }
 
     /*! DO NOT use this function, unless you know, what you're doing. This functions pushes on stack
@@ -195,7 +200,7 @@ public:
      */ 
     void pushUntypedVariant(const std::string& name, Variant* v, dukpp03::FinalizerFunction ff = dukpp03::Finalizer<Self>::finalize)
     {
-        duk_idx_t obj = duk_push_object(m_context);
+        const duk_idx_t obj = duk_push_object(m_context);
 
         // Push pointer value for variant
         duk_push_string(m_context, DUKPP03_VARIANT_PROPERTY_SIGNATURE); 
@@ -277,7 +282,7 @@ public:
     {
         duk_push_object(m_context);
     }
-    /*! Returns error string from stack if it's herer
+    /*! Returns error string from stack if it's here
         \param[in] pos a position on stack
         \return error string from stack
      */
@@ -335,9 +340,9 @@ public:
     /*! Calls function, using self as context
         \param[in] callable a callable value
      */
-    virtual int call(void* callable)
+    virtual int call(void* callable) override
     {
-        return reinterpret_cast<LocalCallable*>(callable)->call(this);
+        return static_cast<LocalCallable*>(callable)->call(this);
     }
     /*! Registers callable as property of global object
         \param[in] callable_name name of property of global object
@@ -357,66 +362,66 @@ public:
         this->dukpp03::AbstractContext::pushCallable(callable, own);
     }
     /*! Sets immutable property for value on stack top
-        \param[in] propname a property name
+        \param[in] property_name a property name
         \param[in] v a value for property
      */
     template<
         typename _Value
     >
-    void registerImmutableProperty(const std::string& propname, const _Value& v)
+    void registerImmutableProperty(const std::string& property_name, const _Value& v)
     {
-        duk_push_string(m_context, propname.c_str());
+        duk_push_string(m_context, property_name.c_str());
         dukpp03::PushValue<_Value, Self>::perform(this, v);
         duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
     }
     /*! Sets mutable property for value on stack top
-        \param[in] propname a property name
+        \param[in] property_name a property name
         \param[in] v a value for property 
      */
     template<
         typename _Value
     >
-    void registerMutableProperty(const std::string& propname, const _Value& v)
+    void registerMutableProperty(const std::string& property_name, const _Value& v)
     {
-        duk_push_string(m_context, propname.c_str());
+        duk_push_string(m_context, property_name.c_str());
         dukpp03::PushValue<_Value, Self>::perform(this, v);
         duk_put_prop(m_context, -3);
     }
     /*! Sets immutable callable property for value on stack top.
-        \param[in] propname a property name
+        \param[in] property_name a property name
         \param[in] callable a callable object
         \param[in] own whether we would own callable
      */
-    void registerImmutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)
+    void registerImmutableProperty(const std::string& property_name, LocalCallable* callable, bool own = true)
     {
-        duk_push_string(m_context, propname.c_str());
+        duk_push_string(m_context, property_name.c_str());
         this->pushCallable(callable, own);
         duk_def_prop(m_context, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_HAVE_WRITABLE | DUK_DEFPROP_FORCE | 0);
     }
     /*! Sets mutable callable property  for value on stack top. 
-        \param[in] propname a property name
+        \param[in] property_name a property name
         \param[in] callable a callable object 
         \param[in] own whether we would own callable
       */
-    void registerMutableProperty(const std::string& propname, LocalCallable* callable, bool own = true)
+    void registerMutableProperty(const std::string& property_name, LocalCallable* callable, bool own = true)
     {
-        duk_push_string(m_context, propname.c_str());
+        duk_push_string(m_context, property_name.c_str());
         this->pushCallable(callable, own);
         duk_put_prop(m_context, -3);
     }
     /*! Registers new attribute property for value on stack top
-        \param[in] propname a property name
+        \param[in] property_name a property name
         \param[in] getter a getter
-        \param[in] owngetter whether context should own getter
+        \param[in] should_own_getter whether context should own getter
         \param[in] setter a setter
-        \param[in] ownsetter whether context should own setter
+        \param[in] should_own_setter whether context should own setter
      */
-    void registerAtribute(
-        const std::string& propname, 
+    void registerAttribute(
+        const std::string& property_name, 
         LocalCallable* getter,
-        bool owngetter,
+        bool should_own_getter,
         LocalCallable* setter,
-        bool ownsetter    
+        bool should_own_setter
     )
     {
         // Do not allow empty attributes
@@ -424,40 +429,40 @@ public:
         {
             return;
         }
-        duk_push_string(m_context, propname.c_str());
+        duk_push_string(m_context, property_name.c_str());
         duk_idx_t obj = -2;
         duk_uint_t flags = DUK_DEFPROP_HAVE_CONFIGURABLE | DUK_DEFPROP_HAVE_ENUMERABLE | DUK_DEFPROP_ENUMERABLE | DUK_DEFPROP_FORCE;
         if (getter)
         {
             flags = flags | DUK_DEFPROP_HAVE_GETTER;
-            this->dukpp03::AbstractContext::pushCallable(getter, owngetter, true);
+            this->dukpp03::AbstractContext::pushCallable(getter, should_own_getter, true);
             obj -= 1;
         }
         
         if (setter)
         {
             flags = flags | DUK_DEFPROP_HAVE_SETTER;
-            this->dukpp03::AbstractContext::pushCallable(setter, ownsetter, true);
+            this->dukpp03::AbstractContext::pushCallable(setter, should_own_setter, true);
             obj -= 1;
         }
         duk_def_prop(m_context, obj, flags);
     }
     /*! Get global object from value
-        \param[in] propname a property for global object
+        \param[in] property_name a property for global object
         \return a value
      */
     template<
         typename _Value
     >
-    dukpp03::Maybe<_Value> getGlobal(const std::string& propname)
+    dukpp03::Maybe<_Value> getGlobal(const std::string& property_name)
     {
-        duk_get_global_string(m_context, propname.c_str());
+        duk_get_global_string(m_context, property_name.c_str());
         dukpp03::Maybe<_Value> result = dukpp03::GetValue<_Value, Self>::perform(this, -1);
         duk_pop(m_context);
         return result;
     }
 
-    /*! Evals string, with code in it. If no error occured, result is not popped
+    /*! Evaluates string, with code in it. If no error occurred, result is not popped
         out from stack, since we still may need it
         \param[in] string a string
         \param[out] error a string, where error should be written
@@ -466,7 +471,7 @@ public:
     template<
         typename _Value
     >
-    dukpp03::Maybe<_Value> evalAndGet(const std::string& string,std::string* error = NULL)
+    dukpp03::Maybe<_Value> evalAndGet(const std::string& string,std::string* error = nullptr)
     {
         this->eval(string, false, error);   
         return dukpp03::GetValue<_Value, Self>::perform(this, -1);
@@ -554,7 +559,7 @@ public:
         {
             return m_class_bindings.get(name);
         }
-        return NULL;
+        return nullptr;
     }
 
     /*! Inserts linked pointer to context, storing it 
@@ -730,6 +735,7 @@ public:
         \param[in] v5 a fifth argument
         \param[in] v6 a sixth argument
         \param[in] v7 a seventh argument
+        \param[in] v8 an eighth argument
      */
     template<typename _T1, typename _T2, typename _T3, typename _T4, typename _T5, typename _T6, typename _T7, typename _T8>
     void callGlobalFunction(const char* function, _T1 v1, _T2 v2, _T3 v3, _T4 v4, _T5 v5, _T6 v6, _T7 v7, _T8 v8)
@@ -749,20 +755,20 @@ public:
 protected:
     /*! Starts evaluating object, needed for data
      */
-    virtual void startEvaluating()
+    virtual void startEvaluating() override
     {
         _TimerInterface::restart(m_timeout_timer);
     }
     /*! Returns time, elapsed from evaluation
      */
-    virtual double elapsedFromEvaluation()
+    virtual double elapsedFromEvaluation() override
     {
         return _TimerInterface::elapsed(m_timeout_timer);
     }
     /*! Adds callable to needed set
         \param[in] c callable
      */
-    virtual void addCallableToSet(dukpp03::AbstractCallable* c)
+    virtual void addCallableToSet(dukpp03::AbstractCallable* c) override
     {
         if (m_functions.contains(c) == false)
         {
@@ -793,17 +799,17 @@ typename _Context::Variant* Finalizer<_Context>::getVariantToFinalize(duk_contex
 {
     if (duk_is_object(ctx, 0))
     {
-        typename _Context::Variant* result = NULL;
+        typename _Context::Variant* result = nullptr;
         duk_get_prop_string(ctx, 0, DUKPP03_VARIANT_PROPERTY_SIGNATURE);
         if (duk_is_pointer(ctx, -1))
         {
             void* ptr = duk_to_pointer(ctx, -1);
-            result = reinterpret_cast<typename _Context::Variant*>(ptr);
+            result = static_cast<typename _Context::Variant*>(ptr);
         }
         duk_pop(ctx);
         return result;
     }
-    return NULL;
+    return nullptr;
 }
 
 

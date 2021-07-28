@@ -1,8 +1,10 @@
+#pragma once
+// ReSharper disable once CppUnusedIncludeDirective
 #include "context.h"
 #include <vector>
 #include <stdexcept>
+// ReSharper disable once CppUnusedIncludeDirective
 #include <cstdio>
-#pragma once
 
 #define DUKPP03_JSOBJECT_POINTER_SIGNATURE "\1dukpp03::JSObject<_Context>\1"
 
@@ -25,7 +27,7 @@ struct JSObjectFinalizer
         \param[in] ctx context
         \return variant or null if nothing
      */
-    static typename dukpp03::JSObject<_Context>* getObject(duk_context* ctx);
+    static dukpp03::JSObject<_Context>* getObject(duk_context* ctx);
     /*! A finalization function
         \param[in] ctx context
         \return 0
@@ -94,7 +96,7 @@ public:
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
             return new ValueField<T>(m_value);
         }
@@ -102,14 +104,14 @@ public:
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             dukpp03::PushValue<T, _Context>::perform(ctx, m_value);
             duk_put_prop_string(ctx->context(), id, this->name().c_str());
         }
         /*! Could be inherited
          */
-        virtual ~ValueField()
+        virtual ~ValueField() override
         {
             
         }
@@ -131,7 +133,7 @@ public:
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
             return new EvaluatedField(m_value);
         }
@@ -139,24 +141,24 @@ public:
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             duk_context* c = ctx->context();
-            duk_idx_t before = duk_get_top(c);
+            const duk_idx_t before = duk_get_top(c);
             duk_push_string(c, m_value.c_str());
             if (duk_peval(c) != 0)
             {
                 assert(false);
             }
-            duk_idx_t after = duk_get_top(c);
-            int diff = after - before;
+            const duk_idx_t after = duk_get_top(c);
+            const int diff = after - before;
             assert( diff >= 1);
 
             duk_put_prop_string(c, id, this->name().c_str());
         }
         /*! Could be inherited
          */
-        virtual ~EvaluatedField()
+        virtual ~EvaluatedField() override
         {
             
         }
@@ -169,7 +171,7 @@ public:
     {
     public:
         /*! Constructs new callable field
-            \param[in] value a calalble value
+            \param[in] value a callable value
             \param[in] own owned field
          */
         inline CallableField(dukpp03::Callable<_Context>* value, bool own) : m_value(value), m_own(false)
@@ -179,7 +181,7 @@ public:
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
             return new CallableField(m_value->clone(), true);
         }
@@ -187,7 +189,7 @@ public:
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             duk_context* c = ctx->context();
             ctx->pushCallable(m_value->clone());
@@ -196,7 +198,7 @@ public:
         }
         /*! Could be inherited
          */
-        virtual ~CallableField()
+        virtual ~CallableField() override
         {
             if (m_own)
             {
@@ -225,7 +227,7 @@ public:
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
             return new NullField();
         }
@@ -233,7 +235,7 @@ public:
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             duk_context* c = ctx->context();
             duk_push_null(c);
@@ -242,43 +244,43 @@ public:
         }
         /*! Could be inherited
          */
-        virtual ~NullField()
+        virtual ~NullField() override
         {
 
         }
     };
-    /*! A callable field, that contains mative function
+    /*! A callable field, that contains native function
      */
     class CFunctionField: public Field
     {
     public:
         /*! Constructs new field
          */
-        inline CFunctionField(duk_c_function function, duk_idx_t nargs) : m_function(function), m_nargs(nargs)
+        inline CFunctionField(const duk_c_function function, duk_idx_t argument_count) : m_function(function), m_argument_count(argument_count)
         {
             
         }
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
-            return new CFunctionField(m_function, m_nargs);
+            return new CFunctionField(m_function, m_argument_count);
         }
         /*! Registers for object of a field
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             duk_context* c = ctx->context();
-            duk_push_c_function(c, m_function, m_nargs);
+            duk_push_c_function(c, m_function, m_argument_count);
 
             duk_put_prop_string(c, id, this->name().c_str());
         }
         /*! Could be inherited
          */
-        virtual ~CFunctionField()
+        virtual ~CFunctionField() override
         {
 
         }
@@ -288,9 +290,9 @@ public:
         duk_c_function m_function;
         /*! An inner argument count for function
          */ 
-        duk_idx_t m_nargs;
+        duk_idx_t m_argument_count;
     };
-    /*! A callable field, that contains mative function
+    /*! A callable field, that contains JS Object
      */
     class JSObjectField: public Field
     {
@@ -310,15 +312,15 @@ public:
         dukpp03::JSObject<_Context>* value() const
         {
             return m_value;
-        };
+        }
         /*! Returns a copy of field
             \return a copy of field
          */
-        virtual Field* clone() const
+        virtual Field* clone() const override
         {
             if (!m_value)
             {
-                return new JSObjectField(NULL);
+                return new JSObjectField(nullptr);
             }
             else
             {
@@ -329,7 +331,7 @@ public:
             \param[in] ctx context
             \param[in] id an id for object
          */
-        virtual void registerForObject(_Context* ctx, duk_idx_t id)
+        virtual void registerForObject(_Context* ctx, duk_idx_t id) override
         {
             duk_context* c = ctx->context();
             if (m_value)
@@ -366,14 +368,14 @@ public:
     };
     /*! Makes new empty object
      */
-    JSObject() : m_refcount(0)
+    JSObject() : m_reference_count(0)
     {
         
     }
     /*! Makes new copied object
         \param[in] o object
      */
-    JSObject(const JSObject<_Context>& o)  : m_refcount(0)
+    JSObject(const JSObject<_Context>& o)  : m_reference_count(0)
     {
         m_links.clear();
         this->copy(o);
@@ -407,11 +409,11 @@ public:
 
         // Push object and store heap pointer
         duk_idx_t obj = duk_push_object(c);
-        void* heapptr = duk_get_heapptr(c, obj);
+        void* heap_pointer = duk_get_heapptr(c, obj);
         Link lnk;
         lnk.Context = ctx;
-        lnk.HeapPointer = heapptr;
-        ctx->insertLinkedPointer(heapptr);
+        lnk.HeapPointer = heap_pointer;
+        ctx->insertLinkedPointer(heap_pointer);
         (const_cast<JSObject<_Context>*>(this))->m_links.push_back(lnk);
 
         // Set inner value, stored to ensure consistency
@@ -439,7 +441,7 @@ public:
     void registerAsGlobalVariable(_Context* ctx, const std::string& name) const
     {
         duk_context* c = ctx->context();
-        std::string::size_type pos = name.find_last_of('.');
+        const std::string::size_type pos = name.find_last_of('.');
         if (pos == std::string::npos)
         {
             duk_push_global_object(c);
@@ -447,18 +449,18 @@ public:
         }
         else
         {
-            std::string subname = name.substr(0, pos);
-            std::string propname = name.substr(pos + 1);
-            duk_idx_t before = duk_get_top(c);
-            duk_push_string(c, subname.c_str());
+	        const std::string sub_name = name.substr(0, pos);
+	        const std::string property_name = name.substr(pos + 1);
+	        const duk_idx_t before = duk_get_top(c);
+            duk_push_string(c, sub_name.c_str());
             if (duk_peval(c) != 0)
             {
                 assert(false);
             }
-            duk_idx_t after = duk_get_top(c);
-            int diff = after - before;
+	        const duk_idx_t after = duk_get_top(c);
+	        const int diff = after - before;
             assert( diff >= 1);
-            duk_push_string(c, propname.c_str());
+            duk_push_string(c, property_name.c_str());
         }
         this->pushOnStackOfContext(ctx);
         duk_put_prop(c, -3);
@@ -583,12 +585,12 @@ public:
     /*! Sets new property of object or replaces old. Edit runtime object if needed
          \param[in] name a name of property
          \param[in] function a function
-         \param[in] nargs amount of arguments in a function
+         \param[in] argument_count amount of arguments in a function
      */
-    void setProperty(const std::string& name, duk_c_function function, duk_idx_t nargs)
+    void setProperty(const std::string& name, duk_c_function function, duk_idx_t argument_count)
     {
         this->deleteProperty(name);
-        Field* f = new CFunctionField(function, nargs);
+        Field* f = new CFunctionField(function, argument_count);
         f->setName(name);
         m_fields.push_back(f);
         registerFieldInAllContexts(f);
@@ -641,15 +643,15 @@ public:
      */
     void addRef()
     {
-        ++m_refcount;
+        ++m_reference_count;
     }
 
     /*! Deletes reference from object
      */
     void delRef()
     {
-        --m_refcount;
-        if (m_refcount <= 0)
+        --m_reference_count;
+        if (m_reference_count <= 0)
         {
             delete this;
         }
@@ -658,14 +660,14 @@ public:
     /*! Called, when object is erased from heap of context. Note, that this could be only one of many links to object, so, 
         we should proceed carefully.
         \param[in] ctx context
-        \param[in] heapptr a heap pointer from context
+        \param[in] heap_pointer a heap pointer from context
      */
-    void eraseLinkFromContext(_Context* ctx, void* heapptr)
+    void eraseLinkFromContext(_Context* ctx, void* heap_pointer)
     {
-        ctx->removeLinkedPointer(heapptr);
+        ctx->removeLinkedPointer(heap_pointer);
         for(size_t i = 0; i < m_links.size(); i++)
         {
-            if ((m_links[i].Context == ctx) && (m_links[i].HeapPointer == heapptr))
+            if ((m_links[i].Context == ctx) && (m_links[i].HeapPointer == heap_pointer))
             {
                 m_links.erase(m_links.begin() + i);
                 this->delRef();
@@ -764,27 +766,28 @@ protected:
     std::vector<JSObjectField*> m_object_fields;
     /*! A reference counting
      */
-    unsigned int m_refcount;
+    // ReSharper disable once CppInconsistentNaming
+    unsigned int m_reference_count;
 };
 
 template<
     typename _Context
 >
-typename dukpp03::JSObject<_Context>* JSObjectFinalizer<_Context>::getObject(duk_context* ctx)
+dukpp03::JSObject<_Context>* JSObjectFinalizer<_Context>::getObject(duk_context* ctx)
 {
     if (duk_is_object(ctx, 0))
     {
-        dukpp03::JSObject<_Context>* result = NULL;
+        dukpp03::JSObject<_Context>* result = nullptr;
         duk_get_prop_string(ctx, 0, DUKPP03_JSOBJECT_POINTER_SIGNATURE);
         if (duk_is_pointer(ctx, -1))
         {
             void* ptr = duk_to_pointer(ctx, -1);
-            result = reinterpret_cast<dukpp03::JSObject<_Context>*>(ptr);
+            result = static_cast<dukpp03::JSObject<_Context>*>(ptr);
         }
         duk_pop(ctx);
         return result;
     }
-    return NULL;
+    return nullptr;
 }
 
 
@@ -793,14 +796,14 @@ template<
 >
 duk_ret_t JSObjectFinalizer<_Context>::finalize(duk_context *ctx)
 {
-    typename dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
+	dukpp03::JSObject<_Context>* o = JSObjectFinalizer<_Context>::getObject(ctx);
     _Context* parent  = static_cast<_Context*>(dukpp03::AbstractContext::getContext(ctx));
     if (o) 
     {
-        void* heapptr = duk_get_heapptr(ctx, 0);
-        if (parent->isLinkedPointerStored(heapptr))
+        void* heap_pointer = duk_get_heapptr(ctx, 0);
+        if (parent->isLinkedPointerStored(heap_pointer))
         {
-            o->eraseLinkFromContext(parent, heapptr);
+            o->eraseLinkFromContext(parent, heap_pointer);
         }
     }
     return 0;

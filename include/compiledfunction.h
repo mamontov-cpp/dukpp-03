@@ -6,6 +6,7 @@
 #include "duk_custom.h"
 #include "../duktape/src/duktape.h"
 #include "callable.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "getvalue.h"
 #include "pushvalue.h"
 #include <cstring>
@@ -23,7 +24,7 @@ class CompiledFunction: public dukpp03::Callable<_Context>
 public:
     /*! Constructs invalid function
      */
-    CompiledFunction() : m_buffer(NULL), m_size(0)
+    CompiledFunction() : m_buffer(nullptr), m_size(0)
     {
         
     }
@@ -47,8 +48,10 @@ public:
         \param[in] f function
         \return self-reference
      */
-    dukpp03::CompiledFunction<_Context>& operator=(const dukpp03::CompiledFunction<_Context>& f)
+    dukpp03::CompiledFunction<_Context>& operator=(const dukpp03::CompiledFunction<_Context>& f)  // NOLINT(bugprone-unhandled-self-assignment)
     {
+        if (this == &f)
+            return *this;
         this->destroy();
         this->copy(f);
         return *this;
@@ -57,7 +60,7 @@ public:
     /*! Must return copy of callable object
         \return copy of callable object
      */
-    virtual Callable<_Context>* clone()
+    virtual Callable<_Context>* clone() override
     {
         return new dukpp03::CompiledFunction<_Context>(*this);
     }
@@ -81,7 +84,7 @@ public:
     /*! We don't know how much arguments do we need, so return -1
         \return -1
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -90,7 +93,7 @@ public:
         \param[in] c context
         \return pair
      */
-    virtual std::pair<int, bool> canBeCalled(_Context* c)
+    virtual std::pair<int, bool> canBeCalled(_Context* c) override
     {
         if (!valid())
         {
@@ -102,13 +105,13 @@ public:
         \param[in] ctx context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* ctx)
+    virtual int call(_Context* ctx) override
     {
         if (!valid())
         {
             return 0;
         }
-        int top = ctx->getTop();
+        const int top = ctx->getTop();
         duk_context* c = ctx->context();
         void* p = duk_push_fixed_buffer(c, m_size);
         memcpy(p, m_buffer, m_size);
@@ -136,7 +139,7 @@ public:
     }
     /*! Destructs inner buffer for function
      */
-    ~CompiledFunction()
+    ~CompiledFunction() override
     {
         this->destroy();
     }
@@ -145,7 +148,7 @@ public:
      */
     bool valid() const 
     {
-        return m_buffer != NULL;
+        return m_buffer != nullptr;
     }
 protected:
     /*! Copies function state from other function
@@ -161,15 +164,15 @@ protected:
         }
         else
         {
-            m_buffer = NULL;
+            m_buffer = nullptr;
             m_size = 0;
         }
     }
     /*! Destructs buffer value
      */
-    void destroy()
+    void destroy() const
     {
-        delete[] reinterpret_cast<char*>(m_buffer);
+        delete[] static_cast<char*>(m_buffer);
     }
     /*! A buffer pointer
      */

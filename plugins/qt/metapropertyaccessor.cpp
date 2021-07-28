@@ -17,9 +17,7 @@ dukpp03::qt::MetaPropertyAccessor::MetaPropertyAccessor(
 }
 
 dukpp03::qt::MetaPropertyAccessor::~MetaPropertyAccessor()
-{
-
-}
+= default;
 
 
 dukpp03::Callable<dukpp03::qt::BasicContext>* dukpp03::qt::MetaPropertyAccessor::clone()
@@ -38,28 +36,28 @@ std::pair<int, bool> dukpp03::qt::MetaPropertyAccessor::canBeCalled(dukpp03::qt:
     {
         return std::make_pair(-1, false);
     }
-    int matchedargs = 0;
+    int matched_arguments = 0;
     QObject* obj = this->checkThis(c);
     if (obj)
     {
-        matchedargs += 1;
+        matched_arguments += 1;
         if (m_mode == dukpp03::qt::MetaPropertyAccessor::MPAM_Set)
         {
-            dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::BasicContext>::perform(c, 0);
+	        const dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::BasicContext>::perform(c, 0);
             if (tmp.exists())
             {
                 QVariant arg = tmp.value();
-                QString methodTypeName = m_property.typeName();
+                const QString method_type_name = m_property.typeName();
 
-                if (dukpp03::qt::Convert::canConvert(methodTypeName, &arg))
+                if (dukpp03::qt::Convert::canConvert(method_type_name, &arg))
                 {
-                    matchedargs += 1;
+                    matched_arguments += 1;
                 }
             }
         }
     }
 
-    return std::make_pair(matchedargs, matchedargs == (this->requiredArguments() + 1));
+    return std::make_pair(matched_arguments, matched_arguments == (this->requiredArguments() + 1));
 }
 
 bool dukpp03::qt::MetaPropertyAccessor::canBeCalledAsConstructor()
@@ -88,11 +86,11 @@ int dukpp03::qt::MetaPropertyAccessor::_call(dukpp03::qt::BasicContext* c)
             bool ok = false;
             if (dukpp03::qt::Convert::canConvert(propTypeName, &arg))
             {
-                 QVariant parg;
-                 if (dukpp03::qt::Convert::convert(propTypeName, &arg, parg))
+                 QVariant parent_variant;
+                 if (dukpp03::qt::Convert::convert(propTypeName, &arg, parent_variant))
                  {
                      ok = true;
-                     m_property.write(obj, parg);
+                     m_property.write(obj, parent_variant);
                  }
             }
 
@@ -122,21 +120,21 @@ int dukpp03::qt::MetaPropertyAccessor::_call(dukpp03::qt::BasicContext* c)
 
 QObject* dukpp03::qt::MetaPropertyAccessor::checkThis(dukpp03::qt::BasicContext* c) const
 {
-    dukpp03::Maybe< QObject* > maybethisobject;
+    dukpp03::Maybe< QObject* > maybe_this_object;
 
-    dukpp03::qt::Context::LocalCallable::CheckArgument< QObject* >::passedAsThis(c, maybethisobject);
-    if (maybethisobject.exists())
+    dukpp03::qt::Context::LocalCallable::CheckArgument< QObject* >::passedAsThis(c, maybe_this_object);
+    if (maybe_this_object.exists())
     {
-        QObject* thisobj  = maybethisobject.value();
-        const QMetaObject* obj = thisobj->metaObject();
+        QObject* this_object  = maybe_this_object.value();
+        const QMetaObject* obj = this_object->metaObject();
         if (m_index >= obj->propertyOffset() && m_index < obj->propertyCount())
         {
-            QMetaProperty prop = obj->property(m_index);
-            if (QString(prop.typeName()) == QString(m_property.typeName()))
+            QMetaProperty property = obj->property(m_index);
+            if (QString(property.typeName()) == QString(m_property.typeName()))
             {
-                return thisobj;
+                return this_object;
             }
         }
     }
-    return NULL;
+    return nullptr;
 }

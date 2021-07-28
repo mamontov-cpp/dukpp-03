@@ -11,7 +11,7 @@
 
 dukpp03::AbstractContext::AbstractContext() : m_maximal_execution_time(30000), m_running(false)
 {
-    m_context = duk_create_heap(NULL,NULL, NULL, this, NULL);
+    m_context = duk_create_heap(nullptr, nullptr, nullptr, this, nullptr);
     duk_print_alert_init(m_context, 0 /*flags*/);
 }
 

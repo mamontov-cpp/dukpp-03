@@ -53,7 +53,8 @@ public:
         {
             result.setValue(_LinearStructure<_ValueType>());        
             // ReSharper disable once CppInitializedValueIsAlwaysRewritten
-            duk_size_t i = 0, n = duk_get_length(ctx, pos);
+            duk_size_t i = 0;
+            const duk_size_t n = duk_get_length(ctx, pos);
 
             for (i = 0; i < n; i++) {
                 duk_get_prop_index(ctx, pos, i);
@@ -144,7 +145,7 @@ public:
             if (duk_is_pointer(ctx->context(), -1))
             {
                 void* ptr = duk_to_pointer(ctx->context(), -1);
-                QVariant * v = reinterpret_cast<QVariant *>(ptr);
+                auto* v = static_cast<QVariant*>(ptr);
                 if (v)
                 {
                     QObject* o = dukpp03::qt::toQObject(v);
@@ -175,7 +176,7 @@ public:
         duk_idx_t pos
     )
     {
-        dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::qt::BasicContext>::perform(ctx, pos);
+	    const dukpp03::Maybe<std::string> result = dukpp03::GetValue<std::string, dukpp03::qt::BasicContext>::perform(ctx, pos);
         if (result.exists())
         {
             return dukpp03::Maybe<QString>(QString(result.value().c_str()));
@@ -217,7 +218,7 @@ inline static dukpp03::Maybe<QVariant> perform(
         if (duk_is_pointer(ctx->context(), -1))
         {
             void* ptr = duk_to_pointer(ctx->context(), -1);
-            QVariant * v = reinterpret_cast<QVariant *>(ptr);
+            auto* v = static_cast<QVariant *>(ptr);
             if (v)
             {
                 result.setValue(*v);

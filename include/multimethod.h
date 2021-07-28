@@ -38,8 +38,11 @@ public:
      */
     MultiMethod& operator=(const dukpp03::MultiMethod<_Context>& m)
     {
+        if (this == &m)
+            return *this;
         this->clear();
         this->copy(m);
+        return *this;
     }
     /*! Destructs multi-method
      */
@@ -75,7 +78,7 @@ public:
     /*! Returns whether it could be called as constructor
         \return true if can
      */
-    virtual bool canBeCalledAsConstructor()
+    virtual bool canBeCalledAsConstructor() override
     {
         for(size_t i = 0; i < m_callables.size(); i++)
         {
@@ -89,7 +92,7 @@ public:
     /*! Returns whether it could be called as function
         \return true if can
      */
-    virtual bool canBeCalledAsFunction()
+    virtual bool canBeCalledAsFunction() override
     {
         for(size_t i = 0; i < m_callables.size(); i++)
         {
@@ -104,7 +107,7 @@ public:
         \param[in] c context
         \return pair
      */
-    virtual std::pair<int, bool> canBeCalled(_Context* c)
+    virtual std::pair<int, bool> canBeCalled(_Context* c) override
     {
         if (duk_is_constructor_call(c->context()))
         {
@@ -121,7 +124,7 @@ public:
             }
         }
         std::pair<int, bool> result = std::make_pair(0, false);
-        Callable<_Context>* ptr = NULL;
+        Callable<_Context>* ptr = nullptr;
         this->getCandidate(c, result, &ptr);
         return result;
     }
@@ -129,7 +132,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(_Context* c)
+    virtual int call(_Context* c) override
     {
         if (duk_is_constructor_call(c->context()))
         {
@@ -149,14 +152,13 @@ public:
         }
         
         std::pair<int, bool> result = std::make_pair(0, false);
-        Callable<_Context>* ptr = NULL;
+        Callable<_Context>* ptr = nullptr;
         this->getCandidate(c, result, &ptr);
         // std::cout << result.first << ", " << result.second << "\n";
         try
         {
             if (ptr)
                 return ptr->call(c);
-            return 0;
         }
         catch(dukpp03::ArgumentException e)
         {
@@ -178,14 +180,14 @@ public:
     /*! Must return copy of callable object
         \return copy of callable object
      */
-    virtual Callable<_Context>* clone()
+    virtual Callable<_Context>* clone() override
     {
         return new MultiMethod<_Context>(*this);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         if (m_callables.size() == 0)
         {
@@ -195,7 +197,7 @@ public:
         bool first = true;
         for(size_t i = 0; i < m_callables.size(); i++)
         {
-            int args = m_callables[i]->requiredArguments();
+	        const int args = m_callables[i]->requiredArguments();
             if ((args < result) || first)
             {
                 first = false;
@@ -226,7 +228,7 @@ protected:
         bool first = true;
         for(size_t i = 0; i < m_callables.size(); i++)
         {
-            std::pair<int, bool> candidate = m_callables[i]->canBeCalled(c);
+	        const std::pair<int, bool> candidate = m_callables[i]->canBeCalled(c);
             // std::cout << "Candidate" << i << ": " << candidate.first << ", " << candidate.second << "\n";
             // If candidate matched more than current, than it should be used, but watch out for first match
             if ((candidate.first > result.first) || first)

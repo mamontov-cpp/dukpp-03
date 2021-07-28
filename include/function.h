@@ -34,14 +34,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction0<_Context>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -51,14 +51,14 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         m_callee();        
         return 0;
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction0()
+    virtual ~VoidFunction0() override
     {
 
     }
@@ -90,14 +90,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction1<_Context, _Arg0>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -107,7 +107,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         m_callee(_a0._());        
@@ -115,7 +115,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction1()
+    virtual ~VoidFunction1() override
     {
 
     }
@@ -147,14 +147,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction2<_Context, _Arg0,_Arg1>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 2;
     }
@@ -164,7 +164,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -173,7 +173,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction2()
+    virtual ~VoidFunction2() override
     {
 
     }
@@ -205,14 +205,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction3<_Context, _Arg0,_Arg1,_Arg2>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 3;
     }
@@ -222,7 +222,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -232,7 +232,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction3()
+    virtual ~VoidFunction3() override
     {
 
     }
@@ -264,14 +264,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction4<_Context, _Arg0,_Arg1,_Arg2,_Arg3>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 4;
     }
@@ -281,7 +281,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -292,7 +292,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction4()
+    virtual ~VoidFunction4() override
     {
 
     }
@@ -324,14 +324,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction5<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 5;
     }
@@ -341,7 +341,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -353,7 +353,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction5()
+    virtual ~VoidFunction5() override
     {
 
     }
@@ -385,14 +385,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction6<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 6;
     }
@@ -402,7 +402,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -415,7 +415,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction6()
+    virtual ~VoidFunction6() override
     {
 
     }
@@ -447,14 +447,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction7<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 7;
     }
@@ -464,7 +464,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -478,7 +478,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction7()
+    virtual ~VoidFunction7() override
     {
 
     }
@@ -510,14 +510,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction8<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 8;
     }
@@ -527,7 +527,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -542,7 +542,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction8()
+    virtual ~VoidFunction8() override
     {
 
     }
@@ -574,14 +574,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction9<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 9;
     }
@@ -591,7 +591,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -607,7 +607,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction9()
+    virtual ~VoidFunction9() override
     {
 
     }
@@ -639,14 +639,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction10<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 10;
     }
@@ -656,7 +656,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -673,7 +673,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction10()
+    virtual ~VoidFunction10() override
     {
 
     }
@@ -705,14 +705,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction11<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 11;
     }
@@ -722,7 +722,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -740,7 +740,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction11()
+    virtual ~VoidFunction11() override
     {
 
     }
@@ -772,14 +772,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction12<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 12;
     }
@@ -789,7 +789,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -808,7 +808,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction12()
+    virtual ~VoidFunction12() override
     {
 
     }
@@ -840,14 +840,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction13<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 13;
     }
@@ -857,7 +857,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -877,7 +877,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction13()
+    virtual ~VoidFunction13() override
     {
 
     }
@@ -909,14 +909,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction14<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 14;
     }
@@ -926,7 +926,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -947,7 +947,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction14()
+    virtual ~VoidFunction14() override
     {
 
     }
@@ -979,14 +979,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction15<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 15;
     }
@@ -996,7 +996,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1018,7 +1018,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction15()
+    virtual ~VoidFunction15() override
     {
 
     }
@@ -1050,14 +1050,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual  dukpp03::Callable<_Context>* clone()
+    virtual  dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::VoidFunction16<_Context, _Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14,_Arg15>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 16;
     }
@@ -1067,7 +1067,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1090,7 +1090,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~VoidFunction16()
+    virtual ~VoidFunction16() override
     {
 
     }
@@ -1121,14 +1121,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction0<_Context, _ReturnType>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -1138,7 +1138,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
 
         _ReturnType t = m_callee();
@@ -1178,14 +1178,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction1<_Context, _ReturnType,_Arg0>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -1195,7 +1195,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
 
@@ -1237,14 +1237,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction2<_Context, _ReturnType,_Arg0,_Arg1>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 2;
     }
@@ -1254,7 +1254,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1298,14 +1298,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction3<_Context, _ReturnType,_Arg0,_Arg1,_Arg2>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 3;
     }
@@ -1315,7 +1315,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1361,14 +1361,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction4<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 4;
     }
@@ -1378,7 +1378,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1426,14 +1426,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction5<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 5;
     }
@@ -1443,7 +1443,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1493,14 +1493,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction6<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 6;
     }
@@ -1510,7 +1510,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1562,14 +1562,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction7<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 7;
     }
@@ -1579,7 +1579,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1633,14 +1633,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction8<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 8;
     }
@@ -1650,7 +1650,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1706,14 +1706,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction9<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 9;
     }
@@ -1723,7 +1723,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1781,14 +1781,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction10<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 10;
     }
@@ -1798,7 +1798,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1858,14 +1858,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction11<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 11;
     }
@@ -1875,7 +1875,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1937,14 +1937,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction12<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 12;
     }
@@ -1954,7 +1954,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -2018,14 +2018,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction13<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 13;
     }
@@ -2035,7 +2035,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -2101,14 +2101,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction14<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 14;
     }
@@ -2118,7 +2118,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -2186,14 +2186,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction15<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 15;
     }
@@ -2203,7 +2203,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -2273,14 +2273,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::RetFunction16<_Context, _ReturnType,_Arg0,_Arg1,_Arg2,_Arg3,_Arg4,_Arg5,_Arg6,_Arg7,_Arg8,_Arg9,_Arg10,_Arg11,_Arg12,_Arg13,_Arg14,_Arg15>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()  
+    virtual int requiredArguments() override
     {
         return 16;
     }
@@ -2290,7 +2290,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {        
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);

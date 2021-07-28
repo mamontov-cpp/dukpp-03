@@ -18,7 +18,7 @@ public:
     ArgumentException();
     /*! It could be inherited, but there are no reason to do that
      */
-    virtual ~ArgumentException() throw();
+    virtual ~ArgumentException() override;
 };
     
 

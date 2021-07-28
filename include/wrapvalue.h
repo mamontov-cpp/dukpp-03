@@ -7,7 +7,7 @@
 namespace dukpp03
 {
 
-/*! A wrpper for wrapping value for specified context
+/*! A wrapper for wrapping value for specified context
  */
 struct WrapValue
 {

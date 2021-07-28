@@ -4,6 +4,7 @@
      Describes a value, that can be absent.
  */
 #pragma once
+// ReSharper disable once CppUnusedIncludeDirective
 #include <cstdlib>
 
 namespace dukpp03
@@ -20,11 +21,11 @@ class Maybe
   public:
       /*! Creates new non-existent value
        */
-      Maybe() : m_reference(NULL), m_exists(false) { } //-V730
+      Maybe() : m_reference(nullptr), m_exists(false) { } //-V730
       /*! Creates a new presented value
           \param[in] data an inner data for value
        */
-      Maybe(const  T & data) :  m_exists(true), m_data(data), m_reference(NULL) { }
+      Maybe(const  T & data) :  m_exists(true), m_data(data), m_reference(nullptr) { }
       /*! Creates new value for a reference to data
           \param[in] data a data to be set
        */

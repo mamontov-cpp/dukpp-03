@@ -46,7 +46,7 @@ public:
     )
     {
         duk_context* ctx = c->context();
-        int arr_idx = duk_push_array(ctx);
+        const int arr_idx = duk_push_array(ctx);
         int index = 0;
         for(typename _LinearStructure<_ValueType>::const_iterator it = result.begin(); it != result.end(); ++it)
         {
@@ -82,7 +82,7 @@ public:
     )
     {
         duk_context* ctx = c->context();
-        int obj_idx = duk_push_object(ctx);
+        const int obj_idx = duk_push_object(ctx);
         for(typename _DictionaryStructure<QString, _ValueType>::const_iterator it = result.begin(); it != result.end(); ++it)
         {
             dukpp03::PushValue<_ValueType, _Context>::perform(c, it.value());

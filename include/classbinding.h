@@ -6,7 +6,6 @@
 #include <map>
 #include <vector>
 #include <utility>
-#include <algorithm>
 #include "callable.h"
 #include "constructor.h"
 #include "multimethod.h"
@@ -39,7 +38,7 @@ public:
     /*! A named accessor for binding
      */
     typedef std::pair<std::string, Accessor> NamedAccessor;
-    /*! An acessor list for all of accessor
+    /*! An accessor list for all of accessor
      */
     typedef std::vector<NamedAccessor> AccessorList;
     /*! Creates new empty binding
@@ -492,12 +491,12 @@ public:
         
         for(size_t i = 0; i < m_accessors.size(); i++)
         {
-            c->registerAtribute(m_accessors[i].first, m_accessors[i].second.first, false, m_accessors[i].second.second, false);
+            c->registerAttribute(m_accessors[i].first, m_accessors[i].second.first, false, m_accessors[i].second.second, false);
         }
 
         if (m_prototype_function.size() != 0)
         {
-            duk_bool_t result = duk_peval_string(c->context(), m_prototype_function.c_str());
+	        const duk_bool_t result = duk_peval_string(c->context(), m_prototype_function.c_str());
             assert( result == 0);
             duk_set_prototype(c->context(), -2);
         }
@@ -590,13 +589,13 @@ protected:
                 return;
             }
         }
-        dukpp03::MultiMethod<_Context>* g = NULL;
+        dukpp03::MultiMethod<_Context>* g = nullptr;
         if (getter)
         {
             g = new dukpp03::MultiMethod<_Context>();
             g->add(getter);
         }
-        dukpp03::MultiMethod<_Context>* s = NULL;
+        dukpp03::MultiMethod<_Context>* s = nullptr;
         if (getter)
         {
             s = new dukpp03::MultiMethod<_Context>();
@@ -645,7 +644,7 @@ protected:
                     if (src[i].second.first->count() == 0)
                     {
                         delete src[i].second.first;
-                        src[i].second.first = NULL;
+                        src[i].second.first = nullptr;
                     }
                 }
                 
@@ -655,11 +654,11 @@ protected:
                     if (src[i].second.second->count() == 0)
                     {
                         delete src[i].second.second;
-                        src[i].second.second = NULL;
+                        src[i].second.second = nullptr;
                     }
                 }
                 
-                if (src[i].second.first == NULL && src[i].second.second == NULL)
+                if (src[i].second.first == nullptr && src[i].second.second == nullptr)
                 {
                     src.erase(src.begin() + i);
                     --i;

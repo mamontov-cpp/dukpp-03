@@ -8,16 +8,22 @@
  */
 #pragma once 
 #include "basiccontext.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "registermetatype.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "toqobject.h"
 #include "objectwithownership.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "basicmetatypes.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "qobjectfinalizer.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "pushvariant.h"
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <QMetaMethod>
 #include <QMetaProperty>
+// ReSharper disable once CppUnusedIncludeDirective
 #include <QString>
 
 namespace dukpp03
@@ -37,7 +43,7 @@ public:
     Context();
     /*! A destructor
      */
-    virtual ~Context();
+    virtual ~Context() override;
     /*! Pushes new object on stack with defined ownership
         \param[in] o object
         \param[in] p value ownership

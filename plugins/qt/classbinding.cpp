@@ -3,19 +3,16 @@
 #include "metamethod.h"
 #include "metapropertyaccessor.h"
 #include "getvalue.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "pushvalue.h"
 
 #include <QMetaMethod>
 
 dukpp03::qt::ClassBinding::ClassBinding()
-{
-    
-}
+= default;
 
 dukpp03::qt::ClassBinding::~ClassBinding()
-{
-    
-}
+= default;
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -44,8 +41,8 @@ void dukpp03::qt::ClassBinding::registerMetaObject(const QMetaObject* mo, bool r
     }
     for(i = mo->propertyOffset(); i < mo->propertyCount(); i++)
     {
-        dukpp03::Callable<dukpp03::qt::BasicContext>* getter = NULL;
-        dukpp03::Callable<dukpp03::qt::BasicContext>* setter = NULL;
+        dukpp03::Callable<dukpp03::qt::BasicContext>* getter = nullptr;
+        dukpp03::Callable<dukpp03::qt::BasicContext>* setter = nullptr;
         QMetaProperty prop = mo->property(i);
         if (prop.isReadable())
         {

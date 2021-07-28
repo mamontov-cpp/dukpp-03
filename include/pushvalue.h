@@ -1,9 +1,10 @@
 /*! \file pushvalue.h
     
 
-    Describes an operations, that could be used to push value on a stackof Duktape
+    Describes an operations, that could be used to push value on a stack of Duktape
  */
 #pragma once
+// ReSharper disable once CppUnusedIncludeDirective
 #include "context.h"
 #include "maybe.h"
 #include <string>
@@ -241,7 +242,8 @@ public:
      */
     static void perform(_Context* ctx, const float& v)
     {
-        if (v != v)
+	    // ReSharper disable once CppIdenticalOperandsInBinaryExpression
+	    if (v != v)
         {
             duk_push_nan(ctx->context());
         }
@@ -262,7 +264,8 @@ public:
      */
     static void perform(_Context* ctx, const double& v)
     {
-        if (v != v)
+	    // ReSharper disable once CppIdenticalOperandsInBinaryExpression
+	    if (v != v)
         {
             duk_push_nan(ctx->context());
         }
@@ -282,7 +285,8 @@ public:
      */
     static void perform(_Context* ctx, const long double& v)
     {
-        if (v != v)
+	    // ReSharper disable once CppIdenticalOperandsInBinaryExpression
+	    if (v != v)
         {
             duk_push_nan(ctx->context());
         }

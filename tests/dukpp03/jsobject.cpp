@@ -13,7 +13,7 @@
 
 /*! Amount of allocated marked objects
  */
-size_t allocated_objects = 0;
+::size_t allocated_objects = 0;
 
 /*! A javascript marked object
  */

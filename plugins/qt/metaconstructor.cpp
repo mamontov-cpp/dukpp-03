@@ -14,9 +14,7 @@ dukpp03::qt::MetaConstructor::MetaConstructor(const QMetaObject* mo, const QMeta
 }
 
 dukpp03::qt::MetaConstructor::~MetaConstructor()
-{
-    
-}
+= default;
 
 
 dukpp03::Callable<dukpp03::qt::BasicContext>* dukpp03::qt::MetaConstructor::clone()
@@ -35,11 +33,11 @@ std::pair<int, bool> dukpp03::qt::MetaConstructor::canBeCalled(dukpp03::qt::Basi
     {
         return std::make_pair(-1, false);
     }
-    int matchedargs = 0;
+    int matched_arguments = 0;
     QVariantList lst;
     if (dukpp03::qt::MetaMethod::stackToVariantList(c, lst))
     {
-        QList<QByteArray> methodTypes = m_method.parameterTypes();
+	    const QList<QByteArray> methodTypes = m_method.parameterTypes();
         for (int i = 0; i < methodTypes.size(); i++) 
         {
             const QVariant& arg = lst.at(i);
@@ -47,12 +45,12 @@ std::pair<int, bool> dukpp03::qt::MetaConstructor::canBeCalled(dukpp03::qt::Basi
             QString methodTypeName = methodTypes.at(i);
             if (dukpp03::qt::Convert::canConvert(methodTypeName, &arg))
             {
-                 matchedargs += 1;
+                 matched_arguments += 1;
             }
         }
     }    
 
-    return std::make_pair(matchedargs, matchedargs == this->requiredArguments());
+    return std::make_pair(matched_arguments, matched_arguments == this->requiredArguments());
 }
 
 bool dukpp03::qt::MetaConstructor::canBeCalledAsFunction()
@@ -68,7 +66,7 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
 
     // We need enough arguments to perform the conversion.
 
-    QList<QByteArray> methodTypes = metaMethod.parameterTypes();
+    const QList<QByteArray> methodTypes = metaMethod.parameterTypes();
     if (methodTypes.size() < args.size()) {
 
         *error = "Insufficient arguments to call "; 
@@ -77,16 +75,16 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
 #else
         *error += metaMethod.signature();
 #endif
-        return NULL;
+        return nullptr;
     }
 
     for (int i = 0; i < methodTypes.size(); i++) {
         const QVariant& arg = args.at(i);
-        
-        QByteArray methodTypeName = methodTypes.at(i);
-        QByteArray argTypeName = arg.typeName();
 
-        QVariant::Type methodType = QVariant::nameToType(methodTypeName);
+        const QByteArray& method_type_name = methodTypes.at(i);
+        const QByteArray argTypeName = arg.typeName();
+
+        QVariant::Type methodType = QVariant::nameToType(method_type_name);
         // ReSharper disable once CppEntityNeverUsed
         QVariant::Type argType = arg.type();
         
@@ -95,13 +93,13 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
         // If the types are not the same, attempt a conversion. If it
         // fails, we cannot proceed.
 
-        if (!dukpp03::qt::Convert::convert(methodTypeName, &arg, copy))
+        if (!dukpp03::qt::Convert::convert(method_type_name, &arg, copy))
         {
             *error     = "Cannot convert ";
             *error     += argTypeName;
             *error     += " to ";
-            *error     += methodTypeName;
-            return NULL;
+            *error     += method_type_name;
+            return nullptr;
         }
 
         converted << copy;
@@ -109,13 +107,12 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
 
     QList<QGenericArgument> arguments;
 
-    for (int i = 0; i < converted.size(); i++) {
+    for (auto& argument : converted)
+    {
 
         // Notice that we have to take a reference to the argument, else 
         // we'd be pointing to a copy that will be destroyed when this
         // loop exits. 
-
-        QVariant& argument = converted[i];
 
         // A const_cast is needed because calling data() would detach
         // the QVariant.
@@ -150,7 +147,7 @@ static QObject* metaconstructor_call(const QMetaObject* metaObject, QMetaMethod 
         *error += metaMethod.signature();
 #endif
         *error  = " failed.";
-        return NULL;
+        return nullptr;
     } else {
         return o;
     }
@@ -162,12 +159,12 @@ int dukpp03::qt::MetaConstructor::_call(dukpp03::qt::BasicContext* c)
     if (dukpp03::qt::MetaMethod::stackToVariantList(c, lst))
     {
         QString typeName = m_method.typeName();
-        QString callerror;
-        QObject* returnValue = metaconstructor_call(m_meta_object, m_method, lst, &callerror);
-        // If error occured, throw it
-        if (callerror.length())
+        QString call_error;
+        QObject* returnValue = metaconstructor_call(m_meta_object, m_method, lst, &call_error);
+        // If error occurred, throw it
+        if (call_error.length())
         {
-            c->throwError(callerror.toStdString());
+            c->throwError(call_error.toStdString());
             return 0;
         }
                                                         

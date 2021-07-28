@@ -14,7 +14,7 @@ namespace qt
 
 /*! Converts variant to QObject
     \param[in] v variant
-    \return result or NULL if cannot be casted
+    \return result or nullptr if cannot be casted
  */
 QObject* toQObject(QVariant* v);
 

@@ -172,10 +172,10 @@ template<
 class FunctionCallable: public Callable<_Context>
 {
 public: 
-    /* Returns whther it could be called as constructor
+    /* Returns whether it could be called as constructor
        \return true if can
      */
-    virtual bool canBeCalledAsConstructor()
+    virtual bool canBeCalledAsConstructor() override
     {
         return false;
     }
@@ -189,10 +189,10 @@ template<
 class ConstructorCallable: public Callable<_Context>
 {
 public: 
-    /* Returns whther it could be called as constructor
+    /* Returns whether it could be called as constructor
        \return true if can
      */
-    virtual bool canBeCalledAsFunction()
+    virtual bool canBeCalledAsFunction() override
     {
         return false;
     }
@@ -211,7 +211,7 @@ public:
 #define DUKPP03_CS(TYPE, STACKV) Callable<_Context>::template CheckArgument< DUKPP03_TYPE(TYPE) >::checkStack(c, STACKV);
 /*! A macro for beginning checking  whether function can be called
  */
-#define DUKPP03_CBC_BEGIN virtual std::pair<int, bool> canBeCalled(_Context* c) { int required_args = this->requiredArguments(); if (c->getTop() != required_args) { return std::make_pair(-1, false); }
+#define DUKPP03_CBC_BEGIN virtual std::pair<int, bool> canBeCalled(_Context* c) override { int required_args = this->requiredArguments(); if (c->getTop() != required_args) { return std::make_pair(-1, false); }
 /*! A macro for ending checking  whether function  can be called
  */
 #define DUKPP03_CBC_END }

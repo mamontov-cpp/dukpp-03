@@ -2,7 +2,7 @@
     
     Defines a timerinteface
  */
-#include <QTime>
+#include <QElapsedTimer>
 
 namespace dukpp03
 {
@@ -13,12 +13,12 @@ namespace qt
 
 struct TimerInterface
 {
-    typedef QTime Timer;
+    typedef QElapsedTimer Timer;
 
     /*! Restarts timer
         \param[in, out] t timer to be restarted
      */ 
-    inline static void restart(QTime& t)
+    inline static void restart(QElapsedTimer& t)
     {
         t.restart();
     }
@@ -26,7 +26,7 @@ struct TimerInterface
         \param[in] t timer
         \return elapsed time in milliseconds
      */
-    inline static double elapsed(QTime& t)
+    inline static double elapsed(QElapsedTimer& t)
     {
         return t.elapsed();
     }

@@ -4,6 +4,7 @@
 
 #include <QHash>
 #include <QMutex>
+// ReSharper disable once CppUnusedIncludeDirective
 #include <iostream>
 
 
@@ -21,8 +22,8 @@ static QMutex mtx;
 template<typename _To, typename _From>
 static void insertConverterToList()
 {
-    int to = qMetaTypeId<_To>();
-    int from = qMetaTypeId<_From>();
+	const int to = qMetaTypeId<_To>();
+	const int from = qMetaTypeId<_From>();
     if (converters.contains(to) == false)
     {
         converters.insert(to, QHash<int, Converter>());
@@ -127,9 +128,9 @@ static void initConverters()
 static Converter getConverter(const QString& destType, const QString& sourceType)
 {
     initConverters();
-    int destTypeId = QMetaType::type(destType.toStdString().c_str());
-    int sourceTypeId = QMetaType::type(sourceType.toStdString().c_str());
-    Converter result = NULL;
+    const int destTypeId = QMetaType::type(destType.toStdString().c_str());
+    const int sourceTypeId = QMetaType::type(sourceType.toStdString().c_str());
+    Converter result = nullptr;
     mtx.lock();
     if (converters.contains(destTypeId))
     {
@@ -150,10 +151,10 @@ static Converter getConverter(const QString& destType, const QString& sourceType
 
 bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
 {
-    QVariant copy = *v;
+	const QVariant copy = *v;
     int destType = QMetaType::type(type.toStdString().c_str());
-    QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
-    QString typeName = copy.typeName();
+	const QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
+	const QString typeName = copy.typeName();
 #if HAS_QT5
     if (copy.type() != destType)
 #else
@@ -181,7 +182,7 @@ bool dukpp03::qt::Convert::canConvert(const QString& type, const QVariant* v)
         // If we want a (QObject*)(T*) -> T* and it's applicable
         if (dukpp03::qt::is_metatype_qobject(type) && copy.canConvert<QObject*>())
         {
-            QObject* dest = copy.value<QObject*>();
+            auto dest = copy.value<QObject*>();
             if (dest)
             {
                 QString className = dest->metaObject()->className();
@@ -215,9 +216,9 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
 {
     result = *v;
     int destType = QMetaType::type(type.toStdString().c_str());
-    QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
+    const QVariant::Type destType2 =  QVariant::nameToType(type.toStdString().c_str());
 
-    QString typeName = result.typeName();
+    const QString typeName = result.typeName();
 
 #if HAS_QT5
     if (v->type() != destType)
@@ -226,7 +227,7 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
 #endif
     {
         // If we have a plain converter
-        Converter cvt = getConverter(type, typeName);
+        const Converter cvt = getConverter(type, typeName);
         if (cvt)
         {
             result = cvt(&result);
@@ -243,18 +244,18 @@ bool dukpp03::qt::Convert::convert(const QString& type, const QVariant* v, QVari
         // If we want a T* -> QObject*, and it's applicable
         if ((type == "QObject*") && dukpp03::qt::is_metatype_qobject(typeName))
         {
-            result = QVariant::fromValue(*reinterpret_cast<QObject**>(const_cast<void*>(v->data())));
+            result = QVariant::fromValue(*static_cast<QObject**>(const_cast<void*>(v->data())));
             return true;
         }
         // If we want a (QObject*)(T*) -> T* and it's applicable
         if (dukpp03::qt::is_metatype_qobject(type) && result.canConvert<QObject*>())
         {
-            QObject* dest = result.value<QObject*>();
+	        auto* dest = result.value<QObject*>();
             if (dest)
             {
                 QString className = dest->metaObject()->className();
                 className.append("*");
-                int typeId =  QMetaType::type(className.toStdString().c_str());
+                const int typeId =  QMetaType::type(className.toStdString().c_str());
                 if (type == className && typeId != UNKNOWN_TYPE)
                 {
                     result = QVariant(typeId, &dest);

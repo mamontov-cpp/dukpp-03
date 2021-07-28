@@ -38,14 +38,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return {{argscount}};
     }
@@ -55,7 +55,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
@@ -66,7 +66,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisVoidMethod{{argscount}}()
+    virtual ~ThisVoidMethod{{argscount}}() override
     {
     }   
 protected:
@@ -101,14 +101,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override  
     {
         return new dukpp03::ThisRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return {{argscount}};
     }
@@ -118,7 +118,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
@@ -130,7 +130,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisRetMethod{{argscount}}()
+    virtual ~ThisRetMethod{{argscount}}() override
     {
     }
 protected:
@@ -166,14 +166,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisConstVoidMethod{{argscount}}<_Context, _ClassName{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return {{argscount}};
     }
@@ -183,7 +183,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
@@ -194,7 +194,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisConstVoidMethod{{argscount}}()
+    virtual ~ThisConstVoidMethod{{argscount}}() override
     {
     }   
 protected:
@@ -229,14 +229,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override  
     {
         return new dukpp03::ThisConstRetMethod{{argscount}}<_Context, _ClassName, _ReturnType{{#has_args}}, {{/has_args}}{{#args}}_Arg{{number}}{{#not_last}}, {{/not_last}}{{/args}}>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return {{argscount}};
     }
@@ -246,7 +246,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
 {{#args}}
@@ -258,7 +258,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisConstRetMethod{{argscount}}()
+    virtual ~ThisConstRetMethod{{argscount}}() override
     {
     }
 protected:

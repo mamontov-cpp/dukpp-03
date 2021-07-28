@@ -8,6 +8,7 @@
 #include "context.h"
 #include "maybe.h"
 #include <string>
+// ReSharper disable once CppUnusedIncludeDirective
 #include <iostream>
 
 // Fix for MinGW
@@ -44,7 +45,7 @@ static void perform(_Context* ctx, duk_idx_t pos, dukpp03::Maybe<_Value>& result
         if (duk_is_pointer(ctx->context(), -1))
         {
             void* ptr = duk_to_pointer(ctx->context(), -1);
-            typename _Context::Variant * v = reinterpret_cast<typename _Context::Variant *>(ptr);
+            typename _Context::Variant * v = static_cast<typename _Context::Variant *>(ptr);
             if (v)
             {
                 result = _Context::template valueFromVariant<_Value>(v);
@@ -140,7 +141,7 @@ public:
 static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
 {
     dukpp03::Maybe<char> result;
-    dukpp03::Maybe<std::string> tmp = dukpp03::GetValue<std::string, _Context>::perform(ctx, pos);
+    const dukpp03::Maybe<std::string> tmp = dukpp03::GetValue<std::string, _Context>::perform(ctx, pos);
     if (tmp.exists())
     {
         if (tmp.value().size() == 1) {
@@ -149,7 +150,7 @@ static dukpp03::Maybe<char> perform(_Context* ctx, duk_idx_t pos)
     }
     if (!result.exists())
     {
-        dukpp03::Maybe<int> tmp2 = dukpp03::GetValue<int, _Context>::perform(ctx, pos);
+	    const dukpp03::Maybe<int> tmp2 = dukpp03::GetValue<int, _Context>::perform(ctx, pos);
         if (tmp2.exists())
         {
             result.setValue(static_cast<char>(tmp2.value()));
@@ -174,7 +175,7 @@ public:
  */
 static dukpp03::Maybe<signed char> perform(_Context* ctx, duk_idx_t pos)
 {
-    dukpp03::Maybe<char> mc = dukpp03::GetValue<char, _Context>::perform(ctx, pos);
+	const dukpp03::Maybe<char> mc = dukpp03::GetValue<char, _Context>::perform(ctx, pos);
     if (mc.exists())
     {
         return dukpp03::Maybe<signed char>(mc.value());
@@ -199,7 +200,7 @@ public:
 static dukpp03::Maybe<unsigned char> perform(_Context* ctx, duk_idx_t pos)
 {
     dukpp03::Maybe<unsigned char> result;
-    dukpp03::Maybe<std::string> tmp = dukpp03::GetValue<std::string, _Context>::perform(ctx, pos);
+    const dukpp03::Maybe<std::string> tmp = dukpp03::GetValue<std::string, _Context>::perform(ctx, pos);
     if (tmp.exists())
     {
         if (tmp.value().size() == 1) {
@@ -208,7 +209,7 @@ static dukpp03::Maybe<unsigned char> perform(_Context* ctx, duk_idx_t pos)
     }
     if (!result.exists())
     {
-        dukpp03::Maybe<int> tmp2 = dukpp03::GetValue<int, _Context>::perform(ctx, pos);
+	    const dukpp03::Maybe<int> tmp2 = dukpp03::GetValue<int, _Context>::perform(ctx, pos);
         if (tmp2.exists())
         {
             result.setValue(static_cast<unsigned char>(tmp2.value()));

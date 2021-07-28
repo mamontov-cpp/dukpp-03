@@ -34,14 +34,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod0<_Context, _Method,_ClassName>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -51,7 +51,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         ((_ac._())->*m_callee)();
@@ -59,7 +59,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod0()
+    virtual ~ThisExplicitVoidMethod0() override
     {
     }   
 protected:
@@ -88,14 +88,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod1<_Context, _Method,_ClassName, _Arg0>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -105,7 +105,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -114,7 +114,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod1()
+    virtual ~ThisExplicitVoidMethod1() override
     {
     }   
 protected:
@@ -144,14 +144,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod2<_Context, _Method,_ClassName, _Arg0, _Arg1>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 2;
     }
@@ -161,7 +161,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -171,7 +171,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod2()
+    virtual ~ThisExplicitVoidMethod2() override
     {
     }   
 protected:
@@ -202,14 +202,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod3<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 3;
     }
@@ -219,7 +219,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -230,7 +230,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod3()
+    virtual ~ThisExplicitVoidMethod3() override
     {
     }   
 protected:
@@ -262,14 +262,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod4<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 4;
     }
@@ -279,7 +279,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -291,7 +291,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod4()
+    virtual ~ThisExplicitVoidMethod4() override
     {
     }   
 protected:
@@ -324,14 +324,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod5<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 5;
     }
@@ -341,7 +341,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -354,7 +354,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod5()
+    virtual ~ThisExplicitVoidMethod5() override
     {
     }   
 protected:
@@ -388,14 +388,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod6<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 6;
     }
@@ -405,7 +405,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -419,7 +419,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod6()
+    virtual ~ThisExplicitVoidMethod6() override
     {
     }   
 protected:
@@ -454,14 +454,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod7<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 7;
     }
@@ -471,7 +471,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -486,7 +486,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod7()
+    virtual ~ThisExplicitVoidMethod7() override
     {
     }   
 protected:
@@ -522,14 +522,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod8<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 8;
     }
@@ -539,7 +539,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -555,7 +555,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod8()
+    virtual ~ThisExplicitVoidMethod8() override
     {
     }   
 protected:
@@ -592,14 +592,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod9<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 9;
     }
@@ -609,7 +609,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -626,7 +626,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod9()
+    virtual ~ThisExplicitVoidMethod9() override
     {
     }   
 protected:
@@ -664,14 +664,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod10<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 10;
     }
@@ -681,7 +681,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -699,7 +699,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod10()
+    virtual ~ThisExplicitVoidMethod10() override
     {
     }   
 protected:
@@ -738,14 +738,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod11<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 11;
     }
@@ -755,7 +755,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -774,7 +774,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod11()
+    virtual ~ThisExplicitVoidMethod11() override
     {
     }   
 protected:
@@ -814,14 +814,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod12<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 12;
     }
@@ -831,7 +831,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -851,7 +851,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod12()
+    virtual ~ThisExplicitVoidMethod12() override
     {
     }   
 protected:
@@ -892,14 +892,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod13<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 13;
     }
@@ -909,7 +909,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -930,7 +930,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod13()
+    virtual ~ThisExplicitVoidMethod13() override
     {
     }   
 protected:
@@ -972,14 +972,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod14<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 14;
     }
@@ -989,7 +989,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1011,7 +1011,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod14()
+    virtual ~ThisExplicitVoidMethod14() override
     {
     }   
 protected:
@@ -1054,14 +1054,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod15<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 15;
     }
@@ -1071,7 +1071,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1094,7 +1094,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod15()
+    virtual ~ThisExplicitVoidMethod15() override
     {
     }   
 protected:
@@ -1138,14 +1138,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitVoidMethod16<_Context, _Method,_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 16;
     }
@@ -1155,7 +1155,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1179,7 +1179,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitVoidMethod16()
+    virtual ~ThisExplicitVoidMethod16() override
     {
     }   
 protected:
@@ -1208,14 +1208,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod0<_Context, _Method, _ClassName, _ReturnType>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -1225,7 +1225,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         _ReturnType t = ((_ac._())->*m_callee)();
@@ -1234,7 +1234,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod0()
+    virtual ~ThisExplicitRetMethod0() override
     {
     }
 protected:
@@ -1264,14 +1264,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod1<_Context, _Method, _ClassName, _ReturnType, _Arg0>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -1281,7 +1281,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1291,7 +1291,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod1()
+    virtual ~ThisExplicitRetMethod1() override
     {
     }
 protected:
@@ -1322,14 +1322,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod2<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 2;
     }
@@ -1339,7 +1339,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1350,7 +1350,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod2()
+    virtual ~ThisExplicitRetMethod2() override
     {
     }
 protected:
@@ -1382,14 +1382,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod3<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 3;
     }
@@ -1399,7 +1399,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1411,7 +1411,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod3()
+    virtual ~ThisExplicitRetMethod3() override
     {
     }
 protected:
@@ -1444,14 +1444,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod4<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 4;
     }
@@ -1461,7 +1461,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1474,7 +1474,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod4()
+    virtual ~ThisExplicitRetMethod4() override
     {
     }
 protected:
@@ -1508,14 +1508,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod5<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 5;
     }
@@ -1525,7 +1525,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1539,7 +1539,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod5()
+    virtual ~ThisExplicitRetMethod5() override
     {
     }
 protected:
@@ -1574,14 +1574,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod6<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 6;
     }
@@ -1591,7 +1591,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1606,7 +1606,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod6()
+    virtual ~ThisExplicitRetMethod6() override
     {
     }
 protected:
@@ -1642,14 +1642,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod7<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 7;
     }
@@ -1659,7 +1659,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1675,7 +1675,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod7()
+    virtual ~ThisExplicitRetMethod7() override
     {
     }
 protected:
@@ -1712,14 +1712,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod8<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 8;
     }
@@ -1729,7 +1729,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1746,7 +1746,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod8()
+    virtual ~ThisExplicitRetMethod8() override
     {
     }
 protected:
@@ -1784,14 +1784,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod9<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 9;
     }
@@ -1801,7 +1801,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1819,7 +1819,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod9()
+    virtual ~ThisExplicitRetMethod9() override
     {
     }
 protected:
@@ -1858,14 +1858,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod10<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 10;
     }
@@ -1875,7 +1875,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1894,7 +1894,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod10()
+    virtual ~ThisExplicitRetMethod10() override
     {
     }
 protected:
@@ -1934,14 +1934,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod11<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 11;
     }
@@ -1951,7 +1951,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -1971,7 +1971,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod11()
+    virtual ~ThisExplicitRetMethod11() override
     {
     }
 protected:
@@ -2012,14 +2012,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod12<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 12;
     }
@@ -2029,7 +2029,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -2050,7 +2050,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod12()
+    virtual ~ThisExplicitRetMethod12() override
     {
     }
 protected:
@@ -2092,14 +2092,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod13<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 13;
     }
@@ -2109,7 +2109,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -2131,7 +2131,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod13()
+    virtual ~ThisExplicitRetMethod13() override
     {
     }
 protected:
@@ -2174,14 +2174,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod14<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 14;
     }
@@ -2191,7 +2191,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -2214,7 +2214,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod14()
+    virtual ~ThisExplicitRetMethod14() override
     {
     }
 protected:
@@ -2258,14 +2258,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod15<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 15;
     }
@@ -2275,7 +2275,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -2299,7 +2299,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod15()
+    virtual ~ThisExplicitRetMethod15() override
     {
     }
 protected:
@@ -2344,14 +2344,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::ThisExplicitRetMethod16<_Context, _Method, _ClassName, _ReturnType, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>(m_callee);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 16;
     }
@@ -2361,7 +2361,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName*);
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
@@ -2386,7 +2386,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~ThisExplicitRetMethod16()
+    virtual ~ThisExplicitRetMethod16() override
     {
     }
 protected:

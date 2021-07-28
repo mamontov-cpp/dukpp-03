@@ -20,7 +20,7 @@ public:
         
     }
 
-    Callable* clone()
+    Callable* clone() override
     {
         return new MockCallable();
     }
@@ -28,7 +28,7 @@ public:
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -36,7 +36,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::context::Context* c)
+    virtual int call(dukpp03::context::Context* c) override
     {
         dukpp03::PushValue<int, dukpp03::context::Context>::perform(c, 1);
         return 1;
@@ -55,7 +55,7 @@ public:
         
     }
 
-    Callable* clone()
+    Callable* clone() override
     {
         return new ThisMockCallable();
     }
@@ -63,7 +63,7 @@ public:
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -71,7 +71,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::context::Context* c)
+    virtual int call(dukpp03::context::Context* c) override
     {
         duk_context* ctx = c->context();
         duk_push_this(ctx);
@@ -106,7 +106,7 @@ public:
         
     }
 
-    Callable* clone()
+    Callable* clone() override
     {
         return new ThisMockCallableWithArg();
     }
@@ -114,7 +114,7 @@ public:
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -122,28 +122,28 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::context::Context* c)
+    virtual int call(dukpp03::context::Context* c) override
     {
         duk_context* ctx = c->context();
         duk_push_this(ctx);
         duk_get_prop_string(ctx, -1, "prop");
         std::cout << c->getTop() << "\n";
-        dukpp03::Maybe<int> fromthis = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 2);
+        const dukpp03::Maybe<int> from_this = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 2);
         duk_pop_2(ctx);
-        dukpp03::Maybe<int> firstarg = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 0);
+        const dukpp03::Maybe<int> first_argument = dukpp03::GetValue<int, dukpp03::context::Context>::perform(c, 0);
         int result = 0;
-        if (fromthis.exists() && firstarg.exists())
+        if (from_this.exists() && first_argument.exists())
         {
-            result += fromthis.value() * 10 + firstarg.value();
-            std::cout << "values exists: [" << fromthis.value() << "," << firstarg.value() << "]\n";
+            result += from_this.value() * 10 + first_argument.value();
+            std::cout << "values exists: [" << from_this.value() << "," << first_argument.value() << "]\n";
         }
         else
         {
-            if (fromthis.exists() == false) 
+            if (from_this.exists() == false) 
             {
                 std::cout << "unable to get value from this\n";
             }
-            if (firstarg.exists() == false) 
+            if (first_argument.exists() == false) 
             {
                 std::cout << "unable to get value from first argument\n";
             }           
@@ -159,12 +159,9 @@ public:
 class PointConstructor: public dukpp03::ConstructorCallable<dukpp03::context::Context>
 {
 public:
-    PointConstructor()
-    {
-        
-    }
+    PointConstructor() = default;
 
-    Callable* clone()
+    Callable* clone()  override
     {
         return new PointConstructor();
     }
@@ -172,7 +169,7 @@ public:
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments()  override
     {
         return 0;
     }
@@ -180,7 +177,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int call(dukpp03::context::Context* c)
+    virtual int call(dukpp03::context::Context* c)  override
     {        
         dukpp03::PushValue<Point, dukpp03::context::Context>::perform(c, Point());
         duk_push_string(c->context(), "Point");

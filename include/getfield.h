@@ -35,14 +35,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::GetField<_Context, _ClassName, _ReturnType>(m_field);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -52,7 +52,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName);
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, ((_ac._()).*m_field));
@@ -60,7 +60,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~GetField()
+    virtual ~GetField() override
     {
     }
 protected:
@@ -95,14 +95,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::GetFieldFor<_Context, _DestClassName, _ClassName, _ReturnType>(m_field);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -112,7 +112,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_DestClassName);
         dukpp03::PushValue<_ReturnType, _Context>::perform(c, ((_ac._()).*m_field));
@@ -120,7 +120,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~GetFieldFor()
+    virtual ~GetFieldFor() override
     {
     }
 protected:

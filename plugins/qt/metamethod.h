@@ -29,25 +29,25 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual Callable<dukpp03::qt::BasicContext>* clone();
+    virtual Callable<dukpp03::qt::BasicContext>* clone() override;
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments();
+    virtual int requiredArguments()  override;
     /*! Performs check, whether callable can be called, without actually calling an object in context
         \param[in] c context
         \return pair
      */
-    virtual std::pair<int, bool> canBeCalled(dukpp03::qt::BasicContext* c);
+    virtual std::pair<int, bool> canBeCalled(dukpp03::qt::BasicContext* c)  override;
     /*! Returns false
         \return false
      */
-    virtual bool canBeCalledAsConstructor();       
+    virtual bool canBeCalledAsConstructor() override;
     /*! Performs actual function call
         \param[in] c context
      */
-    virtual int _call(dukpp03::qt::BasicContext* c);
-    /*! Returns name for metamethod
+    virtual int _call(dukpp03::qt::BasicContext* c) override;
+    /*! Returns name for meta-method
         \param[in] method a method
         \return name for method
      */
@@ -61,13 +61,13 @@ protected:
     /*! Converts stack to list of variants
         \param[in] c context
         \param[out] list a list of variant
-        \return whether converting all of variants was successfull
+        \return whether converting all of variants was successful
      */
     static bool stackToVariantList(dukpp03::qt::BasicContext* c, QVariantList& list);
-    /*! Index of metamethod in source object
+    /*! Index of meta-method in source object
      */ 
     int m_index;
-    /*! A new metametod
+    /*! A new meta-method
      */  
     QMetaMethod m_method;
 };

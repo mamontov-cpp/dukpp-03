@@ -21,7 +21,7 @@ template<
 class Constructor0 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -32,14 +32,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor0<_ClassName>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 0;
     }
@@ -48,7 +48,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         
         _ClassName*  t = new  _ClassName;
@@ -57,7 +57,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor0()
+    virtual ~Constructor0() override
     {
     }   
 };
@@ -71,7 +71,7 @@ template<
 class Constructor1 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -82,14 +82,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor1<_ClassName, _Arg0>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -98,7 +98,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         
@@ -108,7 +108,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor1()
+    virtual ~Constructor1() override
     {
     }   
 };
@@ -123,7 +123,7 @@ template<
 class Constructor2 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -134,14 +134,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor2<_ClassName, _Arg0, _Arg1>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 2;
     }
@@ -150,7 +150,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -161,7 +161,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor2()
+    virtual ~Constructor2() override
     {
     }   
 };
@@ -177,7 +177,7 @@ template<
 class Constructor3 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -188,14 +188,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor3<_ClassName, _Arg0, _Arg1, _Arg2>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 3;
     }
@@ -204,7 +204,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -216,7 +216,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor3()
+    virtual ~Constructor3() override
     {
     }   
 };
@@ -233,7 +233,7 @@ template<
 class Constructor4 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -244,14 +244,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor4<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 4;
     }
@@ -260,7 +260,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -273,7 +273,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor4()
+    virtual ~Constructor4() override
     {
     }   
 };
@@ -291,7 +291,7 @@ template<
 class Constructor5 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -302,14 +302,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor5<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 5;
     }
@@ -318,7 +318,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -332,7 +332,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor5()
+    virtual ~Constructor5() override
     {
     }   
 };
@@ -351,7 +351,7 @@ template<
 class Constructor6 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -362,14 +362,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor6<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 6;
     }
@@ -378,7 +378,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -393,7 +393,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor6()
+    virtual ~Constructor6() override
     {
     }   
 };
@@ -413,7 +413,7 @@ template<
 class Constructor7 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -424,14 +424,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor7<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 7;
     }
@@ -440,7 +440,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -456,7 +456,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor7()
+    virtual ~Constructor7() override
     {
     }   
 };
@@ -477,7 +477,7 @@ template<
 class Constructor8 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -488,14 +488,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor8<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 8;
     }
@@ -504,7 +504,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -521,7 +521,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor8()
+    virtual ~Constructor8() override
     {
     }   
 };
@@ -543,7 +543,7 @@ template<
 class Constructor9 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -554,14 +554,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor9<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 9;
     }
@@ -570,7 +570,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -588,7 +588,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor9()
+    virtual ~Constructor9() override
     {
     }   
 };
@@ -611,7 +611,7 @@ template<
 class Constructor10 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -622,14 +622,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor10<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 10;
     }
@@ -638,7 +638,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -657,7 +657,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor10()
+    virtual ~Constructor10() override
     {
     }   
 };
@@ -681,7 +681,7 @@ template<
 class Constructor11 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -692,14 +692,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor11<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 11;
     }
@@ -708,7 +708,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -728,7 +728,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor11()
+    virtual ~Constructor11() override
     {
     }   
 };
@@ -753,7 +753,7 @@ template<
 class Constructor12 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -764,14 +764,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor12<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 12;
     }
@@ -780,7 +780,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -801,7 +801,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor12()
+    virtual ~Constructor12() override
     {
     }   
 };
@@ -827,7 +827,7 @@ template<
 class Constructor13 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -838,14 +838,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor13<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 13;
     }
@@ -854,7 +854,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -876,7 +876,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor13()
+    virtual ~Constructor13() override
     {
     }   
 };
@@ -903,7 +903,7 @@ template<
 class Constructor14 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -914,14 +914,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor14<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 14;
     }
@@ -930,7 +930,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -953,7 +953,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor14()
+    virtual ~Constructor14() override
     {
     }   
 };
@@ -981,7 +981,7 @@ template<
 class Constructor15 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -992,14 +992,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor15<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 15;
     }
@@ -1008,7 +1008,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1032,7 +1032,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor15()
+    virtual ~Constructor15() override
     {
     }   
 };
@@ -1061,7 +1061,7 @@ template<
 class Constructor16 : public dukpp03::Callable<dukpp03::qt::BasicContext>
 {
 public:
-    /*! A local contrxt
+    /*! A local context
      */
     typedef dukpp03::qt::BasicContext _Context;
     /*! Constructs new object
@@ -1072,14 +1072,14 @@ public:
     /*! Returns copy of callable object 
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::qt::Constructor16<_ClassName, _Arg0, _Arg1, _Arg2, _Arg3, _Arg4, _Arg5, _Arg6, _Arg7, _Arg8, _Arg9, _Arg10, _Arg11, _Arg12, _Arg13, _Arg14, _Arg15>();
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 16;
     }
@@ -1088,7 +1088,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(dukpp03::qt::BasicContext* c)
+    virtual int _call(dukpp03::qt::BasicContext* c) override
     {
         DUKPP03_MAYBE_FROM_STACK(_Arg0, 0, 0, 1);
         DUKPP03_MAYBE_FROM_STACK(_Arg1, 1, 1, 2);
@@ -1113,7 +1113,7 @@ public:
     }
     /*! Can be inherited
      */
-    virtual ~Constructor16()
+    virtual ~Constructor16() override
     {
     }   
 };

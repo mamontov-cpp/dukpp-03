@@ -38,7 +38,7 @@ struct IsQObjectResult
     typedef long long No;
 };
 
-/*! A main metafunction, that will determine, wheher object is QObject
+/*! A main meta-function, that will determine, whether object is QObject
     or it's descendant.
  */
 template<typename T>

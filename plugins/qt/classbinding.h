@@ -23,7 +23,7 @@ public:
     ClassBinding();
     /*! Could be inherited
      */
-    virtual ~ClassBinding();
+    virtual ~ClassBinding() override;
     /*! Registers this class binding as QObject descendant, filling it
         it with metamethods
      */

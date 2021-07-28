@@ -331,7 +331,7 @@ public:
         dukpp03::context::Context ctx;
         Point pts2d(3,4);
         dukpp03::PushValue<Point, dukpp03::context::Context>::perform(&ctx, pts2d);
-        ctx.registerAtribute("x", bnd::from(&Point::x), true, bnd::from(&Point::setXS), true);
+        ctx.registerAttribute("x", bnd::from(&Point::x), true, bnd::from(&Point::setXS), true);
         ctx.markTopObjectAsGlobal("pnt");
         ctx.pop();
 
@@ -445,7 +445,7 @@ public:
         dukpp03::context::Context ctx;
         Point pts2d(3,4);
         dukpp03::PushValue<Point, dukpp03::context::Context>::perform(&ctx, pts2d);
-        ctx.registerAtribute("x", getter::from(&Point::m_x), true, setter::from(&Point::m_x), true);
+        ctx.registerAttribute("x", getter::from(&Point::m_x), true, setter::from(&Point::m_x), true);
         ctx.markTopObjectAsGlobal("pnt");
         ctx.pop();
 

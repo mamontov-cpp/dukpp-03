@@ -66,7 +66,7 @@ public:
         {
             return v->value<QObject*>();
         }
-        return dukpp03::Maybe<QObject*>();
+        return {};
     }
 };
 

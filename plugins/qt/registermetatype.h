@@ -52,7 +52,7 @@ public:
     inline static void perform()
     {
         qRegisterMetaType<T*>();
-        int type = qMetaTypeId<T*>();
+        const int type = qMetaTypeId<T*>();
         register_qobject_descendant(QMetaType::typeName(type));       
     }
 };

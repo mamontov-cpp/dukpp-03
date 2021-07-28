@@ -9,27 +9,27 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant, bool wrapped)
 {
     if (!wrapped)
     {
-        dukpp03::qt::Context* ctx = reinterpret_cast<dukpp03::qt::Context*>(context);
-        QVariant* v = reinterpret_cast<QVariant*>(variant);
+        dukpp03::qt::Context* ctx = static_cast<dukpp03::qt::Context*>(context);
+        auto* v = static_cast<QVariant*>(variant);
         QObject* o = dukpp03::qt::toQObject(v);
 
         if (o)
         {
             const QMetaObject* mo = o->metaObject();
-            std::string classname = mo->className();
-            std::string ptrclassname = classname;
-            ptrclassname.append("*");
-            dukpp03::ClassBinding<dukpp03::qt::BasicContext>* ctxbinding = ctx->getClassBinding(ptrclassname);
-            if (ctxbinding == NULL)
+            const std::string class_name = mo->className();
+            std::string ptr_class_name = class_name;
+            ptr_class_name.append("*");
+            dukpp03::ClassBinding<dukpp03::qt::BasicContext>* ctx_binding = ctx->getClassBinding(ptr_class_name);
+            if (ctx_binding == nullptr)
             {
-                ctxbinding = ctx->getClassBinding(classname);                
+                ctx_binding = ctx->getClassBinding(class_name);                
             }
-            if (ctxbinding == NULL) 
+            if (ctx_binding == nullptr) 
             {
                 QString bindingName = mo->className();
                 bindingName.append("*");
 
-                dukpp03::qt::ClassBinding* binding = new dukpp03::qt::ClassBinding();
+                auto* binding = new dukpp03::qt::ClassBinding();
                 binding->registerMetaObject(mo, false);
                 binding->wrapValue(ctx);
                 wrapped = true;
@@ -38,7 +38,7 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant, bool wrapped)
             else
             {
                 wrapped = true;
-                ctxbinding->wrapValue(ctx);                
+                ctx_binding->wrapValue(ctx);                
             }
         }
 
@@ -46,10 +46,10 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant, bool wrapped)
         if (!wrapped)
         {
             std::string type_name = v->typeName();
-            dukpp03::ClassBinding<dukpp03::qt::BasicContext>* ctxbinding = ctx->getClassBinding(type_name);
-            if (ctxbinding)
+            dukpp03::ClassBinding<dukpp03::qt::BasicContext>* ctx_binding = ctx->getClassBinding(type_name);
+            if (ctx_binding)
             {
-                ctxbinding->wrapValue(ctx);
+                ctx_binding->wrapValue(ctx);
             }
             else
             {
@@ -57,11 +57,11 @@ void dukpp03::qt::WrapValue::perform(void* context, void* variant, bool wrapped)
                 {
                     if (type_name[type_name.length() - 1] == '*')
                     {
-                        std::string type_name_no_ptr = type_name.substr(0, type_name.length() - 1);
-                        ctxbinding = ctx->getClassBinding(type_name_no_ptr);
-                        if (ctxbinding)
+	                    const std::string type_name_no_ptr = type_name.substr(0, type_name.length() - 1);
+                        ctx_binding = ctx->getClassBinding(type_name_no_ptr);
+                        if (ctx_binding)
                         {
-                            ctxbinding->wrapValue(ctx);
+                            ctx_binding->wrapValue(ctx);
                         }
                     }
                 }

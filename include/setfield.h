@@ -5,9 +5,13 @@
 #pragma once
 #include "callable.h"
 #include "decay.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "getvalue.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "pushvalue.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "errorcodes.h"
+// ReSharper disable once CppUnusedIncludeDirective
 #include "context.h"
 
 namespace dukpp03
@@ -35,14 +39,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::SetField<_Context, _ClassName, _ReturnType>(m_field);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -52,7 +56,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_ClassName);
         DUKPP03_MAYBE_FROM_STACK(_ReturnType, 0, 0, 1);
@@ -95,14 +99,14 @@ public:
     /*! Returns copy of callable object
         \return copy of callable object
      */
-    virtual dukpp03::Callable<_Context>* clone()  
+    virtual dukpp03::Callable<_Context>* clone() override
     {
         return new dukpp03::SetFieldFor<_Context, _DestClassName, _ClassName, _ReturnType>(m_field);
     }
     /*! Returns count of required arguments
         \return count of required arguments
      */
-    virtual int requiredArguments()
+    virtual int requiredArguments() override
     {
         return 1;
     }
@@ -112,7 +116,7 @@ public:
         \param[in] c context
         \return count of values on stack, placed by functions
      */
-    virtual int _call(_Context* c)
+    virtual int _call(_Context* c) override
     {
         DUKPP03_MAYBE_FROM_THIS(_DestClassName);
         DUKPP03_MAYBE_FROM_STACK(_ReturnType, 0, 0, 1);

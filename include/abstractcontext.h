@@ -34,7 +34,7 @@ public:
         \param[out] error a string, where error should be written
         \return true if no error
      */
-    bool eval(const std::string& string, bool clean_heap = true,std::string* error = NULL);
+    bool eval(const std::string& string, bool clean_heap = true,std::string* error = nullptr);
     /*! Throws error from a context
         \param[in] error_string string data for error
         \param[in] code error codes
