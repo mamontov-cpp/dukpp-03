@@ -26,13 +26,14 @@
  *
  *    A B C D E F G H    Big endian (e.g. 68k)           DUK_USE_DOUBLE_BE
  *    H G F E D C B A    Little endian (e.g. x86)        DUK_USE_DOUBLE_LE
- *    D C B A H G F E    Mixed/cross endian (e.g. ARM)   DUK_USE_DOUBLE_ME
+ *    D C B A H G F E    Mixed endian (e.g. ARM FPA)     DUK_USE_DOUBLE_ME
  *
- *  ARM is a special case: ARM double values are in mixed/cross endian
- *  format while ARM duk_uint64_t values are in standard little endian
+ *  Legacy ARM (FPA) is a special case: ARM double values are in mixed
+ *  endian format while ARM duk_uint64_t values are in standard little endian
  *  format (H G F E D C B A).  When a double is read as a duk_uint64_t
  *  from memory, the register will contain the (logical) value
  *  E F G H A B C D.  This requires some special handling below.
+ *  See http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0056d/Bcfhgcgd.html.
  *
  *  Indexes of various types (8-bit, 16-bit, 32-bit) in memory relative to
  *  the logical (big endian) order:
@@ -321,7 +322,8 @@ typedef union duk_double_union duk_double_union;
 	} while (0)
 
 #define DUK__DBLUNION_NORMALIZE_NAN_CHECK_NOTFULL(u)  do { \
-		if (DUK__DBLUNION_IS_NAN_NOTFULL((u))) { \
+		/* Check must be full. */ \
+		if (DUK__DBLUNION_IS_NAN_FULL((u))) { \
 			DUK__DBLUNION_SET_NAN_NOTFULL((u)); \
 		} \
 	} while (0)
@@ -333,12 +335,11 @@ typedef union duk_double_union duk_double_union;
  */
 
 #if defined(DUK_USE_PACKED_TVAL)
-#if defined(DUK_USE_FULL_TVAL)
 #define DUK_DBLUNION_NORMALIZE_NAN_CHECK(u)  DUK__DBLUNION_NORMALIZE_NAN_CHECK_FULL((u))
 #define DUK_DBLUNION_IS_NAN(u)               DUK__DBLUNION_IS_NAN_FULL((u))
 #define DUK_DBLUNION_IS_NORMALIZED_NAN(u)    DUK__DBLUNION_IS_NORMALIZED_NAN_FULL((u))
 #define DUK_DBLUNION_SET_NAN(d)              DUK__DBLUNION_SET_NAN_FULL((d))
-#else
+#if 0
 #define DUK_DBLUNION_NORMALIZE_NAN_CHECK(u)  DUK__DBLUNION_NORMALIZE_NAN_CHECK_NOTFULL((u))
 #define DUK_DBLUNION_IS_NAN(u)               DUK__DBLUNION_IS_NAN_NOTFULL((u))
 #define DUK_DBLUNION_IS_NORMALIZED_NAN(u)    DUK__DBLUNION_IS_NORMALIZED_NAN_NOTFULL((u))

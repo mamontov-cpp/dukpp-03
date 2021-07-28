@@ -1360,19 +1360,19 @@
             ], 
             "flags": [
                 {
-                    "mask": 64, 
+                    "mask": 256, 
                     "name": "have_catch"
                 }, 
                 {
-                    "mask": 128, 
+                    "mask": 512, 
                     "name": "have_finally"
                 }, 
                 {
-                    "mask": 256, 
+                    "mask": 1024, 
                     "name": "catch_binding"
                 }, 
                 {
-                    "mask": 512, 
+                    "mask": 2048, 
                     "name": "with_binding"
                 }
             ], 
@@ -1439,12 +1439,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL0"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL1"
         }, 
@@ -1453,12 +1489,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL2"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL3"
         }, 
@@ -1467,12 +1539,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL4"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL5"
         }, 
@@ -1481,12 +1589,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL6"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL7"
         }, 
@@ -1495,12 +1639,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL8"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL9"
         }, 
@@ -1509,12 +1689,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL10"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL11"
         }, 
@@ -1523,12 +1739,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL12"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL13"
         }, 
@@ -1537,12 +1789,48 @@
                 "A_I", 
                 "BC_R"
             ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
+            ], 
             "name": "CALL14"
         }, 
         {
             "args": [
                 "A_I", 
                 "BC_R"
+            ], 
+            "flags": [
+                {
+                    "mask": 1, 
+                    "name": "tailcall"
+                }, 
+                {
+                    "mask": 2, 
+                    "name": "construct"
+                }, 
+                {
+                    "mask": 4, 
+                    "name": "called_as_eval"
+                }, 
+                {
+                    "mask": 8, 
+                    "name": "indirect"
+                }
             ], 
             "name": "CALL15"
         }, 

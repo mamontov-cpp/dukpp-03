@@ -146,6 +146,7 @@ DUK_LOCAL duk_codepoint_t duk__inp_get_prev_cp(duk_re_matcher_ctx *re_ctx, const
  */
 
 DUK_LOCAL const duk_uint8_t *duk__match_regexp(duk_re_matcher_ctx *re_ctx, const duk_uint8_t *pc, const duk_uint8_t *sp) {
+	duk_native_stack_check(re_ctx->thr);
 	if (re_ctx->recursion_depth >= re_ctx->recursion_limit) {
 		DUK_ERROR_RANGE(re_ctx->thr, DUK_STR_REGEXP_EXECUTOR_RECURSION_LIMIT);
 		DUK_WO_NORETURN(return NULL;);
@@ -717,7 +718,7 @@ DUK_LOCAL void duk__regexp_match_helper(duk_hthread *thr, duk_small_int_t force_
 	h_input = duk_to_hstring(thr, -1);
 	DUK_ASSERT(h_input != NULL);
 
-	duk_get_prop_stridx_short(thr, -2, DUK_STRIDX_INT_BYTECODE);  /* [ ... re_obj input ] -> [ ... re_obj input bc ] */
+	duk_xget_owndataprop_stridx_short(thr, -2, DUK_STRIDX_INT_BYTECODE);  /* [ ... re_obj input ] -> [ ... re_obj input bc ] */
 	h_bytecode = duk_require_hstring(thr, -1);  /* no regexp instance should exist without a non-configurable bytecode property */
 	DUK_ASSERT(h_bytecode != NULL);
 
@@ -944,10 +945,12 @@ DUK_LOCAL void duk__regexp_match_helper(duk_hthread *thr, duk_small_int_t force_
 			 * as 'undefined'.  The same is done when saved[] pointers are insane
 			 * (this should, of course, never happen in practice).
 			 */
+			duk_push_uarridx(thr, (duk_uarridx_t) (i / 2));
+
 			if (re_ctx.saved[i] && re_ctx.saved[i + 1] && re_ctx.saved[i + 1] >= re_ctx.saved[i]) {
 				duk_push_lstring(thr,
 				                 (const char *) re_ctx.saved[i],
-				                 (duk_size_t) (re_ctx.saved[i+1] - re_ctx.saved[i]));
+				                 (duk_size_t) (re_ctx.saved[i + 1] - re_ctx.saved[i]));
 				if (i == 0) {
 					/* Assumes that saved[0] and saved[1] are always
 					 * set by regexp bytecode (if not, char_end_offset
@@ -960,8 +963,8 @@ DUK_LOCAL void duk__regexp_match_helper(duk_hthread *thr, duk_small_int_t force_
 				duk_push_undefined(thr);
 			}
 
-			/* [ ... re_obj input bc saved_buf res_obj val ] */
-			duk_put_prop_index(thr, -2, (duk_uarridx_t) (i / 2));
+			/* [ ... re_obj input bc saved_buf res_obj idx val ] */
+			duk_def_prop(thr, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_SET_WEC);
 		}
 
 		/* [ ... re_obj input bc saved_buf res_obj ] */

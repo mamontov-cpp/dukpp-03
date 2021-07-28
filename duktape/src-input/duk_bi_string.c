@@ -246,7 +246,7 @@ DUK_INTERNAL duk_ret_t duk_bi_string_prototype_to_string(duk_hthread *thr) {
 			goto type_error;
 		}
 
-		duk_get_prop_stridx_short(thr, -1, DUK_STRIDX_INT_VALUE);
+		duk_xget_owndataprop_stridx_short(thr, -1, DUK_STRIDX_INT_VALUE);
 		DUK_ASSERT(duk_is_string(thr, -1));
 	} else {
 		goto type_error;
@@ -664,6 +664,7 @@ DUK_INTERNAL duk_ret_t duk_bi_string_prototype_replace(duk_hthread *thr) {
 #endif  /* DUK_USE_REGEXP_SUPPORT */
 			const duk_uint8_t *p_start, *p_end, *p;   /* input string scan */
 			const duk_uint8_t *q_start;               /* match string */
+			duk_size_t p_blen;
 			duk_size_t q_blen;
 
 #if defined(DUK_USE_REGEXP_SUPPORT)
@@ -672,13 +673,19 @@ DUK_INTERNAL duk_ret_t duk_bi_string_prototype_replace(duk_hthread *thr) {
 
 			p_start = DUK_HSTRING_GET_DATA(h_input);
 			p_end = p_start + DUK_HSTRING_GET_BYTELEN(h_input);
+			p_blen = (duk_size_t) DUK_HSTRING_GET_BYTELEN(h_input);
 			p = p_start;
 
 			h_search = duk_known_hstring(thr, 0);
 			q_start = DUK_HSTRING_GET_DATA(h_search);
 			q_blen = (duk_size_t) DUK_HSTRING_GET_BYTELEN(h_search);
 
+			if (q_blen > p_blen) {
+				break;  /* no match */
+			}
+
 			p_end -= q_blen;  /* ensure full memcmp() fits in while */
+			DUK_ASSERT(p_end >= p);
 
 			match_start_coff = 0;
 
@@ -1493,44 +1500,65 @@ DUK_INTERNAL duk_ret_t duk_bi_string_prototype_locale_compare(duk_hthread *thr) 
 #if defined(DUK_USE_ES6)
 DUK_INTERNAL duk_ret_t duk_bi_string_prototype_startswith_endswith(duk_hthread *thr) {
 	duk_int_t magic;
-	duk_hstring *h;
+	duk_hstring *h_target;
+	duk_size_t blen_target;
 	duk_hstring *h_search;
 	duk_size_t blen_search;
-	const duk_uint8_t *p_cmp_start;
-	duk_bool_t result;
+	duk_int_t off;
+	duk_bool_t result = 0;
+	duk_size_t blen_left;
 
-	h = duk_push_this_coercible_to_string(thr);
-	DUK_ASSERT(h != NULL);
+	/* Because string byte lengths are in [0,DUK_INT_MAX] it's safe to
+	 * subtract two string lengths without overflow.
+	 */
+	DUK_ASSERT(DUK_HSTRING_MAX_BYTELEN <= DUK_INT_MAX);
+
+	h_target = duk_push_this_coercible_to_string(thr);
+	DUK_ASSERT(h_target != NULL);
 
 	h_search = duk__str_tostring_notregexp(thr, 0);
 	DUK_ASSERT(h_search != NULL);
 
 	magic = duk_get_current_magic(thr);
 
-	p_cmp_start = (const duk_uint8_t *) DUK_HSTRING_GET_DATA(h);
+	/* Careful to avoid pointer overflows in the matching logic. */
+
+	blen_target = DUK_HSTRING_GET_BYTELEN(h_target);
 	blen_search = DUK_HSTRING_GET_BYTELEN(h_search);
 
+#if 0
+	/* If search string is longer than the target string, we can
+	 * never match.  Could check explicitly, but should be handled
+	 * correctly below.
+	 */
+	if (blen_search > blen_target) {
+		goto finish;
+	}
+#endif
+
+	off = 0;
 	if (duk_is_undefined(thr, 1)) {
 		if (magic) {
-			p_cmp_start = p_cmp_start + DUK_HSTRING_GET_BYTELEN(h) - blen_search;
+			off = (duk_int_t) blen_target - (duk_int_t) blen_search;
 		} else {
-			/* p_cmp_start already OK */
+			DUK_ASSERT(off == 0);
 		}
 	} else {
 		duk_int_t len;
 		duk_int_t pos;
 
 		DUK_ASSERT(DUK_HSTRING_MAX_BYTELEN <= DUK_INT_MAX);
-		len = (duk_int_t) DUK_HSTRING_GET_CHARLEN(h);
+		len = (duk_int_t) DUK_HSTRING_GET_CHARLEN(h_target);
 		pos = duk_to_int_clamped(thr, 1, 0, len);
 		DUK_ASSERT(pos >= 0 && pos <= len);
 
+		off = (duk_int_t) duk_heap_strcache_offset_char2byte(thr, h_target, (duk_uint_fast32_t) pos);
 		if (magic) {
-			p_cmp_start -= blen_search;  /* Conceptually subtracted last, but do already here. */
+			off -= (duk_int_t) blen_search;
 		}
-		DUK_ASSERT(pos >= 0 && pos <= len);
-
-		p_cmp_start += duk_heap_strcache_offset_char2byte(thr, h, (duk_uint_fast32_t) pos);
+	}
+	if (off < 0 || off > (duk_int_t) blen_target) {
+		goto finish;
 	}
 
 	/* The main comparison can be done using a memcmp() rather than
@@ -1540,16 +1568,18 @@ DUK_INTERNAL duk_ret_t duk_bi_string_prototype_startswith_endswith(duk_hthread *
 	 * comparison range.
 	 */
 
-	result = 0;
-	if (p_cmp_start >= DUK_HSTRING_GET_DATA(h) &&
-	    (duk_size_t) (p_cmp_start - (const duk_uint8_t *) DUK_HSTRING_GET_DATA(h)) + blen_search <= DUK_HSTRING_GET_BYTELEN(h)) {
-		if (duk_memcmp((const void *) p_cmp_start,
-		               (const void *) DUK_HSTRING_GET_DATA(h_search),
-		               (size_t) blen_search) == 0) {
+	DUK_ASSERT(off >= 0);
+	DUK_ASSERT((duk_size_t) off <= blen_target);
+	blen_left = blen_target - (duk_size_t) off;
+	if (blen_left >= blen_search) {
+		const duk_uint8_t *p_cmp_start = (const duk_uint8_t *) DUK_HSTRING_GET_DATA(h_target) + off;
+		const duk_uint8_t *p_search = (const duk_uint8_t *) DUK_HSTRING_GET_DATA(h_search);
+		if (duk_memcmp_unsafe((const void *) p_cmp_start, (const void *) p_search, (size_t) blen_search) == 0) {
 			result = 1;
 		}
 	}
 
+ finish:
 	duk_push_boolean(thr, result);
 	return 1;
 }

@@ -13,7 +13,7 @@ DUK_INTERNAL void duk_proxy_ownkeys_postprocess(duk_hthread *thr, duk_hobject *h
 	duk_uarridx_t i, len, idx;
 	duk_propdesc desc;
 
-	DUK_ASSERT_CTX_VALID(thr);
+	DUK_CTX_ASSERT_VALID(thr);
 	DUK_ASSERT(h_proxy_target != NULL);
 
 	len = (duk_uarridx_t) duk_get_length(thr, -1);
@@ -63,7 +63,9 @@ DUK_INTERNAL void duk_proxy_ownkeys_postprocess(duk_hthread *thr, duk_hobject *h
 		}
 
 		/* [ obj trap_result res_arr propname ] */
-		duk_put_prop_index(thr, -2, idx++);
+		duk_push_uarridx(thr, idx++);
+		duk_insert(thr, -2);
+		duk_def_prop(thr, -3, DUK_DEFPROP_HAVE_VALUE | DUK_DEFPROP_SET_WEC);
 		continue;
 
 	 skip_key:

@@ -1,10 +1,10 @@
 {
     "comment": "Metadata for Duktape sources", 
-    "duk_version_string": "2.3.0", 
+    "duk_version_string": "2.6.0", 
     "type": "duk_source_meta", 
-    "duk_version": 20300, 
-    "git_branch": "master", 
-    "git_commit": "d7fdb67f18561a50e06bafd196c6b423af9ad6fe", 
+    "duk_version": 20600, 
+    "git_branch": "v2-maintenance", 
+    "git_commit": "fffa346eff06a8764b02c31d4336f63a773a95c3", 
     "builtin_strings_info": [
         {
             "plain": "Undefined", 
@@ -39,7 +39,7 @@
         {
             "plain": "Array", 
             "base64": "QXJyYXk=", 
-            "define": "DUK_STRIDX_ARRAY"
+            "define": "DUK_STRIDX_UC_ARRAY"
         }, 
         {
             "plain": "String", 
@@ -59,7 +59,7 @@
         {
             "plain": "Date", 
             "base64": "RGF0ZQ==", 
-            "define": "DUK_STRIDX_DATE"
+            "define": "DUK_STRIDX_UC_DATE"
         }, 
         {
             "plain": "RegExp", 
@@ -435,6 +435,11 @@
             "plain": "data", 
             "base64": "ZGF0YQ==", 
             "define": "DUK_STRIDX_DATA"
+        }, 
+        {
+            "plain": "buffer", 
+            "base64": "YnVmZmVy", 
+            "define": "DUK_STRIDX_LC_BUFFER"
         }, 
         {
             "plain": "length", 
@@ -924,6 +929,7 @@
         "dG9KU09O", 
         "dHlwZQ==", 
         "ZGF0YQ==", 
+        "YnVmZmVy", 
         "bGVuZ3Ro", 
         "c2V0", 
         "c3RhY2s=", 
@@ -1005,7 +1011,7 @@
         "c3RhdGlj", 
         "eWllbGQ="
     ], 
-    "git_describe": "v2.3.0", 
+    "git_describe": "v2.6.0", 
     "builtin_strings": [
         "Undefined", 
         "Null", 
@@ -1093,6 +1099,7 @@
         "toJSON", 
         "type", 
         "data", 
+        "buffer", 
         "length", 
         "set", 
         "stack", 

@@ -26,10 +26,25 @@ import glob
 import optparse
 import tarfile
 import json
-import yaml
 import tempfile
 import subprocess
 import atexit
+
+def import_warning(module, aptPackage, pipPackage):
+    sys.stderr.write('\n')
+    sys.stderr.write('*** NOTE: Could not "import %s".  Install it using e.g.:\n' % module)
+    sys.stderr.write('\n')
+    sys.stderr.write('    # Linux\n')
+    sys.stderr.write('    $ sudo apt-get install %s\n' % aptPackage)
+    sys.stderr.write('\n')
+    sys.stderr.write('    # Windows\n')
+    sys.stderr.write('    > pip install %s\n' % pipPackage)
+
+try:
+    import yaml
+except ImportError:
+    import_warning('yaml', 'python-yaml', 'PyYAML')
+    sys.exit(1)
 
 import genconfig
 
@@ -146,35 +161,6 @@ def get_duk_version(apiheader_filename):
                 return duk_version, duk_major, duk_minor, duk_patch, duk_version_formatted
 
     raise Exception('cannot figure out duktape version')
-
-# Python module check and friendly errors
-
-def check_python_modules():
-    # dist.py doesn't need yaml but other dist utils will; check for it and
-    # warn if it is missing.
-    failed = False
-
-    def _warning(module, aptPackage, pipPackage):
-        sys.stderr.write('\n')
-        sys.stderr.write('*** NOTE: Could not "import %s" needed for dist.  Install it using e.g.:\n' % module)
-        sys.stderr.write('\n')
-        sys.stderr.write('    # Linux\n')
-        sys.stderr.write('    $ sudo apt-get install %s\n' % aptPackage)
-        sys.stderr.write('\n')
-        sys.stderr.write('    # Windows\n')
-        sys.stderr.write('    > pip install %s\n' % pipPackage)
-
-    try:
-        import yaml
-    except ImportError:
-        _warning('yaml', 'python-yaml', 'PyYAML')
-        failed = True
-
-    if failed:
-        sys.stderr.write('\n')
-        raise Exception('Missing some required Python modules')
-
-check_python_modules()
 
 # Option parsing
 
@@ -412,6 +398,7 @@ def main():
         'duk_bi_array.c',
         'duk_bi_boolean.c',
         'duk_bi_buffer.c',
+        'duk_bi_cbor.c',
         'duk_bi_date.c',
         'duk_bi_date_unix.c',
         'duk_bi_date_windows.c',
@@ -448,10 +435,12 @@ def main():
         'duk_error_macros.c',
         'duk_error_misc.c',
         'duk_error_throw.c',
+        'duk_fltunion.h',
         'duk_forwdecl.h',
         'duk_harray.h',
         'duk_hboundfunc.h',
         'duk_hbuffer_alloc.c',
+        'duk_hbuffer_assert.c',
         'duk_hbuffer.h',
         'duk_hbuffer_ops.c',
         'duk_hbufobj.h',
@@ -461,6 +450,7 @@ def main():
         'duk_heap.h',
         'duk_heap_hashstring.c',
         'duk_heaphdr.h',
+        'duk_heaphdr_assert.c',
         'duk_heap_finalize.c',
         'duk_heap_markandsweep.c',
         'duk_heap_memory.c',
@@ -470,6 +460,7 @@ def main():
         'duk_heap_stringtable.c',
         'duk_hnatfunc.h',
         'duk_hobject_alloc.c',
+        'duk_hobject_assert.c',
         'duk_hobject_class.c',
         'duk_hobject_enum.c',
         'duk_hobject.h',
@@ -478,6 +469,7 @@ def main():
         'duk_hobject_props.c',
         'duk_hproxy.h',
         'duk_hstring.h',
+        'duk_hstring_assert.c',
         'duk_hstring_misc.c',
         'duk_hthread_alloc.c',
         'duk_hthread_builtins.c',
@@ -520,6 +512,7 @@ def main():
         'duk_util_double.c',
         'duk_util_cast.c',
         'duk_util_memory.c',
+        'duk_util_memrw.c',
         'duk_util_misc.c',
         'duk_selftest.c',
         'duk_selftest.h',
@@ -921,6 +914,7 @@ def main():
             'duk_builtins.c',
             'duk_error_macros.c',
             'duk_unicode_support.c',
+            'duk_util_memrw.c',
             'duk_util_misc.c',
             'duk_hobject_class.c'
         ]
