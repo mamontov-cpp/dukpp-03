@@ -414,7 +414,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        dukpp03::qt::ObjectWithOwnership owo(new GCCollectCheck, dukpp03::qt::DQ_OWN);
+		dukpp03::qt::ObjectWithOwnership owo(new GCCollectCheck, dukpp03::qt::ValueOwnership::DQ_OWN);
         dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(ctx, owo);
 
         GCCollectCheck::clearCounter();
@@ -439,7 +439,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        dukpp03::qt::ObjectWithOwnership owo(new GCCollectCheck, dukpp03::qt::DQ_SCRIPT);
+        dukpp03::qt::ObjectWithOwnership owo(new GCCollectCheck, dukpp03::qt::ValueOwnership::DQ_SCRIPT);
         dukpp03::PushValue<dukpp03::qt::ObjectWithOwnership, dukpp03::qt::BasicContext>::perform(ctx, owo);
 
         GCCollectCheck::clearCounter();

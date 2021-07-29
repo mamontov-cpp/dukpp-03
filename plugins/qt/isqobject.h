@@ -44,7 +44,7 @@ struct IsQObjectResult
 template<typename T>
 struct IsQObject
 {
-    enum Value
+    enum class Value: int
     {
         Result = sizeof(dukpp03::qt::is_qobject(reinterpret_cast<T*>(NULL))) == sizeof(IsQObjectResult::Yes)
     };

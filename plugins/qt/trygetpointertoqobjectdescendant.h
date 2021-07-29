@@ -89,7 +89,7 @@ struct TryToGetPointerToQObjectDescendant<_UnderlyingValue*>
     static dukpp03::Maybe<_UnderlyingValue*> perform(QObject* v)
     {
         return dukpp03::qt::CheckAndTryToGetPointerToQObjectDescendant<
-            dukpp03::qt::IsQObject<_UnderlyingValue>::Result,
+            static_cast<bool>(dukpp03::qt::IsQObject<_UnderlyingValue>::Value::Result),
             _UnderlyingValue
         >::perform(v);
     }

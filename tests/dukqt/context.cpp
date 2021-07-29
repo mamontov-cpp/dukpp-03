@@ -38,7 +38,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        ctx->pushObject(new GCCollectCheck(), dukpp03::qt::DQ_OWN);
+        ctx->pushObject(new GCCollectCheck(), dukpp03::qt::ValueOwnership::DQ_OWN);
 
         GCCollectCheck::clearCounter();
 
@@ -62,7 +62,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        ctx->pushObject(new GCCollectCheck(), dukpp03::qt::DQ_SCRIPT);
+        ctx->pushObject(new GCCollectCheck(), dukpp03::qt::ValueOwnership::DQ_SCRIPT);
 
         GCCollectCheck::clearCounter();
 
@@ -84,7 +84,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        ctx->registerGlobal("a", new GCCollectCheck(), dukpp03::qt::DQ_OWN);
+        ctx->registerGlobal("a", new GCCollectCheck(), dukpp03::qt::ValueOwnership::DQ_OWN);
 
         GCCollectCheck::clearCounter();
 
@@ -109,7 +109,7 @@ public:
 
         dukpp03::qt::Context* ctx = new dukpp03::qt::Context();
 
-        ctx->registerGlobal("a", new GCCollectCheck(), dukpp03::qt::DQ_SCRIPT);
+        ctx->registerGlobal("a", new GCCollectCheck(), dukpp03::qt::ValueOwnership::DQ_SCRIPT);
 
         GCCollectCheck::clearCounter();
 

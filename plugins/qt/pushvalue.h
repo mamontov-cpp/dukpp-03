@@ -134,7 +134,7 @@ public:
      */
     static void perform(dukpp03::qt::BasicContext* ctx, const dukpp03::qt::ObjectWithOwnership& v)
     {
-        if (v.second == dukpp03::qt::DQ_OWN)
+        if (v.second == dukpp03::qt::ValueOwnership::DQ_OWN)
         {
             dukpp03::PushValue<QObject*, dukpp03::qt::BasicContext>::perform(ctx, v.first);
         }

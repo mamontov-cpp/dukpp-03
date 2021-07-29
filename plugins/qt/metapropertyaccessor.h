@@ -20,7 +20,7 @@ class MetaPropertyAccessor: public dukpp03::Callable<dukpp03::qt::BasicContext>
 public:
     /*! A mode of work for accessor
      */
-    enum Mode
+    enum class Mode: int
     {
         MPAM_Get, //!< The accessor will behave as getter
         MPAM_Set, //!< The accessor will behave as setter

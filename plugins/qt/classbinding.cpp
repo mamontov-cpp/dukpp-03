@@ -46,11 +46,11 @@ void dukpp03::qt::ClassBinding::registerMetaObject(const QMetaObject* mo, bool r
         QMetaProperty prop = mo->property(i);
         if (prop.isReadable())
         {
-            getter = new dukpp03::qt::MetaPropertyAccessor(i, prop, dukpp03::qt::MetaPropertyAccessor::MPAM_Get);
+            getter = new dukpp03::qt::MetaPropertyAccessor(i, prop, dukpp03::qt::MetaPropertyAccessor::Mode::MPAM_Get);
         }
         if (prop.isWritable())
         {
-            setter = new dukpp03::qt::MetaPropertyAccessor(i, prop, dukpp03::qt::MetaPropertyAccessor::MPAM_Set);
+            setter = new dukpp03::qt::MetaPropertyAccessor(i, prop, dukpp03::qt::MetaPropertyAccessor::Mode::MPAM_Set);
         }
         if (getter || setter)
         {

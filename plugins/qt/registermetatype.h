@@ -66,7 +66,7 @@ public:
 template<typename T>
 void registerMetaType()
 {
-    RegisterMetaType<dukpp03::qt::IsQObject<T>::Result, T>::perform();
+    RegisterMetaType<static_cast<bool>(dukpp03::qt::IsQObject<T>::Value::Result), T>::perform();
 }
 
 }

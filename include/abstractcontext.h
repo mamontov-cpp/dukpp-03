@@ -39,7 +39,7 @@ public:
         \param[in] error_string string data for error
         \param[in] code error codes
      */
-    void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::D03_DUK_ERROR);
+    void throwError(const std::string& error_string, dukpp03::ErrorCodes code = dukpp03::ErrorCodes::D03_DUK_ERROR);
     /*! Resets context fully, erasing all data
      */
     virtual void reset() = 0;

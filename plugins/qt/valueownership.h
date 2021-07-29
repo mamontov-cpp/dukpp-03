@@ -13,7 +13,7 @@ namespace qt
     
 /*! Describes a type of ownership in value
  */ 
-enum ValueOwnership
+enum class ValueOwnership: int
 {
     /*! Script owns and destroys QObject
      */ 

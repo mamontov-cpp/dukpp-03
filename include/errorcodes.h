@@ -13,7 +13,7 @@ namespace dukpp03
 
 /*! An wrapper for error codes of Duktape 
  */
-enum ErrorCodes
+enum class ErrorCodes: int
 {
     D03_DUK_ERROR = DUK_ERR_ERROR,                     //!< JS Error 
     D03_DUK_EVAL_ERROR = DUK_ERR_EVAL_ERROR,           //!< JS EvalError 

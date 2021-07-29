@@ -123,7 +123,7 @@ void dukpp03::AbstractContext::throwInvalidTypeError(int argnumber, const std::s
 {
     std::ostringstream ss;
     ss << "Invalid type passed for argument #" << argnumber << ". Argument #" <<  argnumber << " must have type " << type;
-    this->throwError(ss.str(), dukpp03::D03_DUK_TYPE_ERROR);
+    this->throwError(ss.str(), dukpp03::ErrorCodes::D03_DUK_TYPE_ERROR);
 }
 
 
@@ -131,7 +131,7 @@ void dukpp03::AbstractContext::throwInvalidTypeForThisError(const std::string& t
 {
     std::ostringstream ss;
     ss << "Invalid type passed as this. Current object must have type " << type;
-    this->throwError(ss.str(), dukpp03::D03_DUK_TYPE_ERROR);
+    this->throwError(ss.str(), dukpp03::ErrorCodes::D03_DUK_TYPE_ERROR);
 }
 
 

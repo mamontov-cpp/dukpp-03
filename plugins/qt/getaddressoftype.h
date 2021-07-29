@@ -44,7 +44,7 @@ public:
     static dukpp03::Maybe<_UnderlyingValue*> getAddress(QVariant* v)
     {
         return dukpp03::qt::GetAddressOfCommonTypeOrQObject<
-                   dukpp03::qt::IsQObject<_UnderlyingValue>::Result,
+                   static_cast<bool>(dukpp03::qt::IsQObject<_UnderlyingValue>::Value::Result),
                   _UnderlyingValue
                >::getAddress(v);
     }

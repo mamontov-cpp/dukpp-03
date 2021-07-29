@@ -27,7 +27,7 @@ dukpp03::Callable<dukpp03::qt::BasicContext>* dukpp03::qt::MetaPropertyAccessor:
 
 int dukpp03::qt::MetaPropertyAccessor::requiredArguments()
 {
-    return (m_mode == dukpp03::qt::MetaPropertyAccessor::MPAM_Set) ? 1 : 0;
+    return (m_mode == dukpp03::qt::MetaPropertyAccessor::Mode::MPAM_Set) ? 1 : 0;
 }
 
 std::pair<int, bool> dukpp03::qt::MetaPropertyAccessor::canBeCalled(dukpp03::qt::BasicContext* c)
@@ -41,7 +41,7 @@ std::pair<int, bool> dukpp03::qt::MetaPropertyAccessor::canBeCalled(dukpp03::qt:
     if (obj)
     {
         matched_arguments += 1;
-        if (m_mode == dukpp03::qt::MetaPropertyAccessor::MPAM_Set)
+        if (m_mode == dukpp03::qt::MetaPropertyAccessor::Mode::MPAM_Set)
         {
 	        const dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::BasicContext>::perform(c, 0);
             if (tmp.exists())
@@ -74,7 +74,7 @@ int dukpp03::qt::MetaPropertyAccessor::_call(dukpp03::qt::BasicContext* c)
         return 0;
     }
 
-    if (m_mode == dukpp03::qt::MetaPropertyAccessor::MPAM_Set)
+    if (m_mode == dukpp03::qt::MetaPropertyAccessor::Mode::MPAM_Set)
     {
         dukpp03::Maybe<QVariant> tmp = dukpp03::GetValue<QVariant, dukpp03::qt::BasicContext>::perform(c, 0);
         if (tmp.exists())
