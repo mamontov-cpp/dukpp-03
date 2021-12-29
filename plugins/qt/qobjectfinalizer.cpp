@@ -18,8 +18,8 @@ duk_ret_t dukpp03::qt::qobjectfinalizer(duk_context* ctx)
             {
                 delete result.value<QObject*>();
             }
-            delete v;
             parent->unregisterVariant(v);
+            delete v;
         }
     }
     return 0;
