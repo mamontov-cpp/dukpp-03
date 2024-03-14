@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8.12)
 project(dukpp03-tests)
 
 file(GLOB_RECURSE HDRS ../include/*.h)
+
+# set(Boost_DEBUG 1)
 find_package(Boost REQUIRED timer chrono system)
 
 set(DUKPP03_EXECUTABLE_NAME "dukpp-03-tests")

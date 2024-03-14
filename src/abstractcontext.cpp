@@ -71,6 +71,75 @@ bool dukpp03::AbstractContext::eval(const std::string& string, bool clean_heap, 
     return result;
 }
 
+bool dukpp03::AbstractContext::eval(const std::string& string, const std::string& filename, bool clean_heap, std::string* error)
+{
+    m_running = true;
+    startEvaluating();
+    duk_push_string(m_context, string.c_str());
+    duk_push_string(m_context, filename.c_str());
+    bool result = false;
+    if (duk_pcompile(m_context, DUK_COMPILE_EVAL) == 0)
+    {
+        duk_push_global_object(m_context);  /* 'this' binding */
+        if (duk_pcall_method(m_context, 0) != 0) 
+        {
+            if (error)
+            {
+                if (duk_has_prop_string(m_context,  -1, "stack"))
+                {
+                    duk_get_prop_string(m_context, -1, "stack");
+                    *error = duk_safe_to_string(m_context, -1);
+                    while (duk_get_top(m_context) > 0)
+                        duk_pop(m_context);
+                }
+                else 
+                {
+                    *error = duk_safe_to_string(m_context, -1);
+                }
+            }
+            while (duk_get_top(m_context) > 0)
+                duk_pop(m_context);
+        } 
+        else 
+        {
+            if (error)
+            {
+                *error = "";
+            }
+            result = true;
+            if (clean_heap)
+            {
+                while (duk_get_top(m_context) > 0)
+                    duk_pop(m_context);
+            }
+        }
+    }
+    else
+    {
+        if (duk_get_top(m_context) > 0) 
+        {
+             if (error)
+            {
+                if (duk_has_prop_string(m_context,  -1, "stack"))
+                {
+                    duk_get_prop_string(m_context, -1, "stack");
+                    *error = duk_safe_to_string(m_context, -1);
+                    while (duk_get_top(m_context) > 0)
+                        duk_pop(m_context);
+                }
+                else 
+                {
+                    *error = duk_safe_to_string(m_context, -1);
+                }
+            }
+            while (duk_get_top(m_context) > 0)
+                duk_pop(m_context);
+        }
+    }
+    m_running = false;
+    return result;
+}
+
 
 duk_context* dukpp03::AbstractContext::context()
 {

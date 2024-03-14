@@ -203,7 +203,9 @@ public:
        TEST(ContextTest::testRegisterThisCallable),
        TEST(ContextTest::testRegisterThisCallableWithArg),
        TEST(ContextTest::testPointConstructor),
-       TEST(ContextTest::testGlobal)   
+       TEST(ContextTest::testGlobal),
+       TEST(ContextTest::testEvalFilename),
+       TEST(ContextTest::testEvalFilename2)
     ) {}
 
     /*! Tests getting and setting reference data
@@ -499,6 +501,26 @@ public:
         ctx.registerGlobal("x", 2);
         dukpp03::Maybe<int> m = ctx.getGlobal<int>("x"); 
         ASSERT_TRUE( m.value() == 2 );  
+    }
+    
+    void testEvalFilename()
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("1 + ;", "filename.js", true, &error);
+        ASSERT_TRUE( !eval_result );
+        ASSERT_TRUE( error.find("filename.js") != std::string::npos );
+    }
+    
+    void testEvalFilename2()
+    {
+        std::string error;
+        dukpp03::context::Context ctx;
+        bool eval_result = ctx.eval("4 + 4", "filename.js", false, &error);
+        ASSERT_TRUE( eval_result );
+         dukpp03::Maybe<int> result = dukpp03::GetValue<int, dukpp03::context::Context>::perform(&ctx, -1);
+        ASSERT_TRUE( result.exists() );
+        ASSERT_TRUE( result.value() == 8 );
     }
     
 } _context_test;

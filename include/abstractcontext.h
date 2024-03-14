@@ -35,6 +35,15 @@ public:
         \return true if no error
      */
     bool eval(const std::string& string, bool clean_heap = true,std::string* error = nullptr);
+    /*! Evals string, with code in it. If no error occured, result is not popped
+        out from stack, since we still may need it
+        \param[in] string a string
+		\param[in] filename a file name
+        \param[in] clean_heap whether heap should be cleaned after execution. If provided, result is popped from stack
+        \param[out] error a string, where error should be written
+        \return true if no error
+     */
+    bool eval(const std::string& string, const std::string& filename, bool clean_heap = true,std::string* error = nullptr);	
     /*! Throws error from a context
         \param[in] error_string string data for error
         \param[in] code error codes
